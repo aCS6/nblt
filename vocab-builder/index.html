@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B1727">
+  <meta name="description" content="Vocab Builder — a 60-day IELTS vocabulary challenge with Bangla meanings, lazy-loaded word cards and saved progress.">
+  <title>Vocab Builder · 60-Day IELTS Challenge</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📚</text></svg>">
+
+  <!-- Fonts: Bricolage Grotesque (display) + Manrope (body) + Hind Siliguri (Bangla).
+       Falls back to system fonts if offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400..800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+
+  <!-- NBLT hub: floating "back to home" pill. Optional — the app runs without it. -->
+  <script defer src="../assets/nblt-home.js"></script>
+</head>
+<body>
+
+  <!-- Ambient background layer (glows + study-grid dots) -->
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <div class="app">
+
+    <!-- ================= GRID VIEW ================= -->
+    <div id="gridView">
+      <header class="masthead">
+        <div class="brand">
+          <span class="brand-badge" aria-hidden="true">শ</span>
+          <div class="brand-text">
+            <p class="brand-name">Vocab Builder</p>
+            <p class="brand-sub" lang="bn">২ মাসের IELTS শব্দভাণ্ডার চ্যালেঞ্জ</p>
+          </div>
+        </div>
+
+        <h1 class="headline">Build an <mark>IELTS-ready</mark> vocabulary in 2 months.</h1>
+        <p class="lede">Around 41 curated words a day — বাংলা meanings, synonyms and example sentences with Bangla translations. Tap a day to start; your progress is saved on this device.</p>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-val" id="statDays">–</span>
+            <span class="stat-lbl">days complete</span>
+          </div>
+          <div class="stat">
+            <span class="stat-val" id="statWords">–</span>
+            <span class="stat-lbl">words mastered</span>
+          </div>
+          <div class="stat">
+            <span class="stat-val" id="statToday">Day 1</span>
+            <span class="stat-lbl">you are here</span>
+          </div>
+        </div>
+
+        <div class="overall">
+          <div class="bar" id="overallBarWrap" role="progressbar" aria-label="Overall challenge progress"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <i id="overallBar"></i>
+          </div>
+          <span class="overall-pct" id="overallPct">0%</span>
+          <button id="resumeBtn" class="btn-resume" type="button" hidden>Continue →</button>
+        </div>
+      </header>
+
+      <main>
+        <!-- Tabs: calendar ⇄ saved words -->
+        <nav class="tabs" role="tablist" aria-label="Sections">
+          <button id="tabCalendar" class="tab on" type="button" role="tab"
+                  aria-selected="true" aria-controls="calendarPanel">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4.5" width="18" height="16" rx="2.5"/>
+              <path d="M3 9.5h18M8 2.5v4M16 2.5v4"/>
+            </svg>
+            Calendar
+          </button>
+          <button id="tabBookmarks" class="tab" type="button" role="tab"
+                  aria-selected="false" aria-controls="bookmarkPanel">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 3h10a1 1 0 011 1v17l-6-3.6L6 21V4a1 1 0 011-1z"/>
+            </svg>
+            Bookmarks
+            <span class="tab-count" id="tabBmCount">0</span>
+          </button>
+        </nav>
+
+        <div id="calendarPanel" role="tabpanel" aria-labelledby="tabCalendar">
+          <div class="grid-head">
+            <h2 class="section-title">Challenge calendar</h2>
+            <ul class="legend" aria-label="Legend">
+              <li><i class="sw sw-done"></i>Done</li>
+              <li><i class="sw sw-active"></i>In progress</li>
+              <li><i class="sw sw-today"></i>Today</li>
+              <li><i class="sw sw-locked"></i>Coming soon</li>
+            </ul>
+          </div>
+
+          <div id="dayGrid" class="day-grid"></div>
+          <div id="fatal" class="fatal" hidden></div>
+        </div>
+
+        <!-- ================= BOOKMARKS PANEL ================= -->
+        <div id="bookmarkPanel" role="tabpanel" aria-labelledby="tabBookmarks" hidden>
+          <div class="grid-head">
+            <h2 class="section-title">Saved words</h2>
+            <p id="bmCount" class="bm-count">—</p>
+          </div>
+
+          <ol id="bmList" class="wlist"></ol>
+
+          <div id="bmEmpty" class="bm-empty" hidden>
+            <span class="bm-empty-ico" aria-hidden="true">🔖</span>
+            <h3>No bookmarks yet</h3>
+            <p>Tap the bookmark icon on any word card to save it here — perfect for
+               the tricky ones you want to revise before the exam.</p>
+            <p lang="bn">যে শব্দগুলো কঠিন মনে হয়, বুকমার্ক করে রাখুন — পরে এক জায়গায় রিভিশন দিন।</p>
+            <button id="bmEmptyBtn" class="btn-resume" type="button">Browse the calendar →</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ================= DAY VIEW ================= -->
+    <section id="dayView" hidden>
+      <!-- Sticky: day bar + progress meta stay pinned while the words scroll -->
+      <div id="dayTop" class="daytop">
+        <div class="daybar">
+          <button id="backBtn" class="back" type="button" aria-label="Back to calendar">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7"/>
+            </svg>
+          </button>
+          <div class="daybar-title">
+            <span class="daybar-eyebrow" id="dvEyebrow">DAY 1 / 60</span>
+            <h2 id="dvTheme">—</h2>
+          </div>
+          <div class="ring-wrap" id="ringWrap" role="img" aria-label="Day progress">
+            <svg class="ring" viewBox="0 0 64 64" aria-hidden="true">
+              <circle class="ring-track" cx="32" cy="32" r="26"/>
+              <circle class="ring-val" id="ringVal" cx="32" cy="32" r="26"/>
+            </svg>
+            <span class="ring-num" id="ringNum">0%</span>
+          </div>
+        </div>
+
+        <div class="day-meta">
+          <div class="bar slim" role="progressbar" aria-label="Words learned today"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="dvBarWrap">
+            <i id="dvBar"></i>
+          </div>
+          <div class="day-meta-row">
+            <p id="dvCount">—</p>
+            <div class="filters" role="group" aria-label="Filter words">
+              <button class="chip on" id="chipAll"  data-filter="all"  type="button">All</button>
+              <button class="chip"    id="chipTodo" data-filter="todo" type="button">To learn</button>
+              <button class="chip"    id="chipDone" data-filter="done" type="button">Learned</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shown when every word of the day is learned -->
+      <div id="doneBanner" class="done-banner" hidden>
+        <div class="done-copy">
+          <h3 id="doneTitle">Day complete!</h3>
+          <p lang="bn">সব শব্দ শেখা শেষ — দুর্দান্ত! Revision is what keeps them forever.</p>
+        </div>
+        <button id="doneNext" class="btn-next" type="button">Next day →</button>
+      </div>
+
+      <ol id="wordList" class="wlist"></ol>
+
+      <!-- Skeleton shown while the next lazy batch "loads" -->
+      <div id="loader" class="loader" hidden aria-hidden="true">
+        <div class="skel-card"></div>
+        <div class="skel-card"></div>
+      </div>
+
+      <p id="endNote" class="endnote" hidden></p>
+      <div id="sentinel" class="sentinel" aria-hidden="true"></div>
+    </section>
+
+    <footer class="foot">
+      <p>🔒 Progress is stored in this browser via localStorage.</p>
+      <p lang="bn">IELTS প্রস্তুতকারীদের জন্য তৈরি · শুভকামনা!</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <noscript><p style="padding:20px;color:#fff">Vocab Builder needs JavaScript enabled to track your progress.</p></noscript>
+
+  <!-- data.js holds the full vocabulary dataset as a plain JS object
+       (window.VOCAB_DATA) — loaded directly, no server or fetch needed. -->
+  <script src="data.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 22 – The Passive | IELTS Grammar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+:root{--brand:#7c3aed;--brand-dark:#6d28d9;--brand-soft:#ede9fe;--accent:#f59e0b;--good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{background:linear-gradient(135deg,#6d28d9,#8b5cf6);color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 10px 25px -5px rgb(0 0 0/.25)}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
+.header-inner .logo{font-size:1.5rem;font-weight:900;letter-spacing:.5px}
+.header-inner .subtitle{font-size:.9rem;opacity:.85}
+.header-back{color:#fff;font-size:.9rem;font-weight:600;margin-left:auto;border:2px solid rgb(255 255 255/.5);border-radius:9999px;padding:5px 16px;transition:.2s;text-decoration:none}
+.header-back:hover{background:rgb(255 255 255/.15)}
+nav{background:#7c3aed;overflow-x:auto;white-space:nowrap;position:sticky;top:var(--header-h,64px);z-index:99;box-shadow:0 4px 12px -4px rgb(0 0 0/.2)}
+nav ul{list-style:none;display:inline-flex;max-width:1100px;margin:0 auto;padding:0 24px}
+nav ul li a{display:inline-block;color:rgb(255 255 255/.82);padding:11px 18px;font-size:.88rem;font-weight:600;border-bottom:3px solid transparent;transition:.2s;text-decoration:none}
+nav ul li a:hover,nav ul li a.active{color:#fff;border-bottom-color:var(--accent)}
+main{max-width:1100px;margin:32px auto;padding:0 20px 60px}
+.section-panel{display:none}
+.section-panel.active{display:block}
+.section-title{background:linear-gradient(90deg,#7c3aed,#a78bfa);color:#fff;padding:12px 20px;border-radius:12px 12px 0 0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:1.15rem}
+.section-badge{width:32px;height:32px;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:.95rem;background:rgb(255 255 255/.25)}
+.section-body{background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px;padding:28px;margin-bottom:32px}
+.grammar-subtitle{color:#6d28d9;font-weight:700;font-size:1.25rem;margin:0 0 16px;padding-bottom:6px;border-bottom:2px solid #ede9fe}
+.form-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.94rem}
+.form-table th,.form-table td{border:1px solid #e5e7eb;padding:8px 14px;text-align:left}
+.form-table th{background:#7c3aed;color:#fff;font-weight:700}
+.form-table tr:nth-child(even) td{background:#f5f3ff}
+.use-list{list-style:none;margin:14px 0}
+.use-list li{padding:10px 16px 10px 40px;margin-bottom:8px;border-radius:8px;background:#f5f3ff;position:relative}
+.use-list li::before{content:'◆';color:#7c3aed;position:absolute;left:14px}
+.use-list li em{color:#581c87;font-style:italic}
+.use-list li strong{color:#312e81}
+.warning-box{background:#fffbeb;border-left:4px solid #fbbf24;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.note-box{background:#f0fdf4;border-left:4px solid #16a34a;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.grammar-extra{background:#fff1f2;border:2px solid #f9a8d4;border-radius:12px;padding:16px 20px;margin:16px 0}
+.grammar-extra h4{color:#9f1239;font-weight:700;margin-bottom:8px;font-size:.95rem}
+.kw-tag{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:9999px;padding:2px 10px;font-size:.82rem;font-style:italic;margin:2px}
+.compare-table{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+@media(max-width:768px){.compare-table{grid-template-columns:1fr}}
+.compare-col{border:1px solid #e5e7eb;border-radius:12px;overflow:hidden}
+.compare-col .col-head{background:#c084fc;color:#fff;padding:8px 14px;font-weight:700;font-size:.92rem}
+.compare-col .col-body{padding:12px 14px;font-size:.9rem}
+.diagram{display:block;max-width:100%;border:1px solid #e5e7eb;border-radius:8px;margin:16px auto;background:#fafafa;padding:8px}
+.diagram-caption{text-align:center;font-size:.82rem;color:#6b7280;font-style:italic;margin-top:-10px;margin-bottom:14px}
+.audio-player{background:#ede9fe;border-radius:16px;padding:16px 20px;margin:18px 0;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.track-badge{background:#7c3aed;color:#fff;border-radius:9999px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;flex-shrink:0}
+.track-info h4{color:#581c87;font-size:.92rem;font-weight:700}
+.track-info p{color:#6b7280;font-size:.8rem}
+.audio-player .no-link{background:#fff7ed;border:1px dashed #fbbf24;border-radius:6px;padding:8px 14px;font-size:.85rem;color:#c2410c;flex:1;min-width:200px}
+.audio-player iframe{border:none;border-radius:8px;flex:1;min-width:260px;height:80px}
+.exercise{background:#fff;border:1px solid #e5e7eb;border-radius:16px;margin:20px 0;overflow:hidden;box-shadow:0 4px 16px -8px rgb(0 0 0/.08)}
+.exercise-header{background:#6b21a8;color:#fff;padding:12px 20px;display:flex;align-items:center;gap:10px}
+.exercise-header .ex-num{background:#fff;color:#6b21a8;border-radius:9999px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;flex-shrink:0}
+.exercise-header h3{font-size:.95rem;font-weight:600}
+.exercise-body{padding:20px}
+.tf-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f3f4f6}
+.tf-item:last-child{border-bottom:none}
+.item-num{background:#ede9fe;color:#6d28d9;border-radius:9999px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem;flex-shrink:0;margin-top:2px}
+.tf-buttons{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.tf-btn{padding:5px 15px;border:2px solid #7c3aed;border-radius:9999px;background:#fff;color:#7c3aed;font-weight:700;font-size:.82rem;cursor:pointer;transition:.2s}
+.tf-btn:hover{background:#ede9fe}
+.tf-btn.sel-true{background:#bbf7d0;border-color:#16a34a;color:#166534}
+.tf-btn.sel-false{background:#fecaca;border-color:#dc2626;color:#991b1b}
+.tf-feedback{margin-top:4px;font-size:.85rem;font-weight:600}
+.mc-item{margin-bottom:22px}
+.mc-question{font-weight:600;margin-bottom:10px}
+.mc-options{display:flex;flex-direction:column;gap:8px}
+.mc-option{display:flex;align-items:center;gap:12px;padding:8px 14px;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;transition:.2s;font-size:.93rem}
+.mc-option:hover{border-color:#a78bfa;background:#f5f3ff}
+.opt-letter{background:#ede9fe;color:#7c3aed;border-radius:9999px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem;flex-shrink:0}
+.mc-option.correct{border-color:#16a34a;background:#dcfce7}
+.mc-option.incorrect{border-color:#dc2626;background:#fee2e2}
+.mc-option.correct .opt-letter{background:#16a34a;color:#fff}
+.mc-option.incorrect .opt-letter{background:#dc2626;color:#fff}
+.mc-feedback{margin-top:6px;font-size:.85rem;font-weight:600}
+.gap-fill-item{margin-bottom:16px}
+.gf-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px;line-height:2.2}
+.gap-input{border:none;border-bottom:2px solid #8b5cf6;padding:2px 5px;font-size:.93rem;color:#3730a3;background:transparent;min-width:90px;outline:none;transition:.2s}
+.gap-input:focus{border-bottom-color:#6d28d9}
+.gap-input.correct{border-bottom-color:#16a34a;background:#f0fdf4;color:#15803d}
+.gap-input.incorrect{border-bottom-color:#dc2626;background:#fef2f2;color:#b91c1c}
+.hint-text{font-size:.8rem;color:#9ca3af;font-style:italic}
+.example-label{font-size:.78rem;color:#15803d;font-weight:700}
+.word-box{background:#f9fafb;border:2px solid #c4b5fd;border-radius:12px;padding:10px 16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.word-chip{background:#ede9fe;color:#581c87;border-radius:9999px;padding:3px 11px;font-size:.88rem;font-style:italic}
+.passage-text{background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:16px 20px;line-height:2.4;margin-bottom:12px;font-size:.93rem}
+.correction-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:14px}
+@media(max-width:768px){.correction-grid{grid-template-columns:1fr}}
+.correction-extract{border:1px solid #e5e7eb;border-radius:12px;overflow:hidden}
+.correction-extract h4{background:#c084fc;color:#fff;padding:7px 14px;font-size:.92rem}
+.extract-body{padding:12px;font-style:italic;font-size:.9rem;line-height:1.9;color:#374151;background:#f9fafb}
+.wrong-verb{text-decoration:underline wavy #dc2626;color:#dc2626;font-weight:700}
+.corr-input{border:2px solid #c4b5fd;border-radius:6px;padding:4px 9px;font-size:.9rem;color:#312e81;width:150px;outline:none}
+.corr-input:focus{border-color:#7c3aed}
+.corr-input.correct{border-color:#16a34a;background:#f0fdf4;color:#15803d}
+.corr-input.incorrect{border-color:#dc2626;background:#fef2f2;color:#b91c1c}
+.test-tip{background:#eff6ff;border-left:4px solid #2563eb;border-radius:6px;padding:10px 16px;margin:12px 0;font-size:.88rem}
+.test-tip::before{content:'💡 Test tip: ';font-weight:700;color:#2563eb}
+.example-box{background:#f5f3ff;border:2px dashed #a78bfa;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.eg-label{font-weight:700;color:#6d28d9;font-size:.84rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.gft-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.gft-options{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.gft-btn{padding:5px 15px;border:2px solid #ec4899;border-radius:9999px;background:#fff;color:#9d174d;font-style:italic;font-size:.88rem;cursor:pointer;transition:.2s}
+.gft-btn:hover{background:#fdf2f8}
+.gft-btn.correct{background:#bbf7d0;border-color:#16a34a;color:#166534;font-style:normal}
+.gft-btn.incorrect{background:#fecaca;border-color:#dc2626;color:#991b1b;text-decoration:line-through}
+.match-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.match-item .stem{flex:1}
+.match-select{padding:5px 9px;border:2px solid #c4b5fd;border-radius:6px;font-size:.88rem;color:#581c87;background:#fdf2f8;cursor:pointer;min-width:200px}
+.match-select:focus{outline:none;border-color:#7c3aed}
+.match-select.correct{background:#dcfce7;border-color:#16a34a;color:#166534}
+.match-select.incorrect{background:#fee2e2;border-color:#dc2626;color:#991b1b}
+.reading-passage{border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;margin:16px 0}
+.reading-passage h3{background:#7c3aed;color:#fff;padding:10px 16px;font-size:1.1rem}
+.reading-passage .rp-body{padding:16px}
+.btn-check{background:#7c3aed;color:#fff;border:none;padding:10px 26px;border-radius:9999px;font-size:.92rem;font-weight:700;cursor:pointer;transition:.2s;box-shadow:0 4px 14px -4px rgb(124 58 237/.5)}
+.btn-check:hover{background:#6d28d9}
+.btn-show{background:#fff;color:#7c3aed;border:2px solid #7c3aed;padding:7px 20px;border-radius:9999px;font-size:.86rem;font-weight:700;cursor:pointer;transition:.2s}
+.btn-show:hover{background:#f5f3ff}
+.btn-reset{background:#fff;color:#dc2626;border:2px solid #dc2626;padding:7px 20px;border-radius:9999px;font-size:.86rem;font-weight:700;cursor:pointer;transition:.2s}
+.btn-reset:hover{background:#fef2f2}
+.exercise-actions{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.score-badge{display:inline-block;background:#ede9fe;color:#581c87;border-radius:9999px;padding:4px 15px;font-size:.86rem;font-weight:700}
+.score-badge.full{background:#bbf7d0;color:#166534}
+.feedback-correct{color:#16a34a;font-weight:700;font-size:.86rem}
+.feedback-incorrect{color:#dc2626;font-weight:700;font-size:.86rem}
+footer{background:#581c87;color:rgb(255 255 255/.7);text-align:center;padding:16px;font-size:.82rem}
+.q-num{background:#f97316;color:#fff;border-radius:4px;padding:1px 6px;font-size:.78rem;font-weight:700}
+.notes-input{border:none;border-bottom:2px solid #f97316;padding:2px 5px;min-width:100px;font-size:.93rem;background:transparent;outline:none;color:#312e81}
+.notes-input:focus{border-bottom-color:#ea580c}
+.notes-input.correct{border-bottom-color:#16a34a;background:#f0fdf4;color:#15803d}
+.notes-input.incorrect{border-bottom-color:#dc2626;background:#fef2f2;color:#b91c1c}
+@media(max-width:700px){.header-inner .logo{font-size:1.2rem}.section-body{padding:14px}.exercise-body{padding:14px}nav ul li a{padding:9px 12px;font-size:.8rem}}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 22</span>
+    <span class="subtitle">The Passive — the passive; reporting with passive verbs; have something done; need + -ing</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active==='sec-a'?'active':''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active==='sec-b'?'active':''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active==='sec-c'?'active':''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active==='sec-d'?'active':''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active==='sec-gft'?'active':''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ SECTION A ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <!-- A1 Match -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Match the words (1–8) with their definitions (a–h).</h3></div>
+      <div class="exercise-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:.93rem;">
+          <div>
+            <p style="font-weight:700;color:#6d28d9;margin-bottom:8px;">Words</p>
+            <ol style="padding-left:20px;line-height:2.2;">
+              <li>union</li><li>president</li><li>process (verb)</li><li>represent</li>
+              <li>run (verb)</li><li>election</li><li>committee</li><li>facilities</li>
+            </ol>
+          </div>
+          <div>
+            <p style="font-weight:700;color:#6d28d9;margin-bottom:8px;">Definitions</p>
+            <ol type="a" style="padding-left:20px;line-height:2.2;">
+              <li>deal with or handle documentation</li>
+              <li>speak for a group</li>
+              <li>buildings, equipment or services</li>
+              <li>the leader of an organisation</li>
+              <li>a working group or board</li>
+              <li>an organised group or association</li>
+              <li>organise or manage</li>
+              <li>an organised vote</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note-box" style="margin-top:12px;">
+          <strong>Answers:</strong> 1–f &nbsp; 2–d &nbsp; 3–a &nbsp; 4–b &nbsp; 5–g &nbsp; 6–h &nbsp; 7–e &nbsp; 8–c
+        </div>
+      </div>
+    </div>
+
+    <!-- A2 Audio + comprehension -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen (Track 30) and answer the questions.</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">30</div>
+          <div class="track-info"><h4>Track 30 — Unit 22</h4><p>A student asking about the student union</p></div>
+          <div id="audio-30"></div>
+        </div>
+        <ol style="padding-left:20px;line-height:2.2;font-size:.93rem;">
+          <li>What do students need to do to get a student card?</li>
+          <li>What is the student union?</li>
+          <li>What is the student union responsible for?</li>
+        </ol>
+        <div class="note-box" style="margin-top:10px;">
+          <strong>Answers:</strong><br>
+          1. They need to go to the library, fill in a form and have their photo taken.<br>
+          2. It is a group which represents students' views to the university.<br>
+          3. It is responsible for extra facilities around the campus not related to study, e.g. restaurants, entertainment and sports facilities.
+        </div>
+      </div>
+    </div>
+
+    <!-- A3 Gap fill -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and fill in the gaps.</h3></div>
+      <div class="exercise-body">
+        <p style="margin-bottom:14px;font-size:.9rem;color:#374151;">Fill in the gaps in both the questions and answers.</p>
+
+        <div class="gap-fill-item">
+          <div class="gf-row">
+            <strong>Q1:</strong><span>'</span>
+            <input class="gap-input u22a3" data-id="a3_q1" size="20" placeholder="…"/>
+            <span>applications quite quickly?'</span>
+          </div>
+          <div class="gf-row" style="margin-left:1.5em;">
+            <strong>A1:</strong><span>'Oh yes. All applications</span>
+            <input class="gap-input u22a3" data-id="a3_a1" size="18" placeholder="…"/>
+            <span>on the spot so they'll be able to issue you a card straight away.'</span>
+          </div>
+        </div>
+
+        <div class="gap-fill-item">
+          <div class="gf-row">
+            <strong>Q2:</strong><span>'So,</span>
+            <input class="gap-input u22a3" data-id="a3_q2" size="26" placeholder="…"/>
+            <span>the student's union?'</span>
+          </div>
+          <div class="gf-row" style="margin-left:1.5em;">
+            <strong>A2:</strong><span>'No, the union</span>
+            <input class="gap-input u22a3" data-id="a3_a2" size="10" placeholder="…"/>
+            <span>by students, seven students to be precise.'</span>
+          </div>
+        </div>
+
+        <div class="gap-fill-item">
+          <div class="gf-row">
+            <strong>Q3:</strong><span>'And how</span>
+            <input class="gap-input u22a3" data-id="a3_q3" size="36" placeholder="…"/>
+            <span>?'</span>
+          </div>
+          <div class="gf-row" style="margin-left:1.5em;">
+            <strong>A3:</strong><span>'Well, the executive committee</span>
+            <input class="gap-input u22a3" data-id="a3_a3" size="12" placeholder="…"/>
+            <span>by the students through an election process.'</span>
+          </div>
+        </div>
+
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkA3_22()">Check</button>
+          <button class="btn-show" onclick="showA3_22()">Show Answers</button>
+          <button class="btn-reset" onclick="resetA3_22()">Reset</button>
+          <span id="a3-22-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="a3-22-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong><br>
+          Q1: <em>Do they process</em> &nbsp; A1: <em>are processed</em><br>
+          Q2: <em>does the university run</em> &nbsp; A2: <em>is run</em><br>
+          Q3: <em>is the executive committee chosen / do you choose</em> &nbsp; A3: <em>is chosen</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- A4 Discussion -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>What do you notice about the objects of verbs in the questions and the subjects in the answers?</h3></div>
+      <div class="exercise-body">
+        <div class="note-box">
+          <strong>Key observation:</strong> The objects of verbs in the questions become the subjects of passive verbs in the answers. For example, <em>applications</em> (object in Q1) becomes the subject of <em>are processed</em> in A1.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /sec-a -->
+
+<!-- ═══ SECTION B ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+    <h2 class="grammar-subtitle" style="font-size:1.35rem;margin-bottom:20px;">The Passive</h2>
+
+    <!-- B1 Form -->
+    <h3 class="grammar-subtitle">1 The passive: form</h3>
+    <p style="margin-bottom:12px;">The <strong>active</strong> shows what something does. The <strong>passive</strong> = a form of <em>be</em> + past participle. The subject of the passive is the object of the active verb.</p>
+    <table class="form-table" style="max-width:600px;">
+      <thead><tr><th>Tense</th><th>Passive form (subject: <em>The union</em>)</th></tr></thead>
+      <tbody>
+        <tr><td>present simple</td><td><em>is run</em></td></tr>
+        <tr><td>present continuous</td><td><em>is being run</em></td></tr>
+        <tr><td>past simple</td><td><em>was run</em></td></tr>
+        <tr><td>past continuous</td><td><em>was being run</em></td></tr>
+        <tr><td>present perfect</td><td><em>has been run</em></td></tr>
+        <tr><td>past perfect</td><td><em>had been run</em></td></tr>
+        <tr><td>going to</td><td><em>is going to be run</em></td></tr>
+        <tr><td>will</td><td><em>will be run</em></td></tr>
+        <tr><td>infinitive</td><td><em>is to be run</em></td></tr>
+        <tr><td>-ing form</td><td><em>being run</em></td></tr>
+        <tr><td>used to</td><td><em>used to be run</em></td></tr>
+        <tr><td>modals</td><td><em>should be run</em></td></tr>
+        <tr><td>need to / have to</td><td><em>needs / has to be run</em></td></tr>
+        <tr><td>need + -ing</td><td><em>needs running</em></td></tr>
+      </tbody>
+    </table>
+    <div class="warning-box">⚠ We cannot use the passive with <strong>intransitive verbs</strong>: <em>He arrived.</em> (NOT <s>He was arrived.</s>)</div>
+
+    <!-- B2 Use -->
+    <h3 class="grammar-subtitle" style="margin-top:24px;">2 The passive: use</h3>
+    <ul class="use-list">
+      <li>When the object is more important than the subject, or the agent is obvious, unknown or unimportant:<br><em>All applications <strong>are processed</strong> on the spot.</em></li>
+      <li>In formal writing to make it less personal:<br><em>You <strong>are advised</strong> to return the application form within three days.</em></li>
+      <li>When describing a process:<br><em>The union <strong>is run</strong> by seven executive officers who <strong>are elected</strong> by students.</em></li>
+      <li>To create a 'zigzag' pattern — repeating the end of one clause as the beginning of the next using the passive.</li>
+    </ul>
+    <div class="warning-box">⚠ Do <strong>not</strong> use the passive for natural/biological processes: <em>Plants take up carbon dioxide from the air.</em> (NOT <s>Carbon dioxide is taken up by plants.</s> in this context)</div>
+
+    <!-- B3 Reporting -->
+    <h3 class="grammar-subtitle" style="margin-top:24px;">3 Reporting with passive verbs</h3>
+    <p style="margin-bottom:10px;">We use reporting passives in two main patterns:</p>
+    <ul class="use-list">
+      <li><strong><em>it</em> + passive verb + <em>that</em>-clause</strong> (agree, announce, argue, believe, claim, decide, expect, feel, know, report, say, suggest, think…):<br><em>It <strong>was felt</strong> that the facilities were in need of renovation.</em></li>
+      <li><strong>subject + passive verb + to-infinitive</strong> (ask, believe, consider, estimate, expect, feel, know, report, say, see, think…):<br><em>Our sports facilities <strong>are said</strong> to be among the best in the country.</em><br><em>This building <strong>is believed</strong> to be the oldest in the town.</em></li>
+    </ul>
+
+    <!-- B4 Have something done -->
+    <h3 class="grammar-subtitle" style="margin-top:24px;">4 Have something done</h3>
+    <p style="margin-bottom:10px;"><strong>have + object + past participle</strong> means someone else does something for us:</p>
+    <div class="example-box">
+      <p><em>You'll need to <strong>have your photo taken</strong>.</em> (= someone takes it for you)</p>
+      <p style="margin-top:6px;">Informal: <strong>get</strong> + past participle: <em>I got my photo taken yesterday.</em></p>
+    </div>
+
+    <!-- B5 Need + -ing -->
+    <h3 class="grammar-subtitle" style="margin-top:24px;">5 Need + -ing</h3>
+    <p style="margin-bottom:10px;"><strong>need + -ing</strong> can be used as an alternative to the passive:</p>
+    <div class="example-box">
+      <em>Some facilities <strong>need improving</strong> around the campus.</em>
+      <p style="font-size:.85rem;color:#374151;margin-top:6px;">(= Some facilities need to be improved)</p>
+    </div>
+  </div>
+</div><!-- /sec-b -->
+
+<!-- ═══ SECTION C ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <!-- C1 Banana chips gap fill -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Fill in the gaps in the model answer with verbs from the box in the correct passive form.</h3></div>
+      <div class="exercise-body">
+        <div class="word-box">
+          <span class="word-chip">add</span><span class="word-chip">distribute</span><span class="word-chip">fry</span>
+          <span class="word-chip">leave</span><span class="word-chip">make</span><span class="word-chip">peel</span>
+          <span class="word-chip">put</span><span class="word-chip">remove</span><span class="word-chip">rinse</span>
+          <span class="word-chip">sell</span><span class="word-chip">slice</span><span class="word-chip">soak</span>
+        </div>
+        <p style="font-size:.85rem;color:#6b7280;margin-bottom:12px;">The flowchart shows the process of making banana chips.</p>
+        <div class="passage-text">
+          <p>The flowchart shows how banana chips
+            <span style="color:#15803d;font-weight:600;font-style:italic;">1 are made</span> <span class="example-label">(example)</span>.
+            First, the bananas
+            <input class="gap-input u22c1" data-id="c1_2" size="11" placeholder="2…"/>
+            by a special machine and then they
+            <input class="gap-input u22c1" data-id="c1_3" size="11" placeholder="3…"/>
+            in water.
+            Next the clean bananas
+            <input class="gap-input u22c1" data-id="c1_4" size="9" placeholder="4…"/>
+            into a chipping machine where they
+            <input class="gap-input u22c1" data-id="c1_5" size="11" placeholder="5…"/>
+            into thin chips.
+            After this they
+            <input class="gap-input u22c1" data-id="c1_6" size="11" placeholder="6…"/>
+            to dry.
+            Once they are dry, the banana chips
+            <input class="gap-input u22c1" data-id="c1_7" size="9" placeholder="7…"/>
+            in hot oil in large deep fat fryers.
+            The cooked banana chips
+            <input class="gap-input u22c1" data-id="c1_8" size="11" placeholder="8…"/>
+            from the fryers using a special sieve which allows all of the oil to drain off.
+            The banana chips
+            <input class="gap-input u22c1" data-id="c1_9" size="18" placeholder="9…"/>
+            to cool.
+            When they have reached the right temperature, spices
+            <input class="gap-input u22c1" data-id="c1_10" size="11" placeholder="10…"/>
+            for extra taste.
+            Finally the banana chips are packaged ready to
+            <input class="gap-input u22c1" data-id="c1_11" size="16" placeholder="11…"/>
+            around the world and
+            <input class="gap-input u22c1" data-id="c1_12" size="8" placeholder="12…"/>.
+          </p>
+        </div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkC1_22()">Check</button>
+          <button class="btn-show" onclick="showC1_22()">Show Answers</button>
+          <button class="btn-reset" onclick="resetC1_22()">Reset</button>
+          <span id="c1-22-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="c1-22-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong> 2 are peeled &nbsp; 3 are soaked/are rinsed &nbsp; 4 are put &nbsp; 5 are sliced &nbsp;
+          6 are left &nbsp; 7 are fried &nbsp; 8 are removed &nbsp; 9 are then left &nbsp; 10 are added &nbsp;
+          11 be distributed &nbsp; 12 sold
+        </div>
+      </div>
+    </div>
+
+    <!-- C2 Correction exercise -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Find and correct the 12 active/passive mistakes. Number 1 is given as an example.</h3></div>
+      <div class="exercise-body">
+        <p style="font-size:.85rem;color:#6b7280;margin-bottom:12px;">Some verbs are wrong — either active where passive is needed, or passive where active is needed. Write the correct form beside each number.</p>
+        <div class="correction-extract" style="margin-bottom:16px;">
+          <h4>Conversation about travel and culture</h4>
+          <div class="extract-body">
+            <p><strong>Teacher:</strong> People <span class="wrong-verb">are said</span> [1] that travelling abroad changes you as a person. Do you think that's true?</p>
+            <p><strong>Student 1:</strong> Yes, definitely. The world <span class="wrong-verb">has changed</span> [2] since globalisation and the internet. Attitudes <span class="wrong-verb">might have been happened</span> [3] to change.</p>
+            <p><strong>Student 2:</strong> I think people <span class="wrong-verb">have given</span> [4] a much broader view of the world since they can travel so cheaply now. Some say that local cultures <span class="wrong-verb">have been benefited</span> [5] from tourism.</p>
+            <p><strong>Teacher:</strong> Some researchers <span class="wrong-verb">have been suggested</span> [6] that tourism can actually harm local cultures. Traditional ways of life <span class="wrong-verb">are continued</span> [7] to be threatened.</p>
+            <p><strong>Student 1:</strong> Tourism numbers <span class="wrong-verb">are being become</span> [8] much larger each year. As a result, some people <span class="wrong-verb">feels</span> [9] that we need stricter policies.</p>
+            <p><strong>Student 2:</strong> Many students <span class="wrong-verb">have been come</span> [10] to study abroad. Some industries <span class="wrong-verb">has affected</span> [11] by the presence of so many tourists. In future, e-tourism <span class="wrong-verb">will use</span> [12] more widely.</p>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <div><label style="font-size:.85rem;font-weight:600;">1. <span style="color:#15803d;font-style:italic;">say (example)</span></label></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">2.</label><input class="corr-input u22c2" data-id="c2_2" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">3.</label><input class="corr-input u22c2" data-id="c2_3" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">4.</label><input class="corr-input u22c2" data-id="c2_4" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">5.</label><input class="corr-input u22c2" data-id="c2_5" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">6.</label><input class="corr-input u22c2" data-id="c2_6" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">7.</label><input class="corr-input u22c2" data-id="c2_7" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">8.</label><input class="corr-input u22c2" data-id="c2_8" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">9.</label><input class="corr-input u22c2" data-id="c2_9" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">10.</label><input class="corr-input u22c2" data-id="c2_10" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">11.</label><input class="corr-input u22c2" data-id="c2_11" placeholder="correct form…" style="width:100%"/></div>
+          <div><label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:4px;">12.</label><input class="corr-input u22c2" data-id="c2_12" placeholder="correct form…" style="width:100%"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkC2_22()">Check</button>
+          <button class="btn-show" onclick="showC2_22()">Show Answers</button>
+          <button class="btn-reset" onclick="resetC2_22()">Reset</button>
+          <span id="c2-22-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="c2-22-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong> 2 has been changed &nbsp; 3 might have happened &nbsp; 4 have been given &nbsp;
+          5 have benefited &nbsp; 6 have suggested &nbsp; 7 continue &nbsp; 8 are becoming &nbsp;
+          9 is felt &nbsp; 10 have come &nbsp; 11 has been affected &nbsp; 12 will be used
+        </div>
+      </div>
+    </div>
+
+    <!-- C3 Active or passive gap fill -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Fill in the gaps with the correct active or passive form of the verb in brackets. Number 1 is an example.</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">1</span><span>It is generally</span>
+            <span style="color:#15803d;font-weight:600;font-style:italic;">thought</span>
+            <span class="example-label">(example)</span>
+            <span>(think) that second language learning is easier for children.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">2</span><span>The new shelves</span>
+            <input class="gap-input u22c3" data-id="c3_2" size="14" placeholder="…"/>
+            <span>(place) in the library last week.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">3</span><span>At that time it</span>
+            <input class="gap-input u22c3" data-id="c3_3" size="14" placeholder="…"/>
+            <span>(believe) that the earth was flat.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">4</span><span>Students</span>
+            <input class="gap-input u22c3" data-id="c3_4" size="18" placeholder="…"/>
+            <span>(allow) to use dictionaries in this exam.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">5</span><span>My car</span>
+            <input class="gap-input u22c3" data-id="c3_5" size="18" placeholder="…"/>
+            <span>(service) at the moment — I had to come by bus.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">6</span><span>The new sports centre</span>
+            <input class="gap-input u22c3" data-id="c3_6" size="16" placeholder="…"/>
+            <span>(open) next month.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">7</span><span>The number of students</span>
+            <input class="gap-input u22c3" data-id="c3_7" size="14" placeholder="…"/>
+            <span>(expect) to rise next year.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">8</span><span>Glass</span>
+            <input class="gap-input u22c3" data-id="c3_8" size="10" placeholder="…"/>
+            <span>(make) from sand.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">9</span><span>The company</span>
+            <input class="gap-input u22c3" data-id="c3_9" size="9" placeholder="…"/>
+            <span>(claim) to have the best safety record in the industry.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">10</span><span>Dolphins</span>
+            <input class="gap-input u22c3" data-id="c3_10" size="11" placeholder="…"/>
+            <span>(know) to be highly intelligent animals.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">11</span><span>The lab equipment</span>
+            <input class="gap-input u22c3" data-id="c3_11" size="13" placeholder="…"/>
+            <span>(encourage / need) — use need + -ing.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">12</span><span>She</span>
+            <input class="gap-input u22c3" data-id="c3_12" size="12" placeholder="…"/>
+            <span>(take) a break — she needed to take one.</span>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkC3_22()">Check</button>
+          <button class="btn-show" onclick="showC3_22()">Show Answers</button>
+          <button class="btn-reset" onclick="resetC3_22()">Reset</button>
+          <span id="c3-22-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="c3-22-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong> 2 were/are placed &nbsp; 3 was believed &nbsp; 4 have been allowed &nbsp;
+          5 is being serviced &nbsp; 6 will be opened &nbsp; 7 is expected &nbsp; 8 is made &nbsp;
+          9 claims &nbsp; 10 are known &nbsp; 11 need encouraging &nbsp; 12 needed to take
+        </div>
+      </div>
+    </div>
+
+    <!-- C4 Underline correct form -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Underline the correct word or phrase in each pair in this essay about air pollution.</h3></div>
+      <div class="exercise-body">
+        <p style="font-size:.85rem;color:#6b7280;margin-bottom:12px;">Choose the correct active or passive form. Then check your answers below.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <p>Air pollution can (1) <em>be defined / define</em> as the presence of harmful substances in the atmosphere.
+          These substances can (2) <em>be absorbed / absorb</em> by the body and this (3) <em>is affected / affects</em> our health.
+          The problem (4) <em>is continued / continues</em> to grow as more vehicles (5) <em>are used / use</em> on the roads.
+          Rather than asking people (6) <em>to use / to be used</em> fewer cars, more electric vehicles (7) <em>are being built / are building</em>.
+          It (8) <em>is said / says</em> that cleaner technologies exist; governments need (9) <em>to decide / to be decided</em> to implement them.
+          The issue of (10) <em>tackling / being tackled</em> pollution is political.
+          New laws (11) <em>have been passed / have passed</em> but enforcement (12) <em>is allowed / allows</em> companies to self-regulate.
+          As a result, citizens (13) <em>are forced / force</em> to live with poor air quality.
+          Experts (14) <em>are known / know</em> the solutions but political will (15) <em>will use / will be used</em> to implement change only if voters pressure their leaders.
+          Car owners may (16) <em>have their cars checked / check their cars</em> annually under new proposals.</p>
+        </div>
+        <div class="note-box" style="margin-top:10px;">
+          <strong>Answers:</strong> 1 be defined &nbsp; 2 be absorbed &nbsp; 3 affects &nbsp; 4 continues &nbsp;
+          5 are used &nbsp; 6 to use &nbsp; 7 are being built &nbsp; 8 is said &nbsp; 9 to decide &nbsp;
+          10 tackling &nbsp; 11 have been passed &nbsp; 12 allows &nbsp; 13 are forced &nbsp; 14 know &nbsp;
+          15 will be used &nbsp; 16 have their cars checked
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /sec-c -->
+
+<!-- ═══ SECTION D ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice</div>
+  <div class="section-body">
+    <h2 class="grammar-subtitle">Academic Writing Task 1</h2>
+    <div class="test-tip">Study the diagram carefully to identify all of the key stages. Make sure you don't miss any important information in your description. You may need to change the words on the diagram to make them fit grammatically into your sentences.</div>
+    <div style="background:#f0f9ff;border:2px solid #0ea5e9;border-radius:12px;padding:20px;margin:16px 0;">
+      <p style="font-size:.88rem;color:#0369a1;margin-bottom:8px;font-weight:700;">WRITING TASK 1</p>
+      <p style="margin-bottom:8px;">You should spend about 20 minutes on this task.</p>
+      <p style="margin-bottom:8px;font-style:italic;font-weight:700;color:#312e81;">The diagram below shows how fruit is canned.</p>
+      <p style="margin-bottom:12px;font-style:italic;color:#312e81;">Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</p>
+      <p style="font-weight:700;">Write at least 150 words.</p>
+    </div>
+    <div class="note-box">
+      <strong>Fruit canning process (15 stages):</strong><br>
+      Hand Picking → Transporting → Washing → Quality checking → Cold storing → Weighing/grading → Peeling → Coring/slicing → Canning → Sealing → Cooking/sterilizing → Cooling → Labelling → Storage → Despatch
+    </div>
+    <div class="grammar-extra" style="margin-top:16px;">
+      <h4>Model answer</h4>
+      <p style="font-size:.9rem;line-height:1.9;">The diagram shows how fresh fruit is canned. First the fruit is picked from trees by hand. It is then transported to the cannery by large trucks. At the cannery the fruit is washed and quality checked, and any poor quality fruit is rejected. The good quality fruit is put into cold storage. When it is ready for canning the fruit is weighed and graded. The grading ensures that fruit of a similar size is kept together. After this the fruit is peeled and the cores are removed. It is then sliced into the required sizes and put into cans. Juice or syrup is also added to the cans. Once the cans have been filled they are sealed and cooked over heat to ensure that the cans are sterilized. When the cans are cool, a label is attached and they are placed into storage. The canned fruit is now ready to be despatched to supermarkets and sold.</p>
+    </div>
+  </div>
+</div><!-- /sec-d -->
+
+<!-- ═══ SECTION GFT ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">GFT</span><h3>Rewrite the sentences using the passive. Then put them in the correct order to describe the fruit canning process.</h3></div>
+      <div class="exercise-body">
+        <p style="margin-bottom:14px;font-size:.9rem;">Rewrite each active sentence as a passive sentence, then arrange them in the correct order (1–4).</p>
+
+        <div class="gap-fill-item">
+          <p><span class="q-num">A</span> <em>They allow the cans to cool.</em></p>
+          <div class="gf-row" style="margin-left:1.5em;">
+            <input class="gap-input u22gft" data-id="gft_a" size="45" placeholder="Passive form…"/>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><span class="q-num">B</span> <em>They sterilize the cans using a special heating process.</em></p>
+          <div class="gf-row" style="margin-left:1.5em;">
+            <input class="gap-input u22gft" data-id="gft_b" size="55" placeholder="Passive form…"/>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><span class="q-num">C</span> <em>They take the fruit to the cannery in large trucks.</em></p>
+          <div class="gf-row" style="margin-left:1.5em;">
+            <input class="gap-input u22gft" data-id="gft_c" size="50" placeholder="Passive form…"/>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><span class="q-num">D</span> <em>They check the fruit before storage and they reject any poor quality fruit.</em></p>
+          <div class="gf-row" style="margin-left:1.5em;">
+            <input class="gap-input u22gft" data-id="gft_d" size="70" placeholder="Passive form…"/>
+          </div>
+        </div>
+
+        <p style="margin-top:16px;font-weight:600;">Now write the correct order of sentences A–D (e.g. C, D, B, A):</p>
+        <div class="gf-row">
+          <input class="gap-input u22gft" data-id="gft_order" size="15" placeholder="order…"/>
+        </div>
+
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkGFT_22()">Check</button>
+          <button class="btn-show" onclick="showGFT_22()">Show Answers</button>
+          <button class="btn-reset" onclick="resetGFT_22()">Reset</button>
+          <span id="gft-22-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="gft-22-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Passive forms:</strong><br>
+          A: <em>The cans are allowed to cool.</em><br>
+          B: <em>The cans are sterilized using a special heating process.</em><br>
+          C: <em>The fruit is taken to the cannery in large trucks.</em><br>
+          D: <em>The fruit is checked before storage and any poor quality fruit is rejected.</em><br><br>
+          <strong>Correct order: C, D, B, A</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /sec-gft -->
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 22: The Passive</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+  loadAudio('30', 'audio-30');
+
+  function norm(s){ return s.trim().toLowerCase().replace(/['']/g,"'"); }
+
+  /* ── A3 ── */
+  var A3 = {
+    a3_q1: ['do they process'],
+    a3_a1: ['are processed'],
+    a3_q2: ['does the university run','do you run'],
+    a3_a2: ['is run'],
+    a3_q3: ['is the executive committee chosen','do you choose the executive committee','is the executive committee elected'],
+    a3_a3: ['is chosen','is elected']
+  };
+  function makeGapChecker(cls, answersObj, scoreId, ansId){
+    return {
+      check: function(){
+        var correct=0,total=0;
+        document.querySelectorAll('.'+cls).forEach(function(inp){
+          var acc=answersObj[inp.dataset.id]||[];
+          var v=norm(inp.value);
+          inp.classList.remove('correct','incorrect');
+          if(v){total++;if(acc.some(function(a){return norm(a)===v;})){inp.classList.add('correct');correct++;}else{inp.classList.add('incorrect');}}
+        });
+        var sc=document.getElementById(scoreId);
+        sc.style.display='inline-block';sc.textContent=correct+' / '+total;
+        sc.className='score-badge'+(correct===total&&total>0?' full':'');
+      },
+      show: function(){
+        document.querySelectorAll('.'+cls).forEach(function(inp){
+          var ans=answersObj[inp.dataset.id];
+          if(ans){inp.value=ans[0];inp.classList.remove('correct','incorrect');inp.classList.add('correct');}
+        });
+        document.getElementById(ansId).style.display='block';
+      },
+      reset: function(){
+        document.querySelectorAll('.'+cls).forEach(function(inp){inp.value='';inp.classList.remove('correct','incorrect');});
+        document.getElementById(scoreId).style.display='none';
+        document.getElementById(ansId).style.display='none';
+      }
+    };
+  }
+  var a3h=makeGapChecker('u22a3',A3,'a3-22-score','a3-22-ans');
+  window.checkA3_22=a3h.check; window.showA3_22=a3h.show; window.resetA3_22=a3h.reset;
+
+  /* ── C1 ── */
+  var C1={
+    c1_2:['are peeled'],c1_3:['are soaked','are rinsed'],c1_4:['are put'],
+    c1_5:['are sliced'],c1_6:['are left'],c1_7:['are fried'],c1_8:['are removed'],
+    c1_9:['are then left','are left'],c1_10:['are added'],c1_11:['be distributed'],c1_12:['sold']
+  };
+  var c1h=makeGapChecker('u22c1',C1,'c1-22-score','c1-22-ans');
+  window.checkC1_22=c1h.check; window.showC1_22=c1h.show; window.resetC1_22=c1h.reset;
+
+  /* ── C2 ── */
+  var C2={
+    c2_2:['has been changed'],c2_3:['might have happened'],c2_4:['have been given'],
+    c2_5:['have benefited'],c2_6:['have suggested'],c2_7:['continue'],
+    c2_8:['are becoming'],c2_9:['is felt'],c2_10:['have come'],
+    c2_11:['has been affected'],c2_12:['will be used']
+  };
+  var c2h=makeGapChecker('u22c2',C2,'c2-22-score','c2-22-ans');
+  window.checkC2_22=c2h.check; window.showC2_22=c2h.show; window.resetC2_22=c2h.reset;
+
+  /* ── C3 ── */
+  var C3={
+    c3_2:['were placed','are placed'],c3_3:['was believed'],c3_4:['have been allowed'],
+    c3_5:['is being serviced'],c3_6:['will be opened'],c3_7:['is expected'],
+    c3_8:['is made'],c3_9:['claims'],c3_10:['are known'],
+    c3_11:['need encouraging'],c3_12:['needed to take']
+  };
+  var c3h=makeGapChecker('u22c3',C3,'c3-22-score','c3-22-ans');
+  window.checkC3_22=c3h.check; window.showC3_22=c3h.show; window.resetC3_22=c3h.reset;
+
+  /* ── GFT ── */
+  var GFT={
+    gft_a:['the cans are allowed to cool'],
+    gft_b:['the cans are sterilized using a special heating process'],
+    gft_c:['the fruit is taken to the cannery in large trucks'],
+    gft_d:['the fruit is checked before storage and any poor quality fruit is rejected'],
+    gft_order:['c, d, b, a','c,d,b,a']
+  };
+  var gfth=makeGapChecker('u22gft',GFT,'gft-22-score','gft-22-ans');
+  window.checkGFT_22=gfth.check; window.showGFT_22=gfth.show; window.resetGFT_22=gfth.reset;
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

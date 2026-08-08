@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 8 – Referring to Nouns | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 8</span>
+    <span class="subtitle">Articles; other determiners (demonstratives, possessives, inclusives: <em>each, every, both, all, either, neither</em> etc.)</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening: put the words into two groups</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear a speaker at an environmental awareness conference talking about a European satellite called <strong>Envisat</strong>.</p>
+        <p>Before you listen, put the words below into two groups: <strong>the environment</strong> and <strong>satellites</strong>. Write <strong>E</strong> (environment) or <strong>S</strong> (satellites) next to each word.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>climate</span><input class="corr-input a1u8" data-id="u8a1_1" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>fully-equipped</span><input class="corr-input a1u8" data-id="u8a1_2" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>global warming</span><input class="corr-input a1u8" data-id="u8a1_3" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><span>instrument</span><input class="corr-input a1u8" data-id="u8a1_4" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>launch</span><input class="corr-input a1u8" data-id="u8a1_5" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>monitoring</span><input class="corr-input a1u8" data-id="u8a1_6" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span><span>observation</span><input class="corr-input a1u8" data-id="u8a1_7" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span><span>operational costs</span><input class="corr-input a1u8" data-id="u8a1_8" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">9</span><span>outer space</span><input class="corr-input a1u8" data-id="u8a1_9" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">10</span><span>ozone depletion</span><input class="corr-input a1u8" data-id="u8a1_10" placeholder="E/S" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">11</span><span>precise</span><input class="corr-input a1u8" data-id="u8a1_11" placeholder="E/S" style="width:60px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a1u8" class="btn-check">Check</button>
+          <button id="btn-show-a1u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a1u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and complete the notes — Track 11</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">11</div>
+          <div class="track-info"><h4>Track 11 — the Envisat talk</h4><p>Context listening — environmental awareness conference</p></div>
+          <div id="audio-11"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Now listen to the talk and complete the notes below. Write <strong>no more than two words or a number</strong> for each answer.</p>
+        <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:16px;font-size:.93rem;line-height:2.3;margin-bottom:14px;">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">Envisat satellite</div>
+          Envisat was launched <input class="gap-input a2u8" data-id="u8a2_1" placeholder="…" style="min-width:90px;"/><br/>
+          Envisat has <input class="gap-input a2u8" data-id="u8a2_2" placeholder="…" style="min-width:90px;"/> instrument systems.<br/>
+          In the 1990s ESA launched <input class="gap-input a2u8" data-id="u8a2_3" placeholder="…" style="min-width:70px;"/> and <input class="gap-input a2u8" data-id="u8a2_4" placeholder="…" style="min-width:70px;"/>.<br/>
+          ESA will spend 2.3 billion euros over <input class="gap-input a2u8" data-id="u8a2_5" placeholder="…" style="min-width:110px;"/>.<br/>
+          This is the same as <input class="gap-input a2u8" data-id="u8a2_6" placeholder="…" style="min-width:120px;"/> of coffee per person per year.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a2u8" class="btn-check">Check</button>
+          <button id="btn-show-a2u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Underline the correct words — Track 11</h3></div>
+      <div class="exercise-body">
+        <p>Underline the correct words. Listen again to check your answers.</p>
+        <div class="gft-item" data-id="u8a3_1" data-answered="0"><span class="item-num">1</span><div>Envisat is <div class="gft-options"><button class="gft-btn" data-value="a">a</button><button class="gft-btn" data-value="the">the</button></div></div></div>
+        <div class="gft-item" data-id="u8a3_2" data-answered="0"><span class="item-num">2</span><div><div class="gft-options"><button class="gft-btn" data-value="A">A</button><button class="gft-btn" data-value="The">The</button></div></div></div>
+        <div class="gft-item" data-id="u8a3_3a" data-answered="0"><span class="item-num">3a</span><div>With its ten instrument systems it is equipped with <div class="gft-options"><button class="gft-btn" data-value="-">– (no article)</button><button class="gft-btn" data-value="the">the</button></div></div></div>
+        <div class="gft-item" data-id="u8a3_3b" data-answered="0"><span class="item-num">3b</span><div>and offers everything that <div class="gft-options"><button class="gft-btn" data-value="-">– (no article)</button><button class="gft-btn" data-value="the">the</button></div></div></div>
+        <div class="gft-item" data-id="u8a3_4" data-answered="0"><span class="item-num">4</span><div>Included in <div class="gft-options"><button class="gft-btn" data-value="that">that</button><button class="gft-btn" data-value="this">this</button></div></div></div>
+        <div class="gft-item" data-id="u8a3_5" data-answered="0"><span class="item-num">5</span><div><div class="gft-options"><button class="gft-btn" data-value="Neither">Neither</button><button class="gft-btn" data-value="None">None</button></div></div></div>
+        <div class="exercise-actions">
+          <button id="btn-show-a3u8" class="btn-show">Show All Answers</button>
+          <button id="btn-reset-a3u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Look at your answers to Exercise 3 and answer these questions</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Why do we say <em>a satellite</em> in sentence 1 and <em>the satellite</em> in sentence 2? <input class="gap-input a4u8" data-id="u8a4_1" placeholder="…" style="min-width:300px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> In sentence 3, why do we use an article before <em>best</em>? Why don't we use an article in front of the word <em>scientists</em>? <input class="gap-input a4u8" data-id="u8a4_2" placeholder="…" style="min-width:300px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> In sentence 4, what does <em>this sum</em> refer to? <input class="gap-input a4u8" data-id="u8a4_3" placeholder="…" style="min-width:200px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> In sentence 5, why can't we use <em>neither</em>? <input class="gap-input a4u8" data-id="u8a4_4" placeholder="…" style="min-width:250px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u8" class="btn-check">Check</button>
+          <button id="btn-show-a4u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <h2 class="grammar-subtitle">B1 — Articles</h2>
+    <h3 style="color:#6a1b9a;margin:14px 0 6px;"><em>a/an</em></h3>
+    <p style="margin:6px 0 8px;font-weight:700;color:#4a148c;">We use <em>a/an</em>:</p>
+    <ul class="use-list">
+      <li><strong>To refer to something for the first time:</strong> <em>I'd like to talk to you today about <strong>an</strong> exciting development.</em></li>
+      <li><strong>To refer to any one from a group of several:</strong> <em>Climate protection is <strong>a</strong> challenge for our entire society.</em> (one of many challenges)</li>
+      <li><strong>To classify people or things as belonging to a group:</strong> <em>Envisat is <strong>a</strong> fully-equipped observation satellite.</em></li>
+      <li><strong>To say what job somebody does:</strong> <em>My brother is <strong>an</strong> engineer.</em></li>
+    </ul>
+    <div class="note-box">We can only use <em>a/an</em> with singular countable nouns.</div>
+
+    <h3 style="color:#6a1b9a;margin:20px 0 6px;"><em>the</em></h3>
+    <p style="margin:6px 0 8px;font-weight:700;color:#4a148c;">We use <em>the</em>:</p>
+    <ul class="use-list">
+      <li><strong>When the listener/reader knows which thing we mean (it may have been mentioned before):</strong><br/><em>Envisat is a fully-equipped observation satellite. <strong>The</strong> satellite was launched in 2002.</em></li>
+      <li><strong>When it is understood which thing we mean:</strong> <em>As part of <strong>the</strong> conference on environmental awareness …</em> (we are at the conference now, so it is clear which one I mean). Compare: <em>I went to <strong>a</strong> conference on environmental awareness last week.</em> (the person I am talking to does not know which conference I mean)</li>
+      <li><strong>When there is only one of this thing:</strong> <em><strong>the</strong> earth, <strong>the</strong> sun, <strong>the</strong> twentieth century, <strong>the</strong> sixties, <strong>the</strong> Government, <strong>the</strong> Prime Minister</em></li>
+      <li><strong>For superlatives (see Unit 11):</strong> <em>It is equipped with <strong>the</strong> best eyes possible.</em></li>
+      <li><strong>To talk about playing a musical instrument:</strong> <em>He plays <strong>the</strong> piano and she plays <strong>the</strong> guitar.</em></li>
+      <li><strong>With certain proper nouns:</strong> nationalities (<em>the British, the Chinese</em>), rivers (<em>the Thames, the Yangtze</em>), island groups (<em>the Maldives</em>), mountain ranges (<em>the Alps</em>), seas and oceans (<em>the Black Sea, the Pacific</em>), country names that represent a group (<em>the United Kingdom</em>), many famous/historical buildings (<em>the White House</em>), noun phrases with <em>of</em> (<em>the Great Wall of China, the Temple of Heaven</em>)</li>
+    </ul>
+    <div class="note-box">With university names we can say <em>the University of Bath</em> or <em>Bath University</em>.</div>
+
+    <h3 style="color:#6a1b9a;margin:20px 0 6px;">No article</h3>
+    <p style="margin:6px 0 8px;font-weight:700;color:#4a148c;">We use no article:</p>
+    <ul class="use-list">
+      <li><strong>With plural or uncountable nouns to talk generally about things:</strong><br/><em>It will deliver information about our changing environment.</em><br/><em>It offers everything that <strong>scientists</strong> could wish for.</em> (scientists in general, not a specific group)</li>
+      <li><strong>With certain proper nouns:</strong> continents (<em>Europe</em>), countries (<em>Australia</em>), states or counties (<em>Michigan</em>), towns and cities (<em>Tokyo</em>), mountains (<em>Everest</em>), lakes (<em>Lake Superior</em>), companies (<em>Microsoft</em>), buildings and places with the name of a town (<em>Heathrow Airport</em>)</li>
+      <li><strong>With mealtimes:</strong> <em>I have <strong>lunch</strong> at 12.30.</em></li>
+      <li><strong>In common expressions after prepositions:</strong> <em>to/at school/university; to/in class; in prison/hospital/bed</em></li>
+    </ul>
+    <div class="note-box">We can use <em>the/a</em> if we want to be specific. Compare: <em>When I was a child I used to walk <strong>to school</strong>.</em> vs <em>When I was a child I went <strong>to the school</strong> on the other side of town.</em> However, we cannot use an article with the following expressions: <em>at home; at/to work; at night; by bus/bicycle/car/train/plane; on foot</em>.</div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — Demonstratives: <em>this, that, these, those</em></h2>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use these words to show whether something is <strong>near</strong> or <strong>remote</strong>, in terms of time or place:</p>
+    <table class="form-table">
+      <thead><tr><th></th><th>near</th><th>remote</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">time</td><td><em>I'd like to talk to you <strong>this</strong> morning about an exciting development.</em> (today)</td><td><em>My mother called me later <strong>that</strong> day.</em> (I am telling you this on a different day)</td></tr>
+        <tr><td class="pos">place</td><td><em>I like <strong>these</strong> pictures.</em> (here)</td><td><em>Oh, I prefer <strong>those</strong> pictures.</em> (over there)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We can use <em>this/that/these/those</em> to refer back to something previously mentioned in the text:</p>
+    <ul class="use-list">
+      <li><em>The total cost of the Envisat programme is 2.3 billion euros over 15 years. Included in <strong>this sum</strong> …</em> (<em>this sum</em> = 2.3 billion euros)</li>
+      <li><em>Seeing the earth from outer space highlights how tiny and fragile our planet is. Envisat helps people to understand <strong>that</strong>.</em> (= understand how tiny and fragile our planet is)</li>
+      <li>There is often very little difference between <em>this</em> and <em>that</em> when used in this way, so we could say: <em>Envisat helps people to understand <strong>this</strong>.</em></li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Possessives</h2>
+    <ul class="use-list">
+      <li><strong>We use possessive determiners (<em>my/your/his/her/its/our/their</em>) to tell us what or who something belongs to:</strong> <em><strong>our</strong> blue planet; <strong>their</strong> children</em></li>
+      <li><strong>We cannot use possessive determiners after other determiners (e.g. <em>a, the</em>).</strong> We use determiner + noun + <em>of</em> + possessive pronoun: <em><strong>this planet of ours</strong></em> (not <del>this our planet</del>)</li>
+      <li><strong>We use 's with singular nouns and irregular plural nouns. We use s' after regular plural nouns:</strong> <em>Europe's technological showpiece; the children's toys; my parents' house</em></li>
+      <li><strong>We usually use noun + <em>of</em> instead of 's when the thing we are referring to is not a person or animal:</strong> <em>the price <strong>of the hotel</strong></em> (not <del>the hotel's price</del>)</li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B4 — Inclusives</h2>
+    <h3 style="color:#6a1b9a;margin:14px 0 6px;"><em>each, every</em></h3>
+    <ul class="use-list">
+      <li><em>Each</em> and <em>every</em> are used with a singular noun and verb. <em>Each</em> is used for things or people in a group of two or more, with a focus on the individuals in the group: <em><strong>Each</strong> European citizen has therefore invested seven euros in the environment.</em></li>
+      <li><em>Every</em> is used for three or more things, with a focus on the group. Often the difference in focus between <em>each</em> and <em>every</em> is very small: <em><strong>Every</strong> citizen will have access to precise information about changes in the environment.</em></li>
+      <li>We can use <em>each</em> (but not <em>every</em>) + <em>of</em> + noun/pronoun: <em><strong>Each of</strong> the students gave the teacher a present.</em> (not <del>every of the students</del>)</li>
+    </ul>
+    <h3 style="color:#6a1b9a;margin:14px 0 6px;"><em>all, most, some</em></h3>
+    <ul class="use-list">
+      <li>We use <em>all/most/some</em> + plural noun and verb to talk about things in general: <em><strong>Most</strong> children like sweets. <strong>Some</strong> people believe space exploration is a waste of money.</em></li>
+      <li>We use <em>all/most/some</em> + <em>of</em> + pronoun or determiner + noun to refer to a specific group: <em><strong>Most of</strong> the children at my school play football.</em></li>
+      <li>We do not need to use <em>all</em> + <em>of</em> before a noun, but we need <em>of</em> before a pronoun: <em><strong>All the</strong> children at my school play a musical instrument. <strong>All of them</strong> like music.</em> (not <del>all them</del>)</li>
+      <li>When <em>all</em> is followed by a singular noun referring to time the meaning is different. Compare: <em>I worked hard <strong>all day</strong>.</em> (= I worked hard for one whole day) vs <em>I worked hard <strong>every day</strong>.</em> (= I regularly worked hard)</li>
+    </ul>
+    <h3 style="color:#6a1b9a;margin:14px 0 6px;"><em>both, neither, either, none</em></h3>
+    <ul class="use-list">
+      <li><em>Both, neither</em> and <em>either</em> refer to two people or things. We use <em>both</em> + plural noun and <em>either/neither</em> + singular noun: <em><strong>Both</strong> satellites were launched in the 1990s. <strong>Neither</strong> person knew very much about Envisat before the conference. <strong>Either</strong> restaurant is fine.</em></li>
+      <li>We use <em>both</em> + <em>of</em> + determiner + plural noun (or pronoun) with a plural verb. We can use <em>either/neither</em> + <em>of</em> + determiner + plural noun (or pronoun) with a singular or a plural verb: <em><strong>Neither of</strong> my sisters lives/live in the same town as me. <strong>Both of</strong> them are married.</em></li>
+      <li><em>None</em> means 'not one' (of a group). It can be followed by a singular or plural verb: <em><strong>None of</strong> our countries is/are able to ignore the implications of global warming.</em></li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Underline each mistake with articles and write the correction</h3></div>
+      <div class="exercise-body">
+        <p>In some of these sentences there is a mistake with articles. Underline each mistake and write the correction. Write <strong>✓</strong> if the sentence is correct.</p>
+        <div style="display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>My father likes the classical music and listens to it all the time.</span><input class="corr-input c1u8" data-id="u8c1_1" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>I saw a man sitting in a restaurant. A woman came and joined him, but the man got up and left without speaking to her!</span><input class="corr-input c1u8" data-id="u8c1_2" placeholder="✓ or correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>Sun was shining and it was a lovely day.</span><input class="corr-input c1u8" data-id="u8c1_3" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><span>I can play piano.</span><input class="corr-input c1u8" data-id="u8c1_4" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>I come from United Arab Emirates.</span><input class="corr-input c1u8" data-id="u8c1_5" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>I've applied to study at the University of Edinburgh.</span><input class="corr-input c1u8" data-id="u8c1_6" placeholder="✓ or correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span><span>I usually go to work by the bus.</span><input class="corr-input c1u8" data-id="u8c1_7" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span><span>My husband is doctor.</span><input class="corr-input c1u8" data-id="u8c1_8" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">9</span><span>Sorry I'm late — car wouldn't start this morning.</span><input class="corr-input c1u8" data-id="u8c1_9" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">10</span><span>I'm going to take a cruise down river Nile.</span><input class="corr-input c1u8" data-id="u8c1_10" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">11</span><span>I once saw a cat wearing a pink coat and boots!</span><input class="corr-input c1u8" data-id="u8c1_11" placeholder="✓ or correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">12</span><span>My husband collects the antiques. He's always going to auctions.</span><input class="corr-input c1u8" data-id="u8c1_12" placeholder="correction" style="width:170px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u8" class="btn-check">Check</button>
+          <button id="btn-show-c1u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Fill in the gaps with a/an or the, or put a cross (x)</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with <strong>a/an</strong> or <strong>the</strong>, or put a cross <strong>(x)</strong> if no article is needed.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">BORNEO BORN AND BRED</div>
+          <input class="gap-input c2u8" data-id="u8c2_1" placeholder="a/an/the/x" style="width:80px;"/> Local legends say that <input class="gap-input c2u8" data-id="u8c2_2" placeholder="a/an/the/x" style="width:80px;"/> Borneo's few thousand wild elephants are descendants from those brought to <input class="gap-input c2u8" data-id="u8c2_3" placeholder="a/an/the/x" style="width:80px;"/> island from India or Malaysia as <input class="gap-input c2u8" data-id="u8c2_4" placeholder="a/an/the/x" style="width:80px;"/> gift to <input class="gap-input c2u8" data-id="u8c2_5" placeholder="a/an/the/x" style="width:80px;"/> sultan in <input class="gap-input c2u8" data-id="u8c2_6" placeholder="a/an/the/x" style="width:80px;"/> eighteenth century. Biologists from <input class="gap-input c2u8" data-id="u8c2_7" placeholder="a/an/the/x" style="width:80px;"/> Columbia University's Centre for Environmental Research and Conservation compared DNA samples from Borneo elephants with Asian elephants in Sumatra, India and elsewhere. <input class="gap-input c2u8" data-id="u8c2_8" placeholder="a/an/the/x" style="width:80px;"/> findings confirmed their suspicions: Borneo's elephants are genetically different. In fact <input class="gap-input c2u8" data-id="u8c2_9" placeholder="a/an/the/x" style="width:80px;"/> DNA differences are so great between them and their closest relatives (elephants in Peninsular Malaysia) that <input class="gap-input c2u8" data-id="u8c2_10" placeholder="a/an/the/x" style="width:80px;"/> populations may have been separated as long ago as <input class="gap-input c2u8" data-id="u8c2_11" placeholder="a/an/the/x" style="width:80px;"/> scientists. The animals became isolated when <input class="gap-input c2u8" data-id="u8c2_12" placeholder="a/an/the/x" style="width:80px;"/> island became totally cut off from the mainland due to <input class="gap-input c2u8" data-id="u8c2_13" placeholder="a/an/the/x" style="width:80px;"/> rise in sea level. Borneo's elephants are, therefore, <input class="gap-input c2u8" data-id="u8c2_14" placeholder="a/an/the/x" style="width:80px;"/> important, separate population.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u8" class="btn-check">Check</button>
+          <button id="btn-show-c2u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Underline the most suitable words — report on holiday survey</h3></div>
+      <div class="exercise-body">
+        <p>Underline the most suitable words. Click the correct form for each numbered item.</p>
+        <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:16px;font-size:.93rem;line-height:2;margin-bottom:14px;">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">Report on holiday survey</div>
+          <span class="item-num" style="display:inline-flex;">1</span> <em>This / That</em> survey aimed to find out about <span class="item-num" style="display:inline-flex;">2</span> <em>people's / the people's</em> ideal holidays. We used <span class="item-num" style="display:inline-flex;">3</span> <em>the interviews / interviews</em> and <span class="item-num" style="display:inline-flex;">4</span> <em>the questionnaires / questionnaires</em> to collect <span class="item-num" style="display:inline-flex;">5</span> <em>our / their</em> data. <span class="item-num" style="display:inline-flex;">6</span> <em>Both / All of</em> <span class="item-num" style="display:inline-flex;">7</span> <em>those / these</em> methods of data collection were quick and simple to carry out and <span class="item-num" style="display:inline-flex;">8</span> <em>neither / none</em> of them were too demanding of the public.<br/><br/>
+          <span class="item-num" style="display:inline-flex;">9</span> <em>Our findings / Findings</em> show that many people like to take their holidays in the summer. <span class="item-num" style="display:inline-flex;">10</span> <em>This / The</em> view was reinforced by the destinations suggested by <span class="item-num" style="display:inline-flex;">11</span> <em>the people / people</em> involved in <span class="item-num" style="display:inline-flex;">12</span> <em>a survey / the survey</em>. <span class="item-num" style="display:inline-flex;">13</span> <em>The beach holidays / Beach holidays</em> were the most popular, particularly in <span class="item-num" style="display:inline-flex;">14</span> <em>the Spain / Spain</em> or <span class="item-num" style="display:inline-flex;">15</span> <em>the France / France</em>. <span class="item-num" style="display:inline-flex;">16</span> <em>Most / Both</em> people in the survey said they looked forward to their holiday. <span class="item-num" style="display:inline-flex;">17</span> <em>Each / All</em> person we interviewed agreed that it was important to have at least one holiday <span class="item-num" style="display:inline-flex;">18</span> <em>every / all</em> year. <span class="item-num" style="display:inline-flex;">19</span> <em>The price of the holiday / the holiday's price</em> was important to most people, with general agreement that value for money was a primary consideration.
+        </div>
+        <p style="margin-bottom:10px;font-weight:600;">Click the correct form for each numbered item:</p>
+        <div class="gft-item" data-id="u8c3_1" data-answered="0"><span class="item-num">1</span><div><div class="gft-options"><button class="gft-btn" data-value="This">This</button><button class="gft-btn" data-value="That">That</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_2" data-answered="0"><span class="item-num">2</span><div><div class="gft-options"><button class="gft-btn" data-value="people's">people's</button><button class="gft-btn" data-value="the people's">the people's</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_3" data-answered="0"><span class="item-num">3</span><div><div class="gft-options"><button class="gft-btn" data-value="the interviews">the interviews</button><button class="gft-btn" data-value="interviews">interviews</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_4" data-answered="0"><span class="item-num">4</span><div><div class="gft-options"><button class="gft-btn" data-value="the questionnaires">the questionnaires</button><button class="gft-btn" data-value="questionnaires">questionnaires</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_5" data-answered="0"><span class="item-num">5</span><div><div class="gft-options"><button class="gft-btn" data-value="our">our</button><button class="gft-btn" data-value="their">their</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_6" data-answered="0"><span class="item-num">6</span><div><div class="gft-options"><button class="gft-btn" data-value="Both">Both</button><button class="gft-btn" data-value="All of">All of</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_7" data-answered="0"><span class="item-num">7</span><div><div class="gft-options"><button class="gft-btn" data-value="those">those</button><button class="gft-btn" data-value="these">these</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_8" data-answered="0"><span class="item-num">8</span><div><div class="gft-options"><button class="gft-btn" data-value="neither">neither</button><button class="gft-btn" data-value="none">none</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_9" data-answered="0"><span class="item-num">9</span><div><div class="gft-options"><button class="gft-btn" data-value="Our findings">Our findings</button><button class="gft-btn" data-value="Findings">Findings</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_10" data-answered="0"><span class="item-num">10</span><div><div class="gft-options"><button class="gft-btn" data-value="This">This</button><button class="gft-btn" data-value="The">The</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_11" data-answered="0"><span class="item-num">11</span><div><div class="gft-options"><button class="gft-btn" data-value="the people">the people</button><button class="gft-btn" data-value="people">people</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_12" data-answered="0"><span class="item-num">12</span><div><div class="gft-options"><button class="gft-btn" data-value="a survey">a survey</button><button class="gft-btn" data-value="the survey">the survey</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_13" data-answered="0"><span class="item-num">13</span><div><div class="gft-options"><button class="gft-btn" data-value="The beach holidays">The beach holidays</button><button class="gft-btn" data-value="Beach holidays">Beach holidays</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_14" data-answered="0"><span class="item-num">14</span><div><div class="gft-options"><button class="gft-btn" data-value="the Spain">the Spain</button><button class="gft-btn" data-value="Spain">Spain</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_15" data-answered="0"><span class="item-num">15</span><div><div class="gft-options"><button class="gft-btn" data-value="the France">the France</button><button class="gft-btn" data-value="France">France</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_16" data-answered="0"><span class="item-num">16</span><div><div class="gft-options"><button class="gft-btn" data-value="Most">Most</button><button class="gft-btn" data-value="Both">Both</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_17" data-answered="0"><span class="item-num">17</span><div><div class="gft-options"><button class="gft-btn" data-value="Each">Each</button><button class="gft-btn" data-value="All">All</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_18" data-answered="0"><span class="item-num">18</span><div><div class="gft-options"><button class="gft-btn" data-value="every">every</button><button class="gft-btn" data-value="all">all</button></div></div></div>
+        <div class="gft-item" data-id="u8c3_19" data-answered="0"><span class="item-num">19</span><div><div class="gft-options"><button class="gft-btn" data-value="The price of the holiday">The price of the holiday</button><button class="gft-btn" data-value="the holiday's price">the holiday's price</button></div></div></div>
+        <div class="exercise-actions">
+          <button id="btn-show-c3u8" class="btn-show">Show All Answers</button>
+          <button id="btn-reset-c3u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Fill in the gaps with words from the box</h3></div>
+      <div class="exercise-body">
+        <div class="word-box">
+          <span class="word-chip">both</span><span class="word-chip">each</span><span class="word-chip">every</span><span class="word-chip">my</span><span class="word-chip">neither</span><span class="word-chip">none</span><span class="word-chip">this</span><span class="word-chip">that</span><span class="word-chip">their</span><span class="word-chip">those</span>
+        </div>
+        <div class="passage-text" style="line-height:2.4;">
+          My home town is smaller than London, but there are some similarities. <input class="gap-input c4u8" data-id="u8c4_1" placeholder="…" style="min-width:70px;"/> of the two cities is famous for its architecture. For example, <input class="gap-input c4u8" data-id="u8c4_2" placeholder="…" style="min-width:70px;"/> Kuala Lumpur and London have tall, modern buildings, set amongst older historical buildings. Although both cities have rivers running through them, <input class="gap-input c4u8" data-id="u8c4_3" placeholder="…" style="min-width:90px;"/> city is by the sea, which is a shame, as I think some of the most beautiful cities in the world are by the sea.<br/><br/>
+          <input class="gap-input c4u8" data-id="u8c4_4" placeholder="…" style="min-width:70px;"/> major city in the world has one thing in common — being large and busy — and <input class="gap-input c4u8" data-id="u8c4_5" placeholder="…" style="min-width:70px;"/> is true of both London and Kuala Lumpur. In fact, some people don't like my city because it is so noisy and busy, but <input class="gap-input c4u8" data-id="u8c4_6" placeholder="…" style="min-width:70px;"/> is one reason why I love it.<br/><br/>
+          A lot of city markets take place in the day-time, but in <input class="gap-input c4u8" data-id="u8c4_7" placeholder="…" style="min-width:60px;"/> home city they don't open until it's dark! Malaysians tend to buy all their groceries at the night markets. In London people tend to use supermarkets for <input class="gap-input c4u8" data-id="u8c4_8" placeholder="…" style="min-width:70px;"/> food shopping.<br/><br/>
+          It is always hot in Kuala Lumpur, but London can get very cold. <input class="gap-input c4u8" data-id="u8c4_9" placeholder="…" style="min-width:70px;"/> probably why you get outdoor restaurants all over Kuala Lumpur all year round whereas in London there are almost <input class="gap-input c4u8" data-id="u8c4_10" placeholder="…" style="min-width:60px;"/> in the winter. In some restaurants in Kuala Lumpur, you can go to the kitchen and point at the food and say, 'I'll have one of <input class="gap-input c4u8" data-id="u8c4_11" placeholder="…" style="min-width:70px;"/> please!' You can't do that in London!
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u8" class="btn-check">Check</button>
+          <button id="btn-show-c4u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Listening Section 4</div>
+  <div class="section-body">
+    <div class="test-tip">Read all the questions carefully before you listen. Underline or highlight any key information or words that you need to listen for. Make sure you read the instructions carefully (e.g. for questions 3 and 4 you need to write two letters). Use the questions to help you find your way through the listening text. If you miss an answer, just move on to the next one.</div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–2</span><h3>Questions 1–2 — Choose the correct letter A, B or C</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">12</div>
+          <div class="track-info"><h4>Track 12 — fitness and health lecture</h4><p>Test practice — Listening Section 4</p></div>
+          <div id="audio-12"></div>
+        </div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Health club membership in Europe<br/>
+          <span style="margin-left:30px;">A has reached 36 million.</span><br/>
+          <span style="margin-left:30px;">B has declined in recent years.</span><br/>
+          <span style="margin-left:30px;">C has followed a similar trend to America.</span><br/>
+          Answer: <input class="gap-input d1u8" data-id="u8d1_1" placeholder="A/B/C" style="width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> If people today ate the same amount as their parents did<br/>
+          <span style="margin-left:30px;">A they would gain weight.</span><br/>
+          <span style="margin-left:30px;">B they would have more energy.</span><br/>
+          <span style="margin-left:30px;">C they would feel healthier.</span><br/>
+          Answer: <input class="gap-input d1u8" data-id="u8d1_2" placeholder="A/B/C" style="width:60px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u8" class="btn-check">Check</button>
+          <button id="btn-show-d1u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q3–4</span><h3>Questions 3–4 — Choose TWO letters A–E</h3></div>
+      <div class="exercise-body">
+        <p>According to the speaker, which TWO factors have contributed to the change in our fitness levels?</p>
+        <div class="example-box">
+          <div><strong>A</strong> &nbsp;availability of better food</div>
+          <div><strong>B</strong> &nbsp;different working conditions</div>
+          <div><strong>C</strong> &nbsp;labour-saving devices</div>
+          <div><strong>D</strong> &nbsp;changes in healthcare</div>
+          <div><strong>E</strong> &nbsp;diets which do not work</div>
+        </div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> First factor <input class="gap-input d34u8" data-id="u8d34_3" placeholder="A–E" style="width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> Second factor <input class="gap-input d34u8" data-id="u8d34_4" placeholder="A–E" style="width:60px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-d34u8" class="btn-check">Check</button>
+          <button id="btn-show-d34u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d34u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q5</span><h3>Question 5 — Choose the correct letter A, B or C</h3></div>
+      <div class="exercise-body">
+        <p>Which of the following machines has been available for less than ten years?</p>
+        <img src="../assets/image-contents/u8-d5-machines.png" alt="Three exercise machines labelled A, B and C" class="diagram"/>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> Answer: <input class="gap-input d5u8" data-id="u8d5_5" placeholder="A/B/C" style="width:60px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-d5u8" class="btn-check">Check</button>
+          <button id="btn-show-d5u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d5u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q6–10</span><h3>Questions 6–10 — Which exercise method do the statements apply to?</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Listen carefully for the key words (e.g. treadmill, elliptical trainer, running/road) and match what you hear to the ideas in the questions. Remember the words in the questions will not match the words in the recording exactly.</div>
+        <div class="example-box">
+          <div><strong>A</strong> &nbsp;using an elliptical trainer</div>
+          <div><strong>B</strong> &nbsp;running on the road</div>
+          <div><strong>C</strong> &nbsp;using a treadmill</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">6</span><span>The impact on the body is more than twice your own body weight.</span><input class="corr-input d6u8" data-id="u8d6_6" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span><span>The impact on the body is almost the same as your own body weight.</span><input class="corr-input d6u8" data-id="u8d6_7" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span><span>It has the same impact on the body as walking does.</span><input class="corr-input d6u8" data-id="u8d6_8" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">9</span><span>It is the best method for losing weight at speeds over 14 kph.</span><input class="corr-input d6u8" data-id="u8d6_9" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">10</span><span>It has the highest impact on the joints.</span><input class="corr-input d6u8" data-id="u8d6_10" placeholder="A/B/C" style="width:60px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d6u8" class="btn-check">Check</button>
+          <button id="btn-show-d6u8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d6u8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at the following extracts from the recording. Which words or ideas do the underlined words refer to in the text?</div>
+    <div class="exercise">
+      <div class="exercise-header" style="background:#880e4f;"><span class="ex-num" style="color:#880e4f;">★</span><h3>Identify what the underlined words refer to</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text">
+          1 &nbsp;Unfortunately, instead of eating less than <strong>their</strong> parents did, many consume a lot more. → <input class="gap-input gftu8" data-id="u8gft_1" placeholder="…" style="min-width:250px;"/><br/>
+          2 &nbsp;On top of <strong>this</strong>, the change in employment patterns over the past … → <input class="gap-input gftu8" data-id="u8gft_2" placeholder="…" style="min-width:250px;"/><br/>
+          3 &nbsp;And <strong>this</strong> is where exercise machines come in. → <input class="gap-input gftu8" data-id="u8gft_3" placeholder="…" style="min-width:250px;"/><br/>
+          4 &nbsp;<strong>That's</strong> an amazing number of people. → <input class="gap-input gftu8" data-id="u8gft_4" placeholder="…" style="min-width:250px;"/><br/>
+          5 &nbsp;As <strong>its</strong> name implies, the machine delivers an elliptical motion … → <input class="gap-input gftu8" data-id="u8gft_5" placeholder="…" style="min-width:250px;"/><br/>
+          6 &nbsp;In <strong>that respect</strong>, ellipticals are superior. → <input class="gap-input gftu8" data-id="u8gft_6" placeholder="…" style="min-width:250px;"/><br/>
+          7 &nbsp;After <strong>that</strong>, just keep going and going and going … → <input class="gap-input gftu8" data-id="u8gft_7" placeholder="…" style="min-width:250px;"/>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-gftu8" class="btn-check">Check</button>
+          <button id="btn-show-gftu8" class="btn-show">Show Answers</button>
+          <button id="btn-reset-gftu8" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 8: Referring to Nouns</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('11','audio-11');
+  loadAudio('12','audio-12');
+
+  // A1 word groups (E/S)
+  initGapFill({ inputSelector:'.a1u8', checkId:'btn-check-a1u8', showId:'btn-show-a1u8', resetId:'btn-reset-a1u8',
+    answers:{ u8a1_1:['e'], u8a1_2:['s'], u8a1_3:['e'], u8a1_4:['s'], u8a1_5:['s'], u8a1_6:['s'],
+              u8a1_7:['s'], u8a1_8:['s'], u8a1_9:['s'], u8a1_10:['e'], u8a1_11:['s'] }});
+
+  // A2 notes
+  initGapFill({ inputSelector:'.a2u8', checkId:'btn-check-a2u8', showId:'btn-show-a2u8', resetId:'btn-reset-a2u8',
+    answers:{ u8a2_1:['in 2002','2002'], u8a2_2:['ten','10'], u8a2_3:['ers 1','ers1','ers i'], u8a2_4:['ers 2','ers2','ers ii'],
+              u8a2_5:['fifteen years','15 years','fifteen','15'], u8a2_6:['two cups','2 cups','two','2'] }});
+
+  // A3 underline correct words
+  initGFT({ showId:'btn-show-a3u8', resetId:'btn-reset-a3u8',
+    answers:{ u8a3_1:'a', u8a3_2:'The', u8a3_3a:'the', u8a3_3b:'-', u8a3_4:'this', u8a3_5:'None' }});
+
+  // A4 analysis
+  initGapFill({ inputSelector:'.a4u8', checkId:'btn-check-a4u8', showId:'btn-show-a4u8', resetId:'btn-reset-a4u8',
+    answers:{ u8a4_1:['sentence 1 is the first time it is mentioned; sentence 2 is the same satellite we have just mentioned','sentence 1 is the first mention','the first time it is mentioned','first mention','sentence 2 refers to the same satellite'],
+              u8a4_2:['we use the with superlatives','the is used with superlatives','because best is a superlative','superlatives','best is a superlative; scientists are general'],
+              u8a4_3:['2.3 billion euros','the total cost of the envisat programme','the cost of the envisat programme','2.3 billion'],
+              u8a4_4:['there are more than two countries','more than two countries','none is used for more than two','neither refers to two','because there are more than two countries'] }});
+
+  // C1 article corrections
+  initGapFill({ inputSelector:'.c1u8', checkId:'btn-check-c1u8', showId:'btn-show-c1u8', resetId:'btn-reset-c1u8',
+    answers:{ u8c1_1:['classical music'], u8c1_2:['√','✓','correct'],
+              u8c1_3:['the sun'], u8c1_4:['the piano'], u8c1_5:['the united arab emirates','the united arab emirates.'], u8c1_6:['√','✓','correct'],
+              u8c1_7:['by bus'], u8c1_8:['a doctor'], u8c1_9:['the car','my car'], u8c1_10:['the river nile'],
+              u8c1_11:['√','✓','correct'], u8c1_12:['antiques'] }});
+
+  // C2 Borneo articles
+  initGapFill({ inputSelector:'.c2u8', checkId:'btn-check-c2u8', showId:'btn-show-c2u8', resetId:'btn-reset-c2u8',
+    answers:{ u8c2_1:['the'], u8c2_2:['x','-','—','no article','nothing','0'], u8c2_3:['the'], u8c2_4:['a'], u8c2_5:['the'], u8c2_6:['the'],
+              u8c2_7:['x','-','—','no article','nothing','0'], u8c2_8:['the','their'], u8c2_9:['the'], u8c2_10:['the'], u8c2_11:['the'],
+              u8c2_12:['the'], u8c2_13:['a'], u8c2_14:['an'] }});
+
+  // C3 holiday survey
+  initGFT({ showId:'btn-show-c3u8', resetId:'btn-reset-c3u8',
+    answers:{ u8c3_1:'This', u8c3_2:"people's", u8c3_3:'interviews', u8c3_4:'questionnaires', u8c3_5:'our',
+              u8c3_6:'Both', u8c3_7:'these', u8c3_8:'neither', u8c3_9:'Our findings', u8c3_10:'This',
+              u8c3_11:'the people', u8c3_12:'the survey', u8c3_13:'Beach holidays', u8c3_14:'Spain', u8c3_15:'France',
+              u8c3_16:'Most', u8c3_17:'Each', u8c3_18:'every', u8c3_19:'The price of the holiday' }});
+
+  // C4 words from box
+  initGapFill({ inputSelector:'.c4u8', checkId:'btn-check-c4u8', showId:'btn-show-c4u8', resetId:'btn-reset-c4u8',
+    answers:{ u8c4_1:['each'], u8c4_2:['both'], u8c4_3:['neither'], u8c4_4:['every','each'], u8c4_5:['this','that'],
+              u8c4_6:['that','this'], u8c4_7:['my'], u8c4_8:['their'], u8c4_9:['that'], u8c4_10:['none'], u8c4_11:['those','these'] }});
+
+  // D Q1-2
+  initGapFill({ inputSelector:'.d1u8', checkId:'btn-check-d1u8', showId:'btn-show-d1u8', resetId:'btn-reset-d1u8',
+    answers:{ u8d1_1:['C'], u8d1_2:['A'] }});
+
+  // D Q3-4 two letters (any order)
+  initGapFill({ inputSelector:'.d34u8', checkId:'btn-check-d34u8', showId:'btn-show-d34u8', resetId:'btn-reset-d34u8',
+    answers:{ u8d34_3:['B','C'], u8d34_4:['B','C'] }});
+
+  // D Q5 machine
+  initGapFill({ inputSelector:'.d5u8', checkId:'btn-check-d5u8', showId:'btn-show-d5u8', resetId:'btn-reset-d5u8',
+    answers:{ u8d5_5:['B'] }});
+
+  // D Q6-10 classification
+  initGapFill({ inputSelector:'.d6u8', checkId:'btn-check-d6u8', showId:'btn-show-d6u8', resetId:'btn-reset-d6u8',
+    answers:{ u8d6_6:['C'], u8d6_7:['A'], u8d6_8:['A'], u8d6_9:['B'], u8d6_10:['B'] }});
+
+  // GFT reference
+  initGapFill({ inputSelector:'.gftu8', checkId:'btn-check-gftu8', showId:'btn-show-gftu8', resetId:'btn-reset-gftu8',
+    answers:{ u8gft_1:['the parents of the current generation of people','the previous generation','their parents','the parents'],
+              u8gft_2:['relying on cars and other machines and eating fast food','cars and other machines and fast food','the change in employment patterns','relying on cars and other machines','the change in how and where people work'],
+              u8gft_3:['the fact that people have poor health so are looking for answers','people have poor health','poor health','people have poor health and are looking for answers'],
+              u8gft_4:['45 million americans','45 million','45 million people'],
+              u8gft_5:['the elliptical cross trainer','elliptical cross trainer','elliptical','the machine','ellipticals'],
+              u8gft_6:['in respect of the impact on the body','the impact on the body','impact on the body','respect of the impact on the body'],
+              u8gft_7:['running to gym','running to the gym','running (to gym)','going to the gym to run'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

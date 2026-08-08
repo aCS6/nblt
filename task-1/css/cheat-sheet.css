@@ -1,0 +1,199 @@
+/* ============================================================
+   Template Vault — printable cheat sheet
+   Matches the app design system; screen + A4 print styles.
+   ============================================================ */
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --ink: #1e2540;
+  --ink-soft: #4b5373;
+  --line: #dde3ef;
+  --brand: #2563eb;
+  --brand-dark: #1e4fd6;
+  --brand-soft: #e8efff;
+  --accent: #f59e0b;
+  --accent-soft: #fef3c7;
+  --good: #10b981;
+  --good-soft: #d1fae5;
+  --purple: #8b5cf6;
+  --purple-soft: #ede9fe;
+  --teal: #06b6d4;
+  --teal-soft: #cffafe;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 8px 28px rgba(30, 37, 64, 0.10);
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Nunito', 'Inter', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 125%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+
+.sheet { max-width: 1080px; margin: 0 auto; padding: 28px 32px 60px; }
+
+/* ---------------- toolbar ---------------- */
+.sheet-toolbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  margin-bottom: 26px;
+}
+.back-link {
+  color: var(--brand); font-weight: 700; font-size: 1rem; text-decoration: none;
+  padding: 10px 14px; border-radius: 10px; transition: background 0.18s ease;
+}
+.back-link:hover { background: var(--brand-soft); text-decoration: underline; text-underline-offset: 3px; }
+.print-btn {
+  border: 0; background: var(--brand); color: #fff;
+  font-size: 1rem; font-weight: 700; padding: 14px 28px; min-height: 48px;
+  border-radius: 99px; cursor: pointer;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+  transition: all 0.2s ease;
+}
+.print-btn:hover { background: var(--brand-dark); transform: translateY(-2px); }
+
+/* ---------------- header ---------------- */
+.sheet-head { margin-bottom: 30px; }
+.sheet-title {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(1.7rem, 3.5vw, 2.3rem); line-height: 1.15; color: var(--ink);
+}
+.sheet-sub { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.6; margin-top: 10px; max-width: 760px; }
+.sheet-sub strong { color: var(--brand-dark); }
+
+/* ---------------- universal skeleton strip ---------------- */
+.skeleton-strip {
+  background: linear-gradient(135deg, #14275c, #0e1b44);
+  color: #dfe6ff; border-radius: var(--radius);
+  padding: 24px 28px; margin-bottom: 30px;
+  box-shadow: var(--shadow);
+}
+.strip-title {
+  font-family: var(--font-display); font-weight: 900; font-size: 1.125rem;
+  color: #fff; margin-bottom: 14px;
+}
+.strip-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.strip-step {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px; font-size: 0.95rem; font-weight: 600; line-height: 1.4;
+  display: flex; align-items: center; gap: 10px;
+}
+.strip-n {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--brand); color: #fff; font-weight: 800;
+  display: grid; place-items: center; font-size: 0.85rem;
+}
+
+/* ---------------- diagram sections ---------------- */
+.diagram {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 24px 26px; margin-bottom: 26px;
+}
+.diagram-title {
+  font-family: var(--font-display); font-weight: 900; font-size: 1.35rem;
+  color: var(--ink); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.diagram-title::after { content: ''; flex: 1; height: 2px; background: var(--line); }
+
+.skeletons { display: grid; gap: 14px; }
+.skel {
+  border: 1px solid var(--line); border-left: 5px solid var(--brand);
+  border-radius: var(--radius-sm); background: #fafbfe;
+  padding: 14px 18px; break-inside: avoid;
+}
+.skel:nth-of-type(2) { border-left-color: var(--accent); }
+.skel:nth-of-type(3) { border-left-color: var(--purple); }
+.skel:nth-of-type(4) { border-left-color: var(--teal); }
+
+.skel-tag {
+  display: inline-block; font-size: 0.75rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1px;
+  padding: 4px 12px; border-radius: 99px; margin-bottom: 8px;
+  background: var(--brand-soft); color: var(--brand-dark);
+}
+.skel:nth-of-type(2) .skel-tag { background: var(--accent-soft); color: #b45309; }
+.skel:nth-of-type(3) .skel-tag { background: var(--purple-soft); color: #6d28d9; }
+.skel:nth-of-type(4) .skel-tag { background: var(--teal-soft); color: #0e7490; }
+
+.skel-body { font-size: 0.95rem; line-height: 1.65; color: var(--ink-soft); }
+.skel-body b { color: var(--ink); }
+
+.workex {
+  margin-top: 16px; padding: 14px 18px;
+  background: var(--good-soft); border: 1px dashed #6ee7b7;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem; line-height: 1.7; color: #065f46;
+  break-inside: avoid;
+}
+.workex b { color: #047857; }
+
+/* ---------------- footer ---------------- */
+.sheet-foot {
+  margin-top: 8px; padding: 18px 22px;
+  background: var(--accent-soft); border: 1px solid #fde68a;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem; line-height: 1.6; color: #78350f;
+}
+
+.loading { color: var(--ink-soft); font-size: 1.05rem; }
+
+/* ---------------- print ---------------- */
+@media print {
+  @page { size: A4; margin: 12mm; }
+
+  html { font-size: 100%; }
+
+  body { background: #fff; }
+
+  .sheet { max-width: none; padding: 0; }
+
+  .sheet-toolbar { display: none !important; }
+
+  .sheet-head { margin-bottom: 16px; }
+  .sheet-title { font-size: 1.6rem; }
+  .sheet-sub { font-size: 0.95rem; margin-top: 6px; }
+
+  .skeleton-strip { padding: 16px 18px; margin-bottom: 16px; box-shadow: none; }
+  .strip-title { font-size: 1rem; }
+  .strip-steps { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .strip-step { padding: 10px 12px; font-size: 0.85rem; }
+
+  .diagram {
+    break-inside: avoid;
+    margin-bottom: 14px; padding: 16px 18px;
+    box-shadow: none; border-radius: 10px;
+  }
+  .diagram-title { font-size: 1.15rem; margin-bottom: 10px; }
+
+  .skeletons { gap: 10px; grid-template-columns: 1fr 1fr; align-items: start; }
+  .skel { padding: 10px 14px; }
+  .skel-tag { font-size: 0.68rem; padding: 3px 9px; margin-bottom: 5px; }
+  .skel-body { font-size: 0.8rem; line-height: 1.5; }
+
+  .workex { margin-top: 10px; padding: 10px 14px; font-size: 0.8rem; }
+
+  .sheet-foot { font-size: 0.85rem; padding: 12px 14px; }
+
+  /* keep the coloured boxes when printing to PDF */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ---------------- small screens ---------------- */
+@media (max-width: 640px) {
+  .sheet { padding: 20px 16px 44px; }
+  .sheet-toolbar { flex-wrap: wrap; }
+  .print-btn { width: 100%; }
+}

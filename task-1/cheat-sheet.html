@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template Vault — Printable Cheat Sheet | IELTS Task 1</title>
+  <meta name="description" content="All 24 IELTS Task 1 sentence skeletons — line graph, bar chart, pie chart, table, map and process — on one printable page." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/cheat-sheet.css" />
+</head>
+<body>
+  <div class="sheet">
+    <!-- ===== Toolbar (hidden when printing) ===== -->
+    <div class="sheet-toolbar" id="sheetToolbar">
+      <a class="back-link" href="index.html#templates">← Back to the app</a>
+      <div class="toolbar-right">
+        <button class="print-btn" id="printBtn" type="button">🖨️ Print / Save as PDF</button>
+      </div>
+    </div>
+
+    <!-- ===== Header ===== -->
+    <header class="sheet-head">
+      <h1 class="sheet-title">🏗️ Template Vault — Quick Reference</h1>
+      <p class="sheet-sub">
+        The <strong>24 sentence skeletons</strong> for IELTS Academic Writing Task 1.
+        Memorize the frame, fill in the data — 3 minutes to read the chart, 17 to write.
+      </p>
+    </header>
+
+    <!-- ===== Rendered content (filled by js/cheat-sheet.js) ===== -->
+    <main class="cheat" id="cheat" aria-live="polite">
+      <p class="loading">Loading your cheat sheet…</p>
+    </main>
+
+    <footer class="sheet-foot">
+      <p>Band 8 rule: <strong>zero numbers in the overview</strong> — trends and comparisons only. Templates are scaffolding, not walls: select the right data and report it accurately.</p>
+    </footer>
+  </div>
+
+  <script src="js/chapters-part1.js"></script>
+  <script src="js/chapters-part2.js"></script>
+  <script src="js/cheat-sheet.js"></script>
+</body>
+</html>

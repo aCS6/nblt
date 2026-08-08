@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 7 – Countable and Uncountable Nouns | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 7</span>
+    <span class="subtitle">Countable and uncountable nouns; quantity expressions (<em>many, much, a lot of, some, any, a few, few, no</em>)</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening: a room to rent</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear Alan and Sara talking about advertising a spare bedroom to rent.</p>
+        <p>Before you listen, look at the types of furniture below. Tick the furniture you think might be in the room. <span class="hint-text">(Free activity — answers will vary.)</span></p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:14px 0;">
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>shelves</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a wardrobe</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a lamp</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a bedside table</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a filing cabinet</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a bed</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a desk</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a mirror</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a sofa</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a towel rail</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a coffee table</div>
+          <div class="gft-item" style="margin:0;"><input type="checkbox" style="margin-right:8px;"/>a rug</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and answer the questions — Track 10</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">10</div>
+          <div class="track-info"><h4>Track 10 — Alan and Sara's conversation</h4><p>Context listening — advertising a bedroom to rent</p></div>
+          <div id="audio-10"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Listen and answer the questions below.</p>
+        <p style="font-weight:600;">1&nbsp; Which three pieces of furniture are in the room?</p>
+        <div class="example-box" style="margin-bottom:14px;">
+          <div><strong>A</strong> &nbsp;a bed</div>
+          <div><strong>B</strong> &nbsp;a bedside table</div>
+          <div><strong>C</strong> &nbsp;a desk</div>
+          <div><strong>E</strong> &nbsp;a lamp</div>
+          <div><strong>F</strong> &nbsp;a mirror</div>
+          <div><strong>G</strong> &nbsp;a wardrobe</div>
+        </div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">i</span> Piece 1 <input class="gap-input a2u7" data-id="u7a2_1" placeholder="…" style="min-width:130px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">ii</span> Piece 2 <input class="gap-input a2u7" data-id="u7a2_2" placeholder="…" style="min-width:130px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">iii</span> Piece 3 <input class="gap-input a2u7" data-id="u7a2_3" placeholder="…" style="min-width:130px;"/></div></div>
+        <p style="font-weight:600;margin-top:14px;">2&nbsp; What does the desk look like?</p>
+        <img src="../assets/image-contents/u7-a2-desk-picture.png" alt="Two desk pictures labelled A and B" class="diagram"/>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> The desk looks like picture <input class="gap-input a2u7" data-id="u7a2_4" placeholder="A/B" style="width:70px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a2u7" class="btn-check">Check</button>
+          <button id="btn-show-a2u7" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2u7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and fill in the gaps — Track 10</h3></div>
+      <div class="exercise-body">
+        <p>Listen again and fill in the gaps in the advertisement. Write <strong>no more than one word or a number</strong> for each answer.</p>
+        <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:16px;font-size:.93rem;line-height:2.3;margin-bottom:14px;">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">Accommodation for rent</div>
+          Small, furnished <input class="gap-input a3u7" data-id="u7a3_1" placeholder="…" style="min-width:90px;"/> available. Sunny with a nice view of the <input class="gap-input a3u7" data-id="u7a3_2" placeholder="…" style="min-width:90px;"/>.<br/>
+          Good location close to two types of <input class="gap-input a3u7" data-id="u7a3_3" placeholder="…" style="min-width:110px;"/>.<br/>
+          Rent <input class="gap-input a3u7" data-id="u7a3_4" placeholder="…" style="min-width:60px;"/> per <input class="gap-input a3u7" data-id="u7a3_5" placeholder="…" style="min-width:80px;"/>.<br/>
+          Rent includes <input class="gap-input a3u7" data-id="u7a3_6" placeholder="…" style="min-width:110px;"/> and all other bills.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u7" class="btn-check">Check</button>
+          <button id="btn-show-a3u7" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Look at the two groups of nouns</h3></div>
+      <div class="exercise-body">
+        <p>Look at the two groups of nouns in the table below. How are they different? Add the nouns from Exercises 2 and 3 into the table in the correct group.</p>
+        <table class="form-table">
+          <thead><tr><th>Group 1</th><th>Group 2</th></tr></thead>
+          <tbody>
+            <tr><td>advertisement, newspaper, windows</td><td>money, news, accommodation</td></tr>
+          </tbody>
+        </table>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Group 1 nouns are <input class="gap-input a4u7" data-id="u7a4_1" placeholder="…" style="min-width:120px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Group 2 nouns are <input class="gap-input a4u7" data-id="u7a4_2" placeholder="…" style="min-width:120px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u7" class="btn-check">Check</button>
+          <button id="btn-show-a4u7" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <h2 class="grammar-subtitle">B1 — Countable and Uncountable Nouns</h2>
+    <div class="compare-table">
+      <div class="compare-col">
+        <div class="col-head">Countable nouns</div>
+        <div class="col-body">
+          <ul>
+            <li>generally have a singular and plural form:<br/><em>a window, lots of windows</em></li>
+            <li>Some countable nouns only have a plural form: <em>clothes, trousers, jeans, scissors</em></li>
+            <li>take a singular or plural verb form:<br/><em>The window <strong>is</strong> big. The windows <strong>are</strong> big.</em></li>
+            <li>can be replaced by a singular or plural pronoun:<br/><em>I'd like that desk; it's better than <strong>mine</strong>. It's got shelves as well. <strong>They're</strong> really handy.</em></li>
+            <li>can be measured with weights and measures: <em>two kilos of potatoes</em> or numbers: <em>It's got three drawers.</em></li>
+            <li>can be used with <em>a/an</em>: <em>a desk, an apple</em></li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="col-head">Uncountable nouns</div>
+        <div class="col-body">
+          <ul>
+            <li>cannot be plural: <em>advice</em> (not <del>advices</del>), <em>furniture</em> (not <del>furnitures</del>), <em>data</em></li>
+            <li>Some uncountable nouns look plural but they are not: <em>news, economics, physics</em></li>
+            <li>take only a singular verb form:<br/><em>The natural light <strong>is</strong> really nice.</em></li>
+            <li>can be replaced by a singular pronoun:<br/><em>'What shall we say about the furniture?' 'Well, <strong>it's</strong> not luxurious but it is very comfortable.'</em></li>
+            <li>can be measured with weights and measures: <em>two kilos of sugar</em> or with words like <em>a piece of, cup of, bit of, slice of</em>: <em>a piece of information</em></li>
+            <li>cannot be used with <em>a/an</em>: <em>information</em> (not <del>an information</del>)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — <em>Some</em> and <em>any</em></h2>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use <em>some</em>:</p>
+    <ul class="use-list">
+      <li><strong>In positive statements:</strong> <em>There are <strong>some</strong> shelves above the desk.</em></li>
+      <li><strong>In questions, particularly in requests and offers:</strong> <em>Would you like <strong>some</strong> biscuits?</em></li>
+      <li><strong>To mean 'an unspecified (not large) amount':</strong> <em>It would be great to get <strong>some</strong> money to help with the rent.</em> (we don't know how much money)</li>
+      <li><strong>With other determiners (e.g. my, the, these) to refer to a particular group:</strong> <em><strong>Some of</strong> my students have part-time jobs.</em></li>
+    </ul>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use <em>any</em>:</p>
+    <ul class="use-list">
+      <li><strong>In negatives and questions:</strong> <em>My desk hasn't got <strong>any</strong> drawers. Has your desk got <strong>any</strong> drawers?</em></li>
+      <li><strong>In positive statements to mean 'it doesn't matter who/which/where/when':</strong> <em>Call me <strong>any</strong> time if you need further help.</em></li>
+    </ul>
+    <div class="note-box">We can also use <em>no</em> + noun to mean the same as <em>not … any</em>: <em>My desk has got <strong>no</strong> drawers.</em> (= hasn't got any drawers). We use <em>no</em> when the noun is the subject: <em><strong>No</strong> applicants had the necessary experience for the job.</em> (not <del>Not any applicants</del>)</div>
+    <div class="note-box">Words like <em>something/anything</em>, <em>somebody/anybody</em>, etc. follow the same rules as <em>some</em> and <em>any</em>.</div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Quantities</h2>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We can use the following words to say <strong>how many</strong> or <strong>how much</strong>:</p>
+    <table class="form-table">
+      <thead><tr><th>Quantity</th><th>Plural countable nouns</th><th>Uncountable nouns</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">everything</td><td colspan="2"><em>all (of)</em></td></tr>
+        <tr><td class="pos">large quantities</td><td><em>lots of / plenty of / a lot of, many (of), most (of), a large/considerable/substantial number of</em></td><td><em>lots of / plenty of / a lot of, much (of), most (of), a large/considerable/substantial amount of</em></td></tr>
+        <tr><td class="pos">medium quantities</td><td><em>some (of) / a certain number of</em></td><td><em>some (of) / a certain amount of</em></td></tr>
+        <tr><td class="pos">small quantities</td><td><em>(a) few (of), a small/limited/tiny number of</em></td><td><em>(a) little (of), a small/limited/tiny amount of</em></td></tr>
+        <tr><td class="pos">nothing</td><td colspan="2"><em>no / not any / none of</em></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;"><em>Few</em> and <em>a little</em> are different from <em>few</em> and <em>little</em>:</p>
+    <ul class="use-list">
+      <li><em><strong>Few</strong> rooms have such good natural light.</em> (= not many, so you are lucky)</li>
+      <li><em>We have <strong>a few</strong> rooms available with a sea view.</em> (= a small number)</li>
+      <li><em><strong>Little</strong> research has been done in this area.</em> (= not enough)</li>
+      <li><em><strong>A little</strong> research has already been carried out in this area.</em> (= a small amount)</li>
+      <li>We use <em>a few of</em> with other determiners (e.g. <em>my, the, these</em>) to refer to a particular group: <em><strong>A few of</strong> the rooms have a sea view.</em></li>
+      <li><em>Lots of / a lot of</em> are less formal than <em>much/many</em>: <em>There are <strong>lots of</strong> advertisements for accommodation in the paper.</em> <em><strong>Many</strong> scientists believe that global warming is having a negative impact on our climate.</em></li>
+      <li>We do not usually use <em>lots of</em> with negative statements: <em>We don't have <strong>a lot of/much</strong> time so we'll have to be quick.</em> (not <del>we don't have lots of time</del>)</li>
+      <li>We do not usually use <em>much</em> in positive sentences: <em>I found <strong>a lot of</strong> information on the Internet.</em> (not <del>much information</del>)</li>
+    </ul>
+
+    <div class="grammar-extra">
+      <h4>Grammar extra: Nouns that can be both countable and uncountable</h4>
+      <p>Sometimes the same noun can be either countable or uncountable depending on the meaning (e.g. <em>light, room, cake, time</em>). Materials and liquids can also be either (e.g. <em>glass, paper, coffee, wine</em>). Compare:</p>
+      <p style="margin-top:8px;"><em>The natural <strong>light</strong> is really nice.</em> (uncountable) &nbsp;vs&nbsp; <em>Both of the <strong>lights</strong> in the ceiling are really old.</em> (countable)<br/>
+      <em>There isn't much <strong>room</strong> for a desk.</em> (uncountable = space) &nbsp;vs&nbsp; <em>We have two spare <strong>rooms</strong>.</em> (countable = rooms in a house)<br/>
+      <em>Do you drink much <strong>coffee</strong>?</em> (uncountable = in general) &nbsp;vs&nbsp; <em>I'd like to order <strong>a coffee</strong>, please.</em> (countable = a cup of coffee)</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Fill in the gaps with a word from the box</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with a word from the box below in the correct form. If the word is countable, you may need to change it to a plural form.</p>
+        <div class="word-box">
+          <span class="word-chip">advice</span><span class="word-chip">cake</span><span class="word-chip">challenge</span><span class="word-chip">electricity</span><span class="word-chip">information</span><span class="word-chip">situation</span><span class="word-chip">size</span>
+        </div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> I've faced many <input class="gap-input c1u7" data-id="u7c1_1" placeholder="…" style="min-width:110px;"/> in my life, but none as difficult as this.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Some of the best <input class="gap-input c1u7" data-id="u7c1_2" placeholder="…" style="min-width:100px;"/> I heard while I was a student was to take regular breaks when studying so that you don't lose concentration.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> A dictionary is a wonderful source of <input class="gap-input c1u7" data-id="u7c1_3" placeholder="…" style="min-width:120px;"/>.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> I've made some little <input class="gap-input c1u7" data-id="u7c1_4" placeholder="…" style="min-width:90px;"/> for Claire's birthday party.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> One hundred years ago cars all looked the same but these days they come in lots of different shapes and <input class="gap-input c1u7" data-id="u7c1_5" placeholder="…" style="min-width:90px;"/>.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> My job as a journalist means I can find myself in difficult <input class="gap-input c1u7" data-id="u7c1_6" placeholder="…" style="min-width:120px;"/> at times, but at least it's never boring.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> There was no <input class="gap-input c1u7" data-id="u7c1_7" placeholder="…" style="min-width:120px;"/> in the remote cottage, so they had to cook over the fire.</div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u7" class="btn-check">Check</button>
+          <button id="btn-show-c1u7" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Underline the correct form of the verbs</h3></div>
+      <div class="exercise-body">
+        <p>Underline the correct form of the verbs. Click the correct form for each numbered item.</p>
+        <div class="gft-item" data-id="u7c2_1" data-answered="0"><span class="item-num">1</span><div>Despite the recent improvement in the economy, unemployment <div class="gft-options"><button class="gft-btn" data-value="has continued">has continued</button><button class="gft-btn" data-value="have continued">have continued</button></div></div></div>
+        <div class="gft-item" data-id="u7c2_2" data-answered="0"><span class="item-num">2</span><div>Our company hasn't changed its products for over 30 years but now the time <div class="gft-options"><button class="gft-btn" data-value="has come">has come</button><button class="gft-btn" data-value="have come">have come</button></div></div></div>
+        <div class="gft-item" data-id="u7c2_3" data-answered="0"><span class="item-num">3</span><div>The ideas in the report <div class="gft-options"><button class="gft-btn" data-value="was">was</button><button class="gft-btn" data-value="were">were</button></div></div></div>
+        <div class="gft-item" data-id="u7c2_4" data-answered="0"><span class="item-num">4</span><div>The data <div class="gft-options"><button class="gft-btn" data-value="show">show</button><button class="gft-btn" data-value="shows">shows</button></div></div></div>
+        <div class="gft-item" data-id="u7c2_5" data-answered="0"><span class="item-num">5</span><div>Transport to and from the airport <div class="gft-options"><button class="gft-btn" data-value="is included">is included</button><button class="gft-btn" data-value="are included">are included</button></div></div></div>
+        <div class="gft-item" data-id="u7c2_6" data-answered="0"><span class="item-num">6</span><div>There <div class="gft-options"><button class="gft-btn" data-value="was">was</button><button class="gft-btn" data-value="were">were</button></div></div></div>
+        <div class="gft-item" data-id="u7c2_7" data-answered="0"><span class="item-num">7</span><div>All the information <div class="gft-options"><button class="gft-btn" data-value="is">is</button><button class="gft-btn" data-value="are">are</button></div></div></div>
+        <div class="gft-item" data-id="u7c2_8" data-answered="0"><span class="item-num">8</span><div>There <div class="gft-options"><button class="gft-btn" data-value="was">was</button><button class="gft-btn" data-value="were">were</button></div></div></div>
+        <div class="exercise-actions">
+          <button id="btn-show-c2u7" class="btn-show">Show All Answers</button>
+          <button id="btn-reset-c2u7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Fill in the gaps with amount, number, few, little, many or much</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with <strong>amount, number, few, little, many</strong> or <strong>much</strong>.</p>
+        <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:16px;font-size:.93rem;line-height:2.2;margin-bottom:14px;">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">How much sleep do we need?</div>
+          The <input class="gap-input c3u7" data-id="u7c3_1" placeholder="…" style="min-width:80px;"/> of sleep each person needs depends on <input class="gap-input c3u7" data-id="u7c3_2" placeholder="…" style="min-width:80px;"/> factors, including age. Infants generally require about 16 hours a day. For most adults, seven to eight hours a night appears to be the ideal <input class="gap-input c3u7" data-id="u7c3_3" placeholder="…" style="min-width:80px;"/> of sleep, although a <input class="gap-input c3u7" data-id="u7c3_4" placeholder="…" style="min-width:60px;"/> people may need as <input class="gap-input c3u7" data-id="u7c3_5" placeholder="…" style="min-width:60px;"/> as five hours' sleep or as <input class="gap-input c3u7" data-id="u7c3_6" placeholder="…" style="min-width:60px;"/> as ten hours' sleep each day. Getting too <input class="gap-input c3u7" data-id="u7c3_7" placeholder="…" style="min-width:60px;"/> sleep creates a sleep debt, and eventually, your body will demand that the debt be repaid.<br/><br/>
+          A large <input class="gap-input c3u7" data-id="u7c3_8" placeholder="…" style="min-width:80px;"/> of people over 65 have frequent sleeping problems, such as insomnia, and deep sleep stages in <input class="gap-input c3u7" data-id="u7c3_9" placeholder="…" style="min-width:80px;"/> elderly people often become very short or stop completely. Microsleeps, or very brief episodes of sleep in an otherwise awake <input class="gap-input c3u7" data-id="u7c3_10" placeholder="…" style="min-width:80px;"/> cases, people are not aware that they are experiencing microsleeps. The widespread practice of burning the candle at both ends in western industrialized societies has created so <input class="gap-input c3u7" data-id="u7c3_11" placeholder="…" style="min-width:60px;"/> sleep deprivation that what is really abnormal sleepiness is now almost the norm.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u7" class="btn-check">Check</button>
+          <button id="btn-show-c3u7" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Decide if the underlined quantity expressions are correct</h3></div>
+      <div class="exercise-body">
+        <p>Read the extract from a talk about a holiday destination. Decide if the underlined quantity expressions are correct or not. Write <strong>✓</strong> if they are right, and write the correction if they are wrong.</p>
+        <div class="passage-text" style="line-height:2.2;">
+          The island is beautiful. Don't be dismayed when you get off the plane and find yourself in a large, rather ugly city with <span class="item-num" style="display:inline-flex;">1</span>&nbsp;<em>a little</em> sense of the old way of life you have read about. Just a short car ride away is the island you have been promised with its small villages and slow pace of life. And there really is <span class="item-num" style="display:inline-flex;">2</span>&nbsp;<em>anything</em> for everyone. For those that like sun-bathing, it has <span class="item-num" style="display:inline-flex;">3</span>&nbsp;<em>some</em> of the most beautiful beaches in the world. If you like walking, the paths take you through some breathtaking scenery. <span class="item-num" style="display:inline-flex;">4</span>&nbsp;<em>Little</em> other places can match the stunning landscape of this island. For water sports enthusiasts, there are <span class="item-num" style="display:inline-flex;">5</span>&nbsp;<em>any</em> unusual activities such as diving for pearls or turtle spotting, along with <span class="item-num" style="display:inline-flex;">6</span>&nbsp;<em>few</em> of the more common sports such as waterskiing or windsurfing. If history is your thing, don't worry. There's <span class="item-num" style="display:inline-flex;">7</span>&nbsp;<em>much</em> history round every corner. Ruins from the ancient civilisations that lived here over 3000 years ago are everywhere, and although <span class="item-num" style="display:inline-flex;">8</span>&nbsp;<em>a lot of</em> people come here just to see the palace, you can find some lesser remains scattered around the surrounding hills.<br/><br/>
+          Visit it <span class="item-num" style="display:inline-flex;">9</span>&nbsp;<em>some</em> time of the year and you will not be disappointed. Not <span class="item-num" style="display:inline-flex;">10</span>&nbsp;<em>many</em> places in the world can offer so much. <span class="item-num" style="display:inline-flex;">11</span>&nbsp;<em>Not any</em> holiday will ever match this one — our island has got it all!
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>a little</span><input class="corr-input c4u7" data-id="u7c4_1" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>anything</span><input class="corr-input c4u7" data-id="u7c4_2" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>some</span><input class="corr-input c4u7" data-id="u7c4_3" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><span>Little</span><input class="corr-input c4u7" data-id="u7c4_4" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>any</span><input class="corr-input c4u7" data-id="u7c4_5" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>few</span><input class="corr-input c4u7" data-id="u7c4_6" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span><span>much</span><input class="corr-input c4u7" data-id="u7c4_7" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span><span>a lot of</span><input class="corr-input c4u7" data-id="u7c4_8" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">9</span><span>some</span><input class="corr-input c4u7" data-id="u7c4_9" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">10</span><span>many</span><input class="corr-input c4u7" data-id="u7c4_10" placeholder="✓ or correction" style="width:150px;"/></div>
+          <div class="correction-row"><span class="c-num">11</span><span>Not any</span><input class="corr-input c4u7" data-id="u7c4_11" placeholder="✓ or correction" style="width:150px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u7" class="btn-check">Check</button>
+          <button id="btn-show-c4u7" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Academic Reading</div>
+  <div class="section-body">
+    <div class="test-tip">You should spend about 20 minutes on Questions 1–14 which are based on the Reading Passage below.</div>
+
+    <div class="reading-passage">
+      <h3>Dressed to dazzle</h3>
+      <div class="rp-sub">As high-tech materials invade high-street fashion, prepare for clothes that are cooler than silk and warmer than wool, keep insects at arm's length, and emit many pinpricks of coloured light.</div>
+      <div class="rp-body">
+        <div class="rp-para">The convergence of fashion and high technology is leading to new kinds of fibres, fabrics and coatings that are imbuing clothing with equally wondrous powers. Corpe Nove, an Italian fashion company, has made a prototype shirt that shortens its sleeves when room temperature rises and can be ironed with a hairdryer. And at Nexia Biotechnologies, a Canadian firm, scientists have caused a stir by manufacturing spider silk from the milk of genetically engineered goats. Not surprisingly, some industry analysts think high-tech materials may soon influence fashion more profoundly than any individual designer.</div>
+        <div class="rp-para">A big impact is already being made at the molecular level. Nano-Tex, a subsidiary of American textiles maker Burlington, markets a portfolio of nanotechnologies that can make fabrics more durable, comfortable, wrinkle-free and stain-resistant. The notion of this technology posing a threat to the future of the clothing industry clearly does not worry popular fashion outlets such as Gap, Levi Strauss and Lands' End, all of which employ Nano-Tex's products. Meanwhile, Schoeller Textil in Germany, whose clients include famous designers Donna Karan and Polo Ralph Lauren, uses nanotechnology to create fabrics that can store or release heat.</div>
+        <div class="rp-para">Sensory Perception Technologies (SPT) embodies an entirely different application of nanotechnology. Created in 2003 by Quest International, a flavour and fragrance company, and Woolmark, a wool textile organisation, SPT is a new technique of embedding chemicals into fabric. Though not the first of this type, SPT's durability (evidently the microcapsule containing the chemicals can survive up to 30 washes) suggests an interesting future. Designers could incorporate signature scents into their collections. Sportswear could be impregnated with anti-perspirant. Hayfever sufferers might find relief by pulling on a T-shirt, and so on.</div>
+        <div class="rp-para">The loudest buzz now surrounds polylactic acid (PLA) fibres — and, in particular, one brand-named <strong>Ingeo</strong>. Developed by Cargill Dow, it is the first man-made fibre derived from a 100% annually renewable resource. This is currently maize (corn), though in theory any fermentable plant material, even potato peelings, can be used. In performance terms, the attraction for the 30-plus clothes makers signed up to use Ingeo lies in its superiority over polyester (which it was designed to replace).</div>
+        <div class="rp-para">As Philippa Watkins, a textiles specialist, notes, Ingeo is not a visual trend. Unlike nanotechnology, which promises to 'transform what clothes can do', Ingeo's impact on fashion will derive instead from its emphasis on using natural sustainable resources. Could wearing synthetic fabrics made from polluting and non-renewable fossil fuels soon become a thing of the past? Consumers can expect a much wider choice of 'green' fabrics. Alongside PLA fibres, firms are investigating plants such as bamboo, seaweed, nettles and banana stalks as raw materials for textiles. Soya bean fibre is also gaining ground. Harvested in China and spun in Europe, the fabric is a better absorber and ventilator than silk, and retains heat better than wool.</div>
+        <div class="rp-para">Elsewhere, fashion houses — among them Ermenegildo Zegna, Paul Smith and DKNY — are combining fashion with electronics. Clunky earlier attempts involved attaching electronic components to the fabrics after the normal weaving process. But companies such as SOFTswitch have developed electro-conductive fabrics that behave in similar ways to conventional textiles.</div>
+        <div class="rp-para">Could electronic garments one day change colour or pattern? A hint of what could be achieved is offered by Luminex, a joint venture between Stabio Textile and Caen. Made of woven optical fibres and powered by a small battery, Luminex fabric emits thousands of pinpricks of light, the colour of which can be varied. Costumes made of the fabric wowed audiences at a production of the opera <em>Aida</em> in Washington, DC, last year.</div>
+        <div class="rp-para">Yet this ultimate of ambitions has remained elusive in daily fashion, largely because electronic textiles capable of such wizardry are still too fragile to wear. Accessories with this chameleon-like capacity — for instance, a handbag that alters its colour — are more likely to appear first.</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–6</span><h3>Questions 1–6 — Match each company with the correct material</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Underline or highlight each of the company names listed (1–6) in the passage. Then read the relevant information for each company carefully and match it to one of the ideas in the box. Remember there will be more ideas in the box than you need, and that the words in the box will not match the words in the passage exactly.</div>
+        <div class="example-box">
+          <div><strong>A</strong> &nbsp;material that can make you warmer or cooler</div>
+          <div><strong>B</strong> &nbsp;clothing with perfume or medication added</div>
+          <div><strong>C</strong> &nbsp;material that rarely needs washing</div>
+          <div><strong>D</strong> &nbsp;clothes that can change according to external heat levels</div>
+          <div><strong>E</strong> &nbsp;material made from banana stalks</div>
+          <div><strong>F</strong> &nbsp;material that is environmentally-friendly</div>
+          <div><strong>G</strong> &nbsp;fibres similar to those found in nature</div>
+          <div><strong>H</strong> &nbsp;clothes that can light up in the dark</div>
+        </div>
+        <p style="margin:6px 0;">Write the correct letter <strong>A–H</strong> next to the companies 1–6. NB You may use any answer more than once.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span> Corpe Nove <input class="corr-input d1u7" data-id="u7d1_1" placeholder="A–H" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span> Nexia Biotechnologies <input class="corr-input d1u7" data-id="u7d1_2" placeholder="A–H" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span> Nano-Tex <input class="corr-input d1u7" data-id="u7d1_3" placeholder="A–H" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span> Schoeller Textil <input class="corr-input d1u7" data-id="u7d1_4" placeholder="A–H" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span> Quest International and Woolmark <input class="corr-input d1u7" data-id="u7d1_5" placeholder="A–H" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span> Cargill Dow <input class="corr-input d1u7" data-id="u7d1_6" placeholder="A–H" style="width:65px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u7" class="btn-check">Check</button>
+          <button id="btn-show-d1u7" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q7–14</span><h3>Questions 7–14 — Complete the summary</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Read through the summary carefully and try to predict what type of information you need to find in the passage (e.g. for question 7 you will need to find the name of a company). Pay careful attention to the word limit you are given and make sure you copy the words correctly.</div>
+        <div class="passage-text">
+          <strong>Major changes in fabrics</strong><br/><br/>
+          <strong>Using plants</strong><br/>
+          Nanotechnology will bring changes we can see, while the brand called <input class="gap-input d2u7" data-id="u7d2_7" placeholder="…" style="min-width:80px;"/> will help the environment. Fibre made from the <input class="gap-input d2u7" data-id="u7d2_8" placeholder="…" style="min-width:110px;"/> plant has better qualities than silk and wool.<br/><br/>
+          <strong>Electronics</strong><br/>
+          In first attempts to use electronics, companies started with a material made by a standard <input class="gap-input d2u7" data-id="u7d2_9" placeholder="…" style="min-width:100px;"/> method and then they fixed <input class="gap-input d2u7" data-id="u7d2_10" placeholder="…" style="min-width:150px;"/> to the material.<br/><br/>
+          <strong>Luminex fabric</strong><br/>
+          needs a <input class="gap-input d2u7" data-id="u7d2_11" placeholder="…" style="min-width:90px;"/> to make it work.<br/>
+          has already been used to make stage <input class="gap-input d2u7" data-id="u7d2_12" placeholder="…" style="min-width:100px;"/>.<br/>
+          is not suitable for everyday wear because it is too <input class="gap-input d2u7" data-id="u7d2_13" placeholder="…" style="min-width:80px;"/>.<br/>
+          The first products that can change colour are likely to be <input class="gap-input d2u7" data-id="u7d2_14" placeholder="…" style="min-width:120px;"/>.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d2u7" class="btn-check">Check</button>
+          <button id="btn-show-d2u7" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Which of these nouns from the text are countable (C) and which are uncountable (U)? Which is an example of a noun that can be both countable and uncountable? How is it used in the text?</div>
+    <div class="exercise">
+      <div class="exercise-header" style="background:#880e4f;"><span class="ex-num" style="color:#880e4f;">★</span><h3>Classify the nouns from the text</h3></div>
+      <div class="exercise-body">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span> materials (paragraph 1) <input class="corr-input gftu7" data-id="u7gft_1" placeholder="C/U" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span> shirt (paragraph 2) <input class="corr-input gftu7" data-id="u7gft_2" placeholder="C/U" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span> heat (paragraph 3) <input class="corr-input gftu7" data-id="u7gft_3" placeholder="C/U" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span> technique (paragraph 4) <input class="corr-input gftu7" data-id="u7gft_4" placeholder="C/U" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span> sportswear (paragraph 4) <input class="corr-input gftu7" data-id="u7gft_5" placeholder="C/U" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span> fibre (paragraph 5) <input class="corr-input gftu7" data-id="u7gft_6" placeholder="C/U" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span> clothes (paragraph 6) <input class="corr-input gftu7" data-id="u7gft_7" placeholder="C/U" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span> choice (paragraph 6) <input class="corr-input gftu7" data-id="u7gft_8" placeholder="C/U" style="width:65px;"/></div>
+        </div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> Which noun can be both countable and uncountable? <input class="gap-input gftu7b" data-id="u7gft_9" placeholder="…" style="min-width:120px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> How is it used in the text? <input class="gap-input gftu7b" data-id="u7gft_10" placeholder="…" style="min-width:200px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-gftu7" class="btn-check">Check</button>
+          <button id="btn-show-gftu7" class="btn-show">Show Answers</button>
+          <button id="btn-reset-gftu7" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 7: Countable and Uncountable Nouns</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('10','audio-10');
+
+  // A2 Q1 three pieces of furniture + Q2 desk picture
+  initGapFill({ inputSelector:'.a2u7', checkId:'btn-check-a2u7', showId:'btn-show-a2u7', resetId:'btn-reset-a2u7',
+    answers:{ u7a2_1:['a bed','bed'], u7a2_2:['a desk','desk'], u7a2_3:['a wardrobe','wardrobe'], u7a2_4:['b','B'] }});
+
+  // A3 advertisement
+  initGapFill({ inputSelector:'.a3u7', checkId:'btn-check-a3u7', showId:'btn-show-a3u7', resetId:'btn-reset-a3u7',
+    answers:{ u7a3_1:['room'], u7a3_2:['garden'], u7a3_3:['transport'], u7a3_4:['60','£60','60 pounds'], u7a3_5:['week'], u7a3_6:['electricity'] }});
+
+  // A4 noun groups
+  initGapFill({ inputSelector:'.a4u7', checkId:'btn-check-a4u7', showId:'btn-show-a4u7', resetId:'btn-reset-a4u7',
+    answers:{ u7a4_1:['countable','countable nouns','count nouns'], u7a4_2:['uncountable','uncountable nouns','uncount nouns'] }});
+
+  // C1 word box
+  initGapFill({ inputSelector:'.c1u7', checkId:'btn-check-c1u7', showId:'btn-show-c1u7', resetId:'btn-reset-c1u7',
+    answers:{ u7c1_1:['challenges'], u7c1_2:['advice'], u7c1_3:['information'], u7c1_4:['cakes'],
+              u7c1_5:['sizes'], u7c1_6:['situations'], u7c1_7:['electricity'] }});
+
+  // C2 verb agreement
+  initGFT({ showId:'btn-show-c2u7', resetId:'btn-reset-c2u7',
+    answers:{ u7c2_1:'has continued', u7c2_2:'has come', u7c2_3:'were', u7c2_4:'shows',
+              u7c2_5:'is included', u7c2_6:'were', u7c2_7:'is', u7c2_8:'was' }});
+
+  // C3 sleep passage
+  initGapFill({ inputSelector:'.c3u7', checkId:'btn-check-c3u7', showId:'btn-show-c3u7', resetId:'btn-reset-c3u7',
+    answers:{ u7c3_1:['amount'], u7c3_2:['many'], u7c3_3:['amount'], u7c3_4:['few'], u7c3_5:['little'],
+              u7c3_6:['much','many'], u7c3_7:['little'], u7c3_8:['number'], u7c3_9:['many'], u7c3_10:['many'], u7c3_11:['much'] }});
+
+  // C4 quantity expressions correct/wrong
+  initGapFill({ inputSelector:'.c4u7', checkId:'btn-check-c4u7', showId:'btn-show-c4u7', resetId:'btn-reset-c4u7',
+    answers:{ u7c4_1:['little'], u7c4_2:['something'], u7c4_3:['√','✓','correct'],
+              u7c4_4:['few'], u7c4_5:['some'], u7c4_6:['a few'], u7c4_7:['plenty of','a lot of','lots of'],
+              u7c4_8:['√','✓','correct'], u7c4_9:['any'], u7c4_10:['√','✓','correct'],
+              u7c4_11:['no'] }});
+
+  // D Q1-6 matching
+  initGapFill({ inputSelector:'.d1u7', checkId:'btn-check-d1u7', showId:'btn-show-d1u7', resetId:'btn-reset-d1u7',
+    answers:{ u7d1_1:['D'], u7d1_2:['G'], u7d1_3:['C'], u7d1_4:['A'], u7d1_5:['B'], u7d1_6:['F'] }});
+
+  // D Q7-14 summary
+  initGapFill({ inputSelector:'.d2u7', checkId:'btn-check-d2u7', showId:'btn-show-d2u7', resetId:'btn-reset-d2u7',
+    answers:{ u7d2_7:['ingeo'], u7d2_8:['soya bean','soy bean','soya'], u7d2_9:['weaving'],
+              u7d2_10:['electronic components'], u7d2_11:['battery'], u7d2_12:['costumes'],
+              u7d2_13:['fragile'], u7d2_14:['accessories','accessories / handbags','handbags'] }});
+
+  // GFT nouns C/U + both/usage
+  initGapFill({ inputSelector:'.gftu7', checkId:'btn-check-gftu7', showId:'btn-show-gftu7', resetId:'btn-reset-gftu7',
+    answers:{ u7gft_1:['C'], u7gft_2:['C'], u7gft_3:['U'], u7gft_4:['C'], u7gft_5:['U'], u7gft_6:['C'], u7gft_7:['C'], u7gft_8:['C'] }});
+  initGapFill({ inputSelector:'.gftu7b', checkId:'btn-check-gftu7', showId:'btn-show-gftu7', resetId:'btn-reset-gftu7',
+    answers:{ u7gft_9:['choice'], u7gft_10:['as an uncountable noun','uncountable','uncountably','uncountably (a much wider choice)'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

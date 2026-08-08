@@ -1,0 +1,56 @@
+# ============================================================
+#  NBLT — .gitignore
+#  Public repo: only the static site content is committed.
+#  Dev-only artefacts, build scripts and AI tool config stay local.
+# ============================================================
+
+# ── AI / IDE settings ───────────────────────────────────────
+.claude/
+**/.claude/
+
+# ── Tesseract OCR binaries (grammar-book build artefact) ────
+grammar-book/grammar/root/
+
+# ── openpackage (dev dependency manager) ────────────────────
+**/.openpackage/
+
+# ── Vocabulary raw source (replaced by the compiled data.js) ─
+vocab-builder/vocabulary.json
+
+# ── Build / translation pipeline (entire scripts/ dir is dev-only) ──────────
+vocab-builder/scripts/
+
+# ── Essay materials (source markdown, compiled into topics/) ─
+essays/materials/
+
+# ── Build / migration scripts ────────────────────────────────
+essays/webapp/generate.py
+grammar-book/grammar/scripts/migrate_alpine.py
+grammar-book/grammar/scripts/migrate_tailwind.py
+grammar-book/grammar/scripts/crop_u20.py
+
+# ── Planning / internal docs ─────────────────────────────────
+grammar-book/grammar/plan.md
+grammar-book/grammar/AUDIT.md
+essays/context.md
+
+# ── OS / editor noise ────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ── Node (if ever used locally) ──────────────────────────────
+node_modules/
+npm-debug.log*
+
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ── Temporary / local dev ────────────────────────────────────
+*.local
+.env
+.env.*

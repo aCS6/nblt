@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Band 7+ Tracker — August 2026</title>
+<!-- NBLT hub: floating "back to home" pill. Optional — the app runs without it. -->
+<script defer src="assets/nblt-home.js"></script>
+<style>
+:root {
+  --bg:#0f1117; --surface:#1a1d27; --surface2:#22263a; --border:#2e3352;
+  --accent:#5b7fff; --accent2:#a78bfa; --green:#22c55e; --greendim:#16a34a33;
+  --yellow:#f59e0b; --red:#ef4444; --text:#e2e8f0; --dim:#94a3b8; --dimmer:#475569;
+  --cr:#f87171; --cl:#60a5fa; --cw:#34d399; --cs:#f472b6; --cv:#a78bfa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+
+/* HEADER */
+header{
+  background:linear-gradient(135deg,#1a1d27,#12152a);
+  border-bottom:1px solid var(--border);
+  padding:20px 28px;position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.h-title h1{font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
+.h-title h1 span{color:var(--accent)}
+.h-title p{color:var(--dim);font-size:.78rem;margin-top:2px}
+.h-stats{display:flex;gap:12px;flex-wrap:wrap;flex:1;justify-content:center}
+.stat{background:var(--surface2);border:1px solid var(--border);border-radius:10px;
+  padding:7px 14px;text-align:center;min-width:72px}
+.stat .v{font-size:1.4rem;font-weight:800;color:var(--accent);line-height:1}
+.stat .l{font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.band-box{background:linear-gradient(135deg,#5b7fff22,#a78bfa22);
+  border:1.5px solid var(--accent);border-radius:12px;padding:10px 18px;text-align:center}
+.band-box .bn{font-size:2rem;font-weight:900;color:var(--accent);line-height:1}
+.band-box .bl{font-size:.65rem;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em}
+
+/* PROGRESS */
+.prog-wrap{padding:16px 28px 0}
+.prog-track{background:var(--surface2);border-radius:99px;height:9px;
+  overflow:hidden;border:1px solid var(--border)}
+.prog-fill{height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transition:width .6s cubic-bezier(.4,0,.2,1)}
+.prog-lbl{display:flex;justify-content:space-between;
+  margin-top:5px;font-size:.72rem;color:var(--dim)}
+
+/* STREAK */
+.streak{margin:14px 28px 0;padding:10px 18px;
+  background:linear-gradient(90deg,#f59e0b0d,#f59e0b1a);
+  border:1px solid #f59e0b44;border-radius:10px;
+  display:flex;align-items:center;gap:10px;font-size:.8rem}
+.streak strong{color:var(--yellow)}
+
+/* WEEKS */
+.weeks{padding:24px 28px;display:flex;flex-direction:column;gap:28px}
+.wk-head{display:flex;align-items:center;gap:12px;
+  margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.wk-badge{background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;font-weight:800;font-size:.7rem;border-radius:7px;
+  padding:3px 11px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.wk-info{flex:1}
+.wk-name{font-size:.95rem;font-weight:700}
+.wk-target{font-size:.74rem;color:var(--dim);margin-top:2px}
+.wk-pct{font-size:.8rem;color:var(--accent2);font-weight:700;white-space:nowrap}
+
+/* GRID */
+.days-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;transition:box-shadow .2s,border-color .2s;
+  position:relative}
+.card:hover{box-shadow:0 4px 24px #00000055;border-color:#3e4570}
+.card.done{border-color:var(--green);background:linear-gradient(135deg,#1a1d27,#0f1f0f)}
+.card.today{border-color:var(--accent);box-shadow:0 0 0 2px #5b7fff2a}
+.card.locked{opacity:.4;pointer-events:none}
+
+/* CARD TOP */
+.ctop{display:flex;align-items:center;gap:10px;padding:12px 14px 8px}
+.dnum{width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:1rem;background:var(--surface2);color:var(--dim);
+  transition:background .2s,color .2s}
+.card.done .dnum{background:var(--green);color:#fff}
+.card.today .dnum{background:var(--accent);color:#fff}
+.cmeta{flex:1;min-width:0}
+.cdate{font-size:.68rem;color:var(--dimmer);margin-bottom:1px}
+.ctitle{font-size:.85rem;font-weight:700;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbadges{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px}
+.sb{font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:99px;
+  text-transform:uppercase;letter-spacing:.04em}
+.sb-R{background:#f8717122;color:var(--cr);border:1px solid #f8717144}
+.sb-L{background:#60a5fa22;color:var(--cl);border:1px solid #60a5fa44}
+.sb-W{background:#34d39922;color:var(--cw);border:1px solid #34d39944}
+.sb-S{background:#f472b622;color:var(--cs);border:1px solid #f472b644}
+.sb-V{background:#a78bfa22;color:var(--cv);border:1px solid #a78bfa44}
+.sb-G{background:#f59e0b22;color:var(--yellow);border:1px solid #f59e0b44}
+.sb-MOCK{background:#ef444422;color:var(--red);border:1px solid #ef444444}
+.tick{width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  background:var(--surface2);color:var(--dimmer);transition:background .15s,color .15s}
+.card.done .tick{background:var(--green);color:#fff}
+.done-stamp{display:none;position:absolute;top:9px;right:12px;
+  font-size:.6rem;font-weight:800;color:var(--green);
+  background:#22c55e1a;border:1px solid #22c55e44;
+  border-radius:5px;padding:1px 7px;letter-spacing:.07em;text-transform:uppercase}
+.card.done .done-stamp{display:block}
+
+/* EXPAND BODY */
+.cbody{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.card.open .cbody{max-height:1200px}
+
+/* HOURS */
+.hours{border-top:1px solid var(--border)}
+.hr{display:flex;gap:8px;padding:7px 14px;
+  align-items:flex-start;border-bottom:1px solid #1e2235}
+.hr:last-child{border-bottom:none}
+.hlbl{font-size:.65rem;font-weight:700;color:var(--accent2);
+  white-space:nowrap;padding-top:1px;min-width:22px;text-transform:uppercase}
+.hchk{width:17px;height:17px;border-radius:4px;flex-shrink:0;
+  border:2px solid var(--border);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;transition:background .12s,border-color .12s;margin-top:1px}
+.hchk.on{background:var(--green);border-color:var(--green)}
+.hchk.on::after{content:'✓';color:#fff;font-size:10px;font-weight:800}
+.htxt{font-size:.76rem;color:var(--dim);line-height:1.5;flex:1}
+.htxt a{color:var(--accent);text-decoration:none;font-size:.7rem}
+.htxt a:hover{text-decoration:underline}
+.htxt strong{color:var(--text)}
+
+/* LINKS ROW */
+.clinks{border-top:1px solid var(--border);padding:7px 14px;
+  display:flex;gap:5px;flex-wrap:wrap}
+.lchip{font-size:.66rem;color:var(--accent);background:#5b7fff11;
+  border:1px solid #5b7fff33;border-radius:5px;padding:2px 7px;
+  text-decoration:none;white-space:nowrap}
+.lchip:hover{background:#5b7fff22}
+.lchip-read{color:var(--accent2);background:#a78bfa14;
+  border:1px solid #a78bfa55;font-weight:600;letter-spacing:.01em}
+.lchip-read:hover{background:#a78bfa26}
+
+/* COMPLETE BUTTON */
+.cbtn{margin:8px 14px 12px;width:calc(100% - 28px);padding:8px;
+  border-radius:9px;border:1.5px solid var(--green);background:transparent;
+  color:var(--green);font-size:.8rem;font-weight:700;cursor:pointer;
+  transition:background .12s,color .12s;letter-spacing:.03em}
+.cbtn:hover{background:var(--green);color:#fff}
+.card.done .cbtn{background:var(--greendim);color:var(--green)}
+
+/* TOAST */
+#toast{position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:var(--surface);border:1px solid var(--green);border-radius:12px;
+  padding:12px 24px;font-size:.88rem;font-weight:600;
+  box-shadow:0 4px 24px #00000055;z-index:9999;
+  transition:transform .4s ease;white-space:nowrap;color:var(--green)}
+#toast.show{transform:translateX(-50%) translateY(0)}
+
+/* CONFETTI */
+#confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:9998}
+
+@media(max-width:600px){
+  header{padding:14px 14px}
+  .weeks{padding:14px 14px}
+  .prog-wrap{padding:12px 14px 0}
+  .days-grid{grid-template-columns:1fr}
+  .streak{margin:12px 14px 0}
+}
+</style>
+</head>
+<body>
+<canvas id="confetti-canvas"></canvas>
+<div id="toast"></div>
+
+<header>
+  <div class="h-title">
+    <h1>IELTS <span>Band 7+</span> Journey</h1>
+    <p>31-Day Study Plan &nbsp;·&nbsp; ieltsliz.com &nbsp;·&nbsp; <span id="plan-dates">Start Day 1 to begin your journey</span></p>
+  </div>
+  <div class="h-stats">
+    <div class="stat"><div class="v" id="s-done">0</div><div class="l">Done</div></div>
+    <div class="stat"><div class="v" id="s-left">31</div><div class="l">Left</div></div>
+    <div class="stat"><div class="v" id="s-streak">0</div><div class="l">🔥 Streak</div></div>
+    <div class="stat"><div class="v" id="s-pct">0%</div><div class="l">Progress</div></div>
+  </div>
+  <div class="band-box">
+    <div class="bn">7+</div>
+    <div class="bl">Target Band</div>
+  </div>
+</header>
+
+<div class="prog-wrap">
+  <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+  <div class="prog-lbl">
+    <span id="prog-d1">Day 1 · Start when ready</span>
+    <span id="prog-txt">0 / 31 days</span>
+    <span id="prog-d31">Day 31 · +31 days</span>
+  </div>
+</div>
+
+<div class="streak" id="streak-bar" style="display:none">
+  <span style="font-size:1.2rem">🔥</span>
+  <span>You're on a <strong id="streak-num">0</strong>-day streak — keep it going!</span>
+</div>
+
+<div class="weeks" id="app"></div>
+
+<script>
+const WEEKS = [
+  { id:1, label:"Week 1", name:"Orientation + Reading & Listening Foundations", target:"Know all 14 Reading types & 10 Listening types. Score ≥ 28/40 on any timed session.", days:[1,2,3,4,5,6,7] },
+  { id:2, label:"Week 2", name:"Skill Depth + First Writing",                  target:"First full Task 2 essay. Score ≥ 30/40 Reading mock. Master Summary & Sentence Completion.", days:[8,9,10,11,12,13,14] },
+  { id:3, label:"Week 3", name:"Consolidation + Writing Focus",                target:"2 complete Task 2 essays. First Task 1 report. Score ≥ 32/40 Listening mock.", days:[15,16,17,18,19,20,21] },
+  { id:4, label:"Week 4", name:"Integration + Speed",                          target:"Task 2 essays ×2 + Task 1 reports ×2. Reading mock ≥ 34/40. Speaking 4 sessions.", days:[22,23,24,25,26,27,28] },
+  { id:5, label:"Final",  name:"Peak Performance",                             target:"Exam simulation. Consolidation only. Trust your preparation.", days:[29,30,31] },
+];
+
+const DAYS = [
+  {
+    id:1, date:"Fri 1 Aug", title:"Reading Orientation",
+    skills:["R","G"],
+    links:[
+      {label:"Reading Hub",url:"https://ieltsliz.com/ielts-reading-lessons-information-and-tips/"},
+      {label:"14 Question Types",url:"https://ieltsliz.com/ielts-reading-question-types/"},
+      {label:"Improve Score Tips",url:"https://ieltsliz.com/ielts-reading-tips-how-can-i-improve-my-score/"},
+      {label:"Comprehension & Strategy",url:"https://ieltsliz.com/ielts-reading-tips-strategies-and-comprehension/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-reading-lessons-information-and-tips/' target='_blank'>Reading Hub</a>. Read full page top-to-bottom. Write the 'Biggest Mistakes' list in your notebook. Note Academic vs GT passage differences."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-reading-question-types/' target='_blank'>14 Question Types</a> — read ALL types with tips. For each type, write 1 sentence in your own words. <strong>Grammar drill:</strong> every sentence must have subject + verb + complete idea. No fragments."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/ielts-reading-tips-how-can-i-improve-my-score/' target='_blank'>Improve Score Tips</a> — read in full. Identify your top 3 weaknesses. Write them as complete sentences: 'My first weakness is… because…'"},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/ielts-reading-tips-strategies-and-comprehension/' target='_blank'>Comprehension & Strategy</a> — read fully. Then write 3 × 4-sentence paragraphs on <strong>Education</strong>: one opinion, one fact, one comparison. Check: no fragments, no run-ons."}
+    ]
+  },
+  {
+    id:2, date:"Sat 2 Aug", title:"Listening Orientation",
+    skills:["L","G"],
+    links:[
+      {label:"Listening Hub",url:"https://ieltsliz.com/ielts-listening/"},
+      {label:"Test Sections",url:"https://ieltsliz.com/ielts-listening-test-sections/"},
+      {label:"MCQ Tips",url:"https://ieltsliz.com/ielts-listening-multiple-choice-essential-tips/"},
+      {label:"Section 4 Practice",url:"https://ieltsliz.com/ielts-listening-section-4-practice/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-listening/' target='_blank'>Listening Hub</a>. Read full page including test info, question types, and instructions. Note paper (10min) vs computer (2min) timing. Write a 5-point summary."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-listening-test-sections/' target='_blank'>Test Sections</a> then <a href='https://ieltsliz.com/ielts-listening-multiple-choice-essential-tips/' target='_blank'>MCQ Tips</a>. <strong>Grammar drill:</strong> write 4 sentences comparing sections using contrast connectors: 'While Section 1 covers…, Section 4 deals with…'"},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/ielts-listening-section-4-practice/' target='_blank'>Section 4 Practice</a> — attempt all questions before checking. This is the hardest section — good to preview early."},
+      {label:"H4", text:"Mark H3 answers. For each wrong answer write: 'I expected ___ but the answer is ___ because the speaker said…'. Write 3 × 4-sentence paragraphs on <strong>Technology</strong>."}
+    ]
+  },
+  {
+    id:3, date:"Sun 3 Aug", title:"Reading: True/False/Not Given",
+    skills:["R","G"],
+    links:[
+      {label:"TFNG Tips + Video",url:"https://ieltsliz.com/ielts-true-false-not-given-essential-tips/"},
+      {label:"TFNG Practice",url:"https://ieltsliz.com/true-false-not-given-ielts-reading-practice/"},
+      {label:"Paraphrasing 1",url:"https://ieltsliz.com/reading-skills-for-ielts-paraphrasing/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-true-false-not-given-essential-tips/' target='_blank'>TFNG Tips</a> — read fully and watch the embedded video. Write the exact definition of FALSE vs NOT GIVEN as two separate sentences. Memorise the distinction."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/true-false-not-given-ielts-reading-practice/' target='_blank'>TFNG Practice</a> — complete the exercise. Do NOT check answers yet. Time: 20 minutes."},
+      {label:"H3", text:"Check TFNG answers. For each NOT GIVEN write: 'The passage does not mention ___ because…' <strong>Grammar drill:</strong> use 'despite', 'although', 'even though' to write 3 contrast sentences."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/reading-skills-for-ielts-paraphrasing/' target='_blank'>Paraphrasing Practice 1</a> — complete all exercises. Write 3 × 4-sentence paragraphs on <strong>Environment</strong>."}
+    ]
+  },
+  {
+    id:4, date:"Mon 4 Aug", title:"Listening: Map + Diagram + Vocab",
+    skills:["L","V","G"],
+    links:[
+      {label:"Map Tips+Practice",url:"https://ieltsliz.com/ielts-map-listening-practice/"},
+      {label:"Diagram Tips+Practice",url:"https://ieltsliz.com/ielts-listening-diagrams-practice-tips/"},
+      {label:"Uncountable Nouns",url:"https://ieltsliz.com/uncountable-nouns-word-list/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-map-listening-practice/' target='_blank'>Map Tips + Practice</a> — study tips first then do the full map practice. Write 4 directional sentences: 'The library is located to the north of the park, adjacent to…'"},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-listening-diagrams-practice-tips/' target='_blank'>Diagram Tips + Practice</a>. <strong>Grammar drill:</strong> write 4 passive-voice sentences: 'The water is filtered through… before it is directed to…'"},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/uncountable-nouns-word-list/' target='_blank'>Uncountable Nouns List</a> — study the full list. Write 10 sentences each using a different uncountable noun. Check: no plural -s, correct articles."},
+      {label:"H4", text:"Review your 10 sentences — fix every error, rewrite corrected versions next to originals. Write 3 × 4-sentence paragraphs on <strong>Health</strong>."}
+    ]
+  },
+  {
+    id:5, date:"Tue 5 Aug", title:"Reading: MCQ + Yes/No/NG",
+    skills:["R","V","G"],
+    links:[
+      {label:"MCQ Tips+Practice",url:"https://ieltsliz.com/ielts-reading-multiple-choice/"},
+      {label:"YNNG Practice",url:"https://ieltsliz.com/ielts-yes-no-not-given-practice/"},
+      {label:"Paraphrasing Tips",url:"https://ieltsliz.com/ielts-vocabulary-paraphrasing-tips/"},
+      {label:"Speaking Part 1 Topics",url:"https://ieltsliz.com/ielts-speaking-part-1-topics/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-reading-multiple-choice/' target='_blank'>MCQ Tips + Practice</a>. Study tips first then complete the practice. Time: 20 minutes. Do not check answers yet."},
+      {label:"H2", text:"Check MCQ. For each wrong answer write: 'The question used ___ which is paraphrased in the passage as ___.' Open <a href='https://ieltsliz.com/ielts-yes-no-not-given-practice/' target='_blank'>YNNG Practice</a> — complete in 15 min."},
+      {label:"H3", text:"Check YNNG. <strong>Grammar drill:</strong> write a contrast sentence: 'While TRUE/FALSE relates to stated facts, YES/NO/NG relates to the writer's opinion, which means…' Open <a href='https://ieltsliz.com/ielts-vocabulary-paraphrasing-tips/' target='_blank'>Paraphrasing Tips</a> — watch video."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/ielts-speaking-part-1-topics/' target='_blank'>Speaking Part 1 Topics</a> — choose 3 topics, speak aloud 1 minute each (record). Focus: complete sentences only. Write 3 × 4-sentence paragraphs on <strong>Society</strong>."}
+    ]
+  },
+  {
+    id:6, date:"Wed 6 Aug", title:"Listening: Form Completion + Spelling + Grammar",
+    skills:["L","G"],
+    links:[
+      {label:"Form Completion",url:"https://ieltsliz.com/form-completion-ielts-listening-practice/"},
+      {label:"Spelling Practice",url:"https://ieltsliz.com/alphabet-practice-for-spelling/"},
+      {label:"Gap-Fill Tips",url:"https://ieltsliz.com/ielts-listening-practice-gap-fill-question/"},
+      {label:"Adding a Clause (Video)",url:"https://ieltsliz.com/ielts-grammar-adding-a-clause/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/form-completion-ielts-listening-practice/' target='_blank'>Form Completion</a> — complete in full, focus on spelling. Then open <a href='https://ieltsliz.com/alphabet-practice-for-spelling/' target='_blank'>Alphabet Spelling Practice</a> and drill all letters."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-listening-practice-gap-fill-question/' target='_blank'>Gap-Fill Tips + Practice</a>. <strong>Grammar drill:</strong> rewrite each completed sentence in full — verify it is grammatically complete on its own."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/ielts-grammar-adding-a-clause/' target='_blank'>Adding a Clause (Video)</a> — watch it. Write 6 original sentences: 2 relative clauses (who/which/that), 2 adverbial clauses (because/although/when), 2 noun clauses (that/whether)."},
+      {label:"H4", text:"Read your 6 sentences aloud. Does each clause connect logically? Fix any awkward clause. Write 3 × 4-sentence paragraphs on <strong>Crime</strong>."}
+    ]
+  },
+  {
+    id:7, date:"Thu 7 Aug", title:"Reading: Matching Headings + Week 1 Review",
+    skills:["R","S","G"],
+    links:[
+      {label:"Matching Headings",url:"https://ieltsliz.com/ielts-reading-matching-headings/"},
+      {label:"Alzheimer's MCQ",url:"https://ieltsliz.com/ielts-reading-multiple-choice-question/"},
+      {label:"Linking Words Speaking",url:"https://ieltsliz.com/linking-words-for-ielts-speaking/"},
+      {label:"Answer Length Tips",url:"https://ieltsliz.com/ielts-speaking-tips-length-of-answer/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-reading-matching-headings/' target='_blank'>Matching Headings</a> — study tips then complete the practice. Time: 20 min. Strategy: write a 1-sentence summary of each paragraph before choosing the heading."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-reading-multiple-choice-question/' target='_blank'>Alzheimer's MCQ</a> — complete in 20 min timed. Mark answers. Write a corrective sentence for each wrong answer."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/linking-words-for-ielts-speaking/' target='_blank'>Linking Words for Speaking</a> — study the full list. Say 5 sentences aloud using 5 different linking phrases. Open <a href='https://ieltsliz.com/ielts-speaking-tips-length-of-answer/' target='_blank'>Answer Length Tips</a> — read."},
+      {label:"H4", text:"<strong>Week 1 Self-Check:</strong> (1) Name all 14 Reading question types from memory. (2) Write the exact difference between FALSE and NOT GIVEN. (3) Write 3 complex sentences using clause-adding grammar. Write 3 × 4-sentence paragraphs on <strong>Work</strong>."}
+    ]
+  },
+  {
+    id:8, date:"Fri 8 Aug", title:"Reading: Sentence Completion + Matching Para",
+    skills:["R","V","G"],
+    links:[
+      {label:"Sentence Completion",url:"https://ieltsliz.com/sentence-completion-questions-in-ielts-reading/"},
+      {label:"Matching Para Info",url:"https://ieltsliz.com/matching-paragraph-information-ielts-reading/"},
+      {label:"Education Vocab",url:"https://ieltsliz.com/education-vocabulary-school-and-university/"},
+      {label:"Paraphrasing 2",url:"https://ieltsliz.com/reading-skills-ielts-paraphrasing-2/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/sentence-completion-questions-in-ielts-reading/' target='_blank'>Sentence Completion</a> — study tips then complete. Key: the completed sentence must be grammatically correct. Time: 20 min."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/matching-paragraph-information-ielts-reading/' target='_blank'>Matching Para Info</a> — study tips then complete. <strong>Grammar drill:</strong> for each correct answer, copy the passage sentence, then rewrite it using a different grammatical structure (active→passive, simple→complex)."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/education-vocabulary-school-and-university/' target='_blank'>Education Vocab</a> — study the full list. Write 8 sentences using new vocabulary in compound-complex structures."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/reading-skills-ielts-paraphrasing-2/' target='_blank'>Paraphrasing 2</a> — complete all exercises. Write 3 × 4-sentence paragraphs on <strong>Education</strong> using vocab from H3."}
+    ]
+  },
+  {
+    id:9, date:"Sat 9 Aug", title:"Listening: Summary + Short Answer + Speaking",
+    skills:["L","S","G"],
+    links:[
+      {label:"Summary Completion",url:"https://ieltsliz.com/listening-practice-summary-completion-questions/"},
+      {label:"Short Answer Tips",url:"https://ieltsliz.com/ielts-listening-practice-lesson/"},
+      {label:"Self-Correction Tips",url:"https://ieltsliz.com/ielts-speaking-self-correction/"},
+      {label:"Part 1 Topics",url:"https://ieltsliz.com/ielts-speaking-part-1-topics/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/listening-practice-summary-completion-questions/' target='_blank'>Summary Completion</a> — study tips then complete. After: write a 4-sentence paragraph summarising the audio topic in your own words. No copied phrases."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-listening-practice-lesson/' target='_blank'>Short Answer Tips + Practice</a>. <strong>Grammar drill:</strong> write each short answer as a complete sentence: 'The conference takes place in ___ because…'"},
+      {label:"H3", text:"<strong>Speaking Session 1.</strong> Re-read <a href='https://ieltsliz.com/ielts-speaking-self-correction/' target='_blank'>Self-Correction Tips</a>. Open <a href='https://ieltsliz.com/ielts-speaking-part-1-topics/' target='_blank'>Part 1 Topics</a> — answer 5 questions aloud (record). Complete sentences, vary openers, no fragments."},
+      {label:"H4", text:"Play back your recording. Count complete sentences vs fragments. Restate every fragment as a proper sentence. Write 3 × 4-sentence paragraphs on <strong>Technology</strong>."}
+    ]
+  },
+  {
+    id:10, date:"Sun 10 Aug", title:"Reading: Categorisation + Short Answer + Paraphrasing",
+    skills:["R","V","G","MOCK"],
+    links:[
+      {label:"Categorisation Practice",url:"https://ieltsliz.com/categorisation-practice-for-ielts-reading/"},
+      {label:"Short Answer Questions",url:"https://ieltsliz.com/ielts-short-answer-questions-reading-practice/"},
+      {label:"Paraphrasing 3",url:"https://ieltsliz.com/bird-dinosaur-synonym-practice/"},
+      {label:"Crime Vocab",url:"https://ieltsliz.com/crime-and-punishment-vocabulary/"},
+      {label:"Mini-Mock: Hobbies",url:"https://ieltsliz.com/ielts-reading-matching-paragraph-information/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/categorisation-practice-for-ielts-reading/' target='_blank'>Categorisation Practice</a> — study tips then complete. Write a sentence for each category: 'Category A refers to ___, whereas Category B involves ___, which means…'"},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-short-answer-questions-reading-practice/' target='_blank'>Short Answer Questions</a> — complete in 15 min. <strong>Grammar drill:</strong> each short answer must grammatically complete the question stem — test by reading question + answer aloud."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/bird-dinosaur-synonym-practice/' target='_blank'>Paraphrasing 3</a> — complete all synonym exercises. Open <a href='https://ieltsliz.com/crime-and-punishment-vocabulary/' target='_blank'>Crime Vocab</a> — write 5 sentences using new vocabulary in complex structures."},
+      {label:"H4", text:"<strong>Reading Mini-Mock:</strong> Open <a href='https://ieltsliz.com/ielts-reading-matching-paragraph-information/' target='_blank'>Hobbies for the Elderly</a> — complete in 20 min timed. Mark answers. Write a corrective sentence for every wrong answer. Write 3 × 4-sentence paragraphs on <strong>Crime</strong>."}
+    ]
+  },
+];
+
+// Days 11-21
+const DAYS_11_21 = [
+  {
+    id:11, date:"Mon 11 Aug", title:"Listening: Table Completion + Numbers",
+    skills:["L","G"],
+    links:[
+      {label:"Table Completion",url:"https://ieltsliz.com/ielts-listening-practice-tables/"},
+      {label:"Numbers Practice",url:"https://ieltsliz.com/listening-practice-for-numbers/"},
+      {label:"Big Numbers",url:"https://ieltsliz.com/listening-practice-big-numbers/"},
+      {label:"Connecting Sentences (Video)",url:"https://ieltsliz.com/ielts-writing-task-2-connecting-sentences/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-listening-practice-tables/' target='_blank'>Table Completion</a> — study tips then complete. <strong>Grammar drill:</strong> write 4 comparison sentences: 'While X scored higher in ___, Y performed better in ___, suggesting that…'"},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/listening-practice-for-numbers/' target='_blank'>Numbers Practice</a> then <a href='https://ieltsliz.com/listening-practice-big-numbers/' target='_blank'>Big Numbers</a>. Write 5 sentences using numbers accurately in context (dates, statistics, measurements)."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/ielts-writing-task-2-connecting-sentences/' target='_blank'>Connecting Sentences (Video)</a> — watch it. Write a 5-sentence paragraph using 3 different connecting methods from the lesson."},
+      {label:"H4", text:"Read your paragraph aloud. Fix: (1) repeated connectors, (2) fragments, (3) sentences that don't connect logically. Rewrite cleanly. Write 3 × 4-sentence paragraphs on <strong>Environment</strong>."}
+    ]
+  },
+  {
+    id:12, date:"Tue 12 Aug", title:"Writing Task 2: Orientation + Band Scores + Essay Types",
+    skills:["W","G"],
+    links:[
+      {label:"Writing T2 Band Scores",url:"https://ieltsliz.com/ielts-writing-task-2-band-scores-5-to-8/"},
+      {label:"Types of Essays",url:"https://ieltsliz.com/types-of-ielts-essays/"},
+      {label:"Paragraphing",url:"https://ieltsliz.com/how-many-paragraphs-for-an-ielts-essay/"},
+      {label:"Essay Planning Tips",url:"https://ieltsliz.com/ielts-writing-task-2-essay-planning-tips/"},
+      {label:"100 Essay Questions",url:"https://ieltsliz.com/100-ielts-essay-questions/"},
+      {label:"Improving Sentences",url:"https://ieltsliz.com/improving-sentences-for-ielts-writing-task-2/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-writing-task-2-band-scores-5-to-8/' target='_blank'>Writing T2 Band Scores</a> — study the full breakdown. Write a 5-point summary of what Band 7 Grammar Range & Accuracy requires. This is your personal grammar target for the month."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/types-of-ielts-essays/' target='_blank'>Types of Essays</a> — study all 5 types. <strong>Grammar drill:</strong> for each type, write one thesis statement sentence. A thesis must be a single complete accurate sentence stating your position. No vague language."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/how-many-paragraphs-for-an-ielts-essay/' target='_blank'>Paragraphing</a> then <a href='https://ieltsliz.com/ielts-writing-task-2-essay-planning-tips/' target='_blank'>Essay Planning Tips</a>. Choose 1 question from <a href='https://ieltsliz.com/100-ielts-essay-questions/' target='_blank'>100 Essay Questions</a> and write a full plan (thesis + 2 body outlines + conclusion)."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/improving-sentences-for-ielts-writing-task-2/' target='_blank'>Improving Sentences</a> — complete all exercises. Write a rule for yourself based on the error patterns you notice. Write 3 × 4-sentence paragraphs on <strong>Society</strong>."}
+    ]
+  },
+  {
+    id:13, date:"Wed 13 Aug", title:"Listening: MCQ Practice Sets + Speaking Day 2",
+    skills:["L","S","G"],
+    links:[
+      {label:"Turtles MCQ",url:"https://ieltsliz.com/ielts-multiple-choice-listening-turtles/"},
+      {label:"Brain Drain MCQ",url:"https://ieltsliz.com/brain-drain-listening/"},
+      {label:"Plastic Straws Practice",url:"https://ieltsliz.com/listening-practice-plastic-straws/"},
+      {label:"Part 2 Topics",url:"https://ieltsliz.com/ielts-speaking-part-2-topics/"},
+      {label:"Difficult Topics Tips",url:"https://ieltsliz.com/ielts-speaking-part-2-difficult-topics/"},
+      {label:"Part 3 Topics",url:"https://ieltsliz.com/ielts-speaking-part-3-topics-2/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-multiple-choice-listening-turtles/' target='_blank'>Turtles MCQ</a> (10 min). Then <a href='https://ieltsliz.com/brain-drain-listening/' target='_blank'>Brain Drain MCQ</a> (10 min). Do not check answers yet."},
+      {label:"H2", text:"Mark both sets — write a corrective paraphrase sentence for each wrong answer. Open <a href='https://ieltsliz.com/listening-practice-plastic-straws/' target='_blank'>Plastic Straws Practice</a>. <strong>Grammar drill:</strong> rewrite 4 completed sentences using a different structure that preserves the meaning."},
+      {label:"H3", text:"<strong>Speaking Session 2.</strong> Open <a href='https://ieltsliz.com/ielts-speaking-part-2-topics/' target='_blank'>Part 2 Topics</a> — choose a cue card. Read <a href='https://ieltsliz.com/ielts-speaking-part-2-difficult-topics/' target='_blank'>Difficult Topics Tips</a>. Give your 2-minute talk: 1 min prep, 2 min speak. Record."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/ielts-speaking-part-3-topics-2/' target='_blank'>Part 3 Topics</a> — find questions linked to your Part 2 topic. Answer 3 questions aloud in complete well-structured sentences. Write 3 × 4-sentence paragraphs on <strong>Health</strong>."}
+    ]
+  },
+  {
+    id:14, date:"Thu 14 Aug", title:"Reading: Full Timed Mock + Deep Review",
+    skills:["R","MOCK"],
+    links:[
+      {label:"TFNG Practice",url:"https://ieltsliz.com/true-false-not-given-ielts-reading-practice/"},
+      {label:"Matching Headings",url:"https://ieltsliz.com/ielts-reading-matching-headings/"},
+      {label:"Summary Completion",url:"https://ieltsliz.com/food-ielts-summary-reading-practice/"},
+      {label:"Matching Endings",url:"https://ieltsliz.com/matching-sentence-endings-ielts-reading-practice/"},
+      {label:"Band 9 Reading Tips",url:"https://ieltsliz.com/how-i-scored-9-in-ielts-reading/"}
+    ],
+    hours:[
+      {label:"H1", text:"<strong>Timed Mock Set A (40 min).</strong> Open <a href='https://ieltsliz.com/true-false-not-given-ielts-reading-practice/' target='_blank'>TFNG Practice</a> + <a href='https://ieltsliz.com/ielts-reading-matching-headings/' target='_blank'>Matching Headings</a> back-to-back. 20 min each. Do NOT check answers yet."},
+      {label:"H2", text:"<strong>Timed Mock Set B (20 min).</strong> Open <a href='https://ieltsliz.com/food-ielts-summary-reading-practice/' target='_blank'>Summary Completion</a> + <a href='https://ieltsliz.com/matching-sentence-endings-ielts-reading-practice/' target='_blank'>Matching Endings</a>. Mark ALL answers from H1+H2. Record your score."},
+      {label:"H3", text:"Deep review every wrong answer. For each write: 'The correct answer is ___ because the passage states ___ which means…'"},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/how-i-scored-9-in-ielts-reading/' target='_blank'>Band 9 Reading Tips</a> — read how a top student approached Reading. Write 3 specific changes you'll make. Write 3 × 4-sentence paragraphs on <strong>Work</strong>."}
+    ]
+  },
+  {
+    id:15, date:"Fri 15 Aug", title:"Writing Task 2: Model Essay + Linking Words",
+    skills:["W","G"],
+    links:[
+      {label:"Agree/Disagree Model",url:"https://ieltsliz.com/ielts-agree-disagree-essay-sample-answer/"},
+      {label:"Linking Words for Writing",url:"https://ieltsliz.com/linking-words-for-writing/"},
+      {label:"Linking Words Practice",url:"https://ieltsliz.com/ielts-writing-task-2-practice-with-linking-words/"},
+      {label:"Punctuation Practice",url:"https://ieltsliz.com/punctuation-practice-for-writing/"},
+      {label:"Paraphrasing Tips",url:"https://ieltsliz.com/how-to-paraphrase-in-ielts/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-agree-disagree-essay-sample-answer/' target='_blank'>Agree/Disagree Model Essay</a> — read carefully. Annotate: introduction, thesis, topic sentences, supporting detail, conclusion. Write the thesis + two topic sentences of your own for a similar question."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/linking-words-for-writing/' target='_blank'>Linking Words for Writing</a> — study the full list. <strong>Grammar drill:</strong> write 8 sentences each using a different linking word from a different category (addition, contrast, result, example, purpose, concession, sequence, summary)."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/ielts-writing-task-2-practice-with-linking-words/' target='_blank'>Linking Words Practice</a> — complete all exercises. Open <a href='https://ieltsliz.com/punctuation-practice-for-writing/' target='_blank'>Punctuation Practice</a> — complete all. Note every comma/semicolon error."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/how-to-paraphrase-in-ielts/' target='_blank'>Paraphrasing Tips</a> — study. Write an introduction for the agree/disagree topic from H1 — paraphrase the question without copying. Check: 2–3 sentences, clear thesis, accurate grammar. Write 3 × 4-sentence paragraphs on <strong>Art</strong>."}
+    ]
+  },
+  {
+    id:16, date:"Sat 16 Aug", title:"Listening: Timed Mock + Grammar Paragraphs",
+    skills:["L","G","MOCK"],
+    links:[
+      {label:"Form Completion",url:"https://ieltsliz.com/form-completion-ielts-listening-practice/"},
+      {label:"Table Completion",url:"https://ieltsliz.com/ielts-listening-practice-tables/"},
+      {label:"Summary Completion",url:"https://ieltsliz.com/listening-practice-summary-completion-questions/"},
+      {label:"Connecting Sentences (Video)",url:"https://ieltsliz.com/ielts-writing-task-2-connecting-sentences/"}
+    ],
+    hours:[
+      {label:"H1", text:"<strong>Timed Listening Mock (30 min, no pausing).</strong> <a href='https://ieltsliz.com/form-completion-ielts-listening-practice/' target='_blank'>Form</a> (10 min) → <a href='https://ieltsliz.com/ielts-listening-practice-tables/' target='_blank'>Table</a> (10 min) → <a href='https://ieltsliz.com/listening-practice-summary-completion-questions/' target='_blank'>Summary</a> (10 min). Write answers as you go. Do NOT check yet."},
+      {label:"H2", text:"Mark all H1 answers. Target: ≥ 25/30. For every wrong answer write the corrective sentence with the paraphrase. Categorise errors: spelling / wrong word / missed answer."},
+      {label:"H3", text:"Re-watch <a href='https://ieltsliz.com/ielts-writing-task-2-connecting-sentences/' target='_blank'>Connecting Sentences Video</a>. Write a 6-sentence paragraph using: 1 coordinating conjunction (but/and/so), 1 subordinating conjunction (although/because), 1 conjunctive adverb (however/therefore)."},
+      {label:"H4", text:"Rewrite your paragraph from H3 with zero errors. Read aloud 3 times. Write a second paragraph on a new topic with the same 3 connection methods. Write 3 × 4-sentence paragraphs on <strong>Technology</strong>."}
+    ]
+  },
+  {
+    id:17, date:"Sun 17 Aug", title:"Writing Task 2: First Full Essay",
+    skills:["W","G"],
+    links:[
+      {label:"Adv/Disadv Model Essay",url:"https://ieltsliz.com/ielts-advantage-disadvantage-model-essay/"},
+      {label:"Give Your Opinion Tips",url:"https://ieltsliz.com/ielts-writing-task-2-should-i-give-my-opinion/"},
+      {label:"100 Essay Questions",url:"https://ieltsliz.com/100-ielts-essay-questions/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-advantage-disadvantage-model-essay/' target='_blank'>Advantages/Disadvantages Model Essay</a> — study carefully. Note number of sentences per paragraph, how topic sentences are written, how examples are integrated. Write a structural outline copying this pattern."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-writing-task-2-should-i-give-my-opinion/' target='_blank'>Give Your Opinion Tips</a>. Choose an Adv/Disadv question from <a href='https://ieltsliz.com/100-ielts-essay-questions/' target='_blank'>100 Essay Questions</a>. Plan: thesis + 2 body ideas + conclusion direction. 5 minutes max."},
+      {label:"H3", text:"<strong>Write your first full Task 2 essay (35 min, 250+ words).</strong> Use your plan. Target: accurate thesis, clear topic sentences, ≥1 complex sentence per paragraph, 4+ different linking words. Stop at 35 min."},
+      {label:"H4", text:"Self-edit: (1) Did you paraphrase the question? (2) One clear main idea per body paragraph? (3) ≥4 different linking words used? (4) Any fragments or run-ons? Fix all. Write 3 × 4-sentence paragraphs on <strong>Environment</strong>."}
+    ]
+  },
+  {
+    id:18, date:"Mon 18 Aug", title:"Reading: Summary + Matching Endings + Vocab",
+    skills:["R","V","G"],
+    links:[
+      {label:"Summary Completion",url:"https://ieltsliz.com/food-ielts-summary-reading-practice/"},
+      {label:"Matching Endings",url:"https://ieltsliz.com/matching-sentence-endings-ielts-reading-practice/"},
+      {label:"Advertising Vocab",url:"https://ieltsliz.com/advertising-vocabulary-and-pronunciation/"},
+      {label:"Improve Thesis Statement",url:"https://ieltsliz.com/improving-a-thesis-statement/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/food-ielts-summary-reading-practice/' target='_blank'>Summary Completion</a> — complete, focus on word limit and grammatical fit. After: write a 3-sentence summary of the passage from memory only."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/matching-sentence-endings-ielts-reading-practice/' target='_blank'>Matching Endings</a> — study tips then complete. <strong>Grammar drill:</strong> read each completed sentence aloud. Write down any that sound grammatically awkward and explain why."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/advertising-vocabulary-and-pronunciation/' target='_blank'>Advertising Vocab</a> — study vocabulary + pronunciation. Write 6 sentences using advertising vocabulary in IELTS essay contexts (media, consumerism, children)."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/improving-a-thesis-statement/' target='_blank'>Improve Thesis Statement</a> — complete all exercises. Write 3 thesis statements for 3 different essay types. Self-check against the criteria on the page. Write 3 × 4-sentence paragraphs on <strong>Society</strong>."}
+    ]
+  },
+  {
+    id:19, date:"Tue 19 Aug", title:"Speaking: Parts 1, 2 & 3 Full Practice",
+    skills:["S","V"],
+    links:[
+      {label:"Part 1 Topics",url:"https://ieltsliz.com/ielts-speaking-part-1-topics/"},
+      {label:"Travel & Transport Answers",url:"https://ieltsliz.com/sample-answers-for-travel-and-transport-in-speaking-part-1/"},
+      {label:"Part 2 Topics",url:"https://ieltsliz.com/ielts-speaking-part-2-topics/"},
+      {label:"Holidays Model Answer",url:"https://ieltsliz.com/ielts-speaking-part-2-model-answer/"},
+      {label:"Sport Part 3 Answers",url:"https://ieltsliz.com/ielts-sample-answers-speaking-part-3-sport/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-speaking-part-1-topics/' target='_blank'>Part 1 Topics</a> — choose 4 topics, answer 3 questions each (12 total, 20–30 sec each). Complete sentences, varied vocabulary, no repeating the same sentence opener. Record everything."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/sample-answers-for-travel-and-transport-in-speaking-part-1/' target='_blank'>Travel & Transport Model Answers</a> — identify 3 extension techniques. Repeat 2 of your H1 answers from scratch using those techniques."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/ielts-speaking-part-2-topics/' target='_blank'>Part 2 Topics</a> — choose a cue card. 1 min prep → 2 min talk (record). Open <a href='https://ieltsliz.com/ielts-speaking-part-2-model-answer/' target='_blank'>Holidays Model Answer</a> — compare structure to your talk."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/ielts-sample-answers-speaking-part-3-sport/' target='_blank'>Sport Part 3 Answers</a> — note how complex sentences give opinions. Write 4 original Part 3-style sentences: 'Although X seems…, I believe that… because… Furthermore…'. Write 3 × 4-sentence paragraphs on <strong>Health</strong>."}
+    ]
+  },
+  {
+    id:20, date:"Wed 20 Aug", title:"Listening: Sentence Completion + Grammar Clauses",
+    skills:["L","G"],
+    links:[
+      {label:"Gap-Fill Practice (2 lessons)",url:"https://ieltsliz.com/ielts-listening-gap-fill-practice-lesson/"},
+      {label:"Vietnam New Year Practice",url:"https://ieltsliz.com/new-year-in-vietnam-ielts-listening-practice/"},
+      {label:"Adding a Clause (Video)",url:"https://ieltsliz.com/ielts-grammar-adding-a-clause/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-listening-gap-fill-practice-lesson/' target='_blank'>Gap-Fill Practice</a> (two lessons) — complete both. Categorise errors: spelling / wrong word / missed entirely. Note which category is your biggest weakness."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/new-year-in-vietnam-ielts-listening-practice/' target='_blank'>Vietnam New Year Practice</a> — complete. <strong>Grammar drill:</strong> rewrite 5 completed sentences using passive voice: 'The festival is celebrated by…' instead of 'People celebrate the festival…'"},
+      {label:"H3", text:"Re-watch <a href='https://ieltsliz.com/ielts-grammar-adding-a-clause/' target='_blank'>Adding a Clause (Video)</a>. Write 8 sentences on IELTS topics (education, environment, health): 3 relative clauses, 3 adverbial clauses, 2 noun clauses."},
+      {label:"H4", text:"Record yourself reading your 8 sentences. Listen back: do you pause at clause boundaries? Any confusing sentence? Simplify any unclear clause without removing it. Write 3 × 4-sentence paragraphs on <strong>Crime</strong>."}
+    ]
+  },
+  {
+    id:21, date:"Thu 21 Aug", title:"Writing Task 1: Orientation + Line Graph + Bar Chart",
+    skills:["W","G"],
+    links:[
+      {label:"Writing T1 Hub",url:"https://ieltsliz.com/ielts-writing-task-1-lessons-and-tips/"},
+      {label:"Preparation Tips",url:"https://ieltsliz.com/ielts-writing-task-1-preparation-tips/"},
+      {label:"Paragraphing T1",url:"https://ieltsliz.com/writing-task-1-paragraphs/"},
+      {label:"Line Graph Vocabulary",url:"https://ieltsliz.com/ielts-line-graph-vocabulary/"},
+      {label:"Tenses Guide",url:"https://ieltsliz.com/what-tense-to-use-in-ielts-writing-task-1/"},
+      {label:"Practice Charts",url:"https://ieltsliz.com/ielts-sample-chart-for-writing-task-1/"},
+      {label:"T1 Band Scores",url:"https://ieltsliz.com/ielts-writing-task-1-band-scores/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-writing-task-1-lessons-and-tips/' target='_blank'>Writing T1 Hub</a>. Read <a href='https://ieltsliz.com/ielts-writing-task-1-preparation-tips/' target='_blank'>Preparation Tips</a> then <a href='https://ieltsliz.com/writing-task-1-paragraphs/' target='_blank'>Paragraphing Guide</a>. Write the template paragraph structure (intro, overview, body) in your own words."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-line-graph-vocabulary/' target='_blank'>Line Graph Vocabulary</a> — study the list. Write 8 sentences using trend vocabulary: 'The figure rose sharply from ___ to ___' — focus on preposition accuracy (rose TO, fell BY, increased FROM)."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/what-tense-to-use-in-ielts-writing-task-1/' target='_blank'>Tenses Guide</a> — study carefully. Open <a href='https://ieltsliz.com/ielts-sample-chart-for-writing-task-1/' target='_blank'>Practice Charts</a> — choose a bar chart. Write a full Task 1 report (150+ words, 20 min)."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/ielts-writing-task-1-band-scores/' target='_blank'>T1 Band Scores</a> — check where your report sits. Write 3 specific improvements. Write 3 × 4-sentence paragraphs on <strong>Work</strong>."}
+    ]
+  },
+];
+
+// Days 22-31
+const DAYS_22_31 = [
+  {
+    id:22, date:"Fri 22 Aug", title:"Reading: Choosing Title + Desertification + Practice",
+    skills:["R","S","G"],
+    links:[
+      {label:"Choosing a Title",url:"https://ieltsliz.com/choosing-a-title-ielts-reading/"},
+      {label:"Desertification Exercise",url:"https://ieltsliz.com/desertification-reading-exercise-useful-vocab/"},
+      {label:"Life on Earth (Sentence Completion)",url:"https://ieltsliz.com/ielts-reading-life-on-earth/"},
+      {label:"Coffee (Choosing Title)",url:"https://ieltsliz.com/ielts-reading-choosing-a-title/"},
+      {label:"Environment Part 3",url:"https://ieltsliz.com/ielts-speaking-part-3-environment/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/choosing-a-title-ielts-reading/' target='_blank'>Choosing a Title</a> — study tips then complete. Write a 2-sentence explanation for why the correct title is right and why each wrong title fails."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/desertification-reading-exercise-useful-vocab/' target='_blank'>Desertification Exercise</a> — complete the matching headings exercise. Note new vocabulary. Write 5 sentences using new environmental words in complex structures."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/ielts-reading-life-on-earth/' target='_blank'>Life on Earth</a> (sentence completion, 15 min). Then <a href='https://ieltsliz.com/ielts-reading-choosing-a-title/' target='_blank'>Coffee Title</a> (10 min). Mark both."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/ielts-speaking-part-3-environment/' target='_blank'>Environment Part 3 Answers</a> — read the model answers. Write 3 original answers to environment questions (3–5 sentences each, using complex sentences with subordinate clauses). Write 3 × 4-sentence paragraphs on <strong>Environment</strong>."}
+    ]
+  },
+  {
+    id:23, date:"Sat 23 Aug", title:"Writing Task 2: Second Full Essay (Cause-Solution)",
+    skills:["W","G"],
+    links:[
+      {label:"Cause-Solution Model",url:"https://ieltsliz.com/ielts-solution-essay-band-9-model-answer/"},
+      {label:"Discussion Model",url:"https://ieltsliz.com/ielts-discussion-essay-model-answer/"},
+      {label:"Improving Academic Sentences",url:"https://ieltsliz.com/improving-sentences-for-academic-writing/"},
+      {label:"Passive Voice for Opinion",url:"https://ieltsliz.com/using-the-passive-voice-for-giving-opinion-in-writing-task-2/"},
+      {label:"100 Essay Questions",url:"https://ieltsliz.com/100-ielts-essay-questions/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-solution-essay-band-9-model-answer/' target='_blank'>Cause-Solution Model</a> — map each paragraph's sentence structure. Write 3 original cause-solution sentence pairs (education, environment, health). Open <a href='https://ieltsliz.com/ielts-discussion-essay-model-answer/' target='_blank'>Discussion Model</a> — read it."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/improving-sentences-for-academic-writing/' target='_blank'>Improving Academic Sentences</a> — complete all. Open <a href='https://ieltsliz.com/using-the-passive-voice-for-giving-opinion-in-writing-task-2/' target='_blank'>Passive Voice for Opinion</a> — study and practise the technique."},
+      {label:"H3", text:"<strong>Write your second full Task 2 essay (35 min, 250+ words).</strong> Choose a cause-solution or discussion question from <a href='https://ieltsliz.com/100-ielts-essay-questions/' target='_blank'>100 Essay Questions</a>. Plan 5 min, write 35 min. One idea per paragraph, clear topic sentences, varied sentence length."},
+      {label:"H4", text:"Self-edit: (1) ≥4 complex sentences — if fewer, add more. (2) Every linking word used correctly? (3) Read conclusion aloud — does it summarise without new ideas? Write 3 × 4-sentence paragraphs on <strong>Education</strong>."}
+    ]
+  },
+  {
+    id:24, date:"Sun 24 Aug", title:"Listening: Full 40-Question Timed Mock",
+    skills:["L","MOCK"],
+    links:[
+      {label:"MCQ Tips+Practice",url:"https://ieltsliz.com/ielts-listening-multiple-choice-essential-tips/"},
+      {label:"Turtles MCQ",url:"https://ieltsliz.com/ielts-multiple-choice-listening-turtles/"},
+      {label:"Diagram Practice",url:"https://ieltsliz.com/ielts-listening-diagrams-practice-tips/"},
+      {label:"Section 4 Practice",url:"https://ieltsliz.com/ielts-listening-section-4-practice/"},
+      {label:"Missing Words Practice",url:"https://ieltsliz.com/ielts-listening-practice-missing-words/"},
+      {label:"Predicting Answers",url:"https://ieltsliz.com/ielts-listening-predicting-answers/"}
+    ],
+    hours:[
+      {label:"H1", text:"<strong>Timed Mock Part 1 (no pausing).</strong> <a href='https://ieltsliz.com/ielts-listening-multiple-choice-essential-tips/' target='_blank'>MCQ Practice</a> (10 min) → <a href='https://ieltsliz.com/ielts-multiple-choice-listening-turtles/' target='_blank'>Turtles MCQ</a> (10 min) → <a href='https://ieltsliz.com/ielts-listening-diagrams-practice-tips/' target='_blank'>Diagram Practice</a> (10 min). Write all answers as you go."},
+      {label:"H2", text:"<strong>Timed Mock Part 2.</strong> <a href='https://ieltsliz.com/ielts-listening-section-4-practice/' target='_blank'>Section 4 Practice</a> (10 min) → <a href='https://ieltsliz.com/ielts-listening-practice-missing-words/' target='_blank'>Missing Words Practice</a> (10 min). Mark ALL answers. Count total score and record it."},
+      {label:"H3", text:"Deep review every wrong answer. Write: 'I wrote ___ but the answer is ___ because the speaker used ___ which is a paraphrase of the question word ___.'"},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/ielts-listening-predicting-answers/' target='_blank'>Predicting Answers</a> — study the strategy. Write 10 questions and predict the answer type (number/name/verb/adjective). Write 3 × 4-sentence paragraphs on <strong>Technology</strong>."}
+    ]
+  },
+  {
+    id:25, date:"Mon 25 Aug", title:"Speaking: Full 11-Minute Simulation + Vocab",
+    skills:["S","V"],
+    links:[
+      {label:"Speaking Practice Test Video",url:"https://ieltsliz.com/ielts-speaking-practice-test-video/"},
+      {label:"Part 1 Topics",url:"https://ieltsliz.com/ielts-speaking-part-1-topics/"},
+      {label:"Part 2 Topics",url:"https://ieltsliz.com/ielts-speaking-part-2-topics/"},
+      {label:"Part 3 Topics",url:"https://ieltsliz.com/ielts-speaking-part-3-topics-2/"},
+      {label:"Technology Part 3 Answers",url:"https://ieltsliz.com/ielts-speaking-part-3-technology-questions-and-model-answer/"},
+      {label:"Health Part 3 Answers",url:"https://ieltsliz.com/answers-to-speaking-part-3-health-coronavirus/"},
+      {label:"Technology Vocab",url:"https://ieltsliz.com/technology-vocabulary-for-speaking/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-speaking-practice-test-video/' target='_blank'>Speaking Practice Test Video</a> — watch the full test. Note 3 things the candidate does well and 1 thing you'd do differently. Write these as complete sentences."},
+      {label:"H2", text:"<strong>Full Speaking Simulation (11 min, record everything).</strong> Part 1: 5 questions from <a href='https://ieltsliz.com/ielts-speaking-part-1-topics/' target='_blank'>Part 1 Topics</a> (4 min). Part 2: 1 min prep + 2 min talk from <a href='https://ieltsliz.com/ielts-speaking-part-2-topics/' target='_blank'>Part 2 Topics</a>. Part 3: 4 questions from <a href='https://ieltsliz.com/ielts-speaking-part-3-topics-2/' target='_blank'>Part 3 Topics</a> (4 min)."},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/ielts-speaking-part-3-technology-questions-and-model-answer/' target='_blank'>Technology Part 3</a> then <a href='https://ieltsliz.com/answers-to-speaking-part-3-health-coronavirus/' target='_blank'>Health Part 3</a>. Identify 3 sentence structures for giving opinions that you'll borrow and adapt."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/technology-vocabulary-for-speaking/' target='_blank'>Technology Vocab</a> — study list. Write 6 Part 3-style sentences: 'Although technology has undeniably improved communication, it can be argued that… because… Moreover…'. Write 3 × 4-sentence paragraphs on <strong>Society</strong>."}
+    ]
+  },
+  {
+    id:26, date:"Tue 26 Aug", title:"Writing Task 1: Line Graph + Map Report",
+    skills:["W","G"],
+    links:[
+      {label:"Line Graph Model Answer",url:"https://ieltsliz.com/ielts-writing-task-1-line-graph-model-score-9/"},
+      {label:"Map Model Answer",url:"https://ieltsliz.com/ielts-map-model-answer/"},
+      {label:"Map Vocabulary",url:"https://ieltsliz.com/ielts-maps-vocabulary/"},
+      {label:"Practice Charts",url:"https://ieltsliz.com/ielts-sample-chart-for-writing-task-1/"},
+      {label:"T1 Band Scores",url:"https://ieltsliz.com/ielts-writing-task-1-band-scores/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-writing-task-1-line-graph-model-score-9/' target='_blank'>Line Graph Model Answer</a> — note how the overview is phrased, how data is referenced, how comparisons are structured. Write 5 sentences imitating the model's structures using imaginary data."},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-map-model-answer/' target='_blank'>Map Model Answer</a> then <a href='https://ieltsliz.com/ielts-maps-vocabulary/' target='_blank'>Map Vocabulary</a>. Write 6 location/change sentences: 'A new road was constructed to the north of…' / 'The factory was replaced by…'"},
+      {label:"H3", text:"Open <a href='https://ieltsliz.com/ielts-sample-chart-for-writing-task-1/' target='_blank'>Practice Charts</a> — choose a line graph or map you haven't used. Write full Task 1 report (150+ words, 20 min). Apply: precise data, clear overview, accurate tenses, varied sentence openers."},
+      {label:"H4", text:"Self-edit: (1) Overview paragraph present (not a conclusion)? (2) Most significant data selected (not every figure)? (3) Comparative structures correct ('more than', 'twice as many as')? Fix all. Open <a href='https://ieltsliz.com/ielts-writing-task-1-band-scores/' target='_blank'>T1 Band Scores</a> and self-assess. Write 3 × 4-sentence paragraphs on <strong>Art</strong>."}
+    ]
+  },
+  {
+    id:27, date:"Wed 27 Aug", title:"Reading: Full Timed Mock + Grammar Consolidation",
+    skills:["R","G","MOCK"],
+    links:[
+      {label:"MCQ Practice",url:"https://ieltsliz.com/ielts-reading-multiple-choice/"},
+      {label:"YNNG Practice",url:"https://ieltsliz.com/ielts-yes-no-not-given-practice/"},
+      {label:"Matching Para Info",url:"https://ieltsliz.com/matching-paragraph-information-ielts-reading/"},
+      {label:"Short Answer Questions",url:"https://ieltsliz.com/ielts-short-answer-questions-reading-practice/"},
+      {label:"Improve Score Tips",url:"https://ieltsliz.com/ielts-reading-tips-how-can-i-improve-my-score/"},
+      {label:"Linking Words Practice 2",url:"https://ieltsliz.com/practice-with-linking-words/"}
+    ],
+    hours:[
+      {label:"H1", text:"<strong>Timed Mock Set A (40 min).</strong> <a href='https://ieltsliz.com/ielts-reading-multiple-choice/' target='_blank'>MCQ Practice</a> (20 min) → <a href='https://ieltsliz.com/ielts-yes-no-not-given-practice/' target='_blank'>YNNG Practice</a> (20 min). No checking yet."},
+      {label:"H2", text:"<strong>Timed Mock Set B (20 min).</strong> <a href='https://ieltsliz.com/matching-paragraph-information-ielts-reading/' target='_blank'>Matching Para Info</a> → <a href='https://ieltsliz.com/ielts-short-answer-questions-reading-practice/' target='_blank'>Short Answer Questions</a>. Mark ALL answers from H1+H2. Record your score."},
+      {label:"H3", text:"Deep review all wrong answers. Re-read <a href='https://ieltsliz.com/ielts-reading-tips-how-can-i-improve-my-score/' target='_blank'>Improve Score Tips</a>. For each wrong answer, identify which 'biggest mistake' caused the error. Write a corrective sentence for each."},
+      {label:"H4", text:"Open <a href='https://ieltsliz.com/practice-with-linking-words/' target='_blank'>Linking Words Practice 2</a> — complete the exercise. Write 5 complex sentences as evidence your linking word use has improved since Week 1. Write 3 × 4-sentence paragraphs on <strong>Health</strong>."}
+    ]
+  },
+  {
+    id:28, date:"Thu 28 Aug", title:"Writing Task 2: Opinion Essay + Speaking Day 4",
+    skills:["W","S","G"],
+    links:[
+      {label:"Opinion/Social Media Model",url:"https://ieltsliz.com/ielts-writing-task-2-model-essay-2/"},
+      {label:"Positive/Negative Model",url:"https://ieltsliz.com/positive-or-negative-development-ielts-model-essay/"},
+      {label:"Thesis Statement Guide",url:"https://ieltsliz.com/ielts-thesis-statement-for-writing-task-2/"},
+      {label:"10 Sentences to Avoid",url:"https://ieltsliz.com/ielts-writing-tips-sentences-to-avoid/"},
+      {label:"Friend You're Proud Of (Part 2)",url:"https://ieltsliz.com/ielts-speaking-part-2-a-friend-you-are-proud-of-tips/"},
+      {label:"Art/Paintings Part 3",url:"https://ieltsliz.com/ielts-speaking-part-3-what-makes-a-good-painting/"},
+      {label:"Band Scores",url:"https://ieltsliz.com/ielts-band-scores/"}
+    ],
+    hours:[
+      {label:"H1", text:"Open <a href='https://ieltsliz.com/ielts-writing-task-2-model-essay-2/' target='_blank'>Opinion Model</a> then <a href='https://ieltsliz.com/positive-or-negative-development-ielts-model-essay/' target='_blank'>Positive/Negative Model</a>. Write a comparison paragraph (4–5 sentences): how do the two essay structures differ in body paragraphs?"},
+      {label:"H2", text:"Open <a href='https://ieltsliz.com/ielts-thesis-statement-for-writing-task-2/' target='_blank'>Thesis Statement Guide</a> — write 5 thesis statements for 5 different essay types. Each must be one complete accurate sentence with no vague language. Open <a href='https://ieltsliz.com/ielts-writing-tips-sentences-to-avoid/' target='_blank'>10 Sentences to Avoid</a> — read and note them."},
+      {label:"H3", text:"<strong>Speaking Session 4.</strong> Open <a href='https://ieltsliz.com/ielts-speaking-part-2-a-friend-you-are-proud-of-tips/' target='_blank'>Friend Cue Card Tips</a> — give a 2-minute talk on this topic. Then open <a href='https://ieltsliz.com/ielts-speaking-part-3-what-makes-a-good-painting/' target='_blank'>Art Part 3 Answers</a> — answer 3 questions on arts aloud."},
+      {label:"H4", text:"<strong>Week 4 Self-Check.</strong> Write: (1) Your weakest grammar structure — clauses/tenses/articles/prepositions? (2) 3 sentences addressing that weakness. (3) Open <a href='https://ieltsliz.com/ielts-band-scores/' target='_blank'>Band Scores</a> and confirm what band you're on track for. Write 3 × 4-sentence paragraphs on <strong>Education</strong>."}
+    ]
+  },
+  {
+    id:29, date:"Fri 29 Aug", title:"Full Writing Exam Simulation (Task 1 + Task 2)",
+    skills:["W","MOCK"],
+    links:[
+      {label:"Practice Charts",url:"https://ieltsliz.com/ielts-sample-chart-for-writing-task-1/"},
+      {label:"2026 Essay Topics",url:"https://ieltsliz.com/ielts-essay-topics-for-2026/"},
+      {label:"T1 Band Scores",url:"https://ieltsliz.com/ielts-writing-task-1-band-scores/"},
+      {label:"T2 Band Scores",url:"https://ieltsliz.com/ielts-writing-task-2-band-scores-5-to-8/"}
+    ],
+    hours:[
+      {label:"H1", text:"<strong>Timed Task 1 (20 min exactly).</strong> Open <a href='https://ieltsliz.com/ielts-sample-chart-for-writing-task-1/' target='_blank'>Practice Charts</a> — choose a chart you have NOT used before. Write complete report (150+ words). Stop at 20 min."},
+      {label:"H2", text:"<strong>Timed Task 2 (40 min exactly).</strong> Open <a href='https://ieltsliz.com/ielts-essay-topics-for-2026/' target='_blank'>2026 Essay Topics</a> — choose one question. 5 min plan, 35 min write (250+ words). Stop at 40 min."},
+      {label:"H3", text:"Review Task 1: open <a href='https://ieltsliz.com/ielts-writing-task-1-band-scores/' target='_blank'>T1 Band Scores</a> and self-assess. Find your 3 weakest sentences — rewrite with improved precision and grammar."},
+      {label:"H4", text:"Review Task 2: open <a href='https://ieltsliz.com/ielts-writing-task-2-band-scores-5-to-8/' target='_blank'>T2 Band Scores</a> and self-assess. Read your full essay aloud. Mark every uncertain sentence. Rewrite with improved clarity. Write 3 × 4-sentence paragraphs on <strong>Society</strong>."}
+    ]
+  },
+  {
+    id:30, date:"Sat 30 Aug", title:"Full Listening + Reading Simulation + Speaking",
+    skills:["L","R","S","MOCK"],
+    links:[
+      {label:"Map Practice",url:"https://ieltsliz.com/ielts-map-listening-practice/"},
+      {label:"Sports Festival",url:"https://ieltsliz.com/ielts-listening-practice-sports-festival/"},
+      {label:"My University",url:"https://ieltsliz.com/listening-practice-my-university/"},
+      {label:"Eiffel Tower Diagram",url:"https://ieltsliz.com/ielts-listening-practice-the-eiffel-tower/"},
+      {label:"Categorisation Practice",url:"https://ieltsliz.com/categorisation-practice-for-ielts-reading/"},
+      {label:"Hobbies Matching Para",url:"https://ieltsliz.com/ielts-reading-matching-paragraph-information/"},
+      {label:"Crime & Punishment Reading",url:"https://ieltsliz.com/crime-and-punishment-ielts-reading-exercise/"},
+      {label:"Exam Day Tips",url:"https://ieltsliz.com/ielts-exam-tips-on-the-day/"}
+    ],
+    hours:[
+      {label:"H1", text:"<strong>Timed Listening Mock (no pausing).</strong> <a href='https://ieltsliz.com/ielts-map-listening-practice/' target='_blank'>Map</a> → <a href='https://ieltsliz.com/ielts-listening-practice-sports-festival/' target='_blank'>Sports Festival</a> → <a href='https://ieltsliz.com/listening-practice-my-university/' target='_blank'>My University</a> → <a href='https://ieltsliz.com/ielts-listening-practice-the-eiffel-tower/' target='_blank'>Eiffel Tower Diagram</a>. Mark immediately after. Record score."},
+      {label:"H2", text:"<strong>Timed Reading Mock (40 min).</strong> <a href='https://ieltsliz.com/categorisation-practice-for-ielts-reading/' target='_blank'>Categorisation</a> → <a href='https://ieltsliz.com/ielts-reading-matching-paragraph-information/' target='_blank'>Hobbies Matching Para</a> → <a href='https://ieltsliz.com/crime-and-punishment-ielts-reading-exercise/' target='_blank'>Crime & Punishment</a>. Mark after. Record score."},
+      {label:"H3", text:"<strong>Speaking Session 5 — full 11-min simulation (record).</strong> Part 1: 5 questions (4 min) → Part 2: 1 min prep + 2 min talk → Part 3: 4 questions (4 min)."},
+      {label:"H4", text:"Score your speaking on all 4 criteria (Fluency/Vocab/Grammar/Pronunciation) out of 9. Write one specific observation per criterion. Open <a href='https://ieltsliz.com/ielts-exam-tips-on-the-day/' target='_blank'>Exam Day Tips</a> — read all tips, note anything you hadn't considered. Write 3 × 4-sentence paragraphs on <strong>Technology</strong>."}
+    ]
+  },
+  {
+    id:31, date:"Sun 31 Aug", title:"Final Consolidation + Exam Readiness",
+    skills:["R","L","W","S"],
+    links:[
+      {label:"Exam Day Tips",url:"https://ieltsliz.com/ielts-exam-tips-on-the-day/"},
+      {label:"How to Prepare",url:"https://ieltsliz.com/how-to-prepare-for-ielts-essential-steps/"},
+      {label:"Adding a Clause (Video)",url:"https://ieltsliz.com/ielts-grammar-adding-a-clause/"},
+      {label:"Connecting Sentences (Video)",url:"https://ieltsliz.com/ielts-writing-task-2-connecting-sentences/"},
+      {label:"Part 1 Topics",url:"https://ieltsliz.com/ielts-speaking-part-1-topics/"},
+      {label:"Part 3 Topics",url:"https://ieltsliz.com/ielts-speaking-part-3-topics-2/"}
+    ],
+    hours:[
+      {label:"H1", text:"Re-read <a href='https://ieltsliz.com/ielts-exam-tips-on-the-day/' target='_blank'>Exam Day Tips</a> in full. Open <a href='https://ieltsliz.com/how-to-prepare-for-ielts-essential-steps/' target='_blank'>How to Prepare</a> — re-read. Write your personal 10-point test-day checklist based on these pages and your 31-day experience. Keep this card."},
+      {label:"H2", text:"<strong>Grammar Confidence Demonstration.</strong> Open <a href='https://ieltsliz.com/ielts-grammar-adding-a-clause/' target='_blank'>Adding a Clause</a> + <a href='https://ieltsliz.com/ielts-writing-task-2-connecting-sentences/' target='_blank'>Connecting Sentences</a> one more time. Write 10 sentences — 2 each on Education, Technology, Environment, Health, Society — each using a different complex grammatical structure. This is proof of progress."},
+      {label:"H3", text:"<strong>Final Speaking Warm-Up.</strong> Answer 8 Part 1 questions from <a href='https://ieltsliz.com/ielts-speaking-part-1-topics/' target='_blank'>Part 1 Topics</a>. Answer 2 Part 3 questions from <a href='https://ieltsliz.com/ielts-speaking-part-3-topics-2/' target='_blank'>Part 3 Topics</a>. Focus: natural delivery, not perfection."},
+      {label:"H4", text:"<strong>Final Written Self-Assessment.</strong> Write a paragraph (6–8 sentences): 'What have I improved most? What one weakness must I manage on test day? What is my Reading time strategy? What is my Listening prediction strategy?' Keep this — read it the morning of your test. Rest well tonight. 🎯"}
+    ]
+  },
+];
+
+// ── JS LOGIC ──────────────────────────────────────────────────────────────────
+
+const ALL_DAYS = [...DAYS, ...DAYS_11_21, ...DAYS_22_31];
+const STORAGE_KEY = 'ielts_tracker_v2';
+
+// ── DAILY ESSAY READING (Read 1/2/3) ─────────────────────────────────────────
+// 3 essay-topic links per day, different links each day, covering the whole
+// ieltsliz 100-essay-question bank (22 topic pages) across the 31 days.
+const READ_CHIPS = {
+  1:  [ {n:1,t:"Communication & Personality",q:"Q1-2",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Business & Money",q:"Q1-2",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:3,t:"Crime & Punishment",q:"Q1-2",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"} ],
+  2:  [ {n:1,t:"Communication & Personality",q:"Q4-5",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Business & Money",q:"Q4-5",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:3,t:"Crime & Punishment",q:"Q4-5",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"} ],
+  3:  [ {n:1,t:"Communication & Personality",q:"Q7-8",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Business & Money",q:"Q7-8",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:3,t:"Education",q:"Q1-2",u:"https://ieltsliz.com/100-ielts-essay-questions/education/"} ],
+  4:  [ {n:1,t:"Communication & Personality",q:"Q10-11",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Business & Money",q:"Q10-11",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:3,t:"Crime & Punishment",q:"Q7-8",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"} ],
+  5:  [ {n:1,t:"Communication & Personality",q:"Q13-14",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Business & Money",q:"Q13-14",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:3,t:"Education",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/education/"} ],
+  6:  [ {n:1,t:"Communication & Personality",q:"Q16-17",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Business & Money",q:"Q16-17",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:3,t:"Work",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/work/"} ],
+  7:  [ {n:1,t:"Communication & Personality",q:"Q19-20",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Crime & Punishment",q:"Q10-11",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"}, {n:3,t:"Education",q:"Q7-9",u:"https://ieltsliz.com/100-ielts-essay-questions/education/"} ],
+  8:  [ {n:1,t:"Communication & Personality",q:"Q3",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Food & Diet",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/food-essay-titles/"}, {n:3,t:"Work",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/work/"} ],
+  9:  [ {n:1,t:"Business & Money",q:"Q3",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:2,t:"Communication & Personality",q:"Q6",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:3,t:"Education",q:"Q10-12",u:"https://ieltsliz.com/100-ielts-essay-questions/education/"} ],
+  10: [ {n:1,t:"Environment",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/environment/"}, {n:2,t:"Food & Diet",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/food-essay-titles/"}, {n:3,t:"Media & Advertising",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/media-and-advertising/"} ],
+  11: [ {n:1,t:"Society",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/society/"}, {n:2,t:"Tourism & Travel",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/tourism/"}, {n:3,t:"Work",q:"Q7-9",u:"https://ieltsliz.com/100-ielts-essay-questions/work/"} ],
+  12: [ {n:1,t:"Business & Money",q:"Q6",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:2,t:"Communication & Personality",q:"Q9",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:3,t:"Crime & Punishment",q:"Q3",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"} ],
+  13: [ {n:1,t:"Art",q:"Q1-2",u:"https://ieltsliz.com/100-ielts-essay-questions/art/"}, {n:2,t:"Education",q:"Q13-15",u:"https://ieltsliz.com/100-ielts-essay-questions/education/"}, {n:3,t:"Environment",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/environment/"} ],
+  14: [ {n:1,t:"Family & Children",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/family/"}, {n:2,t:"Food & Diet",q:"Q7-9",u:"https://ieltsliz.com/100-ielts-essay-questions/food-essay-titles/"}, {n:3,t:"Health",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/health/"} ],
+  15: [ {n:1,t:"Housing & Urban Planning",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/housing-and-buildings-questions/"}, {n:2,t:"Media & Advertising",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/media-and-advertising/"}, {n:3,t:"Society",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/society/"} ],
+  16: [ {n:1,t:"Tourism & Travel",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/tourism/"}, {n:2,t:"Transport",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/transport-traffic/"}, {n:3,t:"Work",q:"Q10-12",u:"https://ieltsliz.com/100-ielts-essay-questions/work/"} ],
+  17: [ {n:1,t:"Business & Money",q:"Q9",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:2,t:"Communication & Personality",q:"Q12",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:3,t:"Crime & Punishment",q:"Q6",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"} ],
+  18: [ {n:1,t:"Art",q:"Q4-5",u:"https://ieltsliz.com/100-ielts-essay-questions/art/"}, {n:2,t:"Education",q:"Q16-17",u:"https://ieltsliz.com/100-ielts-essay-questions/education/"}, {n:3,t:"Environment",q:"Q7-9",u:"https://ieltsliz.com/100-ielts-essay-questions/environment/"} ],
+  19: [ {n:1,t:"Family & Children",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/family/"}, {n:2,t:"Food & Diet",q:"Q10-12",u:"https://ieltsliz.com/100-ielts-essay-questions/food-essay-titles/"}, {n:3,t:"Government",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/government-and-politics/"} ],
+  20: [ {n:1,t:"Health",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/health/"}, {n:2,t:"Housing & Urban Planning",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/housing-and-buildings-questions/"}, {n:3,t:"Language",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/language/"} ],
+  21: [ {n:1,t:"Media & Advertising",q:"Q7-9",u:"https://ieltsliz.com/100-ielts-essay-questions/media-and-advertising/"}, {n:2,t:"Reading",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/reading/"}, {n:3,t:"Society",q:"Q7-9",u:"https://ieltsliz.com/100-ielts-essay-questions/society/"} ],
+  22: [ {n:1,t:"Sport & Exercise",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/sport-and-exercise/"}, {n:2,t:"Technology",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/technology/"}, {n:3,t:"Tourism & Travel",q:"Q7-9",u:"https://ieltsliz.com/100-ielts-essay-questions/tourism/"} ],
+  23: [ {n:1,t:"Transport",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/transport-traffic/"}, {n:2,t:"Work",q:"Q13-15",u:"https://ieltsliz.com/100-ielts-essay-questions/work/"}, {n:3,t:"Business & Money",q:"Q12",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"} ],
+  24: [ {n:1,t:"Communication & Personality",q:"Q15",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Crime & Punishment",q:"Q9",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"}, {n:3,t:"Environment",q:"Q10-12",u:"https://ieltsliz.com/100-ielts-essay-questions/environment/"} ],
+  25: [ {n:1,t:"Family & Children",q:"Q7-8",u:"https://ieltsliz.com/100-ielts-essay-questions/family/"}, {n:2,t:"Food & Diet",q:"Q13",u:"https://ieltsliz.com/100-ielts-essay-questions/food-essay-titles/"}, {n:3,t:"Government",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/government-and-politics/"} ],
+  26: [ {n:1,t:"Health",q:"Q7-9",u:"https://ieltsliz.com/100-ielts-essay-questions/health/"}, {n:2,t:"Housing & Urban Planning",q:"Q7-8",u:"https://ieltsliz.com/100-ielts-essay-questions/housing-and-buildings-questions/"}, {n:3,t:"Language",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/language/"} ],
+  27: [ {n:1,t:"Leisure",q:"Q1",u:"https://ieltsliz.com/100-ielts-essay-questions/leisure-free-time-essay-titles/"}, {n:2,t:"Media & Advertising",q:"Q10-12",u:"https://ieltsliz.com/100-ielts-essay-questions/media-and-advertising/"}, {n:3,t:"Reading",q:"Q4-5",u:"https://ieltsliz.com/100-ielts-essay-questions/reading/"} ],
+  28: [ {n:1,t:"Society",q:"Q10",u:"https://ieltsliz.com/100-ielts-essay-questions/society/"}, {n:2,t:"Space Exploration",q:"Q1-3",u:"https://ieltsliz.com/100-ielts-essay-questions/space-exploration/"}, {n:3,t:"Sport & Exercise",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/sport-and-exercise/"} ],
+  29: [ {n:1,t:"Technology",q:"Q4-6",u:"https://ieltsliz.com/100-ielts-essay-questions/technology/"}, {n:2,t:"Tourism & Travel",q:"Q10-11",u:"https://ieltsliz.com/100-ielts-essay-questions/tourism/"}, {n:3,t:"Transport",q:"Q7",u:"https://ieltsliz.com/100-ielts-essay-questions/transport-traffic/"} ],
+  30: [ {n:1,t:"Work",q:"Q16-17",u:"https://ieltsliz.com/100-ielts-essay-questions/work/"}, {n:2,t:"Art",q:"Q3",u:"https://ieltsliz.com/100-ielts-essay-questions/art/"}, {n:3,t:"Business & Money",q:"Q15",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"} ],
+  31: [ {n:1,t:"Communication & Personality",q:"Q18",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Crime & Punishment",q:"Q12",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"}, {n:3,t:"Education",q:"Q3",u:"https://ieltsliz.com/100-ielts-essay-questions/education/"} ],
+};
+
+// ── DYNAMIC START DATE ────────────────────────────────────────────────────────
+// Start date is recorded the first time the user completes Day 1.
+// Every subsequent "today" is calculated as: startDate + (dayNum - 1) calendar days.
+// Before Day 1 is completed, Day 1 is always "today" and all others are locked.
+
+function getStartDate() {
+  const state = getState();
+  return state.__startDate ? new Date(state.__startDate) : null;
+}
+
+function setStartDate(dateStr) {
+  const state = getState();
+  state.__startDate = dateStr;
+  saveState(state);
+}
+
+/** Returns the calendar date for a given plan day number (1-indexed). */
+function dateForDay(dayNum) {
+  const start = getStartDate();
+  if (!start) return null;
+  const d = new Date(start);
+  d.setDate(d.getDate() + (dayNum - 1));
+  return d;
+}
+
+/** Returns the plan day number that corresponds to today's calendar date.
+ *  Before start is set: returns 1 (so Day 1 is always "today" initially).
+ *  After start is set: clamps between 1 and 31. */
+function todayDayNum() {
+  const start = getStartDate();
+  if (!start) return 1; // not started yet — Day 1 is today
+  const now = new Date();
+  // zero out time for clean day-diff
+  const startMid = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const nowMid   = new Date(now.getFullYear(),   now.getMonth(),   now.getDate());
+  const diff = Math.floor((nowMid - startMid) / 86400000) + 1;
+  return Math.max(1, Math.min(31, diff));
+}
+
+/** Format a Date object as "Mon 4 Aug" style */
+function fmtDate(d) {
+  if (!d) return '';
+  return d.toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short' });
+}
+
+function getState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+}
+function saveState(s) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+
+const QUOTES = [
+  "Day complete! One step closer to Band 7+ 🎯",
+  "Brilliant work! Consistency is your superpower 💪",
+  "Another day done! You're building something great 🌟",
+  "Excellent! Every hour you put in counts 🔥",
+  "Keep going! Band 7+ is within your reach 🚀",
+  "Well done! Discipline today = results on test day 📈",
+  "Fantastic! You're ahead of most candidates 🏆",
+  "Great session! Grammar confidence is growing ✍️",
+];
+
+// ── CONFETTI ──────────────────────────────────────────────────────────────────
+function launchConfetti() {
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const pieces = Array.from({length:120}, () => ({
+    x: Math.random()*canvas.width,
+    y: Math.random()*-canvas.height,
+    r: Math.random()*7+3,
+    d: Math.random()*80+20,
+    color: ['#5b7fff','#22c55e','#f59e0b','#a78bfa','#f472b6','#60a5fa'][Math.floor(Math.random()*6)],
+    tilt: Math.random()*10-5,
+    tiltAngle: 0, tiltSpeed: Math.random()*0.1+0.05,
+  }));
+  let frame=0;
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p => {
+      p.tiltAngle += p.tiltSpeed;
+      p.y += (Math.cos(frame/20+p.d)+1.5)/2*3;
+      p.x += Math.sin(frame/20)*2;
+      p.tilt = Math.sin(p.tiltAngle)*12;
+      ctx.beginPath();
+      ctx.lineWidth = p.r;
+      ctx.strokeStyle = p.color;
+      ctx.moveTo(p.x+p.tilt+p.r/3, p.y);
+      ctx.lineTo(p.x+p.tilt, p.y+p.tilt+p.r/3);
+      ctx.stroke();
+    });
+    frame++;
+    if(frame < 180) requestAnimationFrame(draw);
+    else ctx.clearRect(0,0,canvas.width,canvas.height);
+  }
+  draw();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ── STREAK ────────────────────────────────────────────────────────────────────
+function calcStreak(state) {
+  let streak = 0;
+  for(let d = todayDayNum(); d >= 1; d--) {
+    if(state[d] && state[d].done) streak++;
+    else break;
+  }
+  return streak;
+}
+
+// ── STATS ─────────────────────────────────────────────────────────────────────
+function updateStats() {
+  const state = getState();
+  let done = 0;
+  for(let d=1;d<=31;d++) if(state[d]&&state[d].done) done++;
+  const streak = calcStreak(state);
+  const pct = Math.round((done/31)*100);
+
+  document.getElementById('s-done').textContent = done;
+  document.getElementById('s-left').textContent = 31-done;
+  document.getElementById('s-streak').textContent = streak;
+  document.getElementById('s-pct').textContent = pct+'%';
+  document.getElementById('prog-fill').style.width = pct+'%';
+  document.getElementById('prog-txt').textContent = done+' / 31 days';
+
+  // Dynamic start/end labels on progress bar
+  const startDate = getStartDate();
+  const d1El = document.getElementById('prog-d1');
+  const d31El = document.getElementById('prog-d31');
+  const planDatesEl = document.getElementById('plan-dates');
+  if (startDate) {
+    const start = fmtDate(dateForDay(1));
+    const end   = fmtDate(dateForDay(31));
+    if (d1El)  d1El.textContent  = 'Day 1 · ' + start;
+    if (d31El) d31El.textContent = 'Day 31 · ' + end;
+    if (planDatesEl) planDatesEl.textContent = start + ' → ' + end;
+  } else {
+    if (d1El)  d1El.textContent  = 'Day 1 · Start when ready';
+    if (d31El) d31El.textContent = 'Day 31 · +31 days';
+    if (planDatesEl) planDatesEl.textContent = 'Complete Day 1 to set your start date';
+  }
+
+  const sb = document.getElementById('streak-bar');
+  if(streak >= 2) {
+    sb.style.display = 'flex';
+    document.getElementById('streak-num').textContent = streak;
+  } else {
+    sb.style.display = 'none';
+  }
+  // update each card's done state visually
+  for(let d=1;d<=31;d++){
+    const card = document.getElementById('card-'+d);
+    if(!card) continue;
+    const isDone = !!(state[d]&&state[d].done);
+    card.classList.toggle('done', isDone);
+    const tick = card.querySelector('.tick');
+    if(tick) tick.textContent = isDone ? '✓' : '○';
+  }
+  // week progress
+  WEEKS.forEach(w => {
+    const el = document.getElementById('wpct-'+w.id);
+    if(!el) return;
+    const wDone = w.days.filter(d=>state[d]&&state[d].done).length;
+    el.textContent = wDone+'/'+w.days.length;
+  });
+}
+
+// ── HOUR CHECKBOX ─────────────────────────────────────────────────────────────
+function toggleHour(dayId, hourIdx, el) {
+  const state = getState();
+  if(!state[dayId]) state[dayId] = {done:false, hours:{}};
+  if(!state[dayId].hours) state[dayId].hours = {};
+  state[dayId].hours[hourIdx] = !state[dayId].hours[hourIdx];
+  el.classList.toggle('on', state[dayId].hours[hourIdx]);
+  saveState(state);
+  // auto-complete day if all 4 hours checked
+  const dayData = ALL_DAYS.find(d=>d.id===dayId);
+  if(dayData) {
+    const total = dayData.hours.length;
+    const checked = Object.values(state[dayId].hours).filter(Boolean).length;
+    if(checked >= total && !state[dayId].done) {
+      completeDay(dayId, true); // completeDay calls render() internally
+      return;
+    }
+  }
+  updateStats();
+}
+
+// ── COMPLETE DAY ──────────────────────────────────────────────────────────────
+function completeDay(dayId, withCelebrate=true) {
+  const state = getState();
+  if(!state[dayId]) state[dayId] = {done:false, hours:{}};
+  state[dayId].done = true;
+
+  // Record start date the very first time Day 1 is completed
+  if (dayId === 1 && !state.__startDate) {
+    const today = new Date();
+    const iso = today.toISOString().split('T')[0]; // "YYYY-MM-DD"
+    state.__startDate = iso;
+  }
+
+  saveState(state);
+  updateStats();
+  // Re-render so card dates and lock states update immediately
+  render();
+  if(withCelebrate) {
+    launchConfetti();
+    showToast(QUOTES[Math.floor(Math.random()*QUOTES.length)]);
+  }
+  // mark all hours as checked in the freshly rendered card
+  const card = document.getElementById('card-'+dayId);
+  if(card) {
+    card.querySelectorAll('.hchk').forEach(h=>h.classList.add('on'));
+  }
+}
+
+// ── BUILD CARD ────────────────────────────────────────────────────────────────
+function buildCard(day, todayNum) {
+  const state = getState();
+  const ds = state[day.id] || {done:false, hours:{}};
+  const isDone = ds.done;
+  const isToday = day.id === todayNum;
+  // Day 1 is never locked. Others are locked if beyond todayNum+1 (allow peeking 1 ahead)
+  const isLocked = day.id > 1 && day.id > todayNum + 1;
+
+  // Dynamic date label: show real date if start is set, else "Day N"
+  const calDate = dateForDay(day.id);
+  const dateLabel = calDate ? fmtDate(calDate) : (day.id === 1 ? 'Start today — click to begin' : 'Day ' + day.id);
+
+  const skillHTML = day.skills.map(s=>`<span class="sb sb-${s}">${s}</span>`).join('');
+  // Daily essay reading: 3 "Read" chips (Read 1/2/3) — different links each day,
+  // covering the full 100-essay-question bank across the 31 days.
+  const readHTML = (READ_CHIPS[day.id]||[]).map(r=>
+    `<a class="lchip lchip-read" href="${r.u}" target="_blank" title="${r.t} — ${r.q}">📖 Read ${r.n} · ${r.t} ${r.q}</a>`
+  ).join('');
+  const otherLinksHTML = day.links.map(l=>`<a class="lchip" href="${l.url}" target="_blank">${l.label}</a>`).join('');
+  const linksHTML = readHTML + otherLinksHTML;
+  const hoursHTML = day.hours.map((h,i) => {
+    const checked = !!(ds.hours && ds.hours[i]);
+    return `<div class="hr">
+      <span class="hlbl">${h.label}</span>
+      <div class="hchk ${checked?'on':''}" onclick="toggleHour(${day.id},${i},this)"></div>
+      <div class="htxt">${h.text}</div>
+    </div>`;
+  }).join('');
+
+  const classes = ['card',
+    isDone  ? 'done'   : '',
+    isToday ? 'today'  : '',
+    isLocked? 'locked' : '',
+  ].filter(Boolean).join(' ');
+
+  const todayBadge = isToday && !isDone
+    ? `<span style="position:absolute;top:9px;right:12px;font-size:.6rem;font-weight:800;
+        color:var(--accent);background:#5b7fff1a;border:1px solid #5b7fff44;
+        border-radius:5px;padding:1px 7px;letter-spacing:.07em;text-transform:uppercase">TODAY</span>`
+    : '';
+  const doneBadge = isDone ? '<span class="done-stamp">DONE ✓</span>' : '';
+  const lockedIcon = isLocked ? ' 🔒' : '';
+
+  return `<div class="${classes}" id="card-${day.id}">
+    ${isDone ? doneBadge : todayBadge}
+    <div class="ctop" onclick="toggleExpand(${day.id})" style="cursor:pointer">
+      <div class="dnum">${day.id}</div>
+      <div class="cmeta">
+        <div class="cdate">${dateLabel}${lockedIcon}</div>
+        <div class="ctitle">${day.title}</div>
+        <div class="sbadges">${skillHTML}</div>
+      </div>
+      <div class="tick">${isDone?'✓':'○'}</div>
+    </div>
+    <div class="cbody">
+      <div class="hours">${hoursHTML}</div>
+      <div class="clinks">${linksHTML}</div>
+      <button class="cbtn" onclick="completeDay(${day.id})">
+        ${isDone ? '✓ Completed' : '✓ Mark Day Complete'}
+      </button>
+    </div>
+  </div>`;
+}
+
+function toggleExpand(dayId) {
+  const state = getState();
+  if(dayId > todayDayNum()+1) return; // locked
+  const card = document.getElementById('card-'+dayId);
+  if(!card) return;
+  // close others
+  document.querySelectorAll('.card.open').forEach(c => {
+    if(c.id !== 'card-'+dayId) c.classList.remove('open');
+  });
+  card.classList.toggle('open');
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function render() {
+  const today = todayDayNum();
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+
+  WEEKS.forEach(w => {
+    const state = getState();
+    const wDone = w.days.filter(d=>state[d]&&state[d].done).length;
+    const block = document.createElement('div');
+    block.className = 'week-block';
+
+    const daysHTML = w.days.map(dId => {
+      const dayData = ALL_DAYS.find(d=>d.id===dId);
+      return dayData ? buildCard(dayData, today) : '';
+    }).join('');
+
+    block.innerHTML = `
+      <div class="wk-head">
+        <span class="wk-badge">${w.label}</span>
+        <div class="wk-info">
+          <div class="wk-name">${w.name}</div>
+          <div class="wk-target">${w.target}</div>
+        </div>
+        <span class="wk-pct" id="wpct-${w.id}">${wDone}/${w.days.length}</span>
+      </div>
+      <div class="days-grid">${daysHTML}</div>
+    `;
+    app.appendChild(block);
+  });
+
+  updateStats();
+
+  // auto-open today's card
+  const todayCard = document.getElementById('card-'+today);
+  if(todayCard && !todayCard.classList.contains('done')) {
+    todayCard.classList.add('open');
+    setTimeout(()=>todayCard.scrollIntoView({behavior:'smooth',block:'center'}),300);
+  }
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+render();
+
+</script>
+</body>
+</html>

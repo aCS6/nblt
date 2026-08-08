@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 4 – Past Tenses 2 | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 4</span>
+    <span class="subtitle">Past Tenses 2 — past perfect simple; past perfect continuous</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening: Vocabulary — Mozart</h3></div>
+      <div class="exercise-body">
+        <p>You will hear a woman giving a talk on the famous composer, Mozart. Before you listen, match the words (1–10) with the correct meanings (a–j).</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 30px;margin:14px 0;">
+          <div><strong>Words</strong></div><div><strong>Meanings</strong></div>
+          <div>1 extraordinary</div><div>a brother or sister</div>
+          <div>2 sibling</div><div>b reach a high level in something</div>
+          <div>3 achievement</div><div>c part of a piano or computer</div>
+          <div>4 keyboard</div><div>d amazing</div>
+          <div>5 demand</div><div>e status</div>
+          <div>6 master (verb)</div><div>f success</div>
+          <div>7 gifted</div><div>g very talented</div>
+          <div>8 in rapid succession</div><div>h ask in a forceful way</div>
+          <div>9 reputation</div><div>i fast development at a very early age</div>
+          <div>10 precocious</div><div>j quickly one after another</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><input class="corr-input a1u4" data-id="u4a1_1" placeholder="a–j" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><input class="corr-input a1u4" data-id="u4a1_2" placeholder="a–j" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><input class="corr-input a1u4" data-id="u4a1_3" placeholder="a–j" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><input class="corr-input a1u4" data-id="u4a1_4" placeholder="a–j" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><input class="corr-input a1u4" data-id="u4a1_5" placeholder="a–j" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><input class="corr-input a1u4" data-id="u4a1_6" placeholder="a–j" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span><input class="corr-input a1u4" data-id="u4a1_7" placeholder="a–j" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span><input class="corr-input a1u4" data-id="u4a1_8" placeholder="a–j" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">9</span><input class="corr-input a1u4" data-id="u4a1_9" placeholder="a–j" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">10</span><input class="corr-input a1u4" data-id="u4a1_10" placeholder="a–j" style="width:70px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a1u4" class="btn-check">Check</button>
+          <button id="btn-show-a1u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a1u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and complete the notes — Track 06</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">06</div>
+          <div class="track-info"><h4>Track 06 — A talk on Wolfgang Amadeus Mozart</h4><p>Context listening — the young Mozart</p></div>
+          <div id="audio-06"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Now listen and complete the notes below.</p>
+        <div class="notes-form">
+          <h4>🎼 Wolfgang Amadeus Mozart</h4>
+          <div class="notes-row">Name: <strong>Wolfgang Amadeus Mozart</strong></div>
+          <div class="notes-row">Date of birth: <span class="q-num">1</span><input class="notes-input a2u4-inp" data-id="u4a2_1" placeholder="…" style="min-width:150px;"/></div>
+          <div class="notes-row">Number of surviving brothers and sisters: <span class="q-num">2</span><input class="notes-input a2u4-inp" data-id="u4a2_2" placeholder="…" style="min-width:90px;"/></div>
+          <div class="notes-row">Profession of father: <span class="q-num">3</span><input class="notes-input a2u4-inp" data-id="u4a2_3" placeholder="…" style="min-width:130px;"/></div>
+          <div class="notes-row">Wrote first composition before the age of: <span class="q-num">4</span><input class="notes-input a2u4-inp" data-id="u4a2_4" placeholder="…" style="min-width:90px;"/></div>
+          <div class="notes-row">Taught self to play: <span class="q-num">5</span><input class="notes-input a2u4-inp" data-id="u4a2_5" placeholder="…" style="min-width:130px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a2u4" class="btn-check">Check</button>
+          <button id="btn-show-a2u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen to the text again and fill in the gaps</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> However, when Mozart <input class="gap-input a3u4" data-id="u4a3_1a" placeholder="…" style="min-width:100px;"/>, five of his siblings <input class="gap-input a3u4" data-id="u4a3_1b" placeholder="…" style="min-width:120px;"/> in infancy or early childhood.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Mozart's father, Leopold, <input class="gap-input a3u4" data-id="u4a3_2a" placeholder="…" style="min-width:70px;"/> a composer, and his grandfather <input class="gap-input a3u4" data-id="u4a3_2b" placeholder="…" style="min-width:130px;"/> a musician.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> In just 30 minutes Mozart <input class="gap-input a3u4" data-id="u4a3_3a" placeholder="…" style="min-width:100px;"/> the piece of music, which his father <input class="gap-input a3u4" data-id="u4a3_3b" placeholder="…" style="min-width:110px;"/> into Nannerl's notebook.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> By the time he <input class="gap-input a3u4" data-id="u4a3_4a" placeholder="…" style="min-width:60px;"/> six, the little boy <input class="gap-input a3u4" data-id="u4a3_4b" placeholder="…" style="min-width:110px;"/> a composition of his own.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> They <input class="gap-input a3u4" data-id="u4a3_5a" placeholder="…" style="min-width:90px;"/> to Vienna and <input class="gap-input a3u4" data-id="u4a3_5b" placeholder="…" style="min-width:90px;"/> sensational reports of Mozart's talent.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> His family <input class="gap-input a3u4" data-id="u4a3_6a" placeholder="…" style="min-width:70px;"/> richer than they <input class="gap-input a3u4" data-id="u4a3_6b" placeholder="…" style="min-width:120px;"/> before.</div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u4" class="btn-check">Check</button>
+          <button id="btn-show-a3u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>For each sentence underline which event happened first</h3></div>
+      <div class="exercise-body">
+        <p>Look at your answers to Exercise 3 and answer these questions.</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Which tense is used in sentence 5 to show that the events took place in chronological order? <input class="gap-input a4u4" data-id="u4a4_1" placeholder="…" style="min-width:160px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Which tense is used in the other sentences to show that the second event the speaker mentioned actually happened first? <input class="gap-input a4u4" data-id="u4a4_2" placeholder="…" style="min-width:160px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u4" class="btn-check">Check</button>
+          <button id="btn-show-a4u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <h2 class="grammar-subtitle">B1 — Past Perfect Simple</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>had</em> + past participle</td><td><em>They <strong>had listened</strong> to his music.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>had not</em> + past participle</td><td><em>They <strong>hadn't listened</strong> to his music.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Had</em> … + past participle?</td><td><em><strong>Had</strong> they <strong>listened</strong> to his music?</em></td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the past perfect simple:</p>
+    <ul class="use-list">
+      <li><strong>When we are talking about the past and want to mention something that happened earlier:</strong><br/>
+        <em>His father was a composer and his grandfather <strong>had also been</strong> a musician.</em><br/>
+        (Mozart's grandfather was a musician and then later his father became a composer)
+      </li>
+      <li><strong>Sometimes we use words like <em>just</em> or <em>already</em>.</strong> Notice that these adverbs go between the auxiliary and the main verb:<br/>
+        <em>By the time he was 17, Mozart's reputation <strong>had already begun</strong> to spread through Europe.</em>
+      </li>
+      <li><strong>We use the past simple tense if the events are mentioned in chronological order:</strong><br/>
+        <em>His grandfather was a musician and his father was also a composer.</em><br/>
+        with words like <em>when</em>, <em>as soon as</em>, <em>by the time</em>, <em>after</em> to show the order of events:<br/>
+        <em>When Mozart was born, five of his siblings <strong>had already died</strong>.</em> (Mozart's siblings died first, then Mozart was born)
+      </li>
+      <li><strong>To show the difference in meaning between these two sentences:</strong><br/>
+        <em>When I got home, my husband <strong>cooked</strong> dinner.</em> (= I got home and then my husband cooked dinner)
+        <img src="../assets/image-contents/u4_timeline_cooked_dinner.png" alt="Timeline: I got home, then my husband cooked dinner" class="diagram"/>
+        <p class="diagram-caption">Past simple: events in chronological order — I got home, then my husband cooked dinner</p>
+        <em>When I got home, my husband <strong>had cooked</strong> dinner.</em> (= my husband cooked dinner before I got home)
+        <img src="../assets/image-contents/u4_timeline_had_cooked.png" alt="Timeline: my husband had cooked dinner, then I got home" class="diagram"/>
+        <p class="diagram-caption">Past perfect simple: the earlier event happened first — my husband had cooked dinner before I got home</p>
+      </li>
+      <li><strong>To talk about an indefinite time before a particular point in the past,</strong> often with words like <em>always</em>, <em>sometimes</em>, <em>never</em>, <em>before</em>, <em>by</em> + fixed time:<br/>
+        <em>His family were richer than they <strong>had ever been</strong> before.</em> (= they were not as rich at any time before this point in the past)<br/>
+        <em>By the time he was six, the little boy <strong>had written</strong> a composition of his own.</em>
+      </li>
+      <li><strong>To report past events using reporting verbs</strong> (see Unit 15):<br/>
+        <em>The man told me he <strong>had met</strong> my father a long time before.</em>
+      </li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — Past Perfect Continuous</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>had been</em> + verb + <em>-ing</em></td><td><em>She'<strong>d been studying</strong> for ages.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>had not been</em> + verb + <em>-ing</em></td><td><em>He <strong>hadn't been studying</strong> for long.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Had … been</em> + verb + <em>-ing?</em></td><td><em><strong>Had</strong> you <strong>been studying</strong> for long?</em></td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the past perfect continuous:</p>
+    <ul class="use-list">
+      <li><strong>To focus on how long an activity continued or to focus on the activity itself:</strong><br/>
+        <em>Times were hard and the family <strong>had been struggling</strong> for some time.</em> (to show how long)<br/>
+        <em>Mozart's sister was extremely gifted at the keyboard and she <strong>had been making</strong> excellent progress.</em> (focus on the activity)
+      </li>
+    </ul>
+    <div class="warning-box">We cannot use the past perfect continuous to say <strong>how many times</strong> something happened:<br/>
+      <em>I knew the way as I <strong>had visited</strong> her several times before.</em> <span style="text-decoration:line-through;color:#999;">(not: I had been visiting her several times before)</span>
+    </div>
+    <div class="warning-box">State verbs (see Unit 1) do not generally have a continuous form.</div>
+
+    <div class="grammar-extra">
+      <h4>Grammar extra: Unfulfilled hopes</h4>
+      <p>We use the past perfect to talk about past disappointments or things that did not happen as expected:</p>
+      <p style="margin-top:8px;"><em>The politician <strong>had expected</strong> to be re-elected, but in the end she only got ten per cent of the vote.</em><br/>
+      <em>I <strong>had been hoping</strong> to go with my brother on his trip but I was too sick to go.</em></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Fill in the gaps with the past perfect simple of the verbs in brackets</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with the past perfect simple of the verbs in brackets in the positive or negative.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          According to Dr Ken Winkle, Australia's Red-back spider is colonising the world. Dr Winkle, a venom expert from the University of Melbourne, said that authorities <span class="item-num" style="display:inline-flex;vertical-align:middle;">1</span> <input class="gap-input c1u4" data-id="u4c1_1" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(find)</span> Red-back spiders in Japan and Belgium. They suspected that spiders or their eggs <span class="item-num" style="display:inline-flex;vertical-align:middle;">2</span> <input class="gap-input c1u4" data-id="u4c1_2" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(enter)</span> these countries along with Australian trading goods. Furthermore, it was extremely likely that the spiders <span class="item-num" style="display:inline-flex;vertical-align:middle;">3</span> <input class="gap-input c1u4" data-id="u4c1_3" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(make)</span> their way into other nations around the world but that people <span class="item-num" style="display:inline-flex;vertical-align:middle;">4</span> <input class="gap-input c1u4" data-id="u4c1_4" placeholder="…" style="min-width:150px;"/> <span class="hint-text">(discover)</span> them yet. Dr Winkle said the spiders <span class="item-num" style="display:inline-flex;vertical-align:middle;">5</span> <input class="gap-input c1u4" data-id="u4c1_5" placeholder="…" style="min-width:160px;"/> <span class="hint-text">(also/turn up)</span> in the port city of Osaka (which receives a variety of Australian trade goods) in the late 1990s and <span class="item-num" style="display:inline-flex;vertical-align:middle;">6</span> <input class="gap-input c1u4" data-id="u4c1_6" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(multiply)</span> quickly.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u4" class="btn-check">Check</button>
+          <button id="btn-show-c1u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Look at the chart and fill in the gaps — past simple or past perfect simple</h3></div>
+      <div class="exercise-body">
+        <img src="../assets/image-contents/u4-section-2-diagram.png" alt="Table: Percentage of total US population aged 65 and over: 1900 to 2000, broken down by 65–74, 75–84 and 84+" class="diagram"/>
+        <p class="diagram-caption">Percentage of total US population aged 65 and over: 1900 to 2000</p>
+        <div class="passage-text" style="line-height:2.4;">
+          The chart shows the percentage of people aged 65 and over in the United States between 1900 and 2000. In the year 1900 just over 4% of the population <span class="item-num" style="display:inline-flex;vertical-align:middle;">1</span> <input class="gap-input c2u4" data-id="u4c2_1" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(be)</span> aged over 65. However, by 1960 this figure <span class="item-num" style="display:inline-flex;vertical-align:middle;">2</span> <input class="gap-input c2u4" data-id="u4c2_2" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(double)</span>.<br/>
+          The number of people aged between 75 and 84 <span class="item-num" style="display:inline-flex;vertical-align:middle;">3</span> <input class="gap-input c2u4" data-id="u4c2_3" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(remain)</span> fairly steady between 1900 and 1930, making up only 1–1.3% of the population. The figure <span class="item-num" style="display:inline-flex;vertical-align:middle;">4</span> <input class="gap-input c2u4" data-id="u4c2_4" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(begin)</span> to rise more significantly in 1940 and by 1970 it <span class="item-num" style="display:inline-flex;vertical-align:middle;">5</span> <input class="gap-input c2u4" data-id="u4c2_5" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(triple)</span> to reach 3% of the population.<br/>
+          Although there <span class="item-num" style="display:inline-flex;vertical-align:middle;">6</span> <input class="gap-input c2u4" data-id="u4c2_6" placeholder="…" style="min-width:70px;"/> <span class="hint-text">(be)</span> no change in the number of people aged 65–74 between 1960 and 1970, the number of people aged 75 and over <span class="item-num" style="display:inline-flex;vertical-align:middle;">7</span> <input class="gap-input c2u4" data-id="u4c2_7" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(increase)</span> during this time. By the year 2000, 12.4% of the US population <span class="item-num" style="display:inline-flex;vertical-align:middle;">8</span> <input class="gap-input c2u4" data-id="u4c2_8" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(reach)</span> the age of 65 or more, although this was slightly lower than in 1990 when it <span class="item-num" style="display:inline-flex;vertical-align:middle;">9</span> <input class="gap-input c2u4" data-id="u4c2_9" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(peak)</span> at 12.6%.<br/>
+          The chart shows that today people in the United States can expect to live longer than in 1900. By the year 2000 more than 12% of the population <span class="item-num" style="display:inline-flex;vertical-align:middle;">10</span> <input class="gap-input c2u4" data-id="u4c2_10" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(manage)</span> to live to the age of 65 and over compared to only 4.1% in 1900.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u4" class="btn-check">Check</button>
+          <button id="btn-show-c2u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Fill in the gaps — past simple, past perfect simple or past perfect continuous</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with the past simple, past perfect simple or past perfect continuous of the verbs in brackets.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          Last year my friends <span class="item-num" style="display:inline-flex;vertical-align:middle;">1</span> <input class="gap-input c3u4" data-id="u4c3_1" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(arrange)</span> for us to try fire-walking, which is when you walk on hot coals. I <span class="item-num" style="display:inline-flex;vertical-align:middle;">2</span> <input class="gap-input c3u4" data-id="u4c3_2" placeholder="…" style="min-width:150px;"/> <span class="hint-text">(always/be)</span> fascinated by it and I <span class="item-num" style="display:inline-flex;vertical-align:middle;">3</span> <input class="gap-input c3u4" data-id="u4c3_3" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(hear)</span> people say it was an unforgettable experience. I was very excited when I <span class="item-num" style="display:inline-flex;vertical-align:middle;">4</span> <input class="gap-input c3u4" data-id="u4c3_4" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(arrive)</span> on the day, although beforehand I <span class="item-num" style="display:inline-flex;vertical-align:middle;">5</span> <input class="gap-input c3u4" data-id="u4c3_5" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(feel)</span> a little frightened!<br/>
+          My friends and I <span class="item-num" style="display:inline-flex;vertical-align:middle;">6</span> <input class="gap-input c3u4" data-id="u4c3_6" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(come)</span> in the hope that by the end of the day we would be able to say we <span class="item-num" style="display:inline-flex;vertical-align:middle;">7</span> <input class="gap-input c3u4" data-id="u4c3_7" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(walk)</span> across hot, burning coals.<br/>
+          Our teacher was very good, and by teatime we <span class="item-num" style="display:inline-flex;vertical-align:middle;">8</span> <input class="gap-input c3u4" data-id="u4c3_8" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(learn)</span> a great deal and <span class="item-num" style="display:inline-flex;vertical-align:middle;">9</span> <input class="gap-input c3u4" data-id="u4c3_9" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(prepare)</span> the fires. I <span class="item-num" style="display:inline-flex;vertical-align:middle;">10</span> <input class="gap-input c3u4" data-id="u4c3_10" placeholder="…" style="min-width:170px;"/> <span class="hint-text">(expect)</span> to be terrified when the time came to walk, but as I <span class="item-num" style="display:inline-flex;vertical-align:middle;">11</span> <input class="gap-input c3u4" data-id="u4c3_11" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(take off)</span> my shoes and socks I <span class="item-num" style="display:inline-flex;vertical-align:middle;">12</span> <input class="gap-input c3u4" data-id="u4c3_12" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(not/feel)</span> afraid.<br/>
+          I <span class="item-num" style="display:inline-flex;vertical-align:middle;">13</span> <input class="gap-input c3u4" data-id="u4c3_13" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(approach)</span> the coals as all my friends before me <span class="item-num" style="display:inline-flex;vertical-align:middle;">14</span> <input class="gap-input c3u4" data-id="u4c3_14" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(do)</span>, and started walking! I could feel the heat, but as I <span class="item-num" style="display:inline-flex;vertical-align:middle;">15</span> <input class="gap-input c3u4" data-id="u4c3_15" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(step)</span> back onto the grass at the other end I knew the coals <span class="item-num" style="display:inline-flex;vertical-align:middle;">16</span> <input class="gap-input c3u4" data-id="u4c3_16" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(not/burn)</span> my feet at all.<br/>
+          As I <span class="item-num" style="display:inline-flex;vertical-align:middle;">17</span> <input class="gap-input c3u4" data-id="u4c3_17" placeholder="…" style="min-width:150px;"/> <span class="hint-text">(hope)</span>, all my friends <span class="item-num" style="display:inline-flex;vertical-align:middle;">18</span> <input class="gap-input c3u4" data-id="u4c3_18" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(manage)</span> the walk and none of us were burnt. The whole experience was amazing, and I just wished I <span class="item-num" style="display:inline-flex;vertical-align:middle;">19</span> <input class="gap-input c3u4" data-id="u4c3_19" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(do)</span> it sooner.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u4" class="btn-check">Check</button>
+          <button id="btn-show-c3u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Fill in the gaps with a verb from the box</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with a verb from the box in the past simple, past perfect simple or past perfect continuous tense. Use each verb once.</p>
+        <div class="word-box">
+          <span class="word-chip">be</span><span class="word-chip">buy</span><span class="word-chip">decide</span><span class="word-chip">develop</span><span class="word-chip">discuss</span><span class="word-chip">feel</span><span class="word-chip">like</span><span class="word-chip">make</span><span class="word-chip">phone</span><span class="word-chip">run</span><span class="word-chip">start</span><span class="word-chip">stay</span><span class="word-chip">take</span><span class="word-chip">visit</span><span class="word-chip">wait</span><span class="word-chip">work</span>
+        </div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> She <input class="gap-input c4u4" data-id="u4c4_1" placeholder="…" style="min-width:170px;"/> as a waitress for five years when he met her. <span class="hint-text">(work)</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> The lecture <input class="gap-input c4u4" data-id="u4c4_2" placeholder="…" style="min-width:120px;"/> by the time they got there. <span class="hint-text">(start)</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> In the supermarket he <input class="gap-input c4u4" data-id="u4c4_3" placeholder="…" style="min-width:100px;"/> all the ingredients he needed and then went home to make her birthday cake. <span class="hint-text">(buy)</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> Holly did very well in her exam, which was a shock because she <input class="gap-input c4u4" data-id="u4c4_4" placeholder="…" style="min-width:150px;"/> an exam before. <span class="hint-text">(take)</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> They went on a big tour of Britain. First they <input class="gap-input c4u4" data-id="u4c4_5a" placeholder="…" style="min-width:90px;"/> in London for a few days. Then they <input class="gap-input c4u4" data-id="u4c4_5b" placeholder="…" style="min-width:90px;"/> Cambridge, York, and Edinburgh, and then Bath. They <input class="gap-input c4u4" data-id="u4c4_5c" placeholder="…" style="min-width:100px;"/> to Bath before, but they <input class="gap-input c4u4" data-id="u4c4_5d" placeholder="…" style="min-width:70px;"/> it so much that they <input class="gap-input c4u4" data-id="u4c4_5e" placeholder="…" style="min-width:90px;"/> to go back again. <span class="hint-text">(stay; visit; be; like; decide)</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> Scientists announced the launch of the new drug last week. They <input class="gap-input c4u4" data-id="u4c4_6" placeholder="…" style="min-width:130px;"/> it for five years. <span class="hint-text">(develop)</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> By the time I got to the meeting they <input class="gap-input c4u4" data-id="u4c4_7a" placeholder="…" style="min-width:170px;"/> the important issues and they <input class="gap-input c4u4" data-id="u4c4_7b" placeholder="…" style="min-width:110px;"/> the big decisions without me. I <input class="gap-input c4u4" data-id="u4c4_7c" placeholder="…" style="min-width:110px;"/> from my mobile to tell them the train was late and I <input class="gap-input c4u4" data-id="u4c4_7d" placeholder="…" style="min-width:70px;"/> annoyed that they <input class="gap-input c4u4" data-id="u4c4_7e" placeholder="…" style="min-width:110px;"/> for me. <span class="hint-text">(discuss; make; phone; feel; wait)</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> I looked terrible when I saw Joe last night because I <input class="gap-input c4u4" data-id="u4c4_8" placeholder="…" style="min-width:140px;"/> for over an hour and I was exhausted. <span class="hint-text">(run)</span></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u4" class="btn-check">Check</button>
+          <button id="btn-show-c4u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Academic Reading</div>
+  <div class="section-body">
+    <div class="test-tip">You should spend about 20 minutes on Questions 1–12 which are based on the Reading Passage below.</div>
+
+    <div class="reading-passage">
+      <h3>The history of the biro</h3>
+      <div class="rp-sub">The story of how the ballpoint pen came to America</div>
+      <div class="rp-body">
+        <div class="rp-para"><span class="para-label">A</span>One chilly autumn morning in 1945, five thousand shoppers crowded the pavements outside Gimbels Department Store in New York City. The day before, Gimbels had taken out a full-page newspaper advertisement in the New York Times, announcing the sale of the first ballpoint pens in the United States. The new writing instrument was heralded as "fantastic... miraculous... guaranteed to write for two years without refilling!" Within six hours, Gimbels had sold its entire stock of ten thousand ballpoints at $12.50 each — approximately $130 at today's prices.</div>
+        <div class="rp-para"><span class="para-label">B</span>In fact this 'new' pen was not new after all, and was just the latest development in a long search for the best way to deliver ink to paper. In 1884 Lewis Waterman had patented the fountain pen, giving him the sole rights to manufacture it. This marked a significant leap forward in writing technology, but fountain pens soon became notorious for leaking. In 1888, a leather tanner named John Loud devised and patented the first "rolling-pointed marker pen" for marking leather. Loud's design contained a reservoir of ink in a cartridge and a rotating ball point that was constantly bathed on one side with ink. Loud's pen was never manufactured, however, and over the next five decades, 350 additional patents were issued for similar ball-type pens, though none advanced beyond the design stage. Each had their own faults, but the major difficulty was the ink: if the ink was thin, the pens leaked, and if it was too thick, they clogged. Depending on the climate or air temperature, sometimes the pens would do both.</div>
+        <div class="rp-para"><span class="para-label">C</span>Almost fifty years later, Ladislas and Georg Biro, two Hungarian brothers, came up with a solution to this problem. In 1935 Ladislas Biro was working as a journalist, editing a small newspaper. He found himself becoming more and more frustrated by the amount of time he wasted filling fountain pens with ink and cleaning up ink smudges. What's more, the sharp tip of his fountain pen often scratched or tore through the thin newsprint paper. Ladislas and Georg (a chemist) set about making models of new pen designs and creating better inks to use in them. Ladislas had observed that the type of ink used in newspaper printing dried rapidly, leaving the paper dry and smudge-free. He was determined to construct a pen using the same type of ink. However, the thicker ink would not flow from a regular pen nib so he had to develop a new type of point. Biro came up with the idea of fitting his pen with a tiny ball bearing in its tip. As the pen moved along the paper, the ball bearing rotated and picked up ink from the ink cartridge which it delivered to the paper.</div>
+        <div class="rp-para"><span class="para-label">D</span>The first Biro pen, like the designs that had gone before it, relied on gravity for the ink to flow to the ball bearing at the tip. This meant that the pens only worked when they were held straight up, and even then the ink flow was sometimes too heavy, leaving big smudges of ink on the paper. The Biro brothers had a rethink and eventually devised a new design, which relied on capillary action rather than gravity to feed the ink. This meant that the ink could flow more smoothly to the tip and the pen could be held at an angle rather than straight up. In 1938, as World War II broke out, the Biro brothers fled to Argentina, where they applied for a patent for their pen and established their first factory.</div>
+        <div class="rp-para"><span class="para-label">E</span>The Biros' pen soon came to the attention of American fighter pilots, who needed a new kind of pen to use at high altitudes. Apparently, it was ideal for pilots as it did not leak like the fountain pen and did not have to be refilled frequently. The United States Department of War contacted several American companies, asking them to manufacture a similar writing instrument in the U.S. Thus fortune smiled on the Biro brothers in May 1945, when the American company 'Eversharp' paid them $500,000 for the exclusive manufacturing and marketing rights of the Biro ballpoint for the North American market. Eversharp were slow to put their pen into production, however, and this delay ultimately cost them their competitive advantage.</div>
+        <div class="rp-para"><span class="para-label">F</span>Meanwhile, in June 1945 an American named Milton Reynolds stumbled upon the Biro pen while on vacation in Buenos Aires. Immediately seeing its commercial potential, he bought several pens and returned to Chicago, where he discovered that Loud's original 1888 patent had long since expired. This meant that the ballpoint was now in the public domain, and he therefore wasted no time making a copy based on the Biro design. Establishing his pen company with just $26,000, Reynolds quickly set up a factory with 300 workers who began production on 6th October 1945, stamping out pens from precious scraps of aluminum that hadn't been used during the war for military equipment or weapons. Just 23 days later, it was Reynolds' ballpoint pen that caused the stampede at Gimbels Department Store. Following the ballpoint's debut in New York City, Eversharp challenged Reynolds in the law courts, but lost the case because the Biro brothers had failed to secure a U.S. patent on their invention.</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–6</span><h3>Questions 1–6 — Choose the most suitable heading for each paragraph</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Read the whole passage and then look at the list of headings. Make sure that the heading you choose reflects the overall message in the paragraph and not just one fact.</div>
+        <p style="margin:10px 0 6px;font-weight:700;color:#4a148c;">List of Headings</p>
+        <div class="example-box">
+          <div><strong>i</strong> &nbsp;Fountain pens are history</div>
+          <div><strong>ii</strong> &nbsp;Fame at last for the Biro brothers</div>
+          <div><strong>iii</strong> &nbsp;A holiday helps bring the biro to America</div>
+          <div><strong>iv</strong> &nbsp;A second design and a new country</div>
+          <div><strong>v</strong> &nbsp;War halts progress</div>
+          <div><strong>vi</strong> &nbsp;Dissatisfaction leads to a new invention</div>
+          <div><strong>vii</strong> &nbsp;Big claims bring big crowds</div>
+          <div><strong>viii</strong> &nbsp;A government request brings a change of ownership</div>
+          <div><strong>ix</strong> &nbsp;Many patents and many problems</div>
+        </div>
+        <p style="margin:6px 0 6px;">Write the correct number <strong>i–ix</strong> in the space provided.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span> Paragraph A <input class="corr-input d1u4" data-id="u4d1_1" placeholder="i–ix" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span> Paragraph B <input class="corr-input d1u4" data-id="u4d1_2" placeholder="i–ix" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span> Paragraph C <input class="corr-input d1u4" data-id="u4d1_3" placeholder="i–ix" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span> Paragraph D <input class="corr-input d1u4" data-id="u4d1_4" placeholder="i–ix" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span> Paragraph E <input class="corr-input d1u4" data-id="u4d1_5" placeholder="i–ix" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span> Paragraph F <input class="corr-input d1u4" data-id="u4d1_6" placeholder="i–ix" style="width:70px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u4" class="btn-check">Check</button>
+          <button id="btn-show-d1u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q7–9</span><h3>Questions 7–9 — Choose the correct answer, A, B, C or D</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Read all the questions and options and underline or highlight any important information or key words that you need to find in the passage. Use the questions to locate the relevant part of the passage.</div>
+        <div class="mc-item">
+          <div class="mc-question">7 &nbsp; The problem with the ballpoint pens invented between 1888 and 1935 was that</div>
+          <div class="mc-options d2u4-mc" data-id="u4dq7" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> they cost a great deal of money to manufacture.</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> the technology to manufacture them did not exist.</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> they could not write on ordinary paper.</div>
+            <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> they were affected by weather conditions.</div>
+          </div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">8 &nbsp; The design of the Biro brothers' first pen</div>
+          <div class="mc-options d2u4-mc" data-id="u4dq8" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> was similar to previous pens.</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> was based on capillary action.</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> worked with heavy or light inks.</div>
+            <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> worked when slanted slightly.</div>
+          </div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">9 &nbsp; Milton Reynolds was able to copy the Biro brothers' design because</div>
+          <div class="mc-options d2u4-mc" data-id="u4dq9" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> the Biro brothers' original patent was out of date.</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> it was legal to copy other designs at the time.</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> they did not have a patent for North America.</div>
+            <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> the Biro brothers gave him permission.</div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-show-d2u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q10–12</span><h3>Questions 10–12 — Short-answer questions</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Scan the text for the information you need. It is important to write only the key words and take note of the word limit (here you are told to write no more than two words and/or a number).</div>
+        <p style="margin:10px 0;font-weight:700;color:#e65100;">Write <u>NO MORE THAN TWO WORDS AND/OR A NUMBER</u> for each answer.</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> What material was the first ballpoint pen designed to write on? <input class="gap-input d3u4" data-id="u4d3_10" placeholder="…" style="min-width:120px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">11</span> Where did the Biro brothers open their first factory? <input class="gap-input d3u4" data-id="u4d3_11" placeholder="…" style="min-width:120px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">12</span> In what year did the first American biro factory begin production? <input class="gap-input d3u4" data-id="u4d3_12" placeholder="…" style="min-width:90px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-d3u4" class="btn-check">Check</button>
+          <button id="btn-show-d3u4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d3u4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at the extracts from the text. Without looking back at the text, fill in the gaps with the correct form of the verbs in brackets.</div>
+    <div class="exercise">
+      <div class="exercise-header" style="background:#880e4f;"><span class="ex-num" style="color:#880e4f;">★</span><h3>Complete the extracts with the correct verb form</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text" style="line-height:2.4;">
+          <strong>Extract 1</strong><br/>
+          The day before, Gimbels <span class="item-num" style="display:inline-flex;vertical-align:middle;">1</span> <input class="gap-input gftu4" data-id="u4gft1a" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(take out)</span> a full-page newspaper advertisement in the New York Times, announcing the sale of the first ballpoint pens in the United States… Within six hours, Gimbels <span class="item-num" style="display:inline-flex;vertical-align:middle;">2</span> <input class="gap-input gftu4" data-id="u4gft1b" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(sell)</span> its entire stock of ten thousand ballpoints at $12.50 each — approximately $130 at today's prices.<br/><br/>
+          <strong>Extract 2</strong><br/>
+          In 1884 Lewis Waterman <span class="item-num" style="display:inline-flex;vertical-align:middle;">3</span> <input class="gap-input gftu4" data-id="u4gft2a" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(patent)</span> the fountain pen, giving him the sole rights to manufacture it. This marked a significant leap forward in writing technology, but fountain pens <span class="item-num" style="display:inline-flex;vertical-align:middle;">4</span> <input class="gap-input gftu4" data-id="u4gft2b" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(soon/become)</span> notorious for leaking.<br/><br/>
+          <strong>Extract 3</strong><br/>
+          Ladislas <span class="item-num" style="display:inline-flex;vertical-align:middle;">5</span> <input class="gap-input gftu4" data-id="u4gft3" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(observe)</span> (that the type of ink used in newspaper printing dried) rapidly, leaving the paper dry and smudge-free.<br/><br/>
+          <strong>Extract 4</strong><br/>
+          Immediately seeing its commercial potential, he <span class="item-num" style="display:inline-flex;vertical-align:middle;">6</span> <input class="gap-input gftu4" data-id="u4gft4a" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(buy)</span> several pens and <span class="item-num" style="display:inline-flex;vertical-align:middle;">7</span> <input class="gap-input gftu4" data-id="u4gft4b" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(return)</span> to Chicago, where he <span class="item-num" style="display:inline-flex;vertical-align:middle;">8</span> <input class="gap-input gftu4" data-id="u4gft4c" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(discover)</span> that Loud's original 1888 patent <span class="item-num" style="display:inline-flex;vertical-align:middle;">9</span> <input class="gap-input gftu4" data-id="u4gft4d" placeholder="…" style="min-width:150px;"/> <span class="hint-text">(long since/expire)</span>.<br/><br/>
+          <strong>Extract 5</strong><br/>
+          Following the ballpoint's debut in New York City, Eversharp <span class="item-num" style="display:inline-flex;vertical-align:middle;">10</span> <input class="gap-input gftu4" data-id="u4gft5a" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(challenge)</span> Reynolds in the law courts, but <span class="item-num" style="display:inline-flex;vertical-align:middle;">11</span> <input class="gap-input gftu4" data-id="u4gft5b" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(lose)</span> the case because the Biro brothers <span class="item-num" style="display:inline-flex;vertical-align:middle;">12</span> <input class="gap-input gftu4" data-id="u4gft5c" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(fail)</span> to secure a U.S. patent on their invention.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-gftu4" class="btn-check">Check</button>
+          <button id="btn-show-gftu4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-gftu4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 4: Past Tenses 2</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('06','audio-06');
+
+  // A1 vocab matching
+  initGapFill({ inputSelector:'.a1u4', checkId:'btn-check-a1u4', showId:'btn-show-a1u4', resetId:'btn-reset-a1u4',
+    answers:{ u4a1_1:['d'], u4a1_2:['a'], u4a1_3:['f'], u4a1_4:['c'], u4a1_5:['h'], u4a1_6:['b'], u4a1_7:['g'], u4a1_8:['j'], u4a1_9:['e'], u4a1_10:['i'] }});
+
+  // A2 notes
+  initGapFill({ inputSelector:'.a2u4-inp', checkId:'btn-check-a2u4', showId:'btn-show-a2u4', resetId:'btn-reset-a2u4',
+    answers:{ u4a2_1:['january 27, 1756','27 january 1756','january 27th, 1756','january 27th 1756','27th january 1756'],
+              u4a2_2:['one','1'], u4a2_3:['a composer','composer'], u4a2_4:['five','5'], u4a2_5:['the violin','violin'] }});
+
+  // A3 listen gap fill
+  initGapFill({ inputSelector:'.a3u4', checkId:'btn-check-a3u4', showId:'btn-show-a3u4', resetId:'btn-reset-a3u4',
+    answers:{ u4a3_1a:['was born'], u4a3_1b:['had already died'],
+              u4a3_2a:['was'], u4a3_2b:['had also been'],
+              u4a3_3a:['mastered'], u4a3_3b:['had copied'],
+              u4a3_4a:['was'], u4a3_4b:['had written'],
+              u4a3_5a:['hurried'], u4a3_5b:['spread'],
+              u4a3_6a:['were'], u4a3_6b:['had ever been'] }});
+
+  // A4 analyse
+  initGapFill({ inputSelector:'.a4u4', checkId:'btn-check-a4u4', showId:'btn-show-a4u4', resetId:'btn-reset-a4u4',
+    answers:{ u4a4_1:['past simple'], u4a4_2:['past perfect','past perfect simple'] }});
+
+  // C1 red-back spider
+  initGapFill({ inputSelector:'.c1u4', checkId:'btn-check-c1u4', showId:'btn-show-c1u4', resetId:'btn-reset-c1u4',
+    answers:{ u4c1_1:['had found'], u4c1_2:['had entered'], u4c1_3:['had made'],
+              u4c1_4:["hadn't discovered",'had not discovered'], u4c1_5:['had also turned up'], u4c1_6:['had multiplied'] }});
+
+  // C2 population chart
+  initGapFill({ inputSelector:'.c2u4', checkId:'btn-check-c2u4', showId:'btn-show-c2u4', resetId:'btn-reset-c2u4',
+    answers:{ u4c2_1:['was'], u4c2_2:['had doubled'], u4c2_3:['remained'], u4c2_4:['began'], u4c2_5:['had tripled'],
+              u4c2_6:['was'], u4c2_7:['increased'], u4c2_8:['had reached'], u4c2_9:['had peaked'], u4c2_10:['had managed'] }});
+
+  // C3 fire-walking
+  initGapFill({ inputSelector:'.c3u4', checkId:'btn-check-c3u4', showId:'btn-show-c3u4', resetId:'btn-reset-c3u4',
+    answers:{ u4c3_1:['arranged'], u4c3_2:["'d always been",'had always been'], u4c3_3:["'d heard",'had heard'],
+              u4c3_4:['arrived'], u4c3_5:["'d felt",'had felt'], u4c3_6:['came'], u4c3_7:["'d walked",'had walked'],
+              u4c3_8:["'d learnt",'had learnt',"'d learned",'had learned'], u4c3_9:["'d prepared",'had prepared'],
+              u4c3_10:["'d been expecting",'had been expecting',"'d expected",'had expected'], u4c3_11:['took off'],
+              u4c3_12:["didn't feel",'did not feel'], u4c3_13:['approached'], u4c3_14:['had done'],
+              u4c3_15:['stepped'], u4c3_16:["hadn't burnt",'had not burnt',"hadn't burned",'had not burned'],
+              u4c3_17:["'d been hoping",'had been hoping',"'d hoped",'had hoped'], u4c3_18:['managed'], u4c3_19:["'d done",'had done'] }});
+
+  // C4 word box
+  initGapFill({ inputSelector:'.c4u4', checkId:'btn-check-c4u4', showId:'btn-show-c4u4', resetId:'btn-reset-c4u4',
+    answers:{ u4c4_1:["'d been working",'had been working'], u4c4_2:["'d started",'had started'], u4c4_3:['bought'],
+              u4c4_4:["'d never taken",'had never taken'], u4c4_5a:['stayed'], u4c4_5b:['visited'],
+              u4c4_5c:['had been'], u4c4_5d:['liked'], u4c4_5e:['decided'],
+              u4c4_6:["'d developed",'had developed'],
+              u4c4_7a:["'d already discussed",'had already discussed'], u4c4_7b:["'d made",'had made'],
+              u4c4_7c:["'d phoned",'had phoned'], u4c4_7d:['felt'], u4c4_7e:["hadn't waited",'had not waited'],
+              u4c4_8:["'d been running",'had been running'] }});
+
+  // D Q1–6 headings
+  initGapFill({ inputSelector:'.d1u4', checkId:'btn-check-d1u4', showId:'btn-show-d1u4', resetId:'btn-reset-d1u4',
+    answers:{ u4d1_1:['vii'], u4d1_2:['ix'], u4d1_3:['vi'], u4d1_4:['iv'], u4d1_5:['viii'], u4d1_6:['iii'] }});
+
+  // D Q7–9 MC
+  initMCGroups({ groupSelector:'.d2u4-mc', answers:{ u4dq7:'D', u4dq8:'A', u4dq9:'C' }, showId:'btn-show-d2u4', resetId:'btn-reset-d2u4' });
+
+  // D Q10–12 short answers
+  initGapFill({ inputSelector:'.d3u4', checkId:'btn-check-d3u4', showId:'btn-show-d3u4', resetId:'btn-reset-d3u4',
+    answers:{ u4d3_10:['leather'], u4d3_11:['argentina','in argentina'], u4d3_12:['1945','in 1945'] }});
+
+  // GFT
+  initGapFill({ inputSelector:'.gftu4', checkId:'btn-check-gftu4', showId:'btn-show-gftu4', resetId:'btn-reset-gftu4',
+    answers:{ u4gft1a:["'d taken out",'had taken out'], u4gft1b:["'d sold",'had sold'],
+              u4gft2a:["'d patented",'had patented'], u4gft2b:['soon became'],
+              u4gft3:["'d observed",'had observed'],
+              u4gft4a:['bought'], u4gft4b:['returned'], u4gft4c:['discovered'], u4gft4d:["'d long since expired",'had long since expired'],
+              u4gft5a:['challenged'], u4gft5b:['lost'], u4gft5c:["'d failed",'had failed'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

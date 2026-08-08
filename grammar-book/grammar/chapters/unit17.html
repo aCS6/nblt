@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 17 – Likelihood &amp; Conditions 1 | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 17</span>
+    <span class="subtitle">Zero, first and second conditionals; other ways to introduce a condition</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text">
+          <p><strong>Simon Brown</strong> has just inherited <strong>$10,000</strong> from his grandfather and is talking to his father about what to do with it. Look at the pictures and think about what you would do with the money.</p>
+        </div>
+        <div class="word-box">
+          <span class="word-chip">buy a car</span><span class="word-chip">invest in shares</span><span class="word-chip">go travelling</span><span class="word-chip">save it in the bank</span><span class="word-chip">buy a house</span><span class="word-chip">give it away</span>
+        </div>
+        <div class="example-box">
+          <div>What would you do with the money? <input class="gap-input a1u17" data-id="u17a1_1" placeholder="your idea" style="min-width:280px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a1u17" class="btn-check">Check</button>
+          <button id="btn-show-a1u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a1u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen — Track 24</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">24</div>
+          <div class="track-info"><h4>Track 24 — inherited money</h4><p>Context listening — Simon and his father talk about what to do with the money</p></div>
+          <div id="audio-24"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Listen to the recording. Which of the things in the pictures do Simon and his father talk about? Do you agree with Simon or his father?</p>
+        <div class="example-box">
+          <div>They talk about <input class="gap-input a2u17" data-id="u17a2_1" placeholder="…" style="min-width:300px;"/> with the money.</div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a2u17" class="btn-check">Check</button>
+          <button id="btn-show-a2u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Match the two halves of the sentences from the recording</h3></div>
+      <div class="exercise-body">
+        <p>Match the first and second halves of these sentences from the recording. Write the correct letter (a–h) in each space, then listen again and check.</p>
+        <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:start;">
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <div class="correction-row"><span class="c-num">1</span><span class="stem" style="flex:1;">Unless you invest it properly, …</span><input class="corr-input a3u17" data-id="u17a3_1" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">2</span><span class="stem" style="flex:1;">If I invest it, …</span><input class="corr-input a3u17" data-id="u17a3_2" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">3</span><span class="stem" style="flex:1;">If I went travelling, …</span><input class="corr-input a3u17" data-id="u17a3_3" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">4</span><span class="stem" style="flex:1;">If you were to spend a year travelling around the world, …</span><input class="corr-input a3u17" data-id="u17a3_4" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">5</span><span class="stem" style="flex:1;">If you own a car, …</span><input class="corr-input a3u17" data-id="u17a3_5" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">6</span><span class="stem" style="flex:1;">It would be great …</span><input class="corr-input a3u17" data-id="u17a3_6" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">7</span><span class="stem" style="flex:1;">You won't lose any money …</span><input class="corr-input a3u17" data-id="u17a3_7" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">8</span><span class="stem" style="flex:1;">As long as you get a second-hand one, …</span><input class="corr-input a3u17" data-id="u17a3_8" placeholder="a–h" style="width:64px;"/></div>
+          </div>
+          <div>
+            <div style="font-weight:700;margin-bottom:6px;color:#6a1b9a;">Endings</div>
+            <div style="display:flex;flex-direction:column;gap:5px;font-size:.88rem;">
+              <div><strong>a.</strong> you'd probably need an awful lot more money than this!</div>
+              <div><strong>b.</strong> if I could drive to work instead of travelling on the bus.</div>
+              <div><strong>c.</strong> you won't earn much interest.</div>
+              <div><strong>d.</strong> provided that you think of it as a long-term investment.</div>
+              <div><strong>e.</strong> you should still be able to invest some money as well.</div>
+              <div><strong>f.</strong> I'd lose a year of study.</div>
+              <div><strong>g.</strong> you also have to pay for insurance and road tax every year.</div>
+              <div><strong>h.</strong> I won't be able to access the money quickly.</div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u17" class="btn-check">Check</button>
+          <button id="btn-show-a3u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Look at the sentences in Exercise 3</h3></div>
+      <div class="exercise-body">
+        <div class="correction-row" style="align-items:flex-start;"><span class="c-num">1</span><span class="stem" style="flex:1;">Which words or phrases have a <strong>similar meaning to <em>if</em></strong>?</span><input class="corr-input a4u17" data-id="u17a4_1" placeholder="…" style="width:200px;"/></div>
+        <div class="correction-row" style="align-items:flex-start;"><span class="c-num">2</span><span class="stem" style="flex:1;">Do any of the sentences talk about <strong>events in the past</strong>?</span><input class="corr-input a4u17" data-id="u17a4_2" placeholder="…" style="width:200px;"/></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u17" class="btn-check">Check</button>
+          <button id="btn-show-a4u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <p>Conditional sentences talk about a <strong>condition</strong> (usually introduced by <em>if</em>) and a possible <strong>result</strong> or consequence. The <em>if</em>-clause can be before or after the result clause. We use a comma between clauses when the <em>if</em>-clause comes first. Either clause can be positive or negative.</p>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B1 — Zero conditional</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr class="pos"><td>if + present tense, + present tense</td><td><em>If you heat water to 100°C, it boils.</em></td></tr>
+        <tr class="pos"><td>present tense + if + present tense</td><td><em>Water boils if you heat it to 100°C.</em></td></tr>
+      </tbody>
+    </table>
+    <ul class="use-list">
+      <li>We use the zero conditional to talk about something that is a <strong>general truth or fact</strong>. <em>If</em> here has a similar meaning to <em>every time</em>: <em>If you own a car, you also have to pay for insurance and road tax every year.</em></li>
+      <li>If it is an event that <strong>was</strong> a fact but is no longer true, we use the past tense in both clauses: <em>When I was a child, if I helped my mother, she gave me extra pocket money.</em></li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — First conditional</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr class="pos"><td>if + present tense, + will/won't (might/could/going to) + verb</td><td><em>If I invest my money, it will grow.</em></td></tr>
+        <tr class="pos"><td>will/won't (might/could/going to) + verb + if + present tense</td><td><em>My money will grow if I invest it.</em></td></tr>
+      </tbody>
+    </table>
+    <ul class="use-list">
+      <li>We use the first conditional to talk about something we feel is a <strong>probable future result</strong>: <em>If you leave your money in the bank, you won't earn any interest and it may lose value over time.</em></li>
+      <li>We can use <em>might, could</em> or <em>may</em> instead of <em>will</em> to suggest something is <strong>less probable</strong>: <em>If I invest it, I might lose it all.</em></li>
+      <li>We can use <em>can</em> to mean <em>sometimes</em>: <em>If you travel at rush hour, the trains can be very crowded.</em> (this sometimes happens)</li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Second conditional</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr class="pos"><td>if + past tense, + would(n't) (might/could) + verb</td><td><em>If I invested my money, it would grow.</em></td></tr>
+        <tr class="pos"><td>would(n't) (might/could) + verb + if + past tense</td><td><em>My money would grow if I invested it.</em></td></tr>
+      </tbody>
+    </table>
+    <ul class="use-list">
+      <li>We use the second conditional to talk about <strong>imaginary, impossible or unlikely</strong> situations in the <strong>present or future</strong>. The past tense does not refer to past time: <em>If I went travelling, I wouldn't have any money left over.</em></li>
+    </ul>
+    <div class="note-box">
+      With the verb <em>be</em> we can use <em>was</em> or <em>were</em> after <em>I/he/she/it</em>: <strong>That's what I would do if I were/was you.</strong><br/>
+      We can use <em>was/were + to-infinitive</em> to refer to unlikely actions in the future: <strong>If you were to spend a year travelling around the world, you'd probably need an awful lot more money than this!</strong>
+    </div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B4 — Other words to introduce a condition</h2>
+    <p>We can use other words such as <em>when, provided that, in case, so/as long as</em> and <em>unless</em> instead of <em>if</em> in zero, first and second conditional sentences.</p>
+
+    <h3 class="grammar-subtitle">when; as soon as</h3>
+    <ul class="use-list">
+      <li>We use <em>when</em> and <em>as soon as</em> instead of <em>if</em> to show that something is <strong>more likely</strong>:
+        <em>I'll give you a lift into town <strong>if</strong> I finish my work in time.</em> (= I'm not sure if I'll be able to give you a lift)<br/>
+        <em>I'll give you a lift into town <strong>when/as soon as</strong> I finish this work.</em> (= I will give you a lift)</li>
+    </ul>
+
+    <h3 class="grammar-subtitle">unless</h3>
+    <ul class="use-list">
+      <li>We use <em>unless</em> to show a <strong>negative condition</strong>, with a similar meaning to <em>if … not</em>: <em>You won't earn much interest <strong>unless</strong> you invest it properly.</em> (= if you don't invest it properly)</li>
+    </ul>
+
+    <h3 class="grammar-subtitle">provided/providing that; so/as long as</h3>
+    <ul class="use-list">
+      <li>These phrases can be used instead of <em>if</em> for <strong>emphasis</strong>. <em>Provided/providing that</em> are more common in written than spoken English: <em>You won't lose any money <strong>provided that</strong> you think of it as a long-term investment.</em> (= if you think); <em><strong>As long as</strong> you get a second-hand car, you should still be able to invest some money.</em> (= if you get)</li>
+    </ul>
+
+    <h3 class="grammar-subtitle">in case</h3>
+    <ul class="use-list">
+      <li>We use <em>in case</em> to talk about <strong>precautions</strong>. Compare:
+        <em>You should keep this reference number <strong>in case</strong> there are any problems.</em> (= keep the reference number because there might be problems later)<br/>
+        <em>You should quote this reference number <strong>if</strong> there are any problems.</em> (= quote this reference number at the time of any problems)</li>
+    </ul>
+    <div class="warning-box">⚠ We don't usually start a sentence with <em>in case</em>.</div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Match the two halves of the sentences</h3></div>
+      <div class="exercise-body">
+        <p>Match the sentences. <strong>Example:</strong> <em>1 <strong>If I win the competition,</strong> … <strong>c</strong> I'll take you somewhere nice to celebrate.</em></p>
+        <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:start;">
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <div class="correction-row"><span class="c-num">1</span><span class="stem" style="flex:1;">If I win the competition, … <em>(example)</em></span><span style="font-weight:700;color:#388e3c;">c</span></div>
+            <div class="correction-row"><span class="c-num">2</span><span class="stem" style="flex:1;">If you boil milk, …</span><input class="corr-input c1u17" data-id="u17c1_2" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">3</span><span class="stem" style="flex:1;">What will you do …</span><input class="corr-input c1u17" data-id="u17c1_3" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">4</span><span class="stem" style="flex:1;">What happens to the engine …</span><input class="corr-input c1u17" data-id="u17c1_4" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">5</span><span class="stem" style="flex:1;">If I get all my work done in time, …</span><input class="corr-input c1u17" data-id="u17c1_5" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">6</span><span class="stem" style="flex:1;">I might buy a new laptop computer …</span><input class="corr-input c1u17" data-id="u17c1_6" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">7</span><span class="stem" style="flex:1;">If you agree to enrol in the diploma course, …</span><input class="corr-input c1u17" data-id="u17c1_7" placeholder="a–h" style="width:64px;"/></div>
+            <div class="correction-row"><span class="c-num">8</span><span class="stem" style="flex:1;">If you put the sofa there, …</span><input class="corr-input c1u17" data-id="u17c1_8" placeholder="a–h" style="width:64px;"/></div>
+          </div>
+          <div>
+            <div style="font-weight:700;margin-bottom:6px;color:#6a1b9a;">Endings</div>
+            <div style="display:flex;flex-direction:column;gap:5px;font-size:.88rem;">
+              <div><strong>a.</strong> we'll give you the job.</div>
+              <div><strong>b.</strong> if you don't get accepted at Macquarie University?</div>
+              <div><strong>c.</strong> I'll take you somewhere nice to celebrate.</div>
+              <div><strong>d.</strong> if you put diesel fuel into a petrol-driven car?</div>
+              <div><strong>e.</strong> it forms a skin on the top.</div>
+              <div><strong>f.</strong> I'll be home by six o'clock tonight.</div>
+              <div><strong>g.</strong> you won't be able to open the cupboard.</div>
+              <div><strong>h.</strong> if my boss allows me to work from home sometimes.</div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u17" class="btn-check">Check</button>
+          <button id="btn-show-c1u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Fill in the gaps with the verbs in brackets in the correct form</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text" style="line-height:2.4;">
+          <p><strong>1</strong> My parents <em>would love (example)</em> it if I <input class="gap-input c2u17" data-id="u17c2_2" placeholder="verb" style="min-width:110px;"/> (become) a doctor, but I'm not sure I'd be able to face all those years of study. Also if I <input class="gap-input c2u17" data-id="u17c2_3" placeholder="verb" style="min-width:110px;"/> (be) a doctor, I <input class="gap-input c2u17" data-id="u17c2_4" placeholder="verb" style="min-width:110px;"/> (hate) all those hours you have to work.</p>
+          <p><strong>2</strong> These days I use the Internet more and more to do my shopping. If I <input class="gap-input c2u17" data-id="u17c2_5" placeholder="verb" style="min-width:120px;"/> (not/have) my computer, I <input class="gap-input c2u17" data-id="u17c2_6" placeholder="verb" style="min-width:120px;"/> (not/know) what to do. If you <input class="gap-input c2u17" data-id="u17c2_7" placeholder="verb" style="min-width:120px;"/> (not/find) what you want in the shops, you <input class="gap-input c2u17" data-id="u17c2_8" placeholder="verb" style="min-width:120px;"/> (find) it on the Internet. I'm going to Barcelona in a few weeks and I'm going to buy my ticket on the Internet because it <input class="gap-input c2u17" data-id="u17c2_9" placeholder="verb" style="min-width:120px;"/> (save) me about £50 if I <input class="gap-input c2u17" data-id="u17c2_10" placeholder="verb" style="min-width:120px;"/> (do) it that way.</p>
+          <p><strong>3</strong> This production of Shakespeare's play <input class="gap-input c2u17" data-id="u17c2_11" placeholder="verb" style="min-width:120px;"/> (surprise) you, unless you <input class="gap-input c2u17" data-id="u17c2_12" placeholder="verb" style="min-width:120px;"/> (be used to) seeing all the characters being played by just two people!</p>
+          <p><strong>4</strong> Eggs are best kept at a cool room temperature, so I don't keep my eggs in the fridge. If I <input class="gap-input c2u17" data-id="u17c2_13" placeholder="verb" style="min-width:120px;"/> (keep) them in the fridge I <input class="gap-input c2u17" data-id="u17c2_14" placeholder="verb" style="min-width:120px;"/> (take) them out half an hour before cooking. However, not everyone has somewhere cool to store them in your home, you <input class="gap-input c2u17" data-id="u17c2_15" placeholder="verb" style="min-width:120px;"/> (have to) use the fridge, but just remember to take them out in time.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u17" class="btn-check">Check</button>
+          <button id="btn-show-c2u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Decide if the underlined verbs are correct or not</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Tick (✓) the underlined verbs if they are right, or write the correct form if they are wrong.</div>
+        <div class="passage-text">
+          <p><strong>Q: Is it better to have one special friend or lots of good ones?</strong></p>
+          <p><strong>A:</strong> I think that if you have lots of friends, you <strong>1</strong> <input class="corr-input c3u17" data-id="u17c3_1" placeholder="✓ or correction" style="width:150px;"/> (will be lucky). However, I feel that everyone should have someone special. If you <strong>2</strong> <input class="corr-input c3u17" data-id="u17c3_2" placeholder="✓ or correction" style="width:130px;"/> (won't have) a special friend, you won't have someone to talk to at difficult times in your life.</p>
+          <p><strong>Q: When do people make most friends?</strong></p>
+          <p><strong>A:</strong> Well, everyone makes friends when they are at school. If you <strong>3</strong> <input class="corr-input c3u17" data-id="u17c3_3" placeholder="✓ or correction" style="width:90px;"/> (are) in an environment where everyone is your own age, you <strong>4</strong> <input class="corr-input c3u17" data-id="u17c3_4" placeholder="✓ or correction" style="width:150px;"/> (would probably make) friends.</p>
+          <p><strong>Q: Do you think that friends need to be similar ages?</strong></p>
+          <p><strong>A:</strong> Well, generally friends from school are similar ages. But when you <strong>5</strong> <input class="corr-input c3u17" data-id="u17c3_5" placeholder="✓ or correction" style="width:120px;"/> (started work), for example, you meet people of different ages. If you get on well with someone and you <strong>6</strong> <input class="corr-input c3u17" data-id="u17c3_6" placeholder="✓ or correction" style="width:110px;"/> (will have) a lot in common, then age <strong>7</strong> <input class="corr-input c3u17" data-id="u17c3_7" placeholder="✓ or correction" style="width:110px;"/> (won't be) important.</p>
+          <p><strong>Q: Do people need to have things in common to be friends?</strong></p>
+          <p><strong>A:</strong> Well, yes. If you <strong>8</strong> <input class="corr-input c3u17" data-id="u17c3_8" placeholder="✓ or correction" style="width:90px;"/> (like) the same things, you will probably get on well. But having said that, I have a very good friend who is completely different from me. She loves sport and I hate it. If you asked me why we were friends, I <strong>9</strong> <input class="corr-input c3u17" data-id="u17c3_9" placeholder="✓ or correction" style="width:150px;"/> (am not able) to say! Maybe it's just chance — if you are in a certain place at a certain time you <strong>10</strong> <input class="corr-input c3u17" data-id="u17c3_10" placeholder="✓ or correction" style="width:110px;"/> (become) friends, but if you <strong>11</strong> <input class="corr-input c3u17" data-id="u17c3_11" placeholder="✓ or correction" style="width:110px;"/> (will meet) the same person at a different time in a different place it <strong>12</strong> <input class="corr-input c3u17" data-id="u17c3_12" placeholder="✓ or correction" style="width:150px;"/> (didn't happen).</p>
+          <p><strong>Q: What different roles do friends play in people's lives?</strong></p>
+          <p><strong>A:</strong> Well, your friends are the people you choose to be with. And if you <strong>13</strong> <input class="corr-input c3u17" data-id="u17c3_13" placeholder="✓ or correction" style="width:110px;"/> (will need) help, you often turn to your friends. It works the other way too. When your friends need you, you <strong>14</strong> <input class="corr-input c3u17" data-id="u17c3_14" placeholder="✓ or correction" style="width:110px;"/> (will help) them.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u17" class="btn-check">Check</button>
+          <button id="btn-show-c3u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Underline the correct words</h3></div>
+      <div class="exercise-body">
+        <p>Choose the correct word in each sentence.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> I'll put my umbrella in my bag <input class="gap-input c4u17" data-id="u17c4_1" placeholder="word" style="min-width:100px;"/> it rains later. <span class="muted-label">(in case / provided that)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> <input class="gap-input c4u17" data-id="u17c4_2" placeholder="word" style="min-width:110px;"/> you pay me in advance, I'll buy the tickets for you. <span class="muted-label">(unless / as long as)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> I'm going to get fat <input class="gap-input c4u17" data-id="u17c4_3" placeholder="word" style="min-width:90px;"/> I stop eating so much chocolate. <span class="muted-label">(if / unless)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> You must follow the instructions accurately <input class="gap-input c4u17" data-id="u17c4_4" placeholder="word" style="min-width:90px;"/> you want to risk damaging the machine. <span class="muted-label">(in case / unless)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> When I travel on planes I always put my toothbrush in my hand luggage <input class="gap-input c4u17" data-id="u17c4_5" placeholder="word" style="min-width:90px;"/> my suitcase gets lost. <span class="muted-label">(in case / if)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> Ice skating is fun <input class="gap-input c4u17" data-id="u17c4_6" placeholder="word" style="min-width:110px;"/> you are willing to fall over a lot! <span class="muted-label">(as long as / when)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> Dear Mr Brown, I am writing to inform you that your library books are overdue. <input class="gap-input c4u17" data-id="u17c4_7" placeholder="word" style="min-width:120px;"/> you return them immediately, you will not be fined. <span class="muted-label">(provided that / when)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> I've just signed the contract for the job in Indonesia, starting in April. <input class="gap-input c4u17" data-id="u17c4_8" placeholder="word" style="min-width:90px;"/> I move there, I'll have to sell my car. <span class="muted-label">(when / if)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> I wouldn't stay out in the sun too long <input class="gap-input c4u17" data-id="u17c4_9" placeholder="word" style="min-width:90px;"/> I were you. <span class="muted-label">(as long as / if)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> I don't really like going to parties <input class="gap-input c4u17" data-id="u17c4_10" placeholder="word" style="min-width:90px;"/> I know most people there. <span class="muted-label">(unless / as long as)</span></div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u17" class="btn-check">Check</button>
+          <button id="btn-show-c4u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Academic Reading</div>
+  <div class="section-body">
+    <div class="test-tip">You should spend about 20 minutes on Questions 1–13, which are based on the Reading Passage below.</div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Passage</span><h3>Endangered chocolate</h3></div>
+      <div class="exercise-body">
+        <div class="reading-passage">
+          <p class="rp-para"><strong>A</strong> The cacao tree, once native to the equatorial American forest, has some exotic traits for a plant. Slender and shrubby, the cacao has adapted to life close to the leaf-littered forest floor. Its large leaves droop down, away from the sun. Cacao doesn't flower, as most plants do, at the tips of its outer and uppermost branches. Instead, its sweet white buds hang from the trunk and along a few fat branches which form where leaves drop off. These tiny flowers transform into pulp-filled pods almost the size of rugby balls. The low-hanging pods contain the bitter-tasting, magical seeds.</p>
+          <p class="rp-para"><strong>B</strong> Somehow, more than 2,000 years ago, ancient humans in Mesoamerica discovered the secret of these beans. If you scoop them from the pod with their pulp, let them ferment and dry in the sun, then roast them over a gentle fire, something extraordinary happens: they become chocolatey. And if you then grind and press the beans, which are half cocoa butter or more, you will obtain a rich, crumbly, chestnut brown paste — chocolate at its most pure and simple.</p>
+          <p class="rp-para"><strong>C</strong> The Maya and Aztecs revered this chocolate, which they frothed up with water and spices to make bracing concoctions. It was edible treasure, offered up to their gods, used as money and hoarded like gold. Long after Spanish explorers introduced the beverage to Europe in the sixteenth century, chocolate retained an aura of aristocratic luxury. In 1753, the Swedish botanist Carolus Linnaeus gave the cacao tree's genus the name <em>Theobroma</em>, which means 'food of the gods'.</p>
+          <p class="rp-para"><strong>D</strong> In the last 200 years the bean has been thoroughly democratized — transformed from an elite drink into ubiquitous candy bars, cocoa powders and confections. Today chocolate is becoming more popular worldwide, with new markets opening up in Eastern Europe and Asia. This is both good news and bad because, although farmers are producing record numbers of cacao beans, this is not enough, some researchers worry, to keep pace with global demand. Cacao is also facing some alarming problems.</p>
+          <p class="rp-para"><strong>E</strong> Philippe Petithuguenin, head of the cacao program at the Centre for International Cooperation in Development-Oriented Agricultural Research (CIRAD) in France, recently addressed a seminar in the Dominican Republic. He displayed a map of the world revealing a narrow band within 18° north and south of the equator, where cacao grows. In the four centuries since the Spanish first happened upon cacao, it has been planted all around this hot humid tropical belt — from South America and the Caribbean to West Africa, east Asia, and New Guinea and Vanuatu in the Pacific.</p>
+          <p class="rp-para"><strong>F</strong> Today 70% of all chocolate beans come from West Africa and Central Africa. In many parts, growers practise so-called pioneer farming. They strip patches of forest of all but the tallest canopy trees and then they put in cacao, using temporary plantings of banana to shade the cacao while it's young. With luck, groves like this may produce annual yields of 50 to 60 pods per tree for 25 to 30 years. But eventually pests, pathogens and soil exhaustion take their toll and yields diminish. Then the growers move on and clear a new forest patch — unless farmers of other crops get there first. 'You cannot keep cutting tropical forest, because the forest itself is endangered', said Petithuguenin. 'World demand for chocolate increases by 3% a year on average. With a lack of land for new plantings in tropical forests, how do you meet that?'</p>
+          <p class="rp-para"><strong>G</strong> Many farmers have a more imminent worry: outrunning disease. Cacao, especially when grown in plantations, is at the mercy of many afflictions, mostly rotting diseases caused by various species of fungi, which cover the pods in fungus or kill the trees. These fungi and other diseases spoil more than a quarter of the world's yearly harvest and can devastate entire cacao-growing regions.</p>
+          <p class="rp-para"><strong>H</strong> One such disease, witches broom, devastated the cacao plantations in the Bahia region of Brazil. Brazil was the third largest producer of cacao beans but in the 1980s the yields fell by 75%. According to Petithuguenin, 'if a truly devastating disease like witches broom reached West Africa (the world's largest producer), it could be catastrophic.' If another producer had the misfortune to falter now, the ripples would be felt the world over. In the United States, for example, imported cacao is the linchpin of an $8.6 billion domestic chocolate industry that in turn supports the nation's dairy and nut industries; 20% of all dairy products in the US go into confectionery.</p>
+          <p class="rp-para"><strong>I</strong> Today research is being carried out to try to address this problem by establishing disease-resistant plants. However, even the best plants are useless if there isn't anywhere to grow them. Typically, farmers who grow cacao get a pittance for their beans compared with the profits reaped by the rest of the chocolate business. Most are at the mercy of local middlemen who buy the beans then sell them for a much higher price to the chocolate manufacturers. If the situation is to improve for farmers, these people need to be removed from the process. But the economics of cacao is rapidly changing because of the diminishing supply of beans. Some companies have realised that they need to work more closely with the farmers to ensure that sustainable farming practices are used. They need to replant areas and create a buffer for the forest, to have ground cover, shrubs and small trees as well as the canopy trees. Then the soil will be more robust and more productive. They also need to empower the farmers by guaranteeing them a higher price for their beans so that they will be encouraged to grow cacao and can maintain their way of life.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–3</span><h3>Questions 1–3 — Multiple choice</h3></div>
+      <div class="exercise-body">
+        <p>Choose the correct letter, <strong>A, B, C or D</strong>.</p>
+        <div class="test-tip">Read all the questions and options and underline or highlight any important information or key words that you need to find in the passage. Use the questions to locate the relevant part of the reading passage. If you cannot find an answer, just move on to the next one and come back to this one later.</div>
+
+        <div class="mc-options d1u17" data-id="u17d1_1" data-answered="0">
+          <div style="font-weight:700;margin-bottom:4px;">1 The flowers of the cacao plant appear</div>
+          <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> at the end of its top branches.</div>
+          <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> along all of its branches.</div>
+          <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> mainly on its trunk.</div>
+          <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> close to its leaves.</div>
+        </div>
+
+        <div class="mc-options d1u17" data-id="u17d1_2" data-answered="0">
+          <div style="font-weight:700;margin-bottom:4px;">2 In Africa, banana trees are planted with the cacao plants in order to</div>
+          <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> replace the largest trees.</div>
+          <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> protect the new plants.</div>
+          <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> provide an extra crop.</div>
+          <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> help improve soil quality.</div>
+        </div>
+
+        <div class="mc-options d1u17" data-id="u17d1_3" data-answered="0">
+          <div style="font-weight:700;margin-bottom:4px;">3 In paragraph H, what is the writer referring to when he says 'the ripples would be felt the world over'?</div>
+          <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> the impact a collapse in chocolate production could have on other industries</div>
+          <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> the possibility of disease spreading to other crops</div>
+          <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> the effects of the economy on world chocolate growers</div>
+          <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> the link between Brazilian growers and African growers</div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-show-d1u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q4–9</span><h3>Questions 4–9 — Locating information</h3></div>
+      <div class="exercise-body">
+        <p>The Reading Passage has nine paragraphs labelled <strong>A–I</strong>. Which paragraph contains the following information? Write the correct letter <strong>A–I</strong> next to Questions 4–9 below.</p>
+        <div class="test-tip">Scan the passage for relevant information, and then check that it matches the question exactly (e.g. for question 4 you need to find a list of countries or places, not just one). Remember that the words in the passage may paraphrase the words in the questions.</div>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">4</span><span>a list of the cacao growing areas</span><input class="corr-input d2u17" data-id="u17d2_4" placeholder="A–I" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>an example of how disease has affected one cacao growing region</span><input class="corr-input d2u17" data-id="u17d2_5" placeholder="A–I" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>details of an ancient chocolate drink</span><input class="corr-input d2u17" data-id="u17d2_6" placeholder="A–I" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span><span>a brief summary of how the chocolate industry has changed in modern times</span><input class="corr-input d2u17" data-id="u17d2_7" placeholder="A–I" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span><span>the typical lifespan and crop size of a cacao plantation</span><input class="corr-input d2u17" data-id="u17d2_8" placeholder="A–I" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">9</span><span>a reference to the scientific identification of the cacao plant</span><input class="corr-input d2u17" data-id="u17d2_9" placeholder="A–I" style="width:70px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d2u17" class="btn-check">Check</button>
+          <button id="btn-show-d2u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q10–13</span><h3>Questions 10–13 — Notes completion</h3></div>
+      <div class="exercise-body">
+        <p>Complete the notes below. Write <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
+        <div class="test-tip">Read through the notes carefully and try to predict what type of information you need to find in the passage (e.g. for question 12 you need to identify a farming method). Pay careful attention to the word limit and make sure you copy the words correctly.</div>
+        <div class="notes-form">
+          <div style="font-weight:700;margin-bottom:8px;">Ways of dealing with the cacao plant's problems</div>
+          <div class="notes-row" style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span class="c-num">10</span><span>Need to find plants which are not affected by <input class="notes-input d3u17" data-id="u17d3_10" placeholder="…" style="min-width:140px;"/></span></div>
+          <div class="notes-row" style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span class="c-num">11</span><span>Chocolate producers need to work directly with farmers instead of <input class="notes-input d3u17" data-id="u17d3_11" placeholder="…" style="min-width:150px;"/></span></div>
+          <div class="notes-row" style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span class="c-num">12</span><span>Need to encourage farmers to use <input class="notes-input d3u17" data-id="u17d3_12" placeholder="…" style="min-width:150px;"/> methods to grow cacao plants</span></div>
+          <div class="notes-row" style="display:flex;align-items:center;gap:8px;"><span class="c-num">13</span><span>Make sure farmers receive some of the <input class="notes-input d3u17" data-id="u17d3_13" placeholder="…" style="min-width:130px;"/> made by the chocolate industry</span></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d3u17" class="btn-check">Check</button>
+          <button id="btn-show-d3u17" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d3u17" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Without looking back at the reading passage, fill in the gaps with the verbs from the box in the <strong>correct tense</strong>.</div>
+    <div class="word-box">
+      <span class="word-chip">become</span><span class="word-chip">dry</span><span class="word-chip">grind</span><span class="word-chip">happen</span><span class="word-chip">let</span><span class="word-chip">obtain</span><span class="word-chip">press</span><span class="word-chip">roast</span><span class="word-chip">scoop</span>
+    </div>
+    <div class="passage-text" style="line-height:2.4;">
+      <p>Somehow, more than 2,000 years ago, ancient humans in Mesoamerica discovered the secret of these beans. If you <input class="gap-input gftu17" data-id="u17gft_1" placeholder="verb" style="min-width:90px;"/> them from the pod with their pulp, <input class="gap-input gftu17" data-id="u17gft_2" placeholder="verb" style="min-width:90px;"/> them ferment and <input class="gap-input gftu17" data-id="u17gft_3" placeholder="verb" style="min-width:90px;"/> in the sun, then <input class="gap-input gftu17" data-id="u17gft_4" placeholder="verb" style="min-width:90px;"/> them over a gentle fire, something extraordinary <input class="gap-input gftu17" data-id="u17gft_5" placeholder="verb" style="min-width:100px;"/>. They <input class="gap-input gftu17" data-id="u17gft_6" placeholder="verb" style="min-width:100px;"/> chocolatey. And if you then <input class="gap-input gftu17" data-id="u17gft_7" placeholder="verb" style="min-width:90px;"/> and <input class="gap-input gftu17" data-id="u17gft_8" placeholder="verb" style="min-width:90px;"/> the beans, which are half cocoa butter or more, you <input class="gap-input gftu17" data-id="u17gft_9" placeholder="verb" style="min-width:110px;"/> a rich, crumbly, chestnut brown paste — chocolate at its most pure and simple.</p>
+    </div>
+    <div class="exercise-actions">
+      <button id="btn-check-gftu17" class="btn-check">Check</button>
+      <button id="btn-show-gftu17" class="btn-show">Show Answers</button>
+      <button id="btn-reset-gftu17" class="btn-reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 17: Likelihood &amp; Conditions 1</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('24','audio-24');
+
+  // A1 pre-listening prediction (open answer)
+  initGapFill({ inputSelector:'.a1u17', checkId:'btn-check-a1u17', showId:'btn-show-a1u17', resetId:'btn-reset-a1u17',
+    answers:{ u17a1_1:['invest it','invest the money','buy a car','go travelling','save it in the bank','buy a house','give it away'] }});
+
+  // A2 which things do they talk about
+  initGapFill({ inputSelector:'.a2u17', checkId:'btn-check-a2u17', showId:'btn-show-a2u17', resetId:'btn-reset-a2u17',
+    answers:{ u17a2_1:['buying a car, travelling and investing the money',
+                       'buying a car, investing the money and travelling',
+                       'a car, travelling and investing the money',
+                       'a car, investing the money and travelling',
+                       'car, travelling and investing',
+                       'buying a car, going travelling and investing'] }});
+
+  // A3 matching letters
+  initGapFill({ inputSelector:'.a3u17', checkId:'btn-check-a3u17', showId:'btn-show-a3u17', resetId:'btn-reset-a3u17',
+    answers:{ u17a3_1:['c'], u17a3_2:['h'], u17a3_3:['f'], u17a3_4:['a'],
+              u17a3_5:['g'], u17a3_6:['b'], u17a3_7:['d'], u17a3_8:['e'] }});
+
+  // A4 words similar to if / past events
+  initGapFill({ inputSelector:'.a4u17', checkId:'btn-check-a4u17', showId:'btn-show-a4u17', resetId:'btn-reset-a4u17',
+    answers:{ u17a4_1:['provided that, unless, as long as','provided that; unless; as long as',
+                       'provided that and unless and as long as','unless, as long as, provided that',
+                       'provided that','unless','as long as'],
+              u17a4_2:['no','no, none of them','none of them','no, none','no, they don\'t'] }});
+
+  // C1 matching letters (1 is the example = c)
+  initGapFill({ inputSelector:'.c1u17', checkId:'btn-check-c1u17', showId:'btn-show-c1u17', resetId:'btn-reset-c1u17',
+    answers:{ u17c1_2:['e'], u17c1_3:['b'], u17c1_4:['d'], u17c1_5:['f'],
+              u17c1_6:['h'], u17c1_7:['a'], u17c1_8:['g'] }});
+
+  // C2 gap fill (verbs in brackets)
+  initGapFill({ inputSelector:'.c2u17', checkId:'btn-check-c2u17', showId:'btn-show-c2u17', resetId:'btn-reset-c2u17',
+    answers:{ u17c2_2:['became'],
+              u17c2_3:['was','were'], u17c2_4:["'d hate",'would hate'],
+              u17c2_5:["didn't have",'did not have'], u17c2_6:["wouldn't know",'would not know'],
+              u17c2_7:["don't find",'do not find',"can't find",'cannot find'],
+              u17c2_8:["'ll find",'will find','find'],
+              u17c2_9:["'ll save",'will save'], u17c2_10:['do'],
+              u17c2_11:['will surprise',"'ll surprise"], u17c2_12:['are used to'],
+              u17c2_13:['kept'], u17c2_14:["'d take",'would take'],
+              u17c2_15:["'ll have to",'will have to'] }});
+
+  // C3 correct / incorrect verbs
+  initGapFill({ inputSelector:'.c3u17', checkId:'btn-check-c3u17', showId:'btn-show-c3u17', resetId:'btn-reset-c3u17',
+    answers:{ u17c3_1:['✓','✔','correct','right','tick','ok','c'],
+              u17c3_2:["don't have",'do not have'],
+              u17c3_3:['✓','✔','correct','right','tick','ok','c'],
+              u17c3_4:['will probably make',"'ll probably make"],
+              u17c3_5:['start'],
+              u17c3_6:['have'],
+              u17c3_7:["isn't",'is not'],
+              u17c3_8:['✓','✔','correct','right','tick','ok','c'],
+              u17c3_9:["wouldn't be able",'would not be able'],
+              u17c3_10:['✓','✔','correct','right','tick','ok','c'],
+              u17c3_11:['met'],
+              u17c3_12:['might not happen','may not happen'],
+              u17c3_13:['need'],
+              u17c3_14:['help'] }});
+
+  // C4 underline the correct words
+  initGapFill({ inputSelector:'.c4u17', checkId:'btn-check-c4u17', showId:'btn-show-c4u17', resetId:'btn-reset-c4u17',
+    answers:{ u17c4_1:['in case'], u17c4_2:['as long as'], u17c4_3:['unless'],
+              u17c4_4:['unless'], u17c4_5:['in case'], u17c4_6:['as long as'],
+              u17c4_7:['provided that'], u17c4_8:['when'],
+              u17c4_9:['if'], u17c4_10:['unless'] }});
+
+  // D Q1-3 multiple choice
+  initMCGroups({ groupSelector:'.d1u17', answers:{ u17d1_1:'C', u17d1_2:'B', u17d1_3:'A' },
+    showId:'btn-show-d1u17', resetId:'btn-reset-d1u17' });
+
+  // D Q4-9 locating information
+  initGapFill({ inputSelector:'.d2u17', checkId:'btn-check-d2u17', showId:'btn-show-d2u17', resetId:'btn-reset-d2u17',
+    answers:{ u17d2_4:['E'], u17d2_5:['H'], u17d2_6:['C'], u17d2_7:['D'],
+              u17d2_8:['F'], u17d2_9:['C'] }});
+
+  // D Q10-13 notes completion
+  initGapFill({ inputSelector:'.d3u17', checkId:'btn-check-d3u17', showId:'btn-show-d3u17', resetId:'btn-reset-d3u17',
+    answers:{ u17d3_10:['disease','diseases'], u17d3_11:['local middlemen','middlemen'],
+              u17d3_12:['sustainable','sustainable farming'], u17d3_13:['profits','profit'] }});
+
+  // GFT verbs from the reading passage
+  initGapFill({ inputSelector:'.gftu17', checkId:'btn-check-gftu17', showId:'btn-show-gftu17', resetId:'btn-reset-gftu17',
+    answers:{ u17gft_1:['scoop'], u17gft_2:['let'], u17gft_3:['dry'],
+              u17gft_4:['roast'], u17gft_5:['happens'], u17gft_6:['become'],
+              u17gft_7:['grind'], u17gft_8:['press'], u17gft_9:['will obtain',"'ll obtain"] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 6 – Future 2 | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 6</span>
+    <span class="subtitle">Future 2 — present simple; <em>be about to</em>; future continuous; future perfect</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening: Janet's conference talk</h3></div>
+      <div class="exercise-body">
+        <p>Janet is a university lecturer. She gets nervous when she gives talks at conferences.</p>
+        <p>Look at the pictures. Which do you think would help Janet feel more confident and relaxed?</p>
+        <img src="../assets/image-contents/u6_a1_pictures.png" alt="Pictures showing possible ways for Janet to feel more confident: rehearsing in front of a mirror, chatting with colleagues, etc." class="diagram"/>
+        <p class="diagram-caption">Look at the pictures — discuss which would help Janet feel confident and relaxed</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Which picture(s) would help Janet feel more confident? <input class="gap-input a1u6-free" style="min-width:280px;" placeholder="Free discussion – answers will vary"/></div></div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and answer the question — Track 09</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">09</div>
+          <div class="track-info"><h4>Track 09 — Janet and Phil's conversation</h4><p>Context listening — conference talks</p></div>
+          <div id="audio-09"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Listen to Janet's conversation with her colleague, Phil. What advice does Phil give her?</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Phil advises Janet to <input class="gap-input a2u6" data-id="u6a2_1" placeholder="…" style="min-width:220px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a2u6" class="btn-check">Check</button>
+          <button id="btn-show-a2u6" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2u6" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and complete the sentences — Track 09</h3></div>
+      <div class="exercise-body">
+        <p>Listen again and complete the sentences below. Write <strong>no more than three words</strong> for each answer.</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Janet <input class="gap-input a3u6" data-id="u6a3_1" placeholder="…" style="min-width:140px;"/> on the report all next week.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> By the end of the year, Janet <input class="gap-input a3u6" data-id="u6a3_2" placeholder="…" style="min-width:140px;"/> the same talk at six conferences.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> When she gets to Rome, Janet <input class="gap-input a3u6" data-id="u6a3_3" placeholder="…" style="min-width:140px;"/> very nervous.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> Before he gives his talk in London, Phil <input class="gap-input a3u6" data-id="u6a3_4" placeholder="…" style="min-width:160px;"/> it at least ten times.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> Janet is in a hurry because the train to the airport <input class="gap-input a3u6" data-id="u6a3_5" placeholder="…" style="min-width:120px;"/> in 20 minutes.</div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u6" class="btn-check">Check</button>
+          <button id="btn-show-a3u6" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u6" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Look at the sentences used in Exercise 3 and answer these questions</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Which sentences talk about events that will be over before a time in the future? <input class="gap-input a4u6" data-id="u6a4_1" placeholder="…" style="min-width:160px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Which sentences talk about events that will be continuing at a time in the future? <input class="gap-input a4u6" data-id="u6a4_2" placeholder="…" style="min-width:160px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> Which sentence talks about a scheduled event? <input class="gap-input a4u6" data-id="u6a4_3" placeholder="…" style="min-width:120px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u6" class="btn-check">Check</button>
+          <button id="btn-show-a4u6" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u6" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <h2 class="grammar-subtitle">B1 — Present Simple</h2>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the present simple with a future meaning:</p>
+    <ul class="use-list">
+      <li><strong>To talk about timetables or schedules:</strong><br/>
+        <em>The conference only <strong>lasts</strong> three days.</em><br/>
+        <em>The train to the airport <strong>leaves</strong> in 20 minutes.</em>
+      </li>
+      <li><strong>After conjunctions such as <em>when</em>, <em>as soon as</em>, <em>after</em>, <em>before</em>, <em>until</em>, <em>as long as</em>:</strong><br/>
+        <em>I'll be feeling really nervous when I <strong>get</strong> to Rome.</em> (not <del>when I will get to Rome</del>)<br/>
+        <em>Can you do it before we <strong>have</strong> the departmental meeting?</em> (not <del>before we will have the meeting</del>)
+      </li>
+      <li>Note that other present tenses are also possible:<br/>
+        <em>I won't be able to relax until I'm actually <strong>giving</strong> my talk.</em>
+      </li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — <em>Be about to</em></h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>am/is/are about to</em> + verb</td><td><em>I'm <strong>about to go</strong> to Rome.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>am/is/are not about to</em> + verb</td><td><em>I'm <strong>not about to go</strong> to Rome.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Am/Is/Are</em> … <em>about to</em> + verb?</td><td><em><strong>Are</strong> you <strong>about to go</strong> to Rome?</em></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use <em>be about to</em> to talk about something likely to happen in the <strong>immediate future</strong>:</p>
+    <ul class="use-list">
+      <li><em>I'm <strong>about to go</strong> to Rome for a conference.</em> (I will be leaving very soon)</li>
+      <li>The negative form suggests the speaker has <strong>no intention</strong> of doing something:<br/>
+        <em>I'm <strong>not about to cancel</strong> my trip.</em> (= I have no intention of cancelling my trip)
+      </li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Future Continuous</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>will be</em> + verb + <em>-ing</em></td><td><em>I'll <strong>be feeling</strong> nervous.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>will not (won't) be</em> + verb + <em>-ing</em></td><td><em>She <strong>won't be feeling</strong> nervous.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Will</em> … <em>be</em> + verb + <em>-ing</em>?</td><td><em><strong>Will</strong> you <strong>be feeling</strong> nervous?</em></td></tr>
+      </tbody>
+    </table>
+    <img src="../assets/image-contents/u6_timeline_future_cont.png" alt="Timeline: I'll be working on the report NOW → NEXT WEEK" class="diagram"/>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the future continuous:</p>
+    <ul class="use-list">
+      <li><strong>To describe or predict events or situations continuing at a particular point in the future, or over a period of time in the future:</strong><br/>
+        <em>I'll <strong>be working</strong> on the report all next week.</em><br/>
+        <em>I'll <strong>be thinking</strong> of you in Rome.</em><br/>
+        <em>By the year 2015 it is estimated that well over one billion people will <strong>be learning</strong> English.</em>
+      </li>
+      <li><strong>To talk about events that are planned or already decided (similar to the present continuous for future arrangements):</strong><br/>
+        <em>I'll <strong>be seeing</strong> Sarah at lunch.</em>
+      </li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B4 — Future Perfect Simple</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>will have</em> + past participle</td><td><em>I'<strong>ll have done</strong> it by then.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>will not (won't) have</em> + past participle</td><td><em>We <strong>won't have done</strong> it by then.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Will</em> … <em>have</em> + past participle?</td><td><em><strong>Will</strong> you <strong>have done</strong> it by then?</em></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the future perfect simple to talk about a future event that will <strong>finish before a specified time</strong> in the future, often with <em>before</em>, <em>by</em> + fixed time, or <em>in</em> + amount of time:</p>
+    <ul class="use-list">
+      <li><em>By the end of the year I <strong>will have given</strong> the same talk at 6 conferences!</em></li>
+      <li><em>I'<strong>ll have finished</strong> it by next Friday.</em></li>
+      <li><em>In a week's time I'<strong>ll have written</strong> the report.</em></li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B5 — Future Perfect Continuous</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>will have been</em> + verb + <em>-ing</em></td><td><em>I'<strong>ll have been studying</strong> here for three months.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>will not (won't) have been</em> + verb + <em>-ing</em></td><td><em>We <strong>won't have been studying</strong> here for long.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Will</em> … <em>have been</em> + verb + <em>-ing</em>?</td><td><em>How long <strong>will</strong> you <strong>have been studying</strong> here?</em></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the future perfect continuous to show how long an activity or situation has been <strong>in progress before a specified time</strong> in the future. We usually mention the length of time:</p>
+    <ul class="use-list">
+      <li><em>By the end of the month I'<strong>ll have been working</strong> here for three years.</em></li>
+    </ul>
+
+    <div class="grammar-extra">
+      <h4>Grammar extra: The future in the past</h4>
+      <p>We use <em>was/were going to</em>, <em>was/were planning to</em>, <em>was/were about to</em> + verb to talk about something planned which did not or will not happen:</p>
+      <p style="margin-top:8px;"><em>I <strong>was going to leave</strong> this morning but they cancelled my flight.</em><br/>
+      <em>We <strong>were about to leave</strong> when the phone rang.</em></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Complete the sentences using the future continuous tense</h3></div>
+      <div class="exercise-body">
+        <p>The following chart shows the results of a class survey about planned activities for Saturday afternoon. Complete the sentences using the future continuous tense.</p>
+        <img src="../assets/image-contents/u6-section-1-diagram.png" alt="Chart: Class plans for Saturday afternoon — do sport, play computer games, read books, watch TV, study, rest, see friends" class="diagram"/>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Twelve students <strong>will be watching TV</strong> on Saturday afternoon. <span class="hint-text">(example)</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> The students <input class="gap-input c1u6" data-id="u6c1_2" placeholder="…" style="min-width:150px;"/> books on Saturday.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> The largest group of students <input class="gap-input c1u6" data-id="u6c1_3" placeholder="…" style="min-width:190px;"/> this Saturday afternoon.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> A similar number of students <input class="gap-input c1u6" data-id="u6c1_4a" placeholder="…" style="min-width:140px;"/> and <input class="gap-input c1u6" data-id="u6c1_4b" placeholder="…" style="min-width:130px;"/> this weekend.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> A very small number of students <input class="gap-input c1u6" data-id="u6c1_5" placeholder="…" style="min-width:130px;"/> this weekend.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> Approximately 15 students <input class="gap-input c1u6" data-id="u6c1_6" placeholder="…" style="min-width:160px;"/> this weekend.</div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u6" class="btn-check">Check</button>
+          <button id="btn-show-c1u6" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u6" class="btn-reset">Reset</button>
+        </div>
+        <p style="margin-top:16px;font-weight:600;">Now write what you will be doing at the following times. Answers will vary.</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> At six o'clock tomorrow I'll <input class="gap-input c1u6-free" style="min-width:300px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> Next Saturday afternoon I won't <input class="gap-input c1u6-free" style="min-width:300px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> On Sunday morning <input class="gap-input c1u6-free" style="min-width:300px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> In a year's time <input class="gap-input c1u6-free" style="min-width:300px;"/></div></div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Future perfect — population projections</h3></div>
+      <div class="exercise-body">
+        <p>Read the following projections about the future population of Australia.</p>
+        <div class="reading-passage">
+          <h3>Population projections</h3>
+          <div class="rp-body">
+            <div class="rp-para">According to the latest available projections (which are based on several combinations of assumptions reflecting past trends in births, deaths and migration), the total population of Australia is likely to have increased to between 22.3 and 23.3 million by 2021.</div>
+            <div class="rp-para">The projected population will increase at a declining rate. The average annual growth rate is predicted to be between 0.5 and 0.8 during 2011–2021. Without overseas migration, the projected total population should peak at about 23.3 million in 2041, and then start to decline marginally.</div>
+            <div class="rp-para"><strong>Age distribution</strong><br/>The projected population will age progressively due to the increasing proportion of the elderly (aged 65 years or more) and the decreasing proportion of children (aged under 15 years). In brief, the number of persons aged under 15 is projected to be between 3.7 and 4.1 million in 2031; the population of working age (15–64 years) is projected to increase to between 14.4 and 15.0 million in 2031; and the number of persons aged 65 years or more is projected to increase to between 2.94 and 2.98 million in 2031. The projections also show significant increases in the number of persons aged 80 years or more.</div>
+          </div>
+        </div>
+        <p style="margin:10px 0;">Write the verbs in brackets in the <strong>future perfect</strong> tense. Then choose the correct ending for each sentence.</p>
+        <div class="word-box">
+          <span class="word-chip">a by the early 2040s</span><span class="word-chip">b to almost 2.98 million</span><span class="word-chip">c a maximum of 23.3 million</span><span class="word-chip">d to between 3.7 and 4.1 million</span><span class="word-chip">e significantly</span><span class="word-chip">f to around 15 million</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>By the year 2021 the population of Australia</span><input class="corr-input c2u6" data-id="u6c2_1" placeholder="verb (reach)" style="width:170px;"/><input class="corr-input c2u6e" data-id="u6c2_1e" placeholder="a–f" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>The population of Australia</span><input class="corr-input c2u6" data-id="u6c2_2" placeholder="verb (peak)" style="width:170px;"/><input class="corr-input c2u6e" data-id="u6c2_2e" placeholder="a–f" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>By the year 2031 the number of children aged under 15</span><input class="corr-input c2u6" data-id="u6c2_3" placeholder="verb (rise)" style="width:170px;"/><input class="corr-input c2u6e" data-id="u6c2_3e" placeholder="a–f" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><span>By 2031 the number of people of working age in Australia</span><input class="corr-input c2u6" data-id="u6c2_4" placeholder="verb (grow)" style="width:170px;"/><input class="corr-input c2u6e" data-id="u6c2_4e" placeholder="a–f" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>By 2031 the number of people aged 65 and over</span><input class="corr-input c2u6" data-id="u6c2_5" placeholder="verb (go up)" style="width:170px;"/><input class="corr-input c2u6e" data-id="u6c2_5e" placeholder="a–f" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>By the year 2031 the number of people aged over 80</span><input class="corr-input c2u6" data-id="u6c2_6" placeholder="verb (increase)" style="width:170px;"/><input class="corr-input c2u6e" data-id="u6c2_6e" placeholder="a–f" style="width:65px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u6" class="btn-check">Check</button>
+          <button id="btn-show-c2u6" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u6" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Underline the mistakes and write the corrections</h3></div>
+      <div class="exercise-body">
+        <p>In six of these sentences there is a verb in the wrong tense. Underline each mistake and write the correction.</p>
+        <div style="display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>When I'll find the answer I'll let you know.</span><input class="corr-input c3u6" data-id="u6c3_1" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>My exams finish on 27th June. <span class="hint-text">✓ correct</span></span></div>
+          <div class="correction-row"><span class="c-num">3</span><span>I'll be fine in the interview as long as they won't ask me technical questions.</span><input class="corr-input c3u6" data-id="u6c3_3" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><span>What time is your meeting about to start tomorrow?</span><input class="corr-input c3u6" data-id="u6c3_4" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>I'll hand in my notice for this job after I'll get the contract for my new one.</span><input class="corr-input c3u6" data-id="u6c3_5" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>I'll text you before we set off. <span class="hint-text">✓ correct</span></span></div>
+          <div class="correction-row"><span class="c-num">7</span><span>The bus doesn't arrive until 7.30 in the evening. <span class="hint-text">✓ correct</span></span></div>
+          <div class="correction-row"><span class="c-num">8</span><span>I've got my schedule for the Japan trip. We're about to fly to Tokyo at 10 am on Monday, and then travel by train to Kyoto for one night.</span><input class="corr-input c3u6" data-id="u6c3_8" placeholder="correction" style="width:170px;"/></div>
+          <div class="correction-row"><span class="c-num">9</span><span>The moment I'll receive my results I'll phone you.</span><input class="corr-input c3u6" data-id="u6c3_9" placeholder="correction" style="width:170px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u6" class="btn-check">Check</button>
+          <button id="btn-show-c3u6" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u6" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Fill in the gaps with a future form from this unit</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with a future form from this unit and the verbs in brackets.</p>
+        <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:16px;font-size:.93rem;line-height:2.1;margin-bottom:14px;">
+          <strong>Teacher:</strong> What <input class="gap-input c4u6" data-id="u6c4_1" placeholder="…" style="min-width:130px;"/> <span class="hint-text">(1 you/do)</span> this time next year?<br/>
+          <strong>Student 1:</strong> Well, that's difficult to say but I hope that I <input class="gap-input c4u6" data-id="u6c4_2" placeholder="…" style="min-width:140px;"/> <span class="hint-text">(2 travel)</span> round the world. Before then I <input class="gap-input c4u6" data-id="u6c4_3" placeholder="…" style="min-width:180px;"/> <span class="hint-text">(3 hopefully/save up)</span> enough money for the ticket. I plan to end up in Australia and when I <input class="gap-input c4u6" data-id="u6c4_4" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(4 get)</span> there I'll get a job and earn some money. So, in a year's time I <input class="gap-input c4u6" data-id="u6c4_5" placeholder="…" style="min-width:200px;"/> <span class="hint-text">(5 probably/travel)</span> for a few months already. I hope that I <input class="gap-input c4u6" data-id="u6c4_6" placeholder="…" style="min-width:130px;"/> <span class="hint-text">(6 visit)</span> quite a lot of different countries by then too.<br/>
+          <strong>Teacher:</strong> What do you plan to do when you graduate?<br/>
+          <strong>Student 2:</strong> Well, my plans have changed a bit. I <input class="gap-input c4u6" data-id="u6c4_7" placeholder="…" style="min-width:150px;"/> <span class="hint-text">(7 do)</span> a journalism course, but I didn't get accepted. So I've sorted something else out and I <input class="gap-input c4u6" data-id="u6c4_8" placeholder="…" style="min-width:160px;"/> <span class="hint-text">(8 start)</span> a hospitality course tomorrow, actually. It's for six months, so I <input class="gap-input c4u6" data-id="u6c4_9" placeholder="…" style="min-width:150px;"/> <span class="hint-text">(9 not/finish)</span> in time to go travelling next spring, unfortunately. However, as soon as I <input class="gap-input c4u6" data-id="u6c4_10" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(10 find out)</span> if I've passed the course, I can apply for a job in a hotel in Australia.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u6" class="btn-check">Check</button>
+          <button id="btn-show-c4u6" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u6" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Academic Writing Task 2</div>
+  <div class="section-body">
+    <div class="test-tip">Make sure that you read all parts of the question carefully and address each point made. Organize your thoughts and ideas well. Do not try to memorize essays. Make sure you have at least 40 minutes to spend on this task and try to leave time to check your spelling at the end.</div>
+
+    <div class="reading-passage">
+      <h3>Writing Task 2</h3>
+      <div class="rp-body">
+        <div class="rp-para">You should spend about 40 minutes on this task.</div>
+        <div class="rp-para"><strong>Write about the following topic:</strong><br/>The birth rate in most developed countries is predicted to begin to fall over the next 50 years. By 2030 it is estimated that over one third of the population in most developed countries will be aged 65 and over.</div>
+        <div class="rp-para"><strong>What effects will these predictions have on developed countries if they prove true? What can be done now to deal with this situation?</strong></div>
+        <div class="rp-para">Give reasons for your answer and include any relevant examples from your own knowledge or experience.</div>
+        <div class="rp-para">You should write at least 250 words.</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">★</span><h3>Write your essay here</h3></div>
+      <div class="exercise-body">
+        <p>Write at least 250 words. Answers will vary.</p>
+        <textarea class="free-area" rows="12" style="width:100%;border:1px solid #ce93d8;border-radius:8px;padding:12px 14px;font-size:.93rem;line-height:1.7;outline:none;box-sizing:border-box;" placeholder="Type your essay here…"></textarea>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at the extract from a model answer below. Fill in the gaps with the verbs in the box in the correct future tense.</div>
+    <div class="exercise">
+      <div class="exercise-header" style="background:#880e4f;"><span class="ex-num" style="color:#880e4f;">★</span><h3>Complete the extract with the correct future tense</h3></div>
+      <div class="exercise-body">
+        <div class="word-box">
+          <span class="word-chip">be</span><span class="word-chip">pay</span><span class="word-chip">rise</span><span class="word-chip">work</span>
+        </div>
+        <div class="passage-text" style="line-height:2.4;">
+          … By 2030 the percentage of the population aged 65 or older <input class="gap-input gftu6" data-id="u6gft_1" placeholder="…" style="min-width:150px;"/> <span class="hint-text">(rise)</span> significantly, to more than 30%. This means that fewer people <input class="gap-input gftu6" data-id="u6gft_2" placeholder="…" style="min-width:140px;"/> <span class="hint-text">(work)</span> and therefore fewer people <input class="gap-input gftu6" data-id="u6gft_3" placeholder="…" style="min-width:140px;"/> <span class="hint-text">(pay)</span> income tax. In the future it may be necessary for governments to increase the official retirement age to 70 or even older. When today's 30-year-olds <input class="gap-input gftu6" data-id="u6gft_4" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(be)</span> in their sixties it is unlikely that they will enjoy the relaxed lifestyle that today's older generation can expect when they give up work.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-gftu6" class="btn-check">Check</button>
+          <button id="btn-show-gftu6" class="btn-show">Show Answers</button>
+          <button id="btn-reset-gftu6" class="btn-reset">Reset</button>
+        </div>
+        <details style="margin-top:16px;">
+          <summary style="cursor:pointer;font-weight:700;color:#880e4f;">View the full model answer</summary>
+          <div class="passage-text" style="margin-top:10px;">
+            … By 2030 the percentage of the population aged 65 or older <strong>will have risen</strong> significantly, to more than 30%. This means that fewer people <strong>will be working</strong>, and therefore fewer people <strong>will be paying</strong> income tax. In the future it may be necessary for governments to increase the official retirement age to 70 or even older. When today's 30-year-olds <strong>are</strong> in their sixties it is unlikely that they will enjoy the relaxed lifestyle that today's older generation can expect when they give up work. Governments will therefore need to make sure that this older generation is healthy and fit enough to continue working.<br/><br/>
+            However, I believe the biggest impact will be on the younger generation. In 2030 the younger generation will need to work much harder to support the large number of older people. If this trend continues then it is possible that our entire culture will change. For example, most marketing companies today try to target the younger generation with their products and advertisements. If the majority of the population is older then this will change and companies will begin to target the older generation instead.<br/><br/>
+            So, what can be done now to prevent these problems? Firstly, I believe that governments of developed countries should find ways to encourage people to have larger families and increase the birth rate. Secondly, I believe that they should encourage migration from developing countries so that the problems of over-crowding can be solved.
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 6: Future 2</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('09','audio-09');
+
+  // A2 Phil's advice
+  initGapFill({ inputSelector:'.a2u6', checkId:'btn-check-a2u6', showId:'btn-show-a2u6', resetId:'btn-reset-a2u6',
+    answers:{ u6a2_1:['practise in front of the mirror','to practise in front of the mirror','practice in front of the mirror','practising in front of the mirror','she should practise in front of the mirror'] }});
+
+  // A3 sentence completion
+  initGapFill({ inputSelector:'.a3u6', checkId:'btn-check-a3u6', showId:'btn-show-a3u6', resetId:'btn-reset-a3u6',
+    answers:{ u6a3_1:['will be working',"i'll be working"], u6a3_2:['will have given',"i'll have given"],
+              u6a3_3:['will be feeling',"i'll be feeling"], u6a3_4:['will have rehearsed',"he'll have rehearsed",'will have rehearsed it'],
+              u6a3_5:['leaves','is leaving','leaves in 20 minutes','will leave'] }});
+
+  // A4 analysis
+  initGapFill({ inputSelector:'.a4u6', checkId:'btn-check-a4u6', showId:'btn-show-a4u6', resetId:'btn-reset-a4u6',
+    answers:{ u6a4_1:['sentences 2 and 4','2 and 4','sentences 2 & 4'], u6a4_2:['sentences 1 and 3','1 and 3','sentences 1 & 3'],
+              u6a4_3:['sentence 5','5'] }});
+
+  // C1 chart future continuous
+  initGapFill({ inputSelector:'.c1u6', checkId:'btn-check-c1u6', showId:'btn-show-c1u6', resetId:'btn-reset-c1u6',
+    answers:{ u6c1_2:["won't be reading",'will not be reading'], u6c1_3:['will be playing computer games'],
+              u6c1_4a:['will be doing sport','will be doing sports','will be doing sport and'], u6c1_4b:['will be studying','studying'],
+              u6c1_5:['will be resting'], u6c1_6:['will be seeing friends'] }});
+
+  // C2 population projections (future perfect + ending)
+  initGapFill({ inputSelector:'.c2u6', checkId:'btn-check-c2u6', showId:'btn-show-c2u6', resetId:'btn-reset-c2u6',
+    answers:{ u6c2_1:['will have reached'], u6c2_2:['will have peaked'], u6c2_3:['will have risen'],
+              u6c2_4:['will have grown'], u6c2_5:['will have gone up'], u6c2_6:['will have increased'] }});
+  initGapFill({ inputSelector:'.c2u6e', checkId:'btn-check-c2u6', showId:'btn-show-c2u6', resetId:'btn-reset-c2u6',
+    answers:{ u6c2_1e:['c'], u6c2_2e:['a'], u6c2_3e:['d'], u6c2_4e:['f'], u6c2_5e:['b'], u6c2_6e:['e'] }});
+
+  // C3 wrong tense corrections
+  initGapFill({ inputSelector:'.c3u6', checkId:'btn-check-c3u6', showId:'btn-show-c3u6', resetId:'btn-reset-c3u6',
+    answers:{ u6c3_1:['when i find','i find','when i find the answer','when i have found'],
+              u6c3_3:["they don't ask",'they do not ask',"as long as they don't ask"],
+              u6c3_4:['does your meeting start','what time does your meeting start'],
+              u6c3_5:['after i get','i get','after i get the contract'],
+              u6c3_8:['we fly',"we're flying",'we are flying','we fly to tokyo',"we're flying to tokyo",'we are flying to tokyo'],
+              u6c3_9:['i receive','the moment i receive','i receive my results'] }});
+
+  // C4 dialogue
+  initGapFill({ inputSelector:'.c4u6', checkId:'btn-check-c4u6', showId:'btn-show-c4u6', resetId:'btn-reset-c4u6',
+    answers:{ u6c4_1:['will you be doing'],
+              u6c4_2:["'ll be travelling",'will be travelling',"'ll be traveling",'will be traveling'],
+              u6c4_3:["'ll hopefully have saved up",'will hopefully have saved up',"'ll have hopefully saved up",'will have hopefully saved up'],
+              u6c4_4:['get'],
+              u6c4_5:["'ll probably have been travelling",'will probably have been travelling',"'ll probably have been traveling",'will probably have been traveling'],
+              u6c4_6:["'ll have visited",'will have visited'],
+              u6c4_7:['was going to do'],
+              u6c4_8:["'ll be starting",'will be starting',"'m about to start",'am about to start'],
+              u6c4_9:["won't have finished",'will not have finished'],
+              u6c4_10:['find out'] }});
+
+  // GFT model answer extract
+  initGapFill({ inputSelector:'.gftu6', checkId:'btn-check-gftu6', showId:'btn-show-gftu6', resetId:'btn-reset-gftu6',
+    answers:{ u6gft_1:['will have risen'], u6gft_2:['will be working',"'ll be working"],
+              u6gft_3:['will be paying',"'ll be paying"], u6gft_4:['are'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

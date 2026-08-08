@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540" font-family="Inter, 'Segoe UI', system-ui, sans-serif">
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="40" y="42" font-size="20" font-weight="800" fill="#1e2540">Wheat exports, 1985–1990 (million tonnes)</text>
+<text x="40" y="64" font-size="13" fill="#4b5373">Australia · Canada · European Community</text>
+<line x1="80" y1="90.0" x2="830" y2="90.0" stroke="#dde3ef" stroke-width="1"/>
+<line x1="80" y1="158.0" x2="830" y2="158.0" stroke="#dde3ef" stroke-width="1"/>
+<line x1="80" y1="226.0" x2="830" y2="226.0" stroke="#dde3ef" stroke-width="1"/>
+<line x1="80" y1="294.0" x2="830" y2="294.0" stroke="#dde3ef" stroke-width="1"/>
+<line x1="80" y1="362.0" x2="830" y2="362.0" stroke="#dde3ef" stroke-width="1"/>
+<line x1="80" y1="430.0" x2="830" y2="430.0" stroke="#dde3ef" stroke-width="1"/>
+<text x="80" y="458" font-size="14" fill="#4b5373" text-anchor="middle" font-weight="600">1985</text>
+<text x="230" y="458" font-size="14" fill="#4b5373" text-anchor="middle" font-weight="600">1986</text>
+<text x="380" y="458" font-size="14" fill="#4b5373" text-anchor="middle" font-weight="600">1987</text>
+<text x="530" y="458" font-size="14" fill="#4b5373" text-anchor="middle" font-weight="600">1988</text>
+<text x="680" y="458" font-size="14" fill="#4b5373" text-anchor="middle" font-weight="600">1989</text>
+<text x="830" y="458" font-size="14" fill="#4b5373" text-anchor="middle" font-weight="600">1990</text>
+<text x="68" y="95" font-size="13" fill="#4b5373" text-anchor="end">0</text>
+<text x="68" y="163" font-size="13" fill="#4b5373" text-anchor="end">5</text>
+<text x="68" y="231" font-size="13" fill="#4b5373" text-anchor="end">10</text>
+<text x="68" y="299" font-size="13" fill="#4b5373" text-anchor="end">15</text>
+<text x="68" y="367" font-size="13" fill="#4b5373" text-anchor="end">20</text>
+<text x="68" y="435" font-size="13" fill="#4b5373" text-anchor="end">25</text>
+<line x1="80" y1="430" x2="830" y2="430" stroke="#dde3ef" stroke-width="2"/>
+<line x1="80" y1="90" x2="80" y2="430" stroke="#dde3ef" stroke-width="2"/>
+<path d="M 80,226.0 L 230,212.4 L 380,246.4 L 530,260.0 L 680,273.6 L 830,287.2" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="80" cy="226.0" r="6" fill="#2563eb" stroke="#fff" stroke-width="2.5"/>
+<circle cx="230" cy="212.4" r="6" fill="#2563eb" stroke="#fff" stroke-width="2.5"/>
+<circle cx="380" cy="246.4" r="6" fill="#2563eb" stroke="#fff" stroke-width="2.5"/>
+<circle cx="530" cy="260.0" r="6" fill="#2563eb" stroke="#fff" stroke-width="2.5"/>
+<circle cx="680" cy="273.6" r="6" fill="#2563eb" stroke="#fff" stroke-width="2.5"/>
+<circle cx="830" cy="287.2" r="6" fill="#2563eb" stroke="#fff" stroke-width="2.5"/>
+<path d="M 80,171.6 L 230,198.8 L 380,130.8 L 530,90.0 L 680,232.8 L 830,164.8" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="80" cy="171.6" r="6" fill="#10b981" stroke="#fff" stroke-width="2.5"/>
+<circle cx="230" cy="198.8" r="6" fill="#10b981" stroke="#fff" stroke-width="2.5"/>
+<circle cx="380" cy="130.8" r="6" fill="#10b981" stroke="#fff" stroke-width="2.5"/>
+<circle cx="530" cy="90.0" r="6" fill="#10b981" stroke="#fff" stroke-width="2.5"/>
+<circle cx="680" cy="232.8" r="6" fill="#10b981" stroke="#fff" stroke-width="2.5"/>
+<circle cx="830" cy="164.8" r="6" fill="#10b981" stroke="#fff" stroke-width="2.5"/>
+<path d="M 80,212.4 L 230,239.6 L 380,226.0 L 530,226.0 L 680,171.6 L 830,144.4" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="80" cy="212.4" r="6" fill="#f59e0b" stroke="#fff" stroke-width="2.5"/>
+<circle cx="230" cy="239.6" r="6" fill="#f59e0b" stroke="#fff" stroke-width="2.5"/>
+<circle cx="380" cy="226.0" r="6" fill="#f59e0b" stroke="#fff" stroke-width="2.5"/>
+<circle cx="530" cy="226.0" r="6" fill="#f59e0b" stroke="#fff" stroke-width="2.5"/>
+<circle cx="680" cy="171.6" r="6" fill="#f59e0b" stroke="#fff" stroke-width="2.5"/>
+<circle cx="830" cy="144.4" r="6" fill="#f59e0b" stroke="#fff" stroke-width="2.5"/>
+<rect x="620" y="119" width="14" height="14" rx="3" fill="#2563eb"/>
+<text x="642" y="130" font-size="13" fill="#1e2540">Australia</text>
+<rect x="620" y="141" width="14" height="14" rx="3" fill="#10b981"/>
+<text x="642" y="152" font-size="13" fill="#1e2540">Canada</text>
+<rect x="620" y="163" width="14" height="14" rx="3" fill="#f59e0b"/>
+<text x="642" y="174" font-size="13" fill="#1e2540">European Community</text>
+<text x="844" y="291" font-size="12" fill="#2563eb" font-weight="700">10.5</text>
+<text x="844" y="159" font-size="12" fill="#10b981" font-weight="700">19.5</text>
+<text x="844" y="138" font-size="12" fill="#f59e0b" font-weight="700">21</text>
+</svg>

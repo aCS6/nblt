@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 16 – Verb + Verb Patterns | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 16</span>
+    <span class="subtitle">Verb + to-infinitive; verb + -ing; verb + infinitive without to; negatives</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear a woman called Freya talking about a course she is doing. What job do you think she wants to do?</p>
+        <div class="example-box">
+          <div>My guess: <input class="gap-input" placeholder="…" style="min-width:260px;"/></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and answer these questions — Track 23</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">23</div>
+          <div class="track-info"><h4>Track 23 — Freya talks about her course</h4><p>Context listening — a talk</p></div>
+          <div id="audio-23"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>What course is she doing?</span><input class="corr-input a2u16" data-id="u16a2_1" placeholder="…" style="width:240px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>What does she enjoy most?</span><input class="corr-input a2u16" data-id="u16a2_2" placeholder="…" style="width:240px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>What fear has she overcome?</span><input class="corr-input a2u16" data-id="u16a2_3" placeholder="…" style="width:240px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a2u16" class="btn-check">Check</button>
+          <button id="btn-show-a2u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2u16" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Complete these sentences from the recording using the verbs in brackets</h3></div>
+      <div class="exercise-body">
+        <p>Listen again and complete these sentences from the recording by using the verbs in brackets in the correct form.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> I decided <input class="gap-input a3u16" data-id="u16a3_1" placeholder="verb form" style="min-width:120px;"/> (do) an animal management course during my last year at school.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> I chose <input class="gap-input a3u16" data-id="u16a3_2" placeholder="verb form" style="min-width:120px;"/> (study) at Fairfield College because it's got a good range of animals.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> The course is only three days a week, so I've already started <input class="gap-input a3u16" data-id="u16a3_3" placeholder="verb form" style="min-width:120px;"/> (work) part-time at a pet shop.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> I prefer <input class="gap-input a3u16" data-id="u16a3_4" placeholder="verb form" style="min-width:120px;"/> (take) time so I can get to know them.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> I don't even mind <input class="gap-input a3u16" data-id="u16a3_5" placeholder="verb form" style="min-width:120px;"/> (clean) them out.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> They've let us <input class="gap-input a3u16" data-id="u16a3_6" placeholder="verb form" style="min-width:120px;"/> (treat) some minor problems, like removing splinters from paws.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> They make us <input class="gap-input a3u16" data-id="u16a3_7" placeholder="verb form" style="min-width:120px;"/> (handle) all kinds of animals, including spiders and snakes.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> I remember <input class="gap-input a3u16" data-id="u16a3_8" placeholder="verb form" style="min-width:120px;"/> (feel) really scared.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> As long as you remember <input class="gap-input a3u16" data-id="u16a3_9" placeholder="verb form" style="min-width:120px;"/> (do) it the way you've been taught, it's fine.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> Before, if I heard him <input class="gap-input a3u16" data-id="u16a3_10" placeholder="verb form" style="min-width:120px;"/> (bark), I just told him <input class="gap-input a3u16" data-id="u16a3_11" placeholder="verb form" style="min-width:120px;"/> (be) quiet.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">11</span> I'd really like <input class="gap-input a3u16" data-id="u16a3_12" placeholder="verb form" style="min-width:120px;"/> (work) in either a zoo or a safari park.</div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u16" class="btn-check">Check</button>
+          <button id="btn-show-a3u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u16" class="btn-reset">Reset</button>
+        </div>
+        <p style="margin:14px 0 8px;">All the verbs you have written follow other verbs. Which verbs are followed by:</p>
+        <table class="form-table">
+          <thead><tr><th>Pattern</th><th>Verbs</th></tr></thead>
+          <tbody>
+            <tr><td class="pos">(object +) to-infinitive</td><td><input class="gap-input a4u16" data-id="u16a4_1" placeholder="…" style="min-width:200px;"/></td></tr>
+            <tr><td class="pos">(object +) -ing</td><td><input class="gap-input a4u16" data-id="u16a4_2" placeholder="…" style="min-width:200px;"/></td></tr>
+            <tr><td class="pos">object + infinitive without to</td><td><input class="gap-input a4u16" data-id="u16a4_3" placeholder="…" style="min-width:200px;"/></td></tr>
+          </tbody>
+        </table>
+        <p>Which verb is followed by two different patterns?</p>
+        <div class="example-box">
+          <div>Answer: <input class="gap-input a4u16" data-id="u16a4_4" placeholder="…" style="min-width:140px;"/></div>
+        </div>
+        <div class="note-box" style="margin-top:12px;">
+          Remember: <em>can</em> — and verbs like <em>remember, forget, stop, try</em> — can be followed by
+          either the to-infinitive or <em>-ing</em>, often with a change of meaning (see B3).
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u16" class="btn-check">Check</button>
+          <button id="btn-show-a4u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u16" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <p>When you use two verbs together, the form of the second verb depends on the first verb. The second verb can be the <strong>to-infinitive</strong>, the <strong>infinitive without to</strong>, or <strong>-ing</strong>.</p>
+
+    <h2 class="grammar-subtitle">B1 — Verb + to-infinitive</h2>
+    <ul class="use-list">
+      <li>Some verbs are followed <strong>directly</strong> by the to-infinitive and do not need an object: <em>agree, aim, appear, arrange, attempt, be able, be likely, claim, decide, deserve, fail, hope, learn, manage, offer, plan, promise, refuse, seem, tend, try</em>: <em>I decided to do an animal management course during my last year at school; Was animal care something you always hoped to do?</em></li>
+      <li>Some verbs can be used <strong>with or without an object + to-infinitive</strong>: <em>ask, choose, dare, expect, help, intend, need, prefer, prepare, want</em>: <em>They wanted us to touch the snakes. / They wanted to touch the snakes.</em></li>
+      <li>Some verbs are <strong>always</strong> followed by an <strong>object + to-infinitive</strong>: <em>advise, allow, encourage, force, get, persuade, remind, teach, tell, warn</em>: <em>I just told him to be quiet.</em> <em>Get</em> is used with an object + to-infinitive when it means 'persuade' or 'make': <em>If you want to get your teachers to notice your work, you should make sure you hand it in on time.</em></li>
+      <li>Note: <em>This course has taught me to respect all animals and overcome my fears.</em> (not <del>This course has taught to respect all animals…</del>)</li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — Verb (+ preposition) + -ing</h2>
+    <ul class="use-list">
+      <li>Some verbs are followed by <strong>-ing</strong>: <em>avoid, approve of, can't help, can't stand, carry on, consider, deny, don't mind, enjoy, feel like, finish, give up, imagine, include, insist on, involve, keep, mention, mind, practise, put off, recommend, resist, suggest, think of/about</em>: <em>We've practised handling animals; I prefer dealing with the customers but I don't mind cleaning out the animals and feeding them.</em></li>
+      <li>When a verb is followed by a <strong>preposition</strong> (except <em>to</em>), then the following verb is <strong>always</strong> -ing: <em>I was thinking about doing another course.</em></li>
+      <li>Many verbs can also be followed by a <em>that</em>-clause, e.g. <em>recommend, suggest, tell</em> (see Unit 15).</li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Verb + to-infinitive or -ing</h2>
+    <ul class="use-list">
+      <li>Some verbs are followed by <strong>either</strong> the to-infinitive or -ing <strong>with little difference in meaning</strong>: <em>attempt, begin, bother, continue, hate, like, love, prefer, start</em>: <em>I've started working at a pet shop.</em> (= I've started to work at a pet shop); <em>I like feeding the animals.</em> (= I like to feed the animals)</li>
+      <li><em>Would like / would love / would prefer</em> are followed by the to-infinitive: <em>I'd really like to work in either a zoo or a safari park; I'd prefer to stop studying for a while.</em></li>
+      <li>Some verbs <strong>mean something different</strong> when they are followed by the to-infinitive or -ing: <em>remember, forget, stop, try, go on, need</em>.
+        <ul class="use-list">
+          <li><strong>remember + to-infinitive</strong>: you remember <em>before</em> you do the action — <em>As long as you remember to do what you've been told, it's fine.</em> (= 1 remember 2 do what you've been told)</li>
+          <li><strong>remember + -ing</strong>: you remember <em>after</em> doing the action — <em>I remember feeling really scared.</em> (= 1 I felt scared 2 I remember it)</li>
+          <li><strong>forget + to-infinitive</strong>: the action did not happen — <em>I forgot to post my application form.</em> (= I didn't post it)</li>
+          <li><strong>forget + -ing</strong>: usually in the negative, to remember a past action — <em>I'll never forget meeting you that cold winter's day.</em></li>
+          <li><strong>stop + to-infinitive</strong>: there are two actions and the first stops so that the second can begin — <em>I stopped to ask the way.</em> (= I stopped and then I asked)</li>
+          <li><strong>stop + -ing</strong>: there is one action which stops — <em>I'm going to stop studying for a while.</em></li>
+          <li><strong>try + to-infinitive</strong>: make an effort to do something; you may not always be successful — <em>I try to find out why he's barking.</em></li>
+          <li><strong>try + -ing</strong>: experiment with doing something — <em>She tried adding a bit more sugar but it still tasted horrible.</em></li>
+          <li><strong>go on + to-infinitive</strong>: one action follows another — <em>After university she went on to get a job as a vet.</em></li>
+          <li><strong>go on + -ing</strong>: an action is repeated or continued — <em>She went on talking even though the film had started.</em></li>
+          <li><strong>need + to-infinitive</strong>: the subject of the sentence will do the action — <em>I need to mend my jeans.</em> (= I will mend them)</li>
+          <li><strong>need + -ing</strong>: there is a passive meaning — <em>My jeans need mending.</em></li>
+        </ul>
+      </li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B4 — Verb + object + infinitive without to</h2>
+    <div class="word-box">
+      <span class="word-chip">feel</span><span class="word-chip">hear</span><span class="word-chip">help</span><span class="word-chip">let</span><span class="word-chip">make</span><span class="word-chip">notice</span><span class="word-chip">see</span><span class="word-chip">watch</span>
+    </div>
+    <ul class="use-list">
+      <li><em>Make</em> and <em>let</em> are always followed by an <strong>object + infinitive without to</strong>: <em>They made us handle all kinds of animals including spiders and snakes; They let us take it slowly.</em></li>
+      <li>When <em>make</em> is used in the passive, we use the to-infinitive: <em>I was made to handle all kinds of animals including spiders and snakes.</em></li>
+      <li>The verbs of perception <em>feel, hear, notice, see, watch</em> are followed by an object + infinitive without to: <em>If I heard him bark, I just told him to be quiet.</em></li>
+      <li><em>Help</em> can be followed by an infinitive with or without <em>to</em>: <em>The course helped me understand my own dog better.</em> (= The course helped me to understand my own dog better)</li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B5 — Negatives</h2>
+    <ul class="use-list">
+      <li>If we want to make the second verb negative, we use <strong>not</strong>: <em>I chose not to study at this college; I enjoy not working late.</em></li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Fill in the gaps with the correct form of the verbs in brackets</h3></div>
+      <div class="exercise-body">
+        <p>A tutor talks to her student, Kumiko, about her assignment. Complete the conversation.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <p><strong>Tutor:</strong> So, have you managed 1 <input class="gap-input c1u16" data-id="u16c1_1" placeholder="verb form" style="min-width:120px;"/> (finish) the assignment, Kumiko?</p>
+          <p><strong>Kumiko:</strong> Well, I've nearly finished but I forgot 2 <input class="gap-input c1u16" data-id="u16c1_2" placeholder="verb form" style="min-width:120px;"/> (add) a bibliography, so I'd like 3 <input class="gap-input c1u16" data-id="u16c1_3" placeholder="verb form" style="min-width:120px;"/> (have) an extension, if that's possible?</p>
+          <p><strong>Tutor:</strong> How long will you need 4 <input class="gap-input c1u16" data-id="u16c1_4" placeholder="verb form" style="min-width:120px;"/> (do) it?</p>
+          <p><strong>Kumiko:</strong> I aim 5 <input class="gap-input c1u16" data-id="u16c1_5" placeholder="verb form" style="min-width:120px;"/> (finish) it today, but maybe two days would be the best thing.</p>
+          <p><strong>Tutor:</strong> Yes, that's fine. Have you begun 6 <input class="gap-input c1u16" data-id="u16c1_6" placeholder="verb form" style="min-width:120px;"/> (work) on your dissertation yet?</p>
+          <p><strong>Kumiko:</strong> Yes, I started 7 <input class="gap-input c1u16" data-id="u16c1_7" placeholder="verb form" style="min-width:120px;"/> (write) my questionnaire a couple of weeks ago, but I stopped 8 <input class="gap-input c1u16" data-id="u16c1_8" placeholder="verb form" style="min-width:120px;"/> (complete) this assignment. I'm planning 9 <input class="gap-input c1u16" data-id="u16c1_9" placeholder="verb form" style="min-width:120px;"/> (get) the questionnaire ready by the end of the week, and I'm hoping 10 <input class="gap-input c1u16" data-id="u16c1_10" placeholder="verb form" style="min-width:120px;"/> (show) it to you for your comments before I use it. Could we meet next week?</p>
+          <p><strong>Tutor:</strong> Yes, of course. I'm afraid I can't find my diary though. I remember 11 <input class="gap-input c1u16" data-id="u16c1_11" placeholder="verb form" style="min-width:120px;"/> (put) it in my briefcase this morning, but it doesn't seem 12 <input class="gap-input c1u16" data-id="u16c1_12" placeholder="verb form" style="min-width:120px;"/> (be) there. Why don't you email me with a suitable time?</p>
+          <p><strong>Kumiko:</strong> Yes, okay.</p>
+          <p><strong>Tutor:</strong> So, I'll see you in the seminar tomorrow. Don't forget 13 <input class="gap-input c1u16" data-id="u16c1_13" placeholder="verb form" style="min-width:120px;"/> (email) me!</p>
+          <p><strong>Kumiko:</strong> Thank you, I'll try 14 <input class="gap-input c1u16" data-id="u16c1_14" placeholder="verb form" style="min-width:120px;"/> (remember).</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u16" class="btn-check">Check</button>
+          <button id="btn-show-c1u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u16" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Underline the correct form of the verbs</h3></div>
+      <div class="exercise-body">
+        <p>Choose the correct form of the verb in each sentence.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Mario remembered <input class="gap-input c2u16" data-id="u16c2_1" placeholder="verb form" style="min-width:120px;"/> his assignment to his tutor because he had spoken to her about its length, but she insisted that she had never received it. <span class="muted-label">(to give / giving)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> If you can't find the information at the library, try <input class="gap-input c2u16" data-id="u16c2_2" placeholder="verb form" style="min-width:120px;"/> on the Internet. <span class="muted-label">(to look / looking)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> She studied medicine at university and went on <input class="gap-input c2u16" data-id="u16c2_3" placeholder="verb form" style="min-width:120px;"/> a surgeon. <span class="muted-label">(to become / becoming)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> Look at Mum's car! It definitely needs <input class="gap-input c2u16" data-id="u16c2_4" placeholder="verb form" style="min-width:120px;"/>! <span class="muted-label">(to clean / cleaning)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> I'll never forget <input class="gap-input c2u16" data-id="u16c2_5" placeholder="verb form" style="min-width:120px;"/> off that swing when I was a child. <span class="muted-label">(to fall / falling)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> I was really nervous about the interview, and although I tried <input class="gap-input c2u16" data-id="u16c2_6" placeholder="verb form" style="min-width:120px;"/>, I was awake most of the night. <span class="muted-label">(not to worry / not worrying)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> The new government needs <input class="gap-input c2u16" data-id="u16c2_7" placeholder="verb form" style="min-width:120px;"/> notice of the opinions of the people. <span class="muted-label">(to take / taking)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> The new system of reminders has worked, because this year 90% of members remembered <input class="gap-input c2u16" data-id="u16c2_8" placeholder="verb form" style="min-width:120px;"/> their membership in time. <span class="muted-label">(to renew / renewing)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> Economists predict that house prices will go on <input class="gap-input c2u16" data-id="u16c2_9" placeholder="verb form" style="min-width:120px;"/> for at least another year. <span class="muted-label">(to rise / rising)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> We weren't able to see the concert because Tamsin forgot <input class="gap-input c2u16" data-id="u16c2_10" placeholder="verb form" style="min-width:120px;"/> the tickets. <span class="muted-label">(to bring / bringing)</span></div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u16" class="btn-check">Check</button>
+          <button id="btn-show-c2u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u16" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Decide if the underlined sections are correct or not</h3></div>
+      <div class="exercise-body">
+        <p>Read the extract from a discussion between a teacher and a student about learning. Decide if the underlined sections are correct or not. Tick (<em>✓</em>) them if they are right and correct them if they are wrong.</p>
+        <div class="passage-text" style="line-height:2.3;">
+          <p><strong>Teacher:</strong> What impact do you feel a good learning experience at school can have on people in terms of future learning?</p>
+          <p><strong>Student:</strong> Well, obviously, having a good experience as a student will 1 <input class="gap-input c3u16" data-id="u16c3_1" placeholder="✓ or correction" style="min-width:150px;"/> (allow you feel) positive about learning in general. If you've had supportive teachers at school who 2 <input class="gap-input c3u16" data-id="u16c3_2" placeholder="✓ or correction" style="min-width:150px;"/> (encouraged you to work hard), you are more likely 3 <input class="gap-input c3u16" data-id="u16c3_3" placeholder="✓ or correction" style="min-width:150px;"/> (to go) on to be conscientious in your university studies.</p>
+          <p><strong>Teacher:</strong> Can you give me an example?</p>
+          <p><strong>Student:</strong> Well, with my art classes, my teacher was so supportive that I 4 <input class="gap-input c3u16" data-id="u16c3_4" placeholder="✓ or correction" style="min-width:150px;"/> (tried very hard pleasing) her. However, I have had other teachers who 5 <input class="gap-input c3u16" data-id="u16c3_5" placeholder="✓ or correction" style="min-width:150px;"/> (have made me to feel) useless, and that 6 <input class="gap-input c3u16" data-id="u16c3_6" placeholder="✓ or correction" style="min-width:150px;"/> (made me wanting) to give up.</p>
+          <p><strong>Teacher:</strong> How can teachers ensure that their students have a positive learning experience?</p>
+          <p><strong>Student:</strong> I think teachers 7 <input class="gap-input c3u16" data-id="u16c3_7" placeholder="✓ or correction" style="min-width:150px;"/> (need to be) interested in their students. If they aren't interested, their students 8 <input class="gap-input c3u16" data-id="u16c3_8" placeholder="✓ or correction" style="min-width:150px;"/> (will stop to make) an effort. Also, if students 9 <input class="gap-input c3u16" data-id="u16c3_9" placeholder="✓ or correction" style="min-width:150px;"/> (enjoy being in class), they are more likely to learn. Students 10 <input class="gap-input c3u16" data-id="u16c3_10" placeholder="✓ or correction" style="min-width:150px;"/> (don't mind to work) hard if they like what they are doing. So teachers 11 <input class="gap-input c3u16" data-id="u16c3_11" placeholder="✓ or correction" style="min-width:150px;"/> (should try to make) their classes stimulating.</p>
+          <p><strong>Teacher:</strong> Do you think that the curriculum in schools allows teachers to be creative and make their lessons interesting?</p>
+          <p><strong>Student:</strong> Yes, in my country teachers must follow a curriculum, but the government 12 <input class="gap-input c3u16" data-id="u16c3_12" placeholder="✓ or correction" style="min-width:150px;"/> (doesn't force them teach) in a certain way. That means that teachers can 13 <input class="gap-input c3u16" data-id="u16c3_13" placeholder="✓ or correction" style="min-width:150px;"/> (decide to teach) the topic however they like. So, teachers can still be creative and 14 <input class="gap-input c3u16" data-id="u16c3_14" placeholder="✓ or correction" style="min-width:150px;"/> (let their students deciding) how they learn.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u16" class="btn-check">Check</button>
+          <button id="btn-show-c3u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u16" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Fill in the gaps in the letter using both of the verbs in brackets</h3></div>
+      <div class="exercise-body">
+        <p>A guest writes a letter of complaint to a hotel. Fill in the gaps using both of the verbs in brackets in the correct form.</p>
+        <div class="passage-text" style="line-height:2.3;">
+          <p style="text-align:right;">Dear Sir,</p>
+          <p>I am writing to complain about the service I received in your hotel at the weekend. I arrived at your hotel at lunchtime on Friday, and your receptionist 1 <input class="gap-input c4u16" data-id="u16c4_1" placeholder="phrase" style="min-width:170px;"/> (tell/me/take) a seat while she dealt with some other customers. I 2 <input class="gap-input c4u16" data-id="u16c4_2" placeholder="phrase" style="min-width:170px;"/> (not feel like/wait) after a long journey, but I sat down anyway. However, after your receptionist 3 <input class="gap-input c4u16" data-id="u16c4_3" placeholder="phrase" style="min-width:170px;"/> (finish/talk) to the other customers, she walked away and left no one behind the desk. After about ten minutes, I rang the bell, but still no one came. I 4 <input class="gap-input c4u16" data-id="u16c4_4" placeholder="phrase" style="min-width:170px;"/> (try/find) someone else to help me, and when I 5 <input class="gap-input c4u16" data-id="u16c4_5" placeholder="phrase" style="min-width:170px;"/> (fail/do) this, I went behind the desk and called through the door. The receptionist was sitting in the back room at the computer. When she 6 <input class="gap-input c4u16" data-id="u16c4_6" placeholder="phrase" style="min-width:170px;"/> (see/me/stand) in the doorway, she apologized and said she 7 <input class="gap-input c4u16" data-id="u16c4_7" placeholder="phrase" style="min-width:170px;"/> (need/send) an urgent email and 8 <input class="gap-input c4u16" data-id="u16c4_8" placeholder="phrase" style="min-width:170px;"/> (carry on/look) at her screen.</p>
+          <p>If this had been the only poor service I received during my stay, I would not 9 <input class="gap-input c4u16" data-id="u16c4_9" placeholder="phrase" style="min-width:170px;"/> (bother/write) this letter. However, later that evening, in the dining room, I had another bad experience. Your menu only had one vegetarian dish, so I ordered this. Imagine my horror when I 10 <input class="gap-input c4u16" data-id="u16c4_10" placeholder="phrase" style="min-width:170px;"/> (start/eat) and discovered meat in the dish. I 11 <input class="gap-input c4u16" data-id="u16c4_11" placeholder="phrase" style="min-width:170px;"/> (consider/leave) immediately, but instead I explained the situation to the waiter. I 12 <input class="gap-input c4u16" data-id="u16c4_12" placeholder="phrase" style="min-width:170px;"/> (expect/him/get) me another vegetarian meal, but instead he simply shrugged his shoulders, removed the plate and walked away.</p>
+          <p>I 13 <input class="gap-input c4u16" data-id="u16c4_13" placeholder="phrase" style="min-width:170px;"/> (hope/receive) a full apology from you for this poor service and some recompense for the unpleasant time I experienced whilst staying in your hotel. I 14 <input class="gap-input c4u16" data-id="u16c4_14" placeholder="phrase" style="min-width:170px;"/> (advise/you/give) your staff some customer care training in the immediate future.</p>
+          <p style="text-align:right;">Yours faithfully,<br/>Geraint Rees</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u16" class="btn-check">Check</button>
+          <button id="btn-show-c4u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u16" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Academic Reading</div>
+  <div class="section-body">
+    <div class="test-tip">You should spend about 20 minutes on Questions 1–13 which are based on the Reading Passage below. Underline or highlight any important information or key words that you need to find in the passage.</div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–6</span><h3>Questions 1–6 — True / False / Not Given</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">Understanding consumers — how consumers decide</div>
+          <p style="text-align:center;font-style:italic;">Professor John Maule from the University of Leeds describes new research into the way that consumers choose a product.</p>
+          <p>Consumers are creatures of habit: they buy the same products time and time again, and such is their familiarity with big brands, and the colours and logos that represent them, that they can register a brand they like with barely any conscious thought process. The packaging of consumer products is therefore a crucial vehicle for conveying the brand and the product into our shopping baskets.</p>
+          <p>Having said this, understanding how consumers make decisions, and the crucial role of packaging in this process, has been a neglected area of research so far. This is surprising given that organisations invest huge amounts of money in developing packaging that they believe is effective. Decision Research at Leeds University's Business School, in collaboration with Faraday Packaging, is now undertaking work in this area. It has already led to some important findings that challenge the ways in which organisations think about consumer choice.</p>
+          <p>The research has focused on two fundamental types of thinking. On the one hand, there's 'heuristic processing', which involves very shallow thought and is based on very simple rules: 1) buy what you recognize, 2) choose what you did last time, or 3) choose what a trusted source suggests. This requires comparatively little effort, and involves looking at — and thinking about — only a small amount of the product information and packaging. One can do this with little or no conscious thought. On the other hand, 'systematic processing' involves much deeper levels of thought. When people choose goods in this way, they engage in quite detailed analytical thinking — taking into account the product information, including its price, its perceived quality and so on. This form of thinking, which is both analytical and conscious, involves much more mental effort.</p>
+          <p>The role of packaging is likely to be very different for each of these types of decision making. Under heuristic processing, for example, consumers may simply need to be able to distinguish the pack from those of competitors since they are choosing on the basis of what they usually do. Under these circumstances, the simple perceptual features of the pack may be critical — so that we can quickly discriminate what we choose from the other products on offer. Under systematic processing, however, product-related information may be more important, so the pack has to provide this in an easily identifiable form.</p>
+          <p style="font-weight:700;margin:12px 0 4px;">Comparing competition</p>
+          <p>Consumers will want to be able to compare the product with its competitors, so that they can determine which option is better for them. A crucial role of packaging in this situation is to communicate the characteristics of the product, highlighting its advantages over possible competitors.</p>
+          <p>So, when are people likely to use a particular type of thinking? First, we know that people are 'cognitive misers'; in other words they are economical with their thinking because it requires some effort from them. Essentially, people only engage in effort-demanding systematic processing when the situation justifies it, for example when they are not tired or distracted and when the purchase is important to them. Second, people have an upper limit to the amount of information they can absorb. If we present too much, therefore, they will become confused. This, in turn, is likely to lead them to disengage and choose something else. Third, people often lack the knowledge or experience needed, so will not be able to deal with things they do not already understand, such as the ingredients of food products, for example. And fourth, people vary in the extent to which they enjoy thinking. Our research has differentiated between people with a high need for thinking — who routinely engage in analytical thinking — and those low in the need for cognition, who prefer to use very simple forms of thinking.</p>
+          <p style="font-weight:700;margin:12px 0 4px;">Effectiveness varies</p>
+          <p>This work has an important impact on packaging in that what makes packaging effective is likely to vary according to the type of processing strategy that consumers use when choosing between products. You need to understand how consumers are selecting your products if you are to develop packaging that is relevant. Furthermore, testing the effectiveness of your packaging can be ineffective if the methods you are employing concern one form of thinking (e.g. a focus group involving analytical thinking) but your consumers are purchasing in the other mode (i.e. the heuristic, shallow form of thinking).</p>
+          <p>For the packaging industry it is important that retailers identify their key goals. Sustaining a consumer's commitment to a product may involve packaging that is distinctive at the heuristic level (if the consumers can recognize the product they will buy it) but without encouraging consumers to engage in systematic processing (prompting deeper level thinking that would include making comparisons with other products). Conversely, getting consumers to change brands may involve developing packaging that includes information that does stimulate systematic processing and thus encourages consumers to challenge their usual choice of product. Our work is investigating these issues, and the implications they have for developing effective packaging.</p>
+        </div>
+        <p>Do the following statements agree with the information given in the Reading Passage?</p>
+        <div class="test-tip"><strong>TRUE</strong> if the statement agrees with the information<br/><strong>FALSE</strong> if the statement contradicts the information<br/><strong>NOT GIVEN</strong> if there is no information on this</div>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>Little research has been done on the link between packaging and consumers choosing a product.</span><input class="corr-input d1u16" data-id="u16d1_1" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>A person who buys what another person recommends is using heuristic thinking.</span><input class="corr-input d1u16" data-id="u16d1_2" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>Heuristic processing requires more energy than systematic processing.</span><input class="corr-input d1u16" data-id="u16d1_3" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><span>The concept of heuristic processing was thought up by Dr Maule's team.</span><input class="corr-input d1u16" data-id="u16d1_4" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>A consumer who considers how much a product costs is using systematic processing.</span><input class="corr-input d1u16" data-id="u16d1_5" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>For heuristic processing, packaging must be similar to other products.</span><input class="corr-input d1u16" data-id="u16d1_6" placeholder="T/F/NG" style="width:70px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u16" class="btn-check">Check</button>
+          <button id="btn-show-d1u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u16" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q7–8</span><h3>Questions 7–8 — Multiple choice</h3></div>
+      <div class="exercise-body">
+        <p>Choose the correct answer <strong>A, B, C or D</strong>.</p>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">7</span><span>When trying to determine how effective packaging is, testing can be made ineffective if</span><input class="corr-input d2u16" data-id="u16d2_7" placeholder="A–D" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span><span>If a retailer wants consumers to change brands, their packaging needs to be</span><input class="corr-input d2u16" data-id="u16d2_8" placeholder="A–D" style="width:70px;"/></div>
+        </div>
+        <div class="example-box">
+          <div style="font-weight:700;margin-bottom:6px;">Question 7 options</div>
+          <div><strong>A</strong> &nbsp;you rely upon a very narrow focus group.</div>
+          <div><strong>B</strong> &nbsp;your consumers use only heuristic thinking.</div>
+          <div><strong>C</strong> &nbsp;the chosen consumers use only shallow thinking.</div>
+          <div><strong>D</strong> &nbsp;your tests do not match the consumers' thinking type.</div>
+        </div>
+        <div class="example-box">
+          <div style="font-weight:700;margin-bottom:6px;">Question 8 options</div>
+          <div><strong>A</strong> &nbsp;informative.</div>
+          <div><strong>B</strong> &nbsp;distinctive.</div>
+          <div><strong>C</strong> &nbsp;familiar.</div>
+          <div><strong>D</strong> &nbsp;colourful.</div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d2u16" class="btn-check">Check</button>
+          <button id="btn-show-d2u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u16" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q9–13</span><h3>Questions 9–13 — Summary completion</h3></div>
+      <div class="exercise-body">
+        <p>Complete the summary below. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+        <div class="test-tip">Notice that the summary has a title; this helps you to locate the part of the text being summarized. Read through the part of the reading passage. If you cannot find an answer, just move on to the next one and come back to this one later.</div>
+        <div class="passage-text">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">Comparing competition</div>
+          <p>For consumers who want to compare products, it is important that your packaging stresses the 9 <input class="gap-input d3u16" data-id="u16d3_9" placeholder="…" style="min-width:130px;"/> of your product. We know that people only use systematic processing if the 10 <input class="gap-input d3u16" data-id="u16d3_10" placeholder="…" style="min-width:130px;"/> makes it necessary or desirable. We also know that too much 11 <input class="gap-input d3u16" data-id="u16d3_11" placeholder="…" style="min-width:130px;"/> could make consumers choose another product. Furthermore, consumers may not fully understand details such as the 12 <input class="gap-input d3u16" data-id="u16d3_12" placeholder="…" style="min-width:130px;"/> of a product. While some people like using systematic processing, others like to think in a 13 <input class="gap-input d3u16" data-id="u16d3_13" placeholder="…" style="min-width:130px;"/> way.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d3u16" class="btn-check">Check</button>
+          <button id="btn-show-d3u16" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d3u16" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at these sentences from the text. Without looking back, fill in the gaps using the <strong>correct form of the verbs in brackets</strong>.</div>
+    <div class="passage-text" style="line-height:2.4;">
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> This is surprising given that organisations invest huge amounts of money in <input class="gap-input gftu16" data-id="u16gft_1" placeholder="verb form" style="min-width:130px;"/> (develop) packaging that they believe is effective.</div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> This requires comparatively little effort, and involves <input class="gap-input gftu16" data-id="u16gft_2" placeholder="verb form" style="min-width:130px;"/> (look at) — and <input class="gap-input gftu16" data-id="u16gft_3" placeholder="verb form" style="min-width:130px;"/> (think about) — only a small amount of the product information and packaging.</div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> Under heuristic processing, for example, consumers may simply need <input class="gap-input gftu16" data-id="u16gft_4" placeholder="verb form" style="min-width:130px;"/> (be able to) distinguish the pack from those of competitors.</div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> Consumers will want <input class="gap-input gftu16" data-id="u16gft_5" placeholder="verb form" style="min-width:130px;"/> (be able to) compare the product with its competitors.</div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> The role of packaging is likely <input class="gap-input gftu16" data-id="u16gft_6" placeholder="verb form" style="min-width:130px;"/> (be) very different for each of these types of decision making.</div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> People vary in the extent to which they enjoy <input class="gap-input gftu16" data-id="u16gft_7" placeholder="verb form" style="min-width:130px;"/> (think).</div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> Prompting deeper level thinking that would include <input class="gap-input gftu16" data-id="u16gft_8" placeholder="verb form" style="min-width:130px;"/> (make) comparisons with other products.</div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> Conversely, getting consumers <input class="gap-input gftu16" data-id="u16gft_9" placeholder="verb form" style="min-width:130px;"/> (change) brands may involve <input class="gap-input gftu16" data-id="u16gft_10" placeholder="verb form" style="min-width:130px;"/> (develop) packaging that does stimulate systematic processing and thus encourages consumers <input class="gap-input gftu16" data-id="u16gft_11" placeholder="verb form" style="min-width:130px;"/> (challenge) their usual choice of product.</div></div>
+    </div>
+    <div class="exercise-actions">
+      <button id="btn-check-gftu16" class="btn-check">Check</button>
+      <button id="btn-show-gftu16" class="btn-show">Show Answers</button>
+      <button id="btn-reset-gftu16" class="btn-reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 16: Verb + Verb Patterns</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('23','audio-23');
+
+  // A2 course questions
+  initGapFill({ inputSelector:'.a2u16', checkId:'btn-check-a2u16', showId:'btn-show-a2u16', resetId:'btn-reset-a2u16',
+    answers:{ u16a2_1:['a diploma course in animal management','a diploma in animal management','a course in animal management'],
+              u16a2_2:['feeding the animals'],
+              u16a2_3:['a fear of snakes','fear of snakes'] }});
+
+  // A3 sentences from recording
+  initGapFill({ inputSelector:'.a3u16', checkId:'btn-check-a3u16', showId:'btn-show-a3u16', resetId:'btn-reset-a3u16',
+    answers:{ u16a3_1:['to do'], u16a3_2:['to study'], u16a3_3:['working','to work'],
+              u16a3_4:['taking','to take'], u16a3_5:['cleaning'], u16a3_6:['treat'],
+              u16a3_7:['handle'], u16a3_8:['feeling'], u16a3_9:['to do'],
+              u16a3_10:['bark'], u16a3_11:['to be'], u16a3_12:['to work'] }});
+
+  // A4 classify the verb patterns
+  initGapFill({ inputSelector:'.a4u16', checkId:'btn-check-a4u16', showId:'btn-show-a4u16', resetId:'btn-reset-a4u16',
+    answers:{ u16a4_1:['decide, choose, remember, tell, would like','decide, choose, tell, remember, would like'],
+              u16a4_2:['start, prefer, not mind, remember','prefer, start, not mind, remember'],
+              u16a4_3:['let, make, hear','make, let, hear'],
+              u16a4_4:['remember'] }});
+
+  // C1 tutor/student conversation
+  initGapFill({ inputSelector:'.c1u16', checkId:'btn-check-c1u16', showId:'btn-show-c1u16', resetId:'btn-reset-c1u16',
+    answers:{ u16c1_1:['to finish'], u16c1_2:['to add'], u16c1_3:['to have'], u16c1_4:['to do'],
+              u16c1_5:['to finish'], u16c1_6:['working','to work'], u16c1_7:['writing','to write'],
+              u16c1_8:['to complete'], u16c1_9:['to get'], u16c1_10:['to show'],
+              u16c1_11:['putting','having put'], u16c1_12:['to be'], u16c1_13:['to email'],
+              u16c1_14:['to remember'] }});
+
+  // C2 underline the correct form
+  initGapFill({ inputSelector:'.c2u16', checkId:'btn-check-c2u16', showId:'btn-show-c2u16', resetId:'btn-reset-c2u16',
+    answers:{ u16c2_1:['giving'], u16c2_2:['looking'], u16c2_3:['to become'], u16c2_4:['cleaning'],
+              u16c2_5:['falling'], u16c2_6:['not to worry'],
+              u16c2_7:['to take'], u16c2_8:['to renew'],
+              u16c2_9:['rising'], u16c2_10:['to bring'] }});
+
+  // C3 correct or not
+  initGapFill({ inputSelector:'.c3u16', checkId:'btn-check-c3u16', showId:'btn-show-c3u16', resetId:'btn-reset-c3u16',
+    answers:{ u16c3_1:['allow you to feel'], u16c3_2:['✓','✔','correct','right','tick','ok','c'],
+              u16c3_3:['✓','✔','correct','right','tick','ok','c'], u16c3_4:['tried very hard to please'],
+              u16c3_5:['have made me feel'], u16c3_6:['made me want'],
+              u16c3_7:['✓','✔','correct','right','tick','ok','c'], u16c3_8:['will stop making'],
+              u16c3_9:['✓','✔','correct','right','tick','ok','c'], u16c3_10:["don't mind working"],
+              u16c3_11:['✓','✔','correct','right','tick','ok','c'], u16c3_12:["doesn't force them to teach"],
+              u16c3_13:['✓','✔','correct','right','tick','ok','c'], u16c3_14:['let their students decide'] }});
+
+  // C4 hotel letter
+  initGapFill({ inputSelector:'.c4u16', checkId:'btn-check-c4u16', showId:'btn-show-c4u16', resetId:'btn-reset-c4u16',
+    answers:{ u16c4_1:['told me to take'], u16c4_2:["didn't feel like waiting","did not feel like waiting"],
+              u16c4_3:['finished talking','had finished talking'], u16c4_4:['tried to find'],
+              u16c4_5:['failed to do'], u16c4_6:['saw me standing'],
+              u16c4_7:['needed to send','had needed to send'], u16c4_8:['carried on looking'],
+              u16c4_9:['have bothered to write'], u16c4_10:['started eating','started to eat'],
+              u16c4_11:['considered leaving'], u16c4_12:['expected him to get'],
+              u16c4_13:['hope to receive'], u16c4_14:['advise you to give'] }});
+
+  // D Q1-6 True/False/Not Given
+  initGapFill({ inputSelector:'.d1u16', checkId:'btn-check-d1u16', showId:'btn-show-d1u16', resetId:'btn-reset-d1u16',
+    answers:{ u16d1_1:['TRUE','T'], u16d1_2:['TRUE','T'], u16d1_3:['FALSE','F'],
+              u16d1_4:['NOT GIVEN','NG','Not Given'],
+              u16d1_5:['TRUE','T'], u16d1_6:['FALSE','F'] }});
+
+  // D Q7-8 multiple choice
+  initGapFill({ inputSelector:'.d2u16', checkId:'btn-check-d2u16', showId:'btn-show-d2u16', resetId:'btn-reset-d2u16',
+    answers:{ u16d2_7:['D'], u16d2_8:['A'] }});
+
+  // D Q9-13 summary
+  initGapFill({ inputSelector:'.d3u16', checkId:'btn-check-d3u16', showId:'btn-show-d3u16', resetId:'btn-reset-d3u16',
+    answers:{ u16d3_9:['advantages','characteristics'], u16d3_10:['situation'],
+              u16d3_11:['information','too much information'], u16d3_12:['ingredients'],
+              u16d3_13:['simple'] }});
+
+  // GFT verb forms
+  initGapFill({ inputSelector:'.gftu16', checkId:'btn-check-gftu16', showId:'btn-show-gftu16', resetId:'btn-reset-gftu16',
+    answers:{ u16gft_1:['developing'], u16gft_2:['looking at'], u16gft_3:['thinking about'],
+              u16gft_4:['to be able to'], u16gft_5:['to be able to'], u16gft_6:['to be'],
+              u16gft_7:['thinking'], u16gft_8:['making'],
+              u16gft_9:['to change'], u16gft_10:['developing'], u16gft_11:['to challenge'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

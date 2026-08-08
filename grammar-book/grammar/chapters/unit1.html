@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 1 – Present Tenses | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 1</span>
+    <span class="subtitle">Present Tenses — present simple; present continuous; state verbs</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening: Free-time Activities</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear a woman interviewing a student called Peter for a survey about what people do in their free time. Before you listen, look at the list of activities below. Which activities do you think the student does in his free time?</p>
+        <ul class="use-list" style="margin-top:12px;">
+          <li>Playing football</li>
+          <li>Painting / Drawing</li>
+          <li>Cooking</li>
+          <li>Playing video games</li>
+          <li>Playing in a band</li>
+          <li>Playing golf</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and check — Track 02</h3></div>
+      <div class="exercise-body">
+        <p>Listen to the interview and check whether your predictions were correct.</p>
+        <div class="audio-player">
+          <div class="track-badge">02</div>
+          <div class="track-info"><h4>Track 02 — Peter's Interview</h4><p>Context listening – free-time survey</p></div>
+          <div id="audio-02"></div>
+        </div>
+        <div class="note-box">Answer: Peter is playing football and playing the guitar in a band.</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again — True or False?</h3></div>
+      <div class="exercise-body">
+        <p>Listen again and decide if each statement is <strong>true</strong> or <strong>false</strong>.</p><br/>
+        <div class="tf-item" data-id="tf1">
+          <span class="item-num">1</span>
+          <div class="statement"><div>Peter is waiting for his friends.</div>
+            <div class="tf-buttons"><button class="tf-btn" data-value="true">TRUE</button><button class="tf-btn" data-value="false">FALSE</button></div>
+          </div>
+        </div>
+        <div class="tf-item" data-id="tf2">
+          <span class="item-num">2</span>
+          <div class="statement"><div>He isn't studying much this month.</div>
+            <div class="tf-buttons"><button class="tf-btn" data-value="true">TRUE</button><button class="tf-btn" data-value="false">FALSE</button></div>
+          </div>
+        </div>
+        <div class="tf-item" data-id="tf3">
+          <span class="item-num">3</span>
+          <div class="statement"><div>His parents own a shop.</div>
+            <div class="tf-buttons"><button class="tf-btn" data-value="true">TRUE</button><button class="tf-btn" data-value="false">FALSE</button></div>
+          </div>
+        </div>
+        <div class="tf-item" data-id="tf4">
+          <span class="item-num">4</span>
+          <div class="statement"><div>He practises the guitar most mornings.</div>
+            <div class="tf-buttons"><button class="tf-btn" data-value="true">TRUE</button><button class="tf-btn" data-value="false">FALSE</button></div>
+          </div>
+        </div>
+        <div class="tf-item" data-id="tf5">
+          <span class="item-num">5</span>
+          <div class="statement"><div>He frequently uses the Internet.</div>
+            <div class="tf-buttons"><button class="tf-btn" data-value="true">TRUE</button><button class="tf-btn" data-value="false">FALSE</button></div>
+          </div>
+        </div>
+        <div class="tf-item" data-id="tf6">
+          <span class="item-num">6</span>
+          <div class="statement"><div>His cousin is living in America at the moment.</div>
+            <div class="tf-buttons"><button class="tf-btn" data-value="true">TRUE</button><button class="tf-btn" data-value="false">FALSE</button></div>
+          </div>
+        </div>
+        <div class="tf-item" data-id="tf7">
+          <span class="item-num">7</span>
+          <div class="statement"><div>Peter doesn't support any football teams.</div>
+            <div class="tf-buttons"><button class="tf-btn" data-value="true">TRUE</button><button class="tf-btn" data-value="false">FALSE</button></div>
+          </div>
+        </div>
+        <div class="exercise-actions"><button id="btn-show-tf" class="btn-show">Show All Answers</button></div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Categorise the sentences from Exercise 3</h3></div>
+      <div class="exercise-body">
+        <p>Look at your answers and write the sentence number(s) that match each category.</p><br/>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="item-num">1</span> Which sentences are about a situation that is <strong>permanent or a fact</strong>?
+            <input class="gap-input u1cat-input" data-id="cat1" placeholder="e.g. 3, 7" style="min-width:80px;"/>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="item-num">2</span> Which sentences are about <strong>everyday habits</strong>?
+            <input class="gap-input u1cat-input" data-id="cat2" placeholder="…" style="min-width:80px;"/>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="item-num">3</span> Which sentence is about an action <strong>happening at the moment of speaking</strong>?
+            <input class="gap-input u1cat-input" data-id="cat3" placeholder="…" style="min-width:60px;"/>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="item-num">4</span> Which sentences are about a <strong>temporary situation</strong>?
+            <input class="gap-input u1cat-input" data-id="cat4" placeholder="…" style="min-width:80px;"/>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-cat" class="btn-check">Check Answers</button>
+          <button id="btn-show-cat" class="btn-show">Show Answers</button>
+          <button id="btn-reset-cat" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <h2 class="grammar-subtitle">B1 — Present Simple</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; verb / verb + <em>(e)s</em></td><td><em>He <strong>plays</strong> tennis.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>do/does not</em> + verb</td><td><em>She <strong>doesn't play</strong> tennis.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Do/Does</em> … + verb?</td><td><em><strong>Do you play</strong> tennis?</em></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the present simple:</p>
+    <ul class="use-list">
+      <li><strong>To talk about regular habits or repeated actions:</strong><br/>
+        <em>I <strong>get up</strong> really early and <strong>practise</strong> for an hour or so <strong>most days</strong>.</em><br/>
+        <em>I <strong>use</strong> the Internet <strong>just about every day</strong>.</em><br/>
+        <span style="font-size:.85rem;color:#555;">Words often used:
+          <span class="kw-tag">always</span><span class="kw-tag">generally</span><span class="kw-tag">normally</span>
+          <span class="kw-tag">usually</span><span class="kw-tag">often</span><span class="kw-tag">sometimes</span>
+          <span class="kw-tag">rarely</span><span class="kw-tag">never</span><span class="kw-tag">every day</span>
+        </span>
+      </li>
+      <li><strong>To talk about permanent situations:</strong><br/><em>My parents <strong>own</strong> a restaurant.</em></li>
+      <li><strong>To talk about facts or generally accepted truths:</strong><br/>
+        <em>Students <strong>don't generally have</strong> much money.</em><br/>
+        <em>If you heat water to 100°C, it <strong>boils</strong>.</em><br/>
+        <span style="font-size:.85rem;color:#555;">Often used with:
+          <span class="kw-tag">generally</span><span class="kw-tag">mainly</span><span class="kw-tag">normally</span><span class="kw-tag">traditionally</span>
+        </span>
+      </li>
+      <li><strong>To give instructions and directions:</strong><br/>
+        <em>You <strong>go</strong> down to the traffic lights, then you <strong>turn</strong> left.</em><br/>
+        <em>To start the programme, first you <strong>click</strong> on the icon on the desktop.</em>
+      </li>
+      <li><strong>To tell stories and talk about films, books and plays:</strong><br/>
+        <em>In the film, the tea lady <strong>falls</strong> in love with the Prime Minister.</em>
+      </li>
+    </ul>
+    <div class="warning-box">We use the <strong>present perfect</strong>, not the present simple, to say how long something has continued:<br/>
+      <em>I <strong>have worked</strong> there since I was 15.</em> <span style="text-decoration:line-through;color:#999;">(not: I work there since I was 15)</span> → see Unit 3
+    </div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — Present Continuous</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>am/is/are</em> + verb + <em>-ing</em></td><td><em>He'<strong>s living</strong> in Thailand.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>am/is/are not</em> + verb + <em>-ing</em></td><td><em>I'<strong>m not living</strong> in Thailand.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Am/Is/Are</em> … + verb + <em>-ing?</em></td><td><em><strong>Are they living</strong> in Thailand?</em></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the present continuous:</p>
+    <ul class="use-list">
+      <li><strong>To talk about temporary situations:</strong><br/>
+        <em>I'<strong>m studying</strong> really hard for my exams.</em><br/>
+        <em>My cousin <strong>is living</strong> in Thailand <strong>at the moment</strong>.</em> (= he doesn't normally live there)<br/>
+        <span style="font-size:.85rem;color:#555;">Often used with: <span class="kw-tag">at the moment</span><span class="kw-tag">currently</span><span class="kw-tag">now</span><span class="kw-tag">this week/month/year</span></span>
+      </li>
+      <li><strong>To talk about actions happening at the moment of speaking:</strong><br/><em>I'<strong>m waiting</strong> for my friends.</em></li>
+      <li><strong>To talk about trends or changing situations:</strong><br/>
+        <em>The Internet <strong>is making</strong> it easier for people to stay in touch with each other.</em><br/>
+        <em>The price of petrol <strong>is rising</strong> dramatically.</em>
+      </li>
+      <li><strong>To show envy or criticism</strong> — with <span class="kw-tag">always</span><span class="kw-tag">constantly</span><span class="kw-tag">continually</span><span class="kw-tag">forever</span>:<br/>
+        <em>My mum's <strong>always saying</strong> I don't help enough!</em> (complaint)<br/>
+        <em>He's <strong>always visiting</strong> exciting places!</em> (envy)
+      </li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — State Verbs</h2>
+    <div class="note-box">State verbs are <strong>not normally used in the continuous form</strong> — the meaning of the verb itself is a general truth rather than something temporary. They describe thoughts, feelings, senses, possession and description.</div>
+    <div class="state-verb-grid">
+      <div class="state-verb-card"><h4>💭 Thoughts</h4><p>agree, assume, believe, disagree, forget, hope, know, regret, remember, suppose, think, understand</p><p style="margin-top:6px;color:#4a148c;"><em>I <strong>assume</strong> you're too busy.</em></p></div>
+      <div class="state-verb-card"><h4>❤️ Feelings</h4><p>adore, despise, dislike, enjoy, feel, hate, like, love, mind, prefer, want</p><p style="margin-top:6px;color:#4a148c;"><em>I <strong>love</strong> music.</em></p></div>
+      <div class="state-verb-card"><h4>👁 Senses</h4><p>feel, hear, see, smell, taste</p><p style="margin-top:6px;color:#4a148c;"><em>This pudding <strong>smells</strong> delicious.</em></p>
+        <div class="warning-box" style="margin-top:6px;font-size:.82rem;">For now: use <strong>can</strong> — <em>I <strong>can smell</strong> something burning.</em></div>
+      </div>
+      <div class="state-verb-card"><h4>🏠 Possession</h4><p>have, own, belong</p><p style="margin-top:6px;color:#4a148c;"><em>My parents <strong>own</strong> a restaurant.</em></p></div>
+      <div class="state-verb-card"><h4>📝 Description</h4><p>appear, contain, look, look like, mean, resemble, seem, smell, sound, taste, weigh</p><p style="margin-top:6px;color:#4a148c;"><em>You <strong>look like</strong> your mother.</em></p></div>
+    </div>
+    <div class="exception-box">
+      <h4>⚠ Exception: state verbs CAN be continuous when the meaning is temporary</h4>
+      <div class="compare-pair">
+        <div class="cp-item"><em>What <strong>are</strong> you <strong>thinking</strong> about?</em><br/><span>(now — action)</span></div>
+        <div class="cp-item"><em>I <strong>think</strong> you should tell her.</em><br/><span>(opinion — not temporary)</span></div>
+      </div>
+      <div class="compare-pair">
+        <div class="cp-item"><em>I'<strong>m tasting</strong> the sauce.</em><br/><span>(action — temporary)</span></div>
+        <div class="cp-item"><em>The sauce <strong>tastes</strong> delicious.</em><br/><span>(description — general truth)</span></div>
+      </div>
+      <div class="compare-pair">
+        <div class="cp-item"><em>She'<strong>s having</strong> a great time.</em><br/><span>(experiencing — temporary)</span></div>
+        <div class="cp-item"><em>Students <strong>don't have</strong> much money.</em><br/><span>(possession)</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <!-- C1 -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Choose the best ending for each sentence (1–8)</h3></div>
+      <div class="exercise-body">
+        <div class="endings-item" data-id="e1"><span class="item-num">1</span><span class="stem">Fiona <strong>is watching</strong> television …</span><div class="endings-opts"><button class="ending-btn" data-opt="a">a &nbsp;because her favourite film star is on.</button><button class="ending-btn" data-opt="b">b &nbsp;when she has time.</button></div></div>
+        <div class="endings-item" data-id="e2"><span class="item-num">2</span><span class="stem">I'<strong>m having</strong> my lunch …</span><div class="endings-opts"><button class="ending-btn" data-opt="a">a &nbsp;at one o'clock every day.</button><button class="ending-btn" data-opt="b">b &nbsp;early today as I have an appointment.</button></div></div>
+        <div class="endings-item" data-id="e3"><span class="item-num">3</span><span class="stem">I <strong>do</strong> the shopping …</span><div class="endings-opts"><button class="ending-btn" data-opt="a">a &nbsp;at the same time every week.</button><button class="ending-btn" data-opt="b">b &nbsp;today for a friend who's ill.</button></div></div>
+        <div class="endings-item" data-id="e4"><span class="item-num">4</span><span class="stem">What <strong>are</strong> you <strong>doing</strong> …</span><div class="endings-opts"><button class="ending-btn" data-opt="a">a &nbsp;to your sister when she behaves badly?</button><button class="ending-btn" data-opt="b">b &nbsp;to your sister? Leave her alone!</button></div></div>
+        <div class="endings-item" data-id="e5"><span class="item-num">5</span><span class="stem">I <strong>wear</strong> casual clothes …</span><div class="endings-opts"><button class="ending-btn" data-opt="a">a &nbsp;at the weekend.</button><button class="ending-btn" data-opt="b">b &nbsp;because we're having a party at lunchtime.</button></div></div>
+        <div class="endings-item" data-id="e6"><span class="item-num">6</span><span class="stem">Teachers <strong>work</strong> hard …</span><div class="endings-opts"><button class="ending-btn" data-opt="a">a &nbsp;to get the concert ready for next week.</button><button class="ending-btn" data-opt="b">b &nbsp;but they get long holidays.</button></div></div>
+        <div class="endings-item" data-id="e7"><span class="item-num">7</span><span class="stem">The company's financial situation <strong>is improving</strong> …</span><div class="endings-opts"><button class="ending-btn" data-opt="a">a &nbsp;now that it has a new Chief Executive.</button><button class="ending-btn" data-opt="b">b &nbsp;when there is greater demand for its products.</button></div></div>
+        <div class="endings-item" data-id="e8"><span class="item-num">8</span><span class="stem">Serge <strong>is thinking</strong> of retiring early …</span><div class="endings-opts"><button class="ending-btn" data-opt="a">a &nbsp;every time something bad happens at work.</button><button class="ending-btn" data-opt="b">b &nbsp;because he isn't happy at work any more.</button></div></div>
+        <div class="exercise-actions"><button id="btn-show-c1" class="btn-show">Show All Answers</button></div>
+      </div>
+    </div>
+
+    <!-- C2 -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Fill in the gaps with the correct form of the verbs in brackets</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> I'm busy right now. I <input class="gap-input" value="'m filling in" disabled style="min-width:110px;"/> <span class="hint-text">(fill in)</span> an application form. <span class="example-label">← example</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> My tutor <input class="gap-input c2-inp" data-id="c2_2" placeholder="…"/> <span class="hint-text">(see)</span> me every Monday at two o'clock.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> John <input class="gap-input c2-inp" data-id="c2_3a" placeholder="…" style="min-width:140px;"/> <span class="hint-text">(not/study)</span> hard at the moment. I <input class="gap-input c2-inp" data-id="c2_3b" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(not/think)</span> he'll pass his exams.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> 'What <input class="gap-input c2-inp" data-id="c2_4a" placeholder="…" style="min-width:130px;"/> <span class="hint-text">(he/do)</span>?' 'He <input class="gap-input c2-inp" data-id="c2_4b" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(try)</span> to fix the television aerial.'</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> Animals <input class="gap-input c2-inp" data-id="c2_5a" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(breathe in)</span> oxygen and <input class="gap-input c2-inp" data-id="c2_5b" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(give out)</span> carbon dioxide.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> Be quiet! I <input class="gap-input c2-inp" data-id="c2_6" placeholder="…"/> <span class="hint-text">(want)</span> to hear the news.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> In my country we <input class="gap-input c2-inp" data-id="c2_7" placeholder="…"/> <span class="hint-text">(drive)</span> on the right-hand side of the road.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> My friend Joe's parents <input class="gap-input c2-inp" data-id="c2_8" placeholder="…" style="min-width:140px;"/> <span class="hint-text">(travel)</span> round the world this summer.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> The college <input class="gap-input c2-inp" data-id="c2_9" placeholder="…"/> <span class="hint-text">(run)</span> the same course every year.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> Numbers of wild butterflies <input class="gap-input c2-inp" data-id="c2_10" placeholder="…" style="min-width:130px;"/> <span class="hint-text">(fall)</span> as a result of changes in farming methods.</div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2" class="btn-check">Check Answers</button>
+          <button id="btn-show-c2" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- C3 -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Fill in the gaps using verbs from the box in the correct present tense</h3></div>
+      <div class="exercise-body">
+        <div class="word-box"><strong>Word box:</strong><span class="word-chip">agree</span><span class="word-chip">catch up</span><span class="word-chip">cause</span><span class="word-chip">have</span><span class="word-chip">go up</span><span class="word-chip">know</span><span class="word-chip">think</span><span class="word-chip">use</span></div>
+        <div class="passage-text">
+          We 1 <input class="gap-input c3-inp" data-id="c3_1" placeholder="…" style="min-width:70px;"/> energy for three main things: electricity production, heating and transport. For the first two, we 2 <input class="gap-input c3-inp" data-id="c3_2" placeholder="…" style="min-width:70px;"/> options such as solar and wind power, or natural gas. But oil is still the world's number one source of energy, and for transport at least, there is currently no alternative. In China, domestic energy consumption 3 <input class="gap-input c3-inp" data-id="c3_3" placeholder="…" style="min-width:120px;"/> year by year and demand in similar regions 4 <input class="gap-input c3-inp" data-id="c3_4" placeholder="…" style="min-width:130px;"/> fast. We 5 <input class="gap-input c3-inp" data-id="c3_5" placeholder="…" style="min-width:70px;"/> how to use energy more efficiently now than in the past but the worldwide rise in demand 6 <input class="gap-input c3-inp" data-id="c3_6" placeholder="…" style="min-width:110px;"/> concern amongst experts. Some experts 7 <input class="gap-input c3-inp" data-id="c3_7" placeholder="…" style="min-width:70px;"/> that oil supplies will start to fall within the next twenty years. Most experts 8 <input class="gap-input c3-inp" data-id="c3_8" placeholder="…" style="min-width:70px;"/> that we need to find a new source of energy soon.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3" class="btn-check">Check Answers</button>
+          <button id="btn-show-c3" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- C4 -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Find and correct the six incorrect verbs in these extracts</h3></div>
+      <div class="exercise-body">
+        <p style="margin-bottom:14px;">The incorrect verbs are marked. Write the corrected form in the input next to each number.</p>
+        <div class="correction-grid">
+          <div class="correction-extract">
+            <h4>Extract A — Employee graph description</h4>
+            <img src="../assets/image-contents/u1-extract-A.png" alt="Extract A: Two bar charts showing number of employees and employees leaving within 5 years across Year 1–5" class="diagram"/>
+            <div class="extract-body">From the graphs, we <span class="wrong-verb">are seeing</span> that the number of employees employed by this firm <span class="wrong-verb">are increasing</span> each year and the number of employees leaving after less than five years <span class="wrong-verb">decreases</span>.</div>
+            <div class="correction-answers">
+              <div class="correction-row"><span class="c-num">1</span><span style="font-style:italic;color:#c62828;font-size:.85rem;min-width:110px;">are seeing →</span><input class="corr-input c4-inp" data-id="c4_1" placeholder="correct form…"/></div>
+              <div class="correction-row"><span class="c-num">2</span><span style="font-style:italic;color:#c62828;font-size:.85rem;min-width:110px;">are increasing →</span><input class="corr-input c4-inp" data-id="c4_2" placeholder="correct form…"/></div>
+              <div class="correction-row"><span class="c-num">3</span><span style="font-style:italic;color:#888;font-size:.85rem;min-width:110px;">decreases →</span><input class="corr-input c4-inp" data-id="c4_3" placeholder="correct form…"/><span style="font-size:.76rem;color:#888;">(already correct)</span></div>
+            </div>
+          </div>
+          <div class="correction-extract">
+            <h4>Extract B — Cloud formation</h4>
+            <img src="../assets/image-contents/u1-extract-B.png" alt="Extract B: Diagram showing sun heating ground, warm air rising and forming a cloud" class="diagram"/>
+            <div class="extract-body">The sun heats the ground. This <span class="wrong-verb">is warming</span> the air nearby and the warm air <span class="wrong-verb">is rising</span> into the sky. As the air rises, it becomes cooler and the water vapour inside it <span class="wrong-verb">change</span> into droplets of water. These join together to form a cloud.</div>
+            <div class="correction-answers">
+              <div class="correction-row"><span class="c-num">4</span><span style="font-style:italic;color:#c62828;font-size:.85rem;min-width:110px;">is warming →</span><input class="corr-input c4-inp" data-id="c4_4" placeholder="correct form…"/></div>
+              <div class="correction-row"><span class="c-num">5</span><span style="font-style:italic;color:#c62828;font-size:.85rem;min-width:110px;">is rising →</span><input class="corr-input c4-inp" data-id="c4_5" placeholder="correct form…"/></div>
+              <div class="correction-row"><span class="c-num">6</span><span style="font-style:italic;color:#c62828;font-size:.85rem;min-width:110px;">change →</span><input class="corr-input c4-inp" data-id="c4_6" placeholder="correct form…"/></div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4" class="btn-check">Check Answers</button>
+          <button id="btn-show-c4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Listening Section 1</div>
+  <div class="section-body">
+
+    <div class="audio-player">
+      <div class="track-badge">03</div>
+      <div class="track-info"><h4>Track 03 — Listening Section 1</h4><p>Listen for Questions 1–10</p></div>
+      <div id="audio-03"></div>
+    </div>
+
+    <!-- Q1–3 Multiple choice -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–3</span><h3>Questions 1–3 — Choose the correct letter: A, B or C</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Read all questions carefully before you listen. Underline key words (e.g. <em>How long is the heated swimming pool?</em>). If you miss an answer, move on.</div>
+        <div class="example-box"><div class="eg-label">Example</div>
+          <p><strong>Which sport is the woman interested in?</strong></p>
+          <div style="margin-top:8px;"><div>A &nbsp;gymnastics</div><div style="font-weight:700;color:#6a1b9a;">⊙ B &nbsp;swimming <span style="color:#388e3c;">✔</span></div><div>C &nbsp;tennis</div></div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">1 &nbsp; How long is the heated pool?</div>
+          <div class="mc-options d1-mc" data-id="dq1" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> 15 metres</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> 25 metres</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> 50 metres</div>
+          </div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">2 &nbsp; Which of these is free for all members?</div>
+          <div class="mc-options d1-mc" data-id="dq2" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> the beginners swimming class</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> the training session</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> the keep-fit class</div>
+          </div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">3 &nbsp; Which of these does the woman need to book?</div>
+          <div class="mc-options d1-mc" data-id="dq3" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> swimming lanes</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> gym equipment</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> sauna</div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-show-d123" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d123" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4–10 Notes completion -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q4–10</span><h3>Questions 4–10 — Complete the notes</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Read through the notes carefully before you listen and predict what type of information you need (e.g. a day of the week, a time). Check spelling and stay within the word limit.</div>
+        <p style="margin:10px 0;font-weight:700;color:#e65100;">Write <u>NO MORE THAN THREE WORDS AND/OR A NUMBER</u> for each answer.</p>
+        <div class="notes-form">
+          <h4>♪ Yoga Classes</h4>
+          <div class="notes-row">• held on Monday, <span class="q-num">4</span><input class="notes-input dn-inp" data-id="dn4a" placeholder="day…" style="min-width:90px;"/> and <input class="notes-input dn-inp" data-id="dn4b" placeholder="day…" style="min-width:90px;"/> mornings</div>
+          <div class="notes-row">• weekend evenings from <span class="q-num">5</span><input class="notes-input dn-inp" data-id="dn5a" placeholder="time…" style="min-width:80px;"/> to <input class="notes-input dn-inp" data-id="dn5b" placeholder="time…" style="min-width:100px;"/></div>
+          <div class="notes-row">• attend <span class="q-num">6</span><input class="notes-input dn-inp" data-id="dn6" placeholder="…" style="min-width:90px;"/> per week</div>
+          <div class="notes-row">• see instructor to change <span class="q-num">7</span><input class="notes-input dn-inp" data-id="dn7" placeholder="…" style="min-width:110px;"/></div>
+          <div class="notes-row">• cost £1.50</div>
+          <hr style="border:none;border-top:1px dashed #f9a825;margin:12px 0;"/>
+          <div class="notes-row">Meet John <span class="q-num">8</span><input class="notes-input dn-inp" data-id="dn8" placeholder="surname…" style="min-width:100px;"/></div>
+          <div class="notes-row">Office located on first floor</div>
+          <div class="notes-row">Meet at <span class="q-num">9</span><input class="notes-input dn-inp" data-id="dn9" placeholder="time…" style="min-width:90px;"/> tomorrow</div>
+          <div class="notes-row">Tel: <span class="q-num">10</span><input class="notes-input dn-inp" data-id="dn10" placeholder="number…" style="min-width:130px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-dn" class="btn-check">Check Answers</button>
+          <button id="btn-show-dn" class="btn-show">Show Answers</button>
+          <button id="btn-reset-dn" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at these extracts from the conversation and click the correct verb form used by the speakers.</div>
+    <div class="exercise">
+      <div class="exercise-header" style="background:#880e4f;"><span class="ex-num" style="color:#880e4f;">★</span><h3>Choose the correct verb form in each sentence</h3></div>
+      <div class="exercise-body">
+        <div class="gft-item" data-id="gft1" data-answered="0"><span class="item-num" style="background:#880e4f;">1</span><div><div style="margin-bottom:6px;">I _______ to do some sports activities.</div><div class="gft-options"><button class="gft-btn" data-value="I'm wanting"><em>I'm wanting</em></button><button class="gft-btn" data-value="want"><em>want</em></button></div></div></div>
+        <div class="gft-item" data-id="gft2" data-answered="0"><span class="item-num" style="background:#880e4f;">2</span><div><div style="margin-bottom:6px;">Our tennis team _______ for new people.</div><div class="gft-options"><button class="gft-btn" data-value="are always looking"><em>are always looking</em></button><button class="gft-btn" data-value="always look"><em>always look</em></button></div></div></div>
+        <div class="gft-item" data-id="gft3" data-answered="0"><span class="item-num" style="background:#880e4f;">3</span><div><div style="margin-bottom:6px;">_______ to pay to use the pools?</div><div class="gft-options"><button class="gft-btn" data-value="Are members having to"><em>Are members having to</em></button><button class="gft-btn" data-value="Do members have to"><em>Do members have to</em></button></div></div></div>
+        <div class="gft-item" data-id="gft4" data-answered="0"><span class="item-num" style="background:#880e4f;">4</span><div><div style="margin-bottom:6px;">We _______ anyone to book the swimming lanes or the gym equipment.</div><div class="gft-options"><button class="gft-btn" data-value="We're not actually allowing"><em>We're not actually allowing</em></button><button class="gft-btn" data-value="don't actually allow"><em>don't actually allow</em></button></div></div></div>
+        <div class="gft-item" data-id="gft5" data-answered="0"><span class="item-num" style="background:#880e4f;">5</span><div><div style="margin-bottom:6px;">What time _______ you?</div><div class="gft-options"><button class="gft-btn" data-value="is suiting"><em>is suiting</em></button><button class="gft-btn" data-value="suits"><em>suits</em></button></div></div></div>
+        <div class="gft-item" data-id="gft6" data-answered="0"><span class="item-num" style="background:#880e4f;">6</span><div><div style="margin-bottom:6px;">Great, well, I _______ that's everything.</div><div class="gft-options"><button class="gft-btn" data-value="I'm thinking"><em>I'm thinking</em></button><button class="gft-btn" data-value="think"><em>think</em></button></div></div></div>
+        <div class="exercise-actions">
+          <button id="btn-show-gft" class="btn-show">Show All Answers</button>
+          <button id="btn-reset-gft" class="btn-reset">Reset</button>
+        </div>
+        <div class="warning-box" style="margin-top:18px;"><strong>Why?</strong> Sentences 1, 3, 4, 5 and 6 use state verbs expressing general states — not temporary actions — so the present simple is correct. Sentence 2 uses <em>always</em> + continuous to express a habitual team characteristic, so the present continuous is correct.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 1: Present Tenses</footer>
+
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('02','audio-02');
+  loadAudio('03','audio-03');
+
+  // Ex 3 True/False
+  initTrueFalse({ showId:'btn-show-tf', answers:{
+    tf1:{correct:'true', correction:''},
+    tf2:{correct:'false',correction:'He IS studying really hard this month.'},
+    tf3:{correct:'false',correction:'His parents own a restaurant.'},
+    tf4:{correct:'false',correction:'He practises the PIANO most mornings.'},
+    tf5:{correct:'true', correction:''},
+    tf6:{correct:'false',correction:'His cousin is living in Thailand at the moment.'},
+    tf7:{correct:'false',correction:'Peter supports his local football team.'}
+  }});
+
+  // Ex 4 Categorise
+  initGapFill({ inputSelector:'.u1cat-input',
+    answers:{ cat1:['3, 7','3,7','sentences 3 and 7'], cat2:['4, 5','4,5','sentences 4 and 5'], cat3:['1','sentence 1'], cat4:['2, 6','2,6','sentences 2 and 6'] },
+    checkId:'btn-check-cat', showId:'btn-show-cat', resetId:'btn-reset-cat' });
+
+  // C1 Sentence endings
+  initEndings({ showId:'btn-show-c1', answers:{ e1:'a',e2:'b',e3:'a',e4:'b',e5:'a',e6:'b',e7:'a',e8:'b' } });
+
+  // C2 Gap fill
+  initGapFill({ inputSelector:'.c2-inp',
+    answers:{
+      c2_2:['sees'], c2_3a:["isn't studying","is not studying"],
+      c2_3b:["don't think","do not think"], c2_4a:['is he doing'],
+      c2_4b:['is trying',"'s trying"], c2_5a:['breathe in'],
+      c2_5b:['give out'], c2_6:['want'], c2_7:['drive'],
+      c2_8:['are travelling','are traveling'], c2_9:['runs'], c2_10:['are falling']
+    },
+    checkId:'btn-check-c2', showId:'btn-show-c2', resetId:'btn-reset-c2' });
+
+  // C3 Word-box gap fill
+  initGapFill({ inputSelector:'.c3-inp',
+    answers:{
+      c3_1:['use'], c3_2:['have'], c3_3:['is going up','goes up'],
+      c3_4:['is catching up','catching up'], c3_5:['know'],
+      c3_6:['causes','is causing'], c3_7:['think'], c3_8:['agree']
+    },
+    checkId:'btn-check-c3', showId:'btn-show-c3', resetId:'btn-reset-c3' });
+
+  // C4 Correction
+  initGapFill({ inputSelector:'.c4-inp',
+    answers:{
+      c4_1:['can see'], c4_2:['increases'], c4_3:['decreases'],
+      c4_4:['warms'], c4_5:['rises'], c4_6:['changes','change']
+    },
+    checkId:'btn-check-c4', showId:'btn-show-c4', resetId:'btn-reset-c4' });
+
+  // D Q1–3
+  initMCGroups({ groupSelector:'.d1-mc',
+    answers:{ dq1:'A', dq2:'A', dq3:'C' },
+    showId:'btn-show-d123', resetId:'btn-reset-d123' });
+
+  // D Q4–10 Notes
+  initGapFill({ inputSelector:'.dn-inp',
+    answers:{
+      dn4a:['tuesday','Tuesday'], dn4b:['friday','Friday'],
+      dn5a:['6.00','six','6:00','6 pm','6.00 pm'],
+      dn5b:['7.30','seven thirty','7:30','7.30 pm'],
+      dn6:['one day','1 day','once'],
+      dn7:['level','levels','class','classes','level(s)','class(es)'],
+      dn8:['doherty','Doherty'],
+      dn9:['11.00','eleven','11:00','11.00 am','eleven am'],
+      dn10:['0117 965 478']
+    },
+    checkId:'btn-check-dn', showId:'btn-show-dn', resetId:'btn-reset-dn' });
+
+  // Grammar Focus Task
+  initGFT({ showId:'btn-show-gft', resetId:'btn-reset-gft',
+    answers:{ gft1:'want', gft2:'are always looking', gft3:'Do members have to',
+              gft4:"don't actually allow", gft5:'suits', gft6:'think' } });
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

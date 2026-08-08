@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="Inter, 'Segoe UI', system-ui, sans-serif">
+<rect width="800" height="400" fill="#ffffff"/>
+<text x="40" y="42" font-size="20" font-weight="800" fill="#1e2540">Bar / column graph</text>
+<text x="40" y="64" font-size="13" fill="#4b5373">bars compare categories</text>
+<line x1="70" y1="70.0" x2="730" y2="70.0" stroke="#dde3ef" stroke-width="1"/>
+<line x1="70" y1="135.0" x2="730" y2="135.0" stroke="#dde3ef" stroke-width="1"/>
+<line x1="70" y1="200.0" x2="730" y2="200.0" stroke="#dde3ef" stroke-width="1"/>
+<line x1="70" y1="265.0" x2="730" y2="265.0" stroke="#dde3ef" stroke-width="1"/>
+<line x1="70" y1="330.0" x2="730" y2="330.0" stroke="#dde3ef" stroke-width="1"/>
+<text x="60" y="74" font-size="12" fill="#4b5373" text-anchor="end">100</text>
+<text x="60" y="139" font-size="12" fill="#4b5373" text-anchor="end">75</text>
+<text x="60" y="204" font-size="12" fill="#4b5373" text-anchor="end">50</text>
+<text x="60" y="269" font-size="12" fill="#4b5373" text-anchor="end">25</text>
+<text x="60" y="334" font-size="12" fill="#4b5373" text-anchor="end">0</text>
+<line x1="70" y1="330" x2="730" y2="330" stroke="#dde3ef" stroke-width="2"/>
+<rect x="110" y="239" width="70" height="91" rx="8" fill="#c7d8fb"/>
+<text x="145" y="231" font-size="14" font-weight="700" fill="#1e2540" text-anchor="middle">35</text>
+<text x="145" y="350" font-size="13" fill="#4b5373" text-anchor="middle">A</text>
+<rect x="230" y="187" width="70" height="143" rx="8" fill="#2563eb"/>
+<text x="265" y="179" font-size="14" font-weight="700" fill="#1e2540" text-anchor="middle">55</text>
+<text x="265" y="350" font-size="13" fill="#4b5373" text-anchor="middle">B</text>
+<rect x="350" y="122" width="70" height="208" rx="8" fill="#2563eb"/>
+<text x="385" y="114" font-size="14" font-weight="700" fill="#1e2540" text-anchor="middle">80</text>
+<text x="385" y="350" font-size="13" fill="#4b5373" text-anchor="middle">C</text>
+<rect x="470" y="169" width="70" height="161" rx="8" fill="#c7d8fb"/>
+<text x="505" y="161" font-size="14" font-weight="700" fill="#1e2540" text-anchor="middle">62</text>
+<text x="505" y="350" font-size="13" fill="#4b5373" text-anchor="middle">D</text>
+<rect x="590" y="213" width="70" height="117" rx="8" fill="#c7d8fb"/>
+<text x="625" y="205" font-size="14" font-weight="700" fill="#1e2540" text-anchor="middle">45</text>
+<text x="625" y="350" font-size="13" fill="#4b5373" text-anchor="middle">E</text>
+</svg>

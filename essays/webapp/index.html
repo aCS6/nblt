@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IELTS Writing Task 2 — Interactive Guideline + Essays Vault. Master structures, memorize language, and study model essays with spaced repetition.">
+  <title>IELTS Task 2 — Guideline &amp; Essays Vault</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="stylesheet" href="styles/main.css?v=20260808-9">
+
+  <!-- Apply saved theme before first paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('ielts-theme');
+        var light = saved === 'light' ||
+          (saved !== 'dark' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches);
+        document.documentElement.setAttribute('data-theme', light ? 'light' : 'dark');
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <!-- Data & helpers (order matters) -->
+  <script src="scripts/topics-data.js"></script>
+  <script src="scripts/vocabulary.js"></script>
+  <script src="scripts/grammar.js"></script>
+  <script src="scripts/guideline-data.js"></script>
+  <script src="scripts/app.js?v=20260808-9"></script>
+  <script src="scripts/guide.js?v=20260808-9"></script>
+
+  <!-- Alpine.js plugins (must load before Alpine core) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+  <!-- Alpine.js via CDN -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- NBLT hub: floating "back to home" pill. Optional — the app runs without it. -->
+  <script defer src="../../assets/nblt-home.js"></script>
+</head>
+
+<body>
+  <div id="app" x-data x-init="$store.app.init(); $store.guide.init()"
+       :class="{ 'sidebar-collapsed': $store.app.sidebarCollapsed, 'grammar-open': $store.app.grammarPanelOpen }">
+
+    <!-- ═══════════ Mobile Header ═══════════ -->
+    <header class="mobile-header">
+      <button class="mobile-menu-btn" @click="$store.app.mobileMenuOpen = !$store.app.mobileMenuOpen" aria-label="Toggle menu">☰</button>
+      <span class="mobile-title" x-text="$store.guide.section === 'guideline' ? 'Task-2 Guideline' : 'Task-2 Essays Vault'"></span>
+      <button class="theme-toggle"
+              :class="{ 'is-light': $store.app.isLightTheme }"
+              @click="$store.app.toggleTheme()"
+              :aria-label="$store.app.isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'"
+              :title="$store.app.isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'">
+        <span class="theme-toggle-icon" x-text="$store.app.isLightTheme ? '🌙' : '☀️'"></span>
+      </button>
+    </header>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-mobile-overlay"
+         :class="{ 'visible': $store.app.mobileMenuOpen }"
+         @click="$store.app.mobileMenuOpen = false"></div>
+
+    <!-- ═══════════ Sidebar ═══════════ -->
+    <aside class="sidebar" :class="{ 'mobile-open': $store.app.mobileMenuOpen }">
+
+      <!-- Brand -->
+      <div class="sidebar-header">
+        <div class="sidebar-topbar">
+          <div class="sidebar-brand" @click="$store.app.goHome()" style="cursor:pointer;">
+            <div class="sidebar-logo">T2</div>
+            <div>
+              <div class="sidebar-title">IELTS Task 2 Lab</div>
+              <div class="sidebar-subtitle">Guide + Essays Vault</div>
+            </div>
+          </div>
+          <button class="sidebar-collapse-btn"
+                  @click="$store.app.toggleSidebar()"
+                  aria-label="Collapse sidebar">◀</button>
+          <button class="theme-toggle theme-toggle-sidebar"
+                  :class="{ 'is-light': $store.app.isLightTheme }"
+                  @click="$store.app.toggleTheme()"
+                  :aria-label="$store.app.isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'"
+                  :title="$store.app.isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'">
+            <span class="theme-toggle-icon" x-text="$store.app.isLightTheme ? '🌙' : '☀️'"></span>
+          </button>
+        </div>
+
+        <!-- ═══ Section Switcher ═══ -->
+        <div class="section-switcher" role="tablist" aria-label="App sections">
+          <button class="section-tab"
+                  :class="{ 'active': $store.guide.section === 'guideline' }"
+                  @click="$store.guide.setSection('guideline')"
+                  role="tab"
+                  :aria-selected="$store.guide.section === 'guideline'">
+            <span class="section-tab-icon">🎓</span>
+            <span class="section-tab-label">Task-2<br>Guideline</span>
+          </button>
+          <button class="section-tab"
+                  :class="{ 'active': $store.guide.section === 'vault' }"
+                  @click="$store.guide.setSection('vault')"
+                  role="tab"
+                  :aria-selected="$store.guide.section === 'vault'">
+            <span class="section-tab-icon">📚</span>
+            <span class="section-tab-label">Task-2<br>Essays Vault</span>
+          </button>
+        </div>
+
+        <!-- ═══ Search (context-aware) ═══ -->
+        <div class="search-wrapper" x-show="$store.guide.section === 'guideline'" x-cloak>
+          <span class="search-icon">🔍</span>
+          <input type="text"
+                 class="search-input"
+                 placeholder="Search lessons…"
+                 x-model="$store.guide.guideSearch"
+                 autocomplete="off">
+        </div>
+        <div class="search-wrapper" x-show="$store.guide.section === 'vault'" x-cloak>
+          <span class="search-icon">🔍</span>
+          <input type="text"
+                 class="search-input"
+                 placeholder="Search topics or questions…"
+                 x-model="$store.app.searchQuery"
+                 id="search-input"
+                 autocomplete="off">
+        </div>
+
+        <!-- ═══ Stats (section-aware) ═══ -->
+        <div class="sidebar-stats" x-show="$store.guide.section === 'guideline'" x-cloak>
+          <div class="stat-chip">
+            <span class="stat-value" x-text="$store.guide.totalLessons"></span>
+            <span>Lessons</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-value" x-text="$store.guide.completedLessons"></span>
+            <span>Done</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-value" x-text="$store.guide.overallProgress + '%'"></span>
+            <span>Mastery</span>
+          </div>
+        </div>
+        <div class="sidebar-stats" x-show="$store.guide.section === 'vault'" x-cloak>
+          <div class="stat-chip">
+            <span class="stat-value" x-text="$store.app.topics.length"></span>
+            <span>Topics</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-value" x-text="$store.app.totalEssays"></span>
+            <span>Essays</span>
+          </div>
+        </div>
+
+        <!-- Last Read shortcut (vault) -->
+        <button class="last-read-nav-btn"
+                x-show="$store.guide.section === 'vault' && $store.app.hasLastRead"
+                x-cloak
+                @click="$store.app.goToLastRead()">
+          <span class="last-read-nav-icon">🔖</span>
+          <span>→ Last Read</span>
+        </button>
+      </div>
+
+      <!-- ═══════════ Guideline Navigation ═══════════ -->
+      <nav class="sidebar-topics" x-show="$store.guide.section === 'guideline'" x-cloak aria-label="Guideline modules">
+        <div class="guide-nav-head">
+          <span>🎓</span>
+          <span>Interactive Guideline</span>
+        </div>
+        <template x-for="mod in $store.guide.filteredModules" :key="mod.id">
+          <div class="topic-item">
+            <div class="topic-header"
+                 :class="{ 'active': $store.guide.expandedGuideModule === mod.id }"
+                 @click="$store.guide.toggleModule(mod.id)">
+              <div class="topic-icon" x-text="mod.icon"></div>
+              <div class="topic-info">
+                <div class="topic-name" x-text="mod.title"></div>
+                <div class="topic-count" x-text="$store.guide.moduleProgress[mod.id].done + ' / ' + mod.lessons.length + ' lessons'"></div>
+              </div>
+              <span class="guide-mod-progress"
+                    :class="'guide-progress-' + mod.color">
+                <span :style="'width:' + $store.guide.moduleProgress[mod.id].pct + '%'"></span>
+              </span>
+              <span class="topic-chevron"
+                    :class="{ 'rotated': $store.guide.expandedGuideModule === mod.id }">▶</span>
+            </div>
+
+            <div class="topic-essays"
+                 x-show="$store.guide.expandedGuideModule === mod.id"
+                 x-collapse>
+              <div class="lesson-link lesson-link-home"
+                   :class="{ 'active': $store.guide.activeModuleId === mod.id && !$store.guide.activeLessonId }"
+                   @click="$store.guide.openModuleHome(mod.id)">
+                <span class="lesson-link-text">Module Overview</span>
+                <span class="lesson-done-mark" x-show="$store.guide.moduleProgress[mod.id].pct === 100" title="Module complete">🏁</span>
+              </div>
+              <template x-for="lesson in mod.lessons" :key="lesson.id">
+                <div class="lesson-link"
+                     :class="{ 'active': $store.guide.activeLessonId === lesson.id && $store.guide.activeModuleId === mod.id,
+                               'done': $store.guide.lessonComplete(mod.id, lesson.id) }"
+                     @click="$store.guide.openLesson(mod.id, lesson.id)">
+                  <span class="lesson-link-emoji" x-text="lesson.emoji"></span>
+                  <span class="lesson-link-text" x-text="lesson.title"></span>
+                  <span class="lesson-done-mark" x-show="$store.guide.lessonComplete(mod.id, lesson.id)" title="Lesson mastered">✓</span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+
+        <div class="no-results"
+             x-show="$store.guide.filteredModules.length === 0"
+             x-cloak>
+          <div class="no-results-icon">🔎</div>
+          <div>No lessons match your search.</div>
+        </div>
+
+        <div class="guide-sidebar-foot">
+          <span>🧠 Spaced repetition active</span>
+        </div>
+      </nav>
+
+      <!-- ═══════════ Vault Navigation ═══════════ -->
+      <nav class="sidebar-topics" x-show="$store.guide.section === 'vault'" x-cloak aria-label="Topic categories">
+        <template x-for="topic in $store.app.filteredTopics" :key="topic.slug">
+          <div class="topic-item">
+            <!-- Topic header -->
+            <div class="topic-header"
+                 :class="{ 'active': $store.app.expandedTopic === topic.slug }"
+                 @click="$store.app.toggleTopic(topic.slug)"
+                 :id="'topic-' + topic.slug">
+              <div class="topic-icon" x-text="topic.icon"></div>
+              <div class="topic-info">
+                <div class="topic-name" x-text="topic.title"></div>
+                <div class="topic-count" x-text="topic.essays.length + ' essays'"></div>
+              </div>
+              <span class="topic-chevron"
+                    :class="{ 'rotated': $store.app.expandedTopic === topic.slug }">▶</span>
+            </div>
+
+            <!-- Essay sub-list -->
+            <div class="topic-essays"
+                 x-show="$store.app.expandedTopic === topic.slug"
+                 x-collapse>
+              <template x-for="essay in $store.app.filteredEssaysForTopic(topic)" :key="essay.originalIndex">
+                <div class="essay-link"
+                     :class="{
+                       'active': $store.app.selectedTopicSlug === topic.slug &&
+                                 $store.app.selectedEssayIndex === essay.originalIndex,
+                       'last-read': $store.app.isLastReadEssay(topic.slug, essay.originalIndex)
+                     }"
+                     @click="$store.app.selectEssay(topic.slug, essay.originalIndex)">
+                  <span class="essay-link-text" x-text="$store.app.truncate(essay.question)"></span>
+                  <span class="essay-link-bookmark"
+                        x-show="$store.app.isLastReadEssay(topic.slug, essay.originalIndex)"
+                        title="Last read">🔖</span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+
+        <!-- No results -->
+        <div class="no-results"
+             x-show="$store.app.filteredTopics.length === 0"
+             x-cloak>
+          <div class="no-results-icon">🔎</div>
+          <div>No topics or questions match your search.</div>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Sidebar Resizer -->
+    <div class="sidebar-resizer"></div>
+
+    <!-- Expand sidebar (when collapsed) -->
+    <button class="sidebar-expand-btn"
+            x-show="$store.app.sidebarCollapsed"
+            x-cloak
+            @click="$store.app.toggleSidebar()"
+            aria-label="Expand sidebar">▶</button>
+
+    <!-- ═══════════ Main Content ═══════════ -->
+    <main class="main-content" @click="if ($store.app.grammarPanelOpen) $store.app.closeGrammarPanel()">
+      <div class="main-inner">
+
+        <!-- ═══════ GUIDELINE: Home ═══════ -->
+        <template x-if="$store.guide.section === 'guideline' && !$store.guide.activeModuleId">
+          <div class="guide-home animate-fade">
+            <div class="guide-home-hero">
+              <div class="guide-home-icon">🎓</div>
+              <h1 class="guide-home-title">Task-2 Guideline</h1>
+              <p class="guide-home-sub">Learn, memorize, then open the vault. Built on active recall &amp; spaced repetition.</p>
+            </div>
+
+            <div class="guide-overall-progress">
+              <div class="guide-overall-label">
+                <span>Overall Mastery</span>
+                <span x-text="$store.guide.overallProgress + '%'"></span>
+              </div>
+              <div class="guide-overall-bar">
+                <div class="guide-overall-fill" :style="'width:' + $store.guide.overallProgress + '%'"></div>
+              </div>
+            </div>
+
+            <div class="guide-module-grid">
+              <template x-for="mod in $store.guide.modules" :key="mod.id">
+                <div class="guide-module-card animate-in"
+                     :class="'guide-card-' + mod.color"
+                     @click="$store.guide.openModuleHome(mod.id)">
+                  <div class="guide-module-top">
+                    <span class="guide-module-icon" x-text="mod.icon"></span>
+                    <span class="guide-module-progress-pct" x-text="$store.guide.moduleProgress[mod.id].pct + '%'"></span>
+                  </div>
+                  <div class="guide-module-title" x-text="mod.title"></div>
+                  <div class="guide-module-tagline" x-text="mod.tagline"></div>
+                  <div class="guide-module-meta">
+                    <span x-text="$store.guide.moduleProgress[mod.id].done + ' / ' + mod.lessons.length + ' lessons'"></span>
+                  </div>
+                  <div class="guide-module-bar">
+                    <div class="guide-module-fill" :style="'width:' + $store.guide.moduleProgress[mod.id].pct + '%'"></div>
+                  </div>
+                </div>
+              </template>
+            </div>
+
+            <div class="guide-science-note">
+              <div class="guide-science-icon">🧠</div>
+              <div>
+                <strong>Why interactive?</strong>
+                <span>Modern learning science shows that <em>retrieval practice</em> (testing yourself), <em>spaced repetition</em> (review at growing intervals), <em>chunking</em> (4±1 chunks) and <em>interleaving</em> (mixing topics) outperform passive re-reading. Every card, quiz and game here uses one of these methods.</span>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <!-- ═══════ GUIDELINE: Module Home ═══════ -->
+        <template x-if="$store.guide.section === 'guideline' && $store.guide.activeModuleId && !$store.guide.activeLessonId">
+          <div class="guide-module-home animate-fade">
+            <nav class="breadcrumb">
+              <span class="breadcrumb-link" @click="$store.guide.backToGuidelineHome()">Guideline</span>
+              <span class="breadcrumb-sep">›</span>
+              <span class="breadcrumb-current" x-text="$store.guide.activeModule.title"></span>
+            </nav>
+
+            <div class="guide-module-hero" :class="'guide-card-' + $store.guide.activeModule.color">
+              <div class="guide-module-icon-lg" x-text="$store.guide.activeModule.icon"></div>
+              <div>
+                <h1 class="guide-module-title-lg" x-text="$store.guide.activeModule.title"></h1>
+                <p class="guide-module-tagline-lg" x-text="$store.guide.activeModule.tagline"></p>
+              </div>
+            </div>
+
+            <div class="guide-lesson-grid">
+              <template x-for="(lesson, li) in $store.guide.activeModule.lessons" :key="lesson.id">
+                <div class="guide-lesson-card animate-in"
+                     :style="'animation-delay:' + (li * 0.06) + 's'"
+                     :class="{ 'done': $store.guide.lessonComplete($store.guide.activeModule.id, lesson.id) }"
+                     @click="$store.guide.openLesson($store.guide.activeModule.id, lesson.id)">
+                  <div class="guide-lesson-card-top">
+                    <span class="guide-lesson-emoji-lg" x-text="lesson.emoji"></span>
+                    <span class="guide-lesson-duration">⏱ <span x-text="lesson.duration"></span></span>
+                  </div>
+                  <div class="guide-lesson-title" x-text="lesson.title"></div>
+                  <div class="guide-lesson-interact">
+                    <span x-text="$store.guide.lessonBlockTypes(lesson)"></span>
+                  </div>
+                  <div class="guide-lesson-card-foot">
+                    <span class="guide-lesson-start">Start →</span>
+                    <span class="guide-lesson-check" x-show="$store.guide.lessonComplete($store.guide.activeModule.id, lesson.id)">✓ Mastered</span>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+
+        <!-- ═══════ GUIDELINE: Lesson View ═══════ -->
+        <template x-if="$store.guide.section === 'guideline' && $store.guide.hasActiveLesson">
+          <div class="guide-lesson-view animate-fade">
+            <nav class="breadcrumb">
+              <span class="breadcrumb-link" @click="$store.guide.openModuleHome($store.guide.activeModule.id)">Guideline</span>
+              <span class="breadcrumb-sep">›</span>
+              <span class="breadcrumb-link" @click="$store.guide.openModuleHome($store.guide.activeModule.id)" x-text="$store.guide.activeModule.title"></span>
+              <span class="breadcrumb-sep">›</span>
+              <span class="breadcrumb-current" x-text="$store.guide.activeLesson.title"></span>
+            </nav>
+
+            <div class="guide-lesson-header">
+              <div class="guide-lesson-title-big">
+                <span class="guide-lesson-emoji-x" x-text="$store.guide.activeLesson.emoji"></span>
+                <h1 x-text="$store.guide.activeLesson.title"></h1>
+              </div>
+              <div class="guide-lesson-meta">
+                <span class="guide-lesson-module-tag" :class="'guide-tag-' + $store.guide.activeModule.color" x-text="$store.guide.activeModule.title"></span>
+                <span class="guide-lesson-duration">⏱ <span x-text="$store.guide.activeLesson.duration"></span></span>
+                <span class="guide-lesson-status"
+                      :class="{ 'mastered': $store.guide.lessonComplete($store.guide.activeModule.id, $store.guide.activeLesson.id) }"
+                      x-text="$store.guide.lessonComplete($store.guide.activeModule.id, $store.guide.activeLesson.id) ? '✓ Mastered' : 'Not yet mastered'"></span>
+              </div>
+            </div>
+
+            <div class="guide-scroller">
+              <!-- Block renderer -->
+              <template x-for="(b, bIdx) in $store.guide.activeLesson.blocks" :key="bIdx">
+                <div>
+
+                  <!-- heading -->
+                  <template x-if="b.type === 'heading'">
+                    <h3 class="guide-block-heading animate-in" x-text="b.text"></h3>
+                  </template>
+
+                  <!-- text -->
+                  <template x-if="b.type === 'text'">
+                    <p class="guide-block-text animate-in" x-text="b.text"></p>
+                  </template>
+
+                  <!-- bullets -->
+                  <template x-if="b.type === 'bullets'">
+                    <ul class="guide-bullets animate-in">
+                      <template x-for="(it, i) in b.items" :key="i">
+                        <li><span class="guide-bullet-mark">◆</span><span x-text="it"></span></li>
+                      </template>
+                    </ul>
+                  </template>
+
+                  <!-- keyfacts -->
+                  <template x-if="b.type === 'keyfacts'">
+                    <div class="guide-keyfacts animate-in">
+                      <template x-for="(kf, i) in b.items" :key="i">
+                        <div class="guide-keyfact">
+                          <div class="guide-keyfact-value" x-text="kf.value"></div>
+                          <div class="guide-keyfact-label" x-text="kf.label"></div>
+                          <div class="guide-keyfact-note" x-text="kf.note"></div>
+                        </div>
+                      </template>
+                    </div>
+                  </template>
+
+                  <!-- mnemonic -->
+                  <template x-if="b.type === 'mnemonic'">
+                    <div class="guide-mnemonic animate-in">
+                      <div class="guide-mnemonic-icon">🧠</div>
+                      <div>
+                        <div class="guide-mnemonic-title" x-text="b.title"></div>
+                        <div class="guide-mnemonic-text" x-text="b.text"></div>
+                      </div>
+                    </div>
+                  </template>
+
+                  <!-- fix-it (mistakes) -->
+                  <template x-if="b.type === 'mistakes'">
+                    <div class="guide-mistakes animate-in">
+                      <div class="guide-interactive-title">
+                        <span class="guide-interactive-emoji">🔄</span>
+                        <span>Spot the fix</span>
+                        <span class="guide-interactive-hint">Tap a sentence to reveal the correction</span>
+                      </div>
+                      <div class="guide-mistakes-list">
+                        <template x-for="(m, mi) in b.items" :key="mi">
+                          <div class="guide-mistake-item" x-data="{ open: false }">
+                            <button class="guide-mistake-toggle" @click="open = !open">
+                              <span class="guide-mistake-bad" x-text="m.bad"></span>
+                              <span class="guide-mistake-chevron" x-text="open ? '−' : '+'"></span>
+                            </button>
+                            <div class="guide-mistake-good" x-show="open" x-collapse>
+                              <div class="guide-mistake-good-line"><span class="guide-mistake-good-mark">✓</span><span x-text="m.good"></span></div>
+                              <div class="guide-mistake-reason" x-text="m.reason"></div>
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
+
+                  <!-- timeline -->
+                  <template x-if="b.type === 'timeline'">
+                    <div class="guide-timeline animate-in">
+                      <template x-for="(st, i) in b.steps" :key="i">
+                        <div class="guide-timeline-step">
+                          <div class="guide-timeline-node">
+                            <span class="guide-timeline-icon" x-text="st.icon"></span>
+                            <span class="guide-timeline-time" x-text="st.time"></span>
+                          </div>
+                          <div class="guide-timeline-body">
+                            <div class="guide-timeline-title" x-text="st.title"></div>
+                            <div class="guide-timeline-desc" x-text="st.desc"></div>
+                          </div>
+                        </div>
+                      </template>
+                    </div>
+                  </template>
+
+                  <!-- structure map -->
+                  <template x-if="b.type === 'structure'">
+                    <div class="guide-structure animate-in">
+                      <div class="guide-structure-note" x-text="b.note"></div>
+                      <div class="guide-structure-grid">
+                        <template x-for="(pt, pi) in b.parts" :key="pi">
+                          <div class="guide-structure-part"
+                               :class="'guide-part-' + pt.color + ($store.guide.isStructOpen(b.id, pi) ? ' open' : '')"
+                               @click="$store.guide.toggleStruct(b.id, pi)">
+                            <div class="guide-part-head">
+                              <span class="guide-part-icon" x-text="pt.icon"></span>
+                              <span class="guide-part-label" x-text="pt.label"></span>
+                              <span class="guide-part-chevron" x-text="$store.guide.isStructOpen(b.id, pi) ? '−' : '+'"></span>
+                            </div>
+                            <div class="guide-part-desc" x-show="$store.guide.isStructOpen(b.id, pi)" x-collapse x-text="pt.desc"></div>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
+
+                  <!-- flashcards -->
+                  <template x-if="b.type === 'flashcards'">
+                    <div class="guide-flashcards animate-in">
+                      <div class="guide-interactive-title">
+                        <span class="guide-interactive-emoji">🃏</span>
+                        <span>Flashcards</span>
+                        <span class="guide-interactive-hint" x-text="b.intro"></span>
+                      </div>
+
+                      <!-- progress -->
+                      <div class="guide-deck-progress">
+                        <div class="guide-deck-bar"><div class="guide-deck-fill" :style="'width:' + $store.guide.deckProgress(b.id) + '%'"></div></div>
+                        <span class="guide-deck-count" x-text="$store.guide.deckCounter(b.id)"></span>
+                      </div>
+
+                      <!-- card -->
+                      <template x-if="!$store.guide.deckState(b.id).done">
+                        <div class="guide-flashcard-wrap">
+                          <div class="guide-flashcard" :class="{ 'flipped': $store.guide.deckState(b.id).flipped }" @click="$store.guide.flipCard(b.id)">
+                            <div class="guide-flashcard-inner">
+                              <div class="guide-flashcard-face guide-flashcard-front">
+                                <div class="guide-flashcard-hint-top">TAP TO REVEAL</div>
+                                <div class="guide-flashcard-front-text" x-text="$store.guide.currentCard(b.id).front"></div>
+                                <div class="guide-flashcard-arrow">⟲</div>
+                              </div>
+                              <div class="guide-flashcard-face guide-flashcard-back">
+                                <div class="guide-flashcard-hint-top">REMEMBER THIS</div>
+                                <div class="guide-flashcard-back-text" x-text="$store.guide.currentCard(b.id).back"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="guide-flashcard-nav">
+                            <button class="guide-fc-nav" :disabled="!$store.guide.canDeckPrev(b.id)" @click="$store.guide.prevCard(b.id)">← Prev</button>
+                            <span class="guide-deck-count-step" x-text="$store.guide.deckCounter(b.id)"></span>
+                            <button class="guide-fc-nav" :disabled="!$store.guide.canDeckNext(b.id)" @click="$store.guide.nextCard(b.id)">Next →</button>
+                          </div>
+                        </div>
+                      </template>
+                    </div>
+                  </template>
+
+                  <!-- quiz -->
+                  <template x-if="b.type === 'quiz'">
+                    <div class="guide-quiz animate-in">
+                      <div class="guide-interactive-title">
+                        <span class="guide-interactive-emoji">🧩</span>
+                        <span x-text="b.title"></span>
+                        <span class="guide-interactive-hint">Instant feedback — active recall</span>
+                      </div>
+
+                      <template x-if="!$store.guide.quizState(b.id).done">
+                        <div>
+                          <template x-for="(qq, qi) in b.questions" :key="qi">
+                            <div class="guide-question">
+                              <div class="guide-question-num" x-text="'Q' + (qi + 1)"></div>
+                              <div class="guide-question-text" x-text="qq.q"></div>
+                              <div class="guide-options">
+                                <template x-for="(opt, oi) in qq.options" :key="oi">
+                                  <button class="guide-option"
+                                          :class="{
+                                            'correct': $store.guide.quizState(b.id).answers[qi] === oi && oi === qq.answer,
+                                            'wrong': $store.guide.quizState(b.id).answers[qi] === oi && oi !== qq.answer,
+                                            'reveal-correct': $store.guide.quizState(b.id).answers[qi] !== null && oi === qq.answer && $store.guide.quizState(b.id).answers[qi] !== oi,
+                                          }"
+                                          :disabled="$store.guide.quizState(b.id).answers[qi] !== null"
+                                          @click="$store.guide.answerQuiz(b.id, qi, oi)">
+                                    <span class="guide-option-letter" x-text="'ABCDEFGH'[oi]"></span>
+                                    <span x-text="opt"></span>
+                                    <span class="guide-option-mark" x-show="$store.guide.quizState(b.id).answers[qi] !== null && oi === qq.answer">✓</span>
+                                  </button>
+                                </template>
+                              </div>
+                              <div class="guide-quiz-feedback"
+                                   x-show="$store.guide.quizState(b.id).answers[qi] !== null"
+                                   x-cloak>
+                                <span class="guide-quiz-feedback-icon" x-text="$store.guide.quizState(b.id).answers[qi] === qq.answer ? '✅' : '❌'"></span>
+                                <span x-text="qq.explanation"></span>
+                              </div>
+                            </div>
+                          </template>
+                          <div class="guide-quiz-score" x-show="!$store.guide.quizState(b.id).done && $store.guide.quizState(b.id).answers.every(a => a !== null)">
+                            <span>Score: </span>
+                            <span class="guide-quiz-score-num" x-text="$store.guide.quizScore(b.id) + ' / ' + b.questions.length"></span>
+                          </div>
+                        </div>
+                      </template>
+
+                      <template x-if="$store.guide.quizState(b.id).done">
+                        <div class="guide-quiz-done"
+                             :class="{ 'perfect': $store.guide.quizScore(b.id) === b.questions.length }">
+                          <div class="guide-quiz-done-icon" x-text="$store.guide.quizScore(b.id) === b.questions.length ? '🏆' : '💪'"></div>
+                          <div class="guide-quiz-done-title" x-text="$store.guide.quizScore(b.id) === b.questions.length ? 'Perfect score!' : 'Good effort — try again!'"></div>
+                          <div class="guide-quiz-done-score" x-text="$store.guide.quizScore(b.id) + ' / ' + b.questions.length"></div>
+                          <button class="guide-fc-btn guide-fc-restart" @click="$store.guide.resetQuiz(b.id)">↻ Retry quiz</button>
+                        </div>
+                      </template>
+                    </div>
+                  </template>
+
+                  <!-- matching game -->
+                  <template x-if="b.type === 'synonyms'">
+                    <div class="guide-match animate-in">
+                      <div class="guide-interactive-title">
+                        <span class="guide-interactive-emoji">🔁</span>
+                        <span>Match the Synonym</span>
+                        <span class="guide-interactive-hint" x-text="b.intro"></span>
+                      </div>
+
+                      <template x-if="!$store.guide.matchState(b.id).done">
+                        <div class="guide-match-pairs">
+                          <div class="guide-match-col guide-match-left">
+                            <div class="guide-match-col-label">Plain word</div>
+                            <template x-for="(pair, pi) in b.pairs" :key="pi">
+                              <button class="guide-match-item"
+                                      :class="{
+                                        'matched': $store.guide.matchState(b.id).matched[pi],
+                                        'selected': $store.guide.matchState(b.id).selected === pi,
+                                        'wrong-flash': $store.guide.matchState(b.id).wrong === pi,
+                                      }"
+                                      :disabled="$store.guide.matchState(b.id).matched[pi]"
+                                      @click="$store.guide.matchPick(b.id, 'left', pi)"
+                                      x-text="pair[0]"></button>
+                            </template>
+                          </div>
+                          <div class="guide-match-col guide-match-right">
+                            <div class="guide-match-col-label">Academic synonym</div>
+                            <template x-for="(pair, pi) in b.pairs" :key="pi">
+                              <button class="guide-match-item"
+                                      :class="{
+                                        'matched': $store.guide.matchState(b.id).matched[pi],
+                                        'wrong-flash': $store.guide.matchState(b.id).wrong === pi,
+                                      }"
+                                      :disabled="$store.guide.matchState(b.id).matched[pi]"
+                                      @click="$store.guide.matchPick(b.id, 'right', pi)"
+                                      x-text="pair[1]"></button>
+                            </template>
+                          </div>
+                        </div>
+                        <div class="guide-match-progress">
+                          <span x-text="$store.guide.matchState(b.id).matched.filter(Boolean).length + ' / ' + b.pairs.length + ' matched'"></span>
+                        </div>
+                      </template>
+
+                      <template x-if="$store.guide.matchState(b.id).done">
+                        <div class="guide-quiz-done perfect">
+                          <div class="guide-quiz-done-icon">🧩</div>
+                          <div class="guide-quiz-done-title">All matched!</div>
+                          <div class="guide-quiz-done-score" x-text="b.pairs.length + ' / ' + b.pairs.length"></div>
+                        </div>
+                      </template>
+                    </div>
+                  </template>
+
+                  <!-- model essay sample -->
+                  <template x-if="b.type === 'sample'">
+                    <div class="guide-sample animate-in">
+                      <div class="guide-sample-head">
+                        <span class="badge"
+                              :class="$store.app.getBadgeClass(b.essayType)">Model Essay · <span x-text="b.essayType"></span></span>
+                        <span class="guide-sample-words" x-text="b.words"></span>
+                      </div>
+                      <div class="guide-sample-question" x-text="b.question"></div>
+
+                      <div class="guide-sample-paras">
+                        <template x-for="(para, pi) in b.paragraphs" :key="pi">
+                          <div class="guide-sample-para" x-text="para"></div>
+                        </template>
+                      </div>
+
+                      <!-- Examiner comments -->
+                      <div class="guide-sample-comments" x-show="b.comments && b.comments.length" x-cloak>
+                        <div class="guide-sample-comments-title">📋 Examiner Commentary</div>
+                        <template x-for="(c, ci) in b.comments" :key="ci">
+                          <div class="guide-sample-comment">
+                            <div class="guide-sample-comment-band" x-text="c.band"></div>
+                            <div class="guide-sample-comment-score" x-text="c.score"></div>
+                            <div class="guide-sample-comment-text" x-text="c.text"></div>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
+
+                </div>
+              </template>
+
+              <!-- Lesson complete banner -->
+              <div class="guide-lesson-complete"
+                   x-show="$store.guide.lessonComplete($store.guide.activeModule.id, $store.guide.activeLesson.id)"
+                   x-cloak>
+                <span class="guide-lesson-complete-icon">🏁</span>
+                <div>
+                  <div class="guide-lesson-complete-title">Lesson mastered!</div>
+                  <div class="guide-lesson-complete-sub">You completed every interactive block. Your progress is saved.</div>
+                </div>
+                <button class="guide-next-lesson-btn" @click="$store.guide.nextLesson()">Next lesson →</button>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <!-- ═══════ VAULT: Welcome screen (no essay selected) ═══════ -->
+        <template x-if="$store.guide.section === 'vault' && !$store.app.hasSelection">
+          <div class="welcome-screen animate-fade">
+            <div class="welcome-icon">📚</div>
+            <h1 class="welcome-title">Essays Vault</h1>
+            <p class="welcome-desc">
+              Model essays organized by topic, with vocabulary cards and grammar analysis.
+              Click any paragraph to see grammar structures; use the 🔍 button to look up words.
+            </p>
+            <div class="welcome-stats">
+              <div class="welcome-stat">
+                <div class="welcome-stat-value" x-text="$store.app.topics.length">0</div>
+                <div class="welcome-stat-label">Topics</div>
+              </div>
+              <div class="welcome-stat">
+                <div class="welcome-stat-value" x-text="$store.app.totalEssays">0</div>
+                <div class="welcome-stat-label">Essays</div>
+              </div>
+              <div class="welcome-stat">
+                <div class="welcome-stat-value" x-text="Object.keys(VOCABULARY || {}).length">0</div>
+                <div class="welcome-stat-label">Vocab Words</div>
+              </div>
+            </div>
+
+            <button class="welcome-dict-btn" @click="$store.app.openDict()" title="Look up any word (press /)">
+              <span>🔍</span>
+              <span>Look Up a Word</span>
+            </button>
+          </div>
+        </template>
+
+        <!-- ═══════ VAULT: Essay display ═══════ -->
+        <template x-if="$store.guide.section === 'vault' && $store.app.hasSelection">
+          <article class="essay-display animate-in" :key="$store.app.selectedTopicSlug + '-' + $store.app.selectedEssayIndex">
+
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <span class="breadcrumb-link" @click.stop="$store.app.goHome()">Home</span>
+              <span class="breadcrumb-sep">›</span>
+              <span class="breadcrumb-link"
+                    @click.stop="$store.app.selectedEssayIndex = null; $store.app.selectedTopicSlug = null; $store.app.expandedTopic = $store.app.selectedTopic?.slug"
+                    x-text="$store.app.selectedTopic?.title"></span>
+              <span class="breadcrumb-sep">›</span>
+              <span class="breadcrumb-current">Essay <span x-text="$store.app.selectedEssayIndex + 1"></span></span>
+            </nav>
+
+            <!-- Badge + Last Read -->
+            <div class="essay-meta-row">
+              <div class="badge"
+                   :class="$store.app.getBadgeClass($store.app.selectedEssay.essayType)"
+                   x-text="$store.app.selectedEssay.essayType">
+              </div>
+              <button class="last-read-btn"
+                      :class="{ 'active': $store.app.isLastRead }"
+                      @click.stop="$store.app.toggleLastRead()"
+                      :title="$store.app.isLastRead ? 'Remove last read mark' : 'Mark as last read'">
+                <span class="last-read-icon">🔖</span>
+                <span x-text="$store.app.isLastRead ? 'Last Read' : 'Mark as Last Read'"></span>
+              </button>
+            </div>
+
+            <!-- Question -->
+            <h1 class="essay-question" x-text="$store.app.selectedEssay.question" id="essay-question"></h1>
+
+            <!-- Answer paragraphs -->
+            <div class="essay-answer"
+                 id="essay-answer"
+                 :style="{ '--essay-font-scale': $store.app.essayFontScale }">
+              <template x-for="(para, pIdx) in $store.app.selectedEssay.paragraphs" :key="pIdx">
+                <div class="essay-paragraph"
+                     :class="{ 'grammar-active': $store.app.activeParagraphIndex === pIdx }"
+                     @click.stop="$store.app.openGrammarPanel(para, pIdx)"
+                     x-text="para">
+                </div>
+              </template>
+            </div>
+
+            <!-- Important Vocabulary Collapsible Section -->
+            <div class="vocab-collapse-section animate-in" style="animation-delay: 0.35s;">
+              <button class="vocab-collapse-trigger" @click="$store.app.toggleVocab()">
+                <span class="vocab-collapse-title">
+                  <span class="vocab-collapse-icon">📚</span>
+                  <span>Important Vocabulary</span>
+                </span>
+                <span class="vocab-collapse-meta">
+                  <span class="vocab-count-chip" x-text="$store.app.essayVocabulary.length + ' words'"></span>
+                  <span class="vocab-collapse-chevron" :class="{ 'rotated': !$store.app.vocabCollapsed }">▶</span>
+                </span>
+              </button>
+              <div class="vocab-collapse-content" x-show="!$store.app.vocabCollapsed" x-collapse>
+                <div class="vocab-grid">
+                  <template x-for="item in $store.app.essayVocabulary" :key="item.english">
+                    <div class="vocab-card">
+                      <div class="vocab-card-english" x-text="item.english"></div>
+                      <div class="vocab-card-bangla" x-text="item.bangla"></div>
+                      <div class="vocab-card-type" x-text="item.type"></div>
+                    </div>
+                  </template>
+                  <template x-if="$store.app.essayVocabulary.length === 0">
+                    <div class="vocab-empty">No highlighted vocabulary words found in this essay.</div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </article>
+        </template>
+      </div>
+
+      <!-- ═══════════ Essay Toolbar (vault only: prev / font size / next) ═══════════ -->
+      <div class="essay-toolbar" x-show="$store.guide.section === 'vault' && $store.app.hasSelection" x-cloak>
+        <button class="toolbar-btn"
+                @click="$store.app.prevEssay()"
+                :disabled="!$store.app.hasPrevEssay"
+                title="Previous essay">← Previous</button>
+
+        <div class="toolbar-center">
+          <div class="font-size-control" title="Essay answer font size">
+            <span class="font-size-label">A</span>
+            <input type="range"
+                   class="font-size-slider"
+                   min="0.7" max="1.6" step="0.05"
+                   :value="$store.app.essayFontScale"
+                   @input="$store.app.setFontScale($event.target.value)"
+                   aria-label="Essay answer font size">
+            <span class="font-size-label font-size-label-lg">A</span>
+          </div>
+
+          <button class="toolbar-btn toolbar-dict-btn"
+                  @click="$store.app.openDict()"
+                  title="Look up any word (press /)">🔍 Look up</button>
+        </div>
+
+        <button class="toolbar-btn"
+                @click="$store.app.nextEssay()"
+                :disabled="!$store.app.hasNextEssay"
+                title="Next essay">Next →</button>
+      </div>
+    </main>
+
+    <!-- ═══════════ Grammar Panel ═══════════ -->
+    <div class="grammar-panel"
+         :class="{ 'open': $store.app.grammarPanelOpen }"
+         @click.stop>
+
+      <div class="grammar-resizer"
+           @mousedown.prevent="$store.app.startGrammarResize($event)"
+           aria-label="Resize grammar panel"></div>
+
+      <div class="grammar-panel-header">
+        <div>
+          <div class="grammar-panel-title">
+            <span class="grammar-title-icon">📐</span> Grammar Analysis
+          </div>
+          <div class="grammar-panel-subtitle">Structures detected in this paragraph</div>
+        </div>
+        <button class="grammar-close-btn"
+                @click="$store.app.closeGrammarPanel()"
+                aria-label="Close grammar panel">✕</button>
+      </div>
+
+      <div class="grammar-panel-body">
+        <template x-if="$store.app.grammarData">
+          <div>
+            <template x-for="(pattern, gIdx) in $store.app.grammarData" :key="gIdx">
+              <div class="grammar-section animate-in" :style="'animation-delay:' + (gIdx * 0.08) + 's'">
+
+                <!-- Matched sentence -->
+                <div class="grammar-sentence" x-text="pattern.matchedSentence"></div>
+
+                <!-- Pattern title -->
+                <div class="grammar-section-title" x-text="pattern.title"></div>
+
+                <!-- Structure -->
+                <div class="grammar-structure-wrap">
+                  <div class="grammar-structure-label">🧩 Structure Formula</div>
+                  <div class="grammar-structure" x-text="pattern.structure"></div>
+                </div>
+
+                <!-- Explanation -->
+                <p class="grammar-explanation" style="margin-top: 12px;" x-text="pattern.explanation"></p>
+
+                <!-- Tip -->
+                <div class="grammar-tip">
+                  <span class="grammar-tip-icon">💡</span>
+                  <span class="grammar-tip-text" x-text="pattern.tip"></span>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <!-- ═══════════ Word Dictionary Modal ═══════════ -->
+    <div class="dict-overlay"
+         x-show="$store.app.dictOpen"
+         x-cloak
+         x-transition.opacity
+         @click="$store.app.closeDict()"
+         @keydown.escape.window="$store.app.closeDict()">
+
+      <div class="dict-modal"
+           role="dialog"
+           aria-modal="true"
+           aria-label="Word Dictionary"
+           @click.stop>
+
+        <div class="dict-header">
+          <div>
+            <div class="dict-title">📖 Word Dictionary</div>
+            <div class="dict-subtitle">
+              <span x-text="$store.app.dictionarySize"></span> words — instant Bangla meanings
+            </div>
+          </div>
+          <button class="dict-close-btn" @click="$store.app.closeDict()" aria-label="Close dictionary">✕</button>
+        </div>
+
+        <div class="dict-search-wrap">
+          <span class="dict-search-icon">🔍</span>
+          <input id="dict-input"
+                 class="dict-input"
+                 type="text"
+                 placeholder="Type an English word…"
+                 aria-label="Search the word dictionary"
+                 x-model="$store.app.dictQuery"
+                 autocomplete="off"
+                 spellcheck="false">
+          <button class="dict-clear-btn"
+                  x-show="$store.app.dictQuery"
+                  @click="$store.app.dictQuery = ''"
+                  aria-label="Clear search">✕</button>
+        </div>
+
+        <div class="dict-body">
+          <!-- Best match (exact or resolved root) -->
+          <template x-if="$store.app.dictBestMatch">
+            <div class="dict-featured">
+              <div>
+                <span class="dict-featured-word" x-text="$store.app.dictBestMatch.word"></span>
+                <span class="dict-type-pill" x-text="$store.app.dictBestMatch.type"></span>
+              </div>
+              <div class="dict-featured-bangla" x-text="$store.app.dictBestMatch.bangla"></div>
+              <div class="dict-featured-root"
+                   x-show="$store.app.dictBestMatch.matchedRoot"
+                   x-text="'Meaning of the root form &quot;' + $store.app.dictBestMatch.word + '&quot;'"></div>
+              <span class="dict-in-essay"
+                    x-show="$store.app.dictInEssay($store.app.dictBestMatch.word)">✓ Used in this essay</span>
+            </div>
+          </template>
+
+          <!-- Other matches (top 3 total: featured #1 + these) -->
+          <template x-if="$store.app.dictResults.length">
+            <div class="dict-results">
+              <div class="dict-results-label">More matches</div>
+              <template x-for="r in $store.app.dictResults" :key="r.word">
+                <div class="dict-result" @click="$store.app.dictQuery = r.word">
+                  <span class="dict-result-word" x-text="r.word"></span>
+                  <span class="dict-type-pill" x-text="r.type"></span>
+                  <span class="dict-result-bangla" x-text="r.bangla"></span>
+                  <span class="dict-result-in-essay"
+                        x-show="$store.app.dictInEssay(r.word)"
+                        title="Used in this essay">📄</span>
+                </div>
+              </template>
+            </div>
+          </template>
+
+          <!-- No match -->
+          <div class="dict-empty"
+               x-show="$store.app.dictQuery && !$store.app.dictBestMatch && !$store.app.dictResults.length"
+               x-cloak>
+            <div class="dict-empty-icon">🤔</div>
+            <div>No close match for “<span x-text="$store.app.dictQuery"></span>”</div>
+            <div class="dict-empty-hint">Check the spelling or try a root form, e.g. “expose” for “exposed”.</div>
+          </div>
+
+          <!-- Idle hint -->
+          <div class="dict-idle" x-show="!$store.app.dictQuery" x-cloak>
+            <div class="dict-idle-icon">💡</div>
+            <div>Start typing to search the dictionary of <span x-text="$store.app.dictionarySize"></span> words.</div>
+          </div>
+        </div>
+
+        <div class="dict-footer">
+          <span>Press / to open</span>
+          <span>Esc to close</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

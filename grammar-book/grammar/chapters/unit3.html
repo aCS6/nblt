@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 3 – Present Perfect | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 3</span>
+    <span class="subtitle">Present Perfect — present perfect simple and continuous</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening: Assignment writing steps</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear two university students, Carl and Sue, talking about an assignment. Before you listen, look at the list of activities (A–F). Put the activities in the order which you think is best when writing an assignment.</p>
+        <ul class="use-list" style="margin-top:12px;">
+          <li>A — make notes</li>
+          <li>B — start to write</li>
+          <li>C — do research</li>
+          <li>D — make a plan</li>
+          <li>E — re-read books</li>
+          <li>F — get a book list</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen — Track 05 (first part)</h3></div>
+      <div class="exercise-body">
+        <p>Listen to the first part of the conversation. Which five activities does Sue mention? Write the letters A–F in the correct order in boxes 1–5 on the flowchart.</p>
+        <div class="audio-player">
+          <div class="track-badge">05</div>
+          <div class="track-info"><h4>Track 05 — Carl and Sue's conversation</h4><p>Context listening — university assignment</p></div>
+          <div id="audio-05"></div>
+        </div>
+        <img src="../assets/image-contents/u3_flowchart_assignment.png" alt="Flowchart with 5 boxes connected by arrows" class="diagram"/>
+        <p class="diagram-caption">Write the activity letter (A–F) in each box in the order Sue mentions them</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+          <div class="correction-row"><span class="c-num">1</span><input class="corr-input a2u3" data-id="u3a2_1" placeholder="A–F" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><input class="corr-input a2u3" data-id="u3a2_2" placeholder="A–F" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><input class="corr-input a2u3" data-id="u3a2_3" placeholder="A–F" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><input class="corr-input a2u3" data-id="u3a2_4" placeholder="A–F" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><input class="corr-input a2u3" data-id="u3a2_5" placeholder="A–F" style="width:60px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a2u3" class="btn-check">Check</button>
+          <button id="btn-show-a2u3" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2u3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen — Track 05 (second part): Fill in the gaps</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Sue: I <input class="gap-input a3u3" data-id="u3a3_1" placeholder="…" style="min-width:150px;"/> plenty of information for the assignment.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Sue: When I was in the library last week, I <input class="gap-input a3u3" data-id="u3a3_2" placeholder="…" style="min-width:120px;"/> those leaflets.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> Carl: I <input class="gap-input a3u3" data-id="u3a3_3" placeholder="…" style="min-width:150px;"/> tired since I started this course!</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> Carl: I <input class="gap-input a3u3" data-id="u3a3_4" placeholder="…" style="min-width:150px;"/> and I'm already tired.</div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u3" class="btn-check">Check</button>
+          <button id="btn-show-a3u3" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Analyse your answers from Exercise 3</h3></div>
+      <div class="exercise-body">
+        <p>Look at your answers to Exercise 3 and find examples of each of the following. Write the sentence number (1–4).</p>
+        <div class="gap-fill-item"><div class="gf-row">a &nbsp; something that only happened recently <input class="gap-input a4u3" data-id="u3a4_a" placeholder="…" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row">b &nbsp; something that happened at some time before now, but we do not know when <input class="gap-input a4u3" data-id="u3a4_b" placeholder="…" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row">c &nbsp; an action + the length of time it has been going on <input class="gap-input a4u3" data-id="u3a4_c" placeholder="…" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row">d &nbsp; something that happened at a stated time in the past <input class="gap-input a4u3" data-id="u3a4_d" placeholder="…" style="min-width:60px;"/></div></div>
+        <p style="margin-top:10px;">Which tense is used in each of the examples a–d above?</p>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u3" class="btn-check">Check</button>
+          <button id="btn-show-a4u3" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <div class="note-box">We use the present perfect when we want to show a <strong>link between the present and the past</strong>.</div>
+
+    <h2 class="grammar-subtitle">B1 — Present Perfect Simple</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>have/has</em> + past participle</td><td><em>She'<strong>s started</strong> the assignment.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>have/has not</em> + past participle</td><td><em>I <strong>haven't started</strong> the assignment.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Have/Has</em> … + past participle?</td><td><em><strong>Have</strong> you <strong>started</strong> the assignment?</em></td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the present perfect simple:</p>
+    <ul class="use-list">
+      <li><strong>To talk about a time period that is not finished</strong> (e.g. <em>today, this week</em>):<br/>
+        <em>I'<strong>ve written</strong> a rough plan this morning.</em> (it is still morning)
+        <img src="../assets/image-contents/u3_timeline_thismorning.png" alt="THIS MORNING timeline" class="diagram"/>
+        <p class="diagram-caption">The action happened within a time period that is still ongoing (THIS MORNING → NOW)</p>
+      </li>
+      <li><strong>To show that something happened at some point in the past before now</strong> — we don't state when:<br/>
+        <em>I'<strong>ve collected</strong> plenty of information.</em> (at some point before now)<br/>
+        Time expressions often used: <span class="kw-tag">ever</span><span class="kw-tag">never</span><span class="kw-tag">before</span><span class="kw-tag">up to now</span><span class="kw-tag">still</span><span class="kw-tag">so far</span><br/>
+        <em>It's the longest I'<strong>ve ever had</strong> to write.</em>
+      </li>
+      <li><strong>To talk about a present situation which started in the past</strong>, usually with <em>for/since</em>:<br/>
+        <em>I'<strong>ve worked</strong> really hard for the last two weeks.</em>
+        <img src="../assets/image-contents/u3_timeline_2weeks.png" alt="2 weeks timeline" class="diagram"/>
+        <p class="diagram-caption">A situation that started in the past and continues to NOW (← 2 WEEKS →)</p>
+        Use <em>for</em> with a length of time (e.g. <em>for two hours, for three days</em>) and <em>since</em> with a point in time (e.g. <em>since 2001, since Monday, since I was four</em>).
+      </li>
+      <li><strong>To talk about something that happened at an unstated time but is connected to the present:</strong><br/>
+        <em>I'<strong>ve read</strong> all the books on the reading list.</em> (I have the notes now)<br/>
+        Time expressions: <span class="kw-tag">recently</span><span class="kw-tag">just</span><span class="kw-tag">already</span><span class="kw-tag">yet</span><br/>
+        <em>I'<strong>ve just got</strong> up. &nbsp; Have you written your assignment <strong>yet</strong>?</em>
+      </li>
+    </ul>
+    <div class="warning-box">If we state <strong>when</strong> something happened we must use the <strong>simple past</strong>:<br/>
+      <em>I <strong>wasted</strong> a lot of time last week.</em> <span style="text-decoration:line-through;color:#999;">(not: I have wasted a lot of time last week)</span>
+    </div>
+
+    <div class="compare-table">
+      <div class="compare-col">
+        <div class="col-head">Present Perfect</div>
+        <div class="col-body">
+          <ul>
+            <li>Links the past with the present:<br/><em>I've made quite a lot of notes.</em></li>
+            <li>Does not talk about a specific time:<br/><em>Have you read the leaflet?</em></li>
+            <li>Uses time expressions that show the time period is unfinished:<br/><em>I've read six articles <strong>this week</strong>.</em></li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="col-head">Past Simple</div>
+        <div class="col-body">
+          <ul>
+            <li>Only talks about the past:<br/><em>I made notes on the most important things.</em></li>
+            <li>States a specific past time:<br/><em>I read the leaflets <strong>when I was in the library</strong>.</em></li>
+            <li>Uses time expressions that show the time is finished:<br/><em>I read five books <strong>last week</strong>.</em></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin:16px 0 8px;font-weight:700;color:#4a148c;">Position of time expressions with the present perfect:</p>
+    <ul class="use-list">
+      <li><strong>Between the auxiliary and main verb:</strong> <span class="kw-tag">recently</span><span class="kw-tag">already</span><span class="kw-tag">always</span><span class="kw-tag">ever</span><span class="kw-tag">just</span><span class="kw-tag">never</span><br/>
+        <em>I'<strong>ve already</strong> written the notes. &nbsp; I'<strong>ve just</strong> finished my essay.</em>
+      </li>
+      <li><strong>After the main verb:</strong> <span class="kw-tag">all my life</span><span class="kw-tag">yet</span><span class="kw-tag">before</span><span class="kw-tag">for ages</span><span class="kw-tag">since 2003</span><br/>
+        <em>I've felt tired <strong>for weeks</strong>. &nbsp; I haven't flown <strong>before</strong>.</em>
+      </li>
+    </ul>
+
+    <div class="grammar-extra">
+      <h4>Grammar extra: <em>This is the first time</em> etc.</h4>
+      <p>We use the present perfect tense with the following structures: <em>it/this/that is the first / the second / the best / the only / the worst …</em></p>
+      <p style="margin-top:8px;"><em>It's <strong>the first time</strong> I've ever had to write such a long assignment.</em><br/>
+      <em>Is <strong>this the only time</strong> you've travelled abroad?</em><br/>
+      <em>That's <strong>the sixth cup of coffee</strong> you've had today.</em></p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — Present Perfect Continuous</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>have/has been</em> + verb + <em>-ing</em></td><td><em>I'<strong>ve been studying</strong> really hard.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>have/has not been</em> + verb + <em>-ing</em></td><td><em>He <strong>hasn't been studying</strong> really hard.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Have/Has … been</em> + verb + <em>-ing?</em></td><td><em><strong>Have</strong> you <strong>been studying</strong> really hard?</em></td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin:14px 0 8px;">We can use either the present perfect simple or continuous to say <strong>how long</strong> a situation or activity has been going on (often with <em>for</em> or <em>since</em>):</p>
+    <ul class="use-list">
+      <li><em>I'<strong>ve felt</strong> tired for weeks.</em><br/><em>I'<strong>ve been feeling</strong> tired since I started this course.</em></li>
+    </ul>
+
+    <div class="compare-table">
+      <div class="compare-col">
+        <div class="col-head">Present Perfect Continuous</div>
+        <div class="col-body">
+          <ul>
+            <li>Emphasises <strong>how long</strong>:<br/><em>I've been reading for the past two weeks.</em></li>
+            <li>Focuses on <strong>the activity itself</strong> (does not show whether completed):<br/><em>I've been writing my essay.</em> (we don't know if finished)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="col-head">Present Perfect Simple</div>
+        <div class="col-body">
+          <ul>
+            <li>Says <strong>how many times</strong>:<br/><em>I've read three articles.</em></li>
+            <li>Focuses on <strong>the result or completion</strong>:<br/><em>I've written my essay.</em> (the essay is finished)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <img src="../assets/image-contents/u3_compare_illustrations.png" alt="Comparison: What have you been doing? vs What have you done?" class="diagram"/>
+    <p class="diagram-caption">Left: <em>What have you been doing?</em> — interested in the activity. &nbsp; Right: <em>What have you done?</em> — interested in the result (the broken window).</p>
+
+    <div class="warning-box">State verbs (see Unit 1) do not generally have a continuous form:<br/>
+      <em>I'<strong>ve known</strong> them since I was a child.</em> <span style="text-decoration:line-through;color:#999;">(not: I've been knowing them…)</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Tick (✓) correct underlined verbs, correct the wrong ones — university application letter</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text" style="line-height:2.4;">
+          I would like to be considered for your degree course in Zoology, starting in October next year. I feel I am a good candidate for this course as I 1 <u>have always been</u> interested in natural history and even as a child I 2 <u>have enjoyed</u> studying animals and insects in my garden. Your science faculty has a good reputation and I would very much like to be part of it.<br/><br/>
+          As you 3 <u>already saw</u> in Section A of this application, I have a good academic record and I 4 <u>just received</u> the results of my recent exams, all of which 5 <u>have been</u> excellent.<br/><br/>
+          In addition, your university attracts me because I enjoy sports and I 6 <u>have read</u> in your prospectus about the large number of sports on offer. Last year I 7 <u>have represented</u> my school at badminton and I 8 <u>played</u> in football teams since I was eleven. I 9 <u>have recently joined</u> a basketball team which competes at a national level.<br/><br/>
+          I 10 <u>did not travel</u> abroad much yet, although as a young child I 11 <u>have been</u> to Singapore and Hong Kong with my family. I realize that I 12 <u>have not spent</u> much time away from home up to now, but am keen to become more independent.
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><input class="corr-input c1u3" data-id="u3c1_1" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">2</span><input class="corr-input c1u3" data-id="u3c1_2" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">3</span><input class="corr-input c1u3" data-id="u3c1_3" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">4</span><input class="corr-input c1u3" data-id="u3c1_4" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">5</span><input class="corr-input c1u3" data-id="u3c1_5" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">6</span><input class="corr-input c1u3" data-id="u3c1_6" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">7</span><input class="corr-input c1u3" data-id="u3c1_7" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">8</span><input class="corr-input c1u3" data-id="u3c1_8" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">9</span><input class="corr-input c1u3" data-id="u3c1_9" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">10</span><input class="corr-input c1u3" data-id="u3c1_10" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">11</span><input class="corr-input c1u3" data-id="u3c1_11" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">12</span><input class="corr-input c1u3" data-id="u3c1_12" placeholder="✓ or correct"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u3" class="btn-check">Check</button>
+          <button id="btn-show-c1u3" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Look at the chart and fill in the gaps — past simple or present perfect simple</h3></div>
+      <div class="exercise-body">
+        <img src="../assets/image-contents/u3-section-2-bar-diagram.png" alt="Grouped bar chart: Percentage of UK adults to have used the Internet — men, women and all adults across 1995, 2000, 2005 and present" class="diagram"/>
+        <p class="diagram-caption">Percentage of UK adults to have used the Internet (1995, 2000, 2005, present) — broken down by men, women, and all adults</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> The chart shows the percentage of British adults who <input class="gap-input c2u3" data-id="u3c2_1" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(use)</span> the Internet since 1995.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> The number of women who have ever used the Internet <input class="gap-input c2u3" data-id="u3c2_2" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(increase)</span> by more than 60% since 1995.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> The percentage of men who have accessed the Internet <input class="gap-input c2u3" data-id="u3c2_3" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(rise)</span> to 60% in 2005.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> The number of women to have accessed the Internet <input class="gap-input c2u3" data-id="u3c2_4" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(rise)</span> each year.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> The percentage of men who used the Internet <input class="gap-input c2u3" data-id="u3c2_5" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(be)</span> greater than the percentage of women from 1995 to 2005.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> However, British women <input class="gap-input c2u3" data-id="u3c2_6" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(overtake)</span> British men in Internet usage since 2005.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> The total number of people accessing the Internet <input class="gap-input c2u3" data-id="u3c2_7a" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(grow)</span> each year although the most significant rise <input class="gap-input c2u3" data-id="u3c2_7b" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(occur)</span> between 1995 and 2000.</div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u3" class="btn-check">Check</button>
+          <button id="btn-show-c2u3" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Underline the correct form — email about a seminar presentation</h3></div>
+      <div class="exercise-body">
+        <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;overflow:hidden;margin-bottom:14px;">
+          <div style="background:#e3f2fd;padding:8px 16px;font-size:.88rem;"><strong>To:</strong> Paul Johnson &nbsp;&nbsp; <strong>From:</strong> Sunita Soh &nbsp;&nbsp; <strong>Subject:</strong> Seminar presentation on Friday</div>
+          <div style="padding:16px;font-size:.93rem;line-height:1.9;">Dear Paul,<br/><br/>
+            <span class="item-num" style="display:inline-flex;">1</span>&nbsp;<em>I've just received / I've just been receiving</em> your message about the seminar on Friday.
+            <span class="item-num" style="display:inline-flex;">2</span>&nbsp;<em>I've worked / I've been working</em> on my presentation for the last week, and
+            <span class="item-num" style="display:inline-flex;">3</span>&nbsp;<em>have now finished / now finished</em> it. However,
+            <span class="item-num" style="display:inline-flex;">4</span>&nbsp;<em>I've made / I made</em> an appointment to see the careers advisor immediately after the seminar, so I will need to leave on time.<br/><br/>
+            At last week's lecture <span class="item-num" style="display:inline-flex;">5</span>&nbsp;<em>you've said / you said</em> that we should use visual aids. <span class="item-num" style="display:inline-flex;">6</span>&nbsp;<em>I haven't found / I didn't find</em> anything to use. Is it essential?
+            <span class="item-num" style="display:inline-flex;">7</span>&nbsp;<em>I've done / I did</em> lots of presentations before, and I feel OK about this one. In my last presentation <span class="item-num" style="display:inline-flex;">8</span>&nbsp;<em>I used / I have been using</em> the overhead projector, and I want to do this again.<br/><br/>
+            One last question: <span class="item-num" style="display:inline-flex;">9</span>&nbsp;<em>I've been / I went</em> to Professor Russell's lecture yesterday, and <span class="item-num" style="display:inline-flex;">10</span>&nbsp;<em>have been learning / learnt</em> quite a lot. Is it okay to refer to another course? <span class="item-num" style="display:inline-flex;">11</span>&nbsp;<em>I've been wondering / I wondered</em> about this — maybe it is better to stick to the materials <span class="item-num" style="display:inline-flex;">12</span>&nbsp;<em>you've given / you've been giving</em> us.<br/><br/>
+            Thanks for your help,<br/>Sunita
+          </div>
+        </div>
+        <p style="margin-bottom:10px;font-weight:600;">Click the correct form for each numbered item:</p>
+        <div class="gft-item" data-id="u3c3_1" data-answered="0"><span class="item-num">1</span><div><div class="gft-options"><button class="gft-btn" data-value="I've just received">I've just received</button><button class="gft-btn" data-value="I've just been receiving">I've just been receiving</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_2" data-answered="0"><span class="item-num">2</span><div><div class="gft-options"><button class="gft-btn" data-value="I've worked">I've worked</button><button class="gft-btn" data-value="I've been working">I've been working</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_3" data-answered="0"><span class="item-num">3</span><div><div class="gft-options"><button class="gft-btn" data-value="have now finished">have now finished</button><button class="gft-btn" data-value="now finished">now finished</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_4" data-answered="0"><span class="item-num">4</span><div><div class="gft-options"><button class="gft-btn" data-value="I've made">I've made</button><button class="gft-btn" data-value="I made">I made</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_5" data-answered="0"><span class="item-num">5</span><div><div class="gft-options"><button class="gft-btn" data-value="you've said">you've said</button><button class="gft-btn" data-value="you said">you said</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_6" data-answered="0"><span class="item-num">6</span><div><div class="gft-options"><button class="gft-btn" data-value="I haven't found">I haven't found</button><button class="gft-btn" data-value="I didn't find">I didn't find</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_7" data-answered="0"><span class="item-num">7</span><div><div class="gft-options"><button class="gft-btn" data-value="I've done">I've done</button><button class="gft-btn" data-value="I did">I did</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_8" data-answered="0"><span class="item-num">8</span><div><div class="gft-options"><button class="gft-btn" data-value="I used">I used</button><button class="gft-btn" data-value="I have been using">I have been using</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_9" data-answered="0"><span class="item-num">9</span><div><div class="gft-options"><button class="gft-btn" data-value="I've been">I've been</button><button class="gft-btn" data-value="I went">I went</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_10" data-answered="0"><span class="item-num">10</span><div><div class="gft-options"><button class="gft-btn" data-value="have been learning">have been learning</button><button class="gft-btn" data-value="learnt">learnt</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_11" data-answered="0"><span class="item-num">11</span><div><div class="gft-options"><button class="gft-btn" data-value="I've been wondering">I've been wondering</button><button class="gft-btn" data-value="I wondered">I wondered</button></div></div></div>
+        <div class="gft-item" data-id="u3c3_12" data-answered="0"><span class="item-num">12</span><div><div class="gft-options"><button class="gft-btn" data-value="you've given">you've given</button><button class="gft-btn" data-value="you've been giving">you've been giving</button></div></div></div>
+        <div class="exercise-actions">
+          <button id="btn-show-c3u3" class="btn-show">Show All Answers</button>
+          <button id="btn-reset-c3u3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Listening Section 1</div>
+  <div class="section-body">
+
+    <div class="audio-player">
+      <div class="track-badge">05</div>
+      <div class="track-info"><h4>Track 05 — Listening Section 1</h4><p>Listen for Questions 1–10</p></div>
+      <div id="audio-05b"></div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–3</span><h3>Questions 1–3 — Choose the correct letter A, B or C</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Read all questions carefully before you listen. Underline key words. If you miss an answer, move on to the next one.</div>
+        <div class="mc-item">
+          <div class="mc-question">1 &nbsp; How did the woman find out about the sports centre?</div>
+          <div class="mc-options d1u3-mc" data-id="u3dq1" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> from a friend</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> from a leaflet</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> from the Internet</div>
+          </div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">2 &nbsp; What does the man say about the gym?</div>
+          <div class="mc-options d1u3-mc" data-id="u3dq2" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> It has recently been refurbished.</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> It has the latest equipment.</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> It has been awarded a prize.</div>
+          </div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">3 &nbsp; What does the woman want to do at the centre?</div>
+          <div class="mc-options d1u3-mc" data-id="u3dq3" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> improve her fitness</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> learn a new sport</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> meet new people</div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-show-d1u3" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q4–10</span><h3>Questions 4–10 — Complete the notes</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Read through the notes carefully before you listen and try to predict what type of information you need to hear. Pay careful attention to the word limit and check your spelling at the end.</div>
+        <p style="margin:10px 0;font-weight:700;color:#e65100;">Write <u>NO MORE THAN THREE WORDS AND/OR A NUMBER</u> for each answer.</p>
+        <div class="notes-form">
+          <h4>🏊 Lakeview Sports Centre</h4>
+          <div class="notes-row">• opened <span class="q-num">4</span><input class="notes-input d2u3-inp" data-id="u3d2_4" placeholder="…" style="min-width:110px;"/> ago</div>
+          <div class="notes-row">• membership costs <span class="q-num">5</span><input class="notes-input d2u3-inp" data-id="u3d2_5" placeholder="£…" style="min-width:90px;"/> per month</div>
+          <div class="notes-row">• free parking for <span class="q-num">6</span><input class="notes-input d2u3-inp" data-id="u3d2_6" placeholder="…" style="min-width:90px;"/> hours</div>
+          <div class="notes-row">• café on the <span class="q-num">7</span><input class="notes-input d2u3-inp" data-id="u3d2_7" placeholder="…" style="min-width:100px;"/> floor</div>
+          <hr style="border:none;border-top:1px dashed #f9a825;margin:12px 0;"/>
+          <div class="notes-row">• swimming pool open from <span class="q-num">8</span><input class="notes-input d2u3-inp" data-id="u3d2_8" placeholder="time…" style="min-width:90px;"/> to 10 pm daily</div>
+          <div class="notes-row">• beginner's class on <span class="q-num">9</span><input class="notes-input d2u3-inp" data-id="u3d2_9" placeholder="day…" style="min-width:100px;"/> evenings</div>
+          <div class="notes-row">• contact <span class="q-num">10</span><input class="notes-input d2u3-inp" data-id="u3d2_10" placeholder="name…" style="min-width:120px;"/> to book</div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d2u3" class="btn-check">Check</button>
+          <button id="btn-show-d2u3" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at the following sentences from the conversation. Identify which tense each sentence uses by clicking the correct label.</div>
+    <div class="exercise">
+      <div class="exercise-header" style="background:#880e4f;"><span class="ex-num" style="color:#880e4f;">★</span><h3>Identify the tense used in each sentence</h3></div>
+      <div class="exercise-body">
+        <div class="gft-item" data-id="u3gft1" data-answered="0">
+          <span class="item-num" style="background:#880e4f;">1</span>
+          <div><div style="margin-bottom:6px;font-style:italic;">"I've just got up."</div>
+            <div class="gft-options">
+              <button class="gft-btn" data-value="a">a &nbsp; present perfect simple</button>
+              <button class="gft-btn" data-value="b">b &nbsp; present perfect continuous</button>
+              <button class="gft-btn" data-value="c">c &nbsp; past simple</button>
+            </div>
+          </div>
+        </div>
+        <div class="gft-item" data-id="u3gft2" data-answered="0">
+          <span class="item-num" style="background:#880e4f;">2</span>
+          <div><div style="margin-bottom:6px;font-style:italic;">"When I was in the library last week, I read those leaflets."</div>
+            <div class="gft-options">
+              <button class="gft-btn" data-value="a">a &nbsp; present perfect simple</button>
+              <button class="gft-btn" data-value="b">b &nbsp; present perfect continuous</button>
+              <button class="gft-btn" data-value="c">c &nbsp; past simple</button>
+            </div>
+          </div>
+        </div>
+        <div class="gft-item" data-id="u3gft3" data-answered="0">
+          <span class="item-num" style="background:#880e4f;">3</span>
+          <div><div style="margin-bottom:6px;font-style:italic;">"I've been feeling tired since I started this course."</div>
+            <div class="gft-options">
+              <button class="gft-btn" data-value="a">a &nbsp; present perfect simple</button>
+              <button class="gft-btn" data-value="b">b &nbsp; present perfect continuous</button>
+              <button class="gft-btn" data-value="c">c &nbsp; past simple</button>
+            </div>
+          </div>
+        </div>
+        <div class="gft-item" data-id="u3gft4" data-answered="0">
+          <span class="item-num" style="background:#880e4f;">4</span>
+          <div><div style="margin-bottom:6px;font-style:italic;">"I've collected plenty of information for the assignment."</div>
+            <div class="gft-options">
+              <button class="gft-btn" data-value="a">a &nbsp; present perfect simple</button>
+              <button class="gft-btn" data-value="b">b &nbsp; present perfect continuous</button>
+              <button class="gft-btn" data-value="c">c &nbsp; past simple</button>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-show-gftu3" class="btn-show">Show All Answers</button>
+          <button id="btn-reset-gftu3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 3: Present Perfect</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('05','audio-05');
+  loadAudio('05','audio-05b');
+
+  // A2 flowchart
+  initGapFill({ inputSelector:'.a2u3', checkId:'btn-check-a2u3', showId:'btn-show-a2u3', resetId:'btn-reset-a2u3',
+    answers:{ u3a2_1:['C'], u3a2_2:['A'], u3a2_3:['D'], u3a2_4:['E'], u3a2_5:['B'] }});
+
+  // A3 gap fill
+  initGapFill({ inputSelector:'.a3u3', checkId:'btn-check-a3u3', showId:'btn-show-a3u3', resetId:'btn-reset-a3u3',
+    answers:{ u3a3_1:["'ve collected","have collected"], u3a3_2:['read'], u3a3_3:["'ve been feeling","have been feeling"], u3a3_4:["'ve just got up","have just got up"] }});
+
+  // A4 categorise
+  initGapFill({ inputSelector:'.a4u3', checkId:'btn-check-a4u3', showId:'btn-show-a4u3', resetId:'btn-reset-a4u3',
+    answers:{ u3a4_a:['4','sentence 4'], u3a4_b:['1','sentence 1'], u3a4_c:['3','sentence 3'], u3a4_d:['2','sentence 2'] }});
+
+  // C1 corrections
+  initGapFill({ inputSelector:'.c1u3', checkId:'btn-check-c1u3', showId:'btn-show-c1u3', resetId:'btn-reset-c1u3',
+    answers:{ u3c1_1:['✓'], u3c1_2:['enjoyed'], u3c1_3:['have already seen','already seen'], u3c1_4:['have just received'], u3c1_5:['were'], u3c1_6:['✓'], u3c1_7:['represented'], u3c1_8:['have played'], u3c1_9:['✓'], u3c1_10:['have not travelled','haven\'t travelled'], u3c1_11:['went'], u3c1_12:['✓'] }});
+
+  // C2 chart gap fill
+  initGapFill({ inputSelector:'.c2u3', checkId:'btn-check-c2u3', showId:'btn-show-c2u3', resetId:'btn-reset-c2u3',
+    answers:{ u3c2_1:['have used'], u3c2_2:['has increased'], u3c2_3:['rose'], u3c2_4:['has risen'], u3c2_5:['was'], u3c2_6:['have overtaken'], u3c2_7a:['has grown'], u3c2_7b:['occurred'] }});
+
+  // C3 email choose form
+  initGFT({ showId:'btn-show-c3u3', resetId:'btn-reset-c3u3',
+    answers:{ u3c3_1:"I've just received", u3c3_2:"I've been working", u3c3_3:'have now finished', u3c3_4:"I've made", u3c3_5:'you said', u3c3_6:"I haven't found", u3c3_7:"I've done", u3c3_8:'I used', u3c3_9:'I went', u3c3_10:'learnt', u3c3_11:"I've been wondering", u3c3_12:"you've given" }});
+
+  // D Q1–3 MC
+  initMCGroups({ groupSelector:'.d1u3-mc', answers:{ u3dq1:'B', u3dq2:'A', u3dq3:'A' }, showId:'btn-show-d1u3', resetId:'btn-reset-d1u3' });
+
+  // D Q4–10 notes
+  initGapFill({ inputSelector:'.d2u3-inp', checkId:'btn-check-d2u3', showId:'btn-show-d2u3', resetId:'btn-reset-d2u3',
+    answers:{ u3d2_4:['three years','3 years'], u3d2_5:['35','£35'], u3d2_6:['two','2'], u3d2_7:['ground','first'], u3d2_8:['6 am','6.00 am','six am'], u3d2_9:['Wednesday','wednesday'], u3d2_10:['Sarah','sarah'] }});
+
+  // GFT
+  initGFT({ showId:'btn-show-gftu3', resetId:'btn-reset-gftu3',
+    answers:{ u3gft1:'a', u3gft2:'c', u3gft3:'b', u3gft4:'a' }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

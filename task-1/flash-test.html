@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>flash test</title></head><body>
+<iframe id="app" src="index.html#templates" style="width:900px;height:1200px"></iframe>
+<pre id="out"></pre>
+<script>
+const out = [];
+function log(m){ out.push(m); document.getElementById('out').textContent = out.join('\n'); }
+const iframe = document.getElementById('app');
+iframe.onload = function(){
+  setTimeout(() => {
+    try {
+      const doc = iframe.contentDocument;
+      const flash = doc.querySelector('.flash');
+      const fc = flash.classList.contains('flipped');
+      flash.click();
+      log('flipped after 1st click: ' + flash.classList.contains('flipped') + ' | front: ' + flash.querySelector('.ff-k').textContent);
+      flash.click();
+      log('flipped after 2nd click: ' + flash.classList.contains('flipped'));
+      log('back face title: ' + flash.querySelector('.fb-t').textContent);
+    } catch(e){ log('ERROR: ' + e.message); }
+  }, 5000);
+};
+</script></body></html>

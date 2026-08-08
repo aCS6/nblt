@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 15 – Reported Speech | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 15</span>
+    <span class="subtitle">Tense changes; reporting questions; reporting verbs; time references</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear an interview with Christopher West, the Managing Director of a company called Angleside. Before you listen, look at the newspaper headlines below.</p>
+        <div class="word-box">
+          <span class="word-chip">JOBS TO GO AT ANGLESIDE</span><span class="word-chip">DOUBTS OVER COMPANY'S FUTURE</span>
+        </div>
+        <p style="margin:14px 0 8px;">Which of the topics in the box do you think Mr West mentions?</p>
+        <div class="word-box">
+          <span class="word-chip">voluntary redundancy</span><span class="word-chip">early retirement</span><span class="word-chip">low profits</span><span class="word-chip">poor relationship between management and workers</span><span class="word-chip">good business sense</span><span class="word-chip">a promising future</span>
+        </div>
+        <div class="example-box">
+          <div>My guess: <input class="gap-input" placeholder="…" style="min-width:260px;"/></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen to the first part and check if you were right — Track 20</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">20</div>
+          <div class="track-info"><h4>Track 20 — interview with Christopher West (Part 1)</h4><p>Context listening — an interview</p></div>
+          <div id="audio-20"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen to the first part again and fill in the gaps</h3></div>
+      <div class="exercise-body">
+        <p>Listen to the first part of the recording again and fill in the gaps in the transcript with the words you hear — <strong>Track 20</strong>.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <p><strong>Mr West:</strong> However, we 1 <input class="gap-input a3u15" data-id="u15a3_1" placeholder="…" style="min-width:130px;"/> voluntary redundancy and early retirement and 2 <input class="gap-input a3u15" data-id="u15a3_2" placeholder="…" style="min-width:90px;"/> to cover most of the jobs this way.</p>
+          <p><strong>Interviewer:</strong> And what has led to this situation? 3 <input class="gap-input a3u15" data-id="u15a3_3" placeholder="…" style="min-width:130px;"/> a result of Angleside's poor performance over the past five years?</p>
+          <p><strong>Mr West:</strong> No, the company 4 <input class="gap-input a3u15" data-id="u15a3_4" placeholder="…" style="min-width:150px;"/> badly. This 5 <input class="gap-input a3u15" data-id="u15a3_5" placeholder="…" style="min-width:80px;"/> nothing to do with the figures. It just makes good business sense.</p>
+          <p><strong>Interviewer:</strong> So 6 <input class="gap-input a3u15" data-id="u15a3_6" placeholder="…" style="min-width:130px;"/> that your figures 7 <input class="gap-input a3u15" data-id="u15a3_7" placeholder="…" style="min-width:90px;"/> the basis for this decision to cut jobs?</p>
+          <p><strong>Mr West:</strong> Absolutely. We 8 <input class="gap-input a3u15" data-id="u15a3_8" placeholder="…" style="min-width:150px;"/> the way we operate our business two years ago.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u15" class="btn-check">Check</button>
+          <button id="btn-show-a3u15" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u15" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Fill in the gaps with the verbs in the box</h3></div>
+      <div class="exercise-body">
+        <p>Here is the journalist's radio report. Fill in the gaps with the verbs in the box. Then listen to the second part of the recording to check your answers — <strong>Track 21</strong>.</p>
+        <div class="word-box">
+          <span class="word-chip">announced</span><span class="word-chip">asked</span><span class="word-chip">assured</span><span class="word-chip">claimed</span><span class="word-chip">denied</span><span class="word-chip">hoped</span><span class="word-chip">promised</span><span class="word-chip">said</span>
+        </div>
+        <div class="audio-player" style="margin:14px 0;">
+          <div class="track-badge">21</div>
+          <div class="track-info"><h4>Track 21 — recording (Part 2) to check your answers</h4><p>Context listening — radio report</p></div>
+          <div id="audio-21"></div>
+        </div>
+        <div class="passage-text" style="line-height:2.4;">
+          <p>At local company Angleside, up to 150 employees will lose their jobs. Christopher West, the Managing Director, 1 <input class="gap-input a4u15" data-id="u15a4_1" placeholder="verb" style="min-width:110px;"/> that they would be offering voluntary redundancy and early retirement and 2 <input class="gap-input a4u15" data-id="u15a4_2" placeholder="verb" style="min-width:110px;"/> to cover the job losses in this way. I 3 <input class="gap-input a4u15" data-id="u15a4_3" placeholder="verb" style="min-width:110px;"/> Mr West if these cuts were a result of Angleside's poor performance over the past five years but he 4 <input class="gap-input a4u15" data-id="u15a4_4" placeholder="verb" style="min-width:110px;"/> that the company had not been doing well and 5 <input class="gap-input a4u15" data-id="u15a4_5" placeholder="verb" style="min-width:110px;"/> that the job losses have nothing to do with the figures. West 6 <input class="gap-input a4u15" data-id="u15a4_6" placeholder="verb" style="min-width:110px;"/> that they decided to make changes two years ago. He 7 <input class="gap-input a4u15" data-id="u15a4_7" placeholder="verb" style="min-width:110px;"/> me that the company would continue to operate in the future and 8 <input class="gap-input a4u15" data-id="u15a4_8" placeholder="verb" style="min-width:110px;"/> to do his best for the employees.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u15" class="btn-check">Check</button>
+          <button id="btn-show-a4u15" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u15" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">5</span><h3>Compare the two texts</h3></div>
+      <div class="exercise-body">
+        <p>What are the main differences between the texts in Exercise 3 and Exercise 4?</p>
+        <div class="note-box">
+          <strong>Suggested answer:</strong> Reporting verbs are used to indicate the way in which things were said in Exercise 4. There are changes in tense, word order and pronouns.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <p>We can use reported speech to report in speech or in writing what someone has said. When we report what someone has said, we sometimes change the tense of the main verb: we <strong>move the tenses 'back' one tense</strong>.</p>
+
+    <h2 class="grammar-subtitle">B1 — Tense changes</h2>
+    <table class="form-table">
+      <thead><tr><th>Original tense of main verb</th><th>Tense in reported speech</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">present simple — <em>I live in Italy.</em></td><td>past simple — <em>She said she lived in Italy.</em></td></tr>
+        <tr><td class="pos">present continuous — <em>I'm living in Italy.</em></td><td>past continuous — <em>She said she was living in Italy.</em></td></tr>
+        <tr><td class="pos">past simple — <em>I lived in Italy.</em></td><td>past perfect — <em>She said she'd / had lived in Italy.</em></td></tr>
+        <tr><td class="pos">past continuous — <em>I was living in Italy.</em></td><td>past perfect continuous — <em>She said she had been living in Italy.</em></td></tr>
+        <tr><td class="pos">present perfect — <em>I've lived in Italy.</em></td><td>past perfect — <em>She said she had lived in Italy.</em></td></tr>
+        <tr><td class="pos">past perfect — <em>I'd lived in Italy.</em></td><td>past perfect (no change) — <em>She said she'd lived in Italy.</em></td></tr>
+        <tr><td class="pos"><em>can</em> — <em>I can live in Italy.</em></td><td><em>could</em> — <em>She said she could live in Italy.</em></td></tr>
+        <tr><td class="pos"><em>will</em> — <em>I'll live in Italy.</em></td><td><em>would</em> — <em>She said she would live in Italy.</em></td></tr>
+        <tr><td class="pos"><em>must</em> — <em>I must live in Italy.</em></td><td><em>had to</em> — <em>She said she had to live in Italy.</em></td></tr>
+        <tr><td class="pos"><em>may / might</em> — <em>I may/might live in Italy.</em></td><td><em>might</em> — <em>She said she might live in Italy.</em></td></tr>
+        <tr><td class="pos"><em>be going to</em> — <em>I'm going to live in Italy.</em></td><td><em>was/were going to</em> — <em>She said she was going to live in Italy.</em></td></tr>
+      </tbody>
+    </table>
+    <ul class="use-list">
+      <li>If the original tense was <em>past simple</em> or <em>past continuous</em>, we can keep the past form unchanged: <em>'We decided to change the way we operate our business two years ago.' → West claimed that they decided to make changes two years ago.</em></li>
+      <li>We often choose <strong>not</strong> to change the tense. This may be because what we are talking about remains true: <em>'This has nothing to do with the figures.' → He said that the job losses have nothing to do with the figures.</em> (at the time of reporting, this fact is still true)</li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — Reporting verbs</h2>
+    <ul class="use-list">
+      <li><strong>reporting verb (+ that)</strong> — <em>agree, admit, announce, argue, believe, claim, complain, deny, explain, insist, promise, propose, reply, request, say, state, suggest, think, warn</em>: <em>The director claimed (that) they decided to make the changes two years ago.</em></li>
+      <li><strong>reporting verb + someone + that</strong> — <em>assure, inform, persuade, remind, tell</em>: <em>He assured the interviewer that the company would continue to operate in the future.</em></li>
+      <li><strong>reporting verb + to-infinitive</strong> — <em>agree, ask, claim, offer, promise, propose, refuse</em>: <em>He promised to do his best for the employees.</em></li>
+      <li><strong>reporting verb + someone + to-infinitive</strong> — <em>advise, ask, encourage, invite, persuade, remind, tell, urge, warn</em>: <em>They urged the employees to stay calm.</em></li>
+      <li><strong>reporting verb + preposition + -ing / noun</strong> — <em>argue about, complain about, apologise for, insist on, complain to</em>: <em>He complained about the terrible food. / The company apologised for causing redundancies. / The manager insisted on seeing the staff. / He complained to the manager.</em></li>
+      <li><strong>reporting verb + someone + preposition + -ing / noun</strong> — <em>accuse of, advise about, remind about, advise on, congratulate on, blame for, thank for</em>: <em>They accused the company of planning badly. / They reminded her about the meeting. / He advised me on the deal. / They thanked her for coming.</em></li>
+      <li><strong>reporting verb + -ing / noun</strong> — <em>accept, admit, deny, suggest</em>: <em>The director denied having financial problems. / The employees accepted the offer of early redundancy.</em></li>
+      <li><strong>reporting verb + someone (+ noun)</strong> — <em>offer, promise, refuse</em>: <em>He offered her a job.</em></li>
+      <li>Some of the same verbs can be used in different ways (e.g. <em>admit, claim, offer, persuade</em>): <em>West claimed that they decided to make the changes two years ago. / West claimed to have decided to make the changes two years ago.</em></li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Time references and other changes</h2>
+    <ul class="use-list">
+      <li>We sometimes need to change other words in reported speech if they are reported at a different time from the original words: <em>this → that; today → that day; yesterday → the day before; now → then/straight away; here → there; tomorrow → the following day/next day; next week → the following week.</em></li>
+      <li><em>He said he would see me tomorrow.</em> (reported on the same day) &nbsp;/&nbsp; <em>He said he would see me the next day.</em> (reported at a later date)</li>
+      <li>Sometimes the context requires pronouns to change: <em>'I like you.' → He said he liked her.</em></li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B4 — Reporting questions</h2>
+    <ul class="use-list">
+      <li>To report questions with question words (<em>who, what, where, why, when, how</em>), we keep the question word and use <strong>statement word order</strong>: <em>What has led to this situation? → The interviewer asked what had led to this situation.</em></li>
+      <li>We can use <em>if</em> or <em>whether</em> to report yes/no questions: <em>Are these cuts a result of Angleside's poor performance? → I asked if/whether these cuts were the result of Angleside's poor performance over the past five years.</em></li>
+      <li>The reported question does not use a question mark: <em>I asked Mr West how he was going to deal with the problem.</em> (not <del>how was he going…</del>)</li>
+    </ul>
+
+    <div class="note-box">
+      <strong>Grammar extra — other ways of reporting</strong><br/>
+      In spoken English we can also use <em>apparently, supposedly</em> and <em>seemingly</em>; in written English we might use an impersonal reporting construction. For example: <em>According to the radio programme, they are cutting 150 jobs.</em>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Complete the email using reported speech</h3></div>
+      <div class="exercise-body">
+        <p>Here is a conversation between Tanya and her teacher. A week later, Tanya tells her friend about the conversation. Fill in the gaps in the email.</p>
+        <div class="example-box">
+          <p><strong>Teacher:</strong> When are you taking the IELTS test? Have you registered yet?</p>
+          <p><strong>Tanya:</strong> Yes. I'm doing it next Saturday.</p>
+          <p><strong>Teacher:</strong> Do you feel prepared for it?</p>
+          <p><strong>Tanya:</strong> Well, your classes have been really helpful, so I think so.</p>
+          <p><strong>Teacher:</strong> You've made excellent progress.</p>
+          <p><strong>Tanya:</strong> Thank you. I'm feeling very nervous though.</p>
+          <p><strong>Teacher:</strong> Oh, try not to worry. You've worked very hard.</p>
+          <p><strong>Tanya:</strong> Yes, I have. I think I'll be alright once I'm doing the test.</p>
+        </div>
+        <div class="example-box">
+          <p><strong>To:</strong> Clara &nbsp;&nbsp; <strong>From:</strong> Tanya &nbsp;&nbsp; <strong>Subject:</strong> IELTS test on Saturday!</p>
+        </div>
+        <p>Hi Clara</p>
+        <div class="passage-text" style="line-height:2.6;">
+          <p>I was talking to my teacher about my IELTS test last week. She asked 1 <input class="gap-input c1u15" data-id="u15c1_1" placeholder="…" style="min-width:150px;"/> the test. I said 2 <input class="gap-input c1u15" data-id="u15c1_2" placeholder="…" style="min-width:200px;"/> Saturday. She asked 3 <input class="gap-input c1u15" data-id="u15c1_3" placeholder="…" style="min-width:150px;"/> prepared for it. I replied 4 <input class="gap-input c1u15" data-id="u15c1_4" placeholder="…" style="min-width:200px;"/> really helpful. She told 5 <input class="gap-input c1u15" data-id="u15c1_5" placeholder="…" style="min-width:180px;"/> excellent progress. I said 6 <input class="gap-input c1u15" data-id="u15c1_6" placeholder="…" style="min-width:180px;"/> very nervous.</p>
+          <p>She told 7 <input class="gap-input c1u15" data-id="u15c1_7" placeholder="…" style="min-width:110px;"/> worry and said 8 <input class="gap-input c1u15" data-id="u15c1_8" placeholder="…" style="min-width:150px;"/> very hard. I said 9 <input class="gap-input c1u15" data-id="u15c1_9" placeholder="…" style="min-width:200px;"/> alright once I 10 <input class="gap-input c1u15" data-id="u15c1_10" placeholder="…" style="min-width:120px;"/> the test.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u15" class="btn-check">Check</button>
+          <button id="btn-show-c1u15" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u15" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Underline the correct verb in each sentence</h3></div>
+      <div class="exercise-body">
+        <p>Choose the correct verb in each sentence.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Some people <input class="gap-input c2u15" data-id="u15c2_1" placeholder="verb" style="min-width:90px;"/> that banning cars from city centres would reduce pollution. <span class="muted-label">(argue / remind)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> The organisation campaigns against pollution and for the environment, and they <input class="gap-input c2u15" data-id="u15c2_2" placeholder="verb" style="min-width:90px;"/> people to start walking and cycling more. <span class="muted-label">(insist / urge)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> My boyfriend is always forgetting things, so it was a good thing I <input class="gap-input c2u15" data-id="u15c2_3" placeholder="verb" style="min-width:90px;"/> him to bring his passport when we went on holiday. <span class="muted-label">(reminded / suggested)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> I was very unhappy with the service, so I <input class="gap-input c2u15" data-id="u15c2_4" placeholder="verb" style="min-width:90px;"/> to the manager and he gave me a discount on my meal. <span class="muted-label">(complained / insisted)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> I needed to talk to my boss, so I <input class="gap-input c2u15" data-id="u15c2_5" placeholder="verb" style="min-width:90px;"/> a meeting and we arranged one for later that day. <span class="muted-label">(reminded / suggested)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> The students felt very strongly about the issue and <input class="gap-input c2u15" data-id="u15c2_6" placeholder="verb" style="min-width:90px;"/> on seeing the vice-chancellor to discuss it. <span class="muted-label">(refused / insisted)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> I asked him really nicely but he still <input class="gap-input c2u15" data-id="u15c2_7" placeholder="verb" style="min-width:90px;"/> to help me. <span class="muted-label">(refused / denied)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> The tennis player regretted his actions and <input class="gap-input c2u15" data-id="u15c2_8" placeholder="verb" style="min-width:90px;"/> for his behaviour. <span class="muted-label">(blamed / apologised)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> Jane was having difficulties sleeping and the doctor <input class="gap-input c2u15" data-id="u15c2_9" placeholder="verb" style="min-width:90px;"/> her to take some rest from her heavy work schedule. <span class="muted-label">(advised / suggested)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> The armed robbers <input class="gap-input c2u15" data-id="u15c2_10" placeholder="verb" style="min-width:90px;"/> the bank staff not to move or they might use their guns. <span class="muted-label">(warned / announced)</span></div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u15" class="btn-check">Check</button>
+          <button id="btn-show-c2u15" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u15" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Correct the mistakes in these sentences</h3></div>
+      <div class="exercise-body">
+        <p>Each sentence contains one mistake. Move the correct form to the gap.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> I met Annie and she <input class="gap-input c3u15" data-id="u15c3_1" placeholder="correct phrase" style="min-width:140px;"/> she was getting married. <span class="muted-label">(said me → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> The education minister encouraged students <input class="gap-input c3u15" data-id="u15c3_2" placeholder="correct phrase" style="min-width:140px;"/> a loan to cover their fees. <span class="muted-label">(take out → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> At the interview he asked <input class="gap-input c3u15" data-id="u15c3_3" placeholder="correct phrase" style="min-width:160px;"/> to start the job tomorrow! <span class="muted-label">(did I want → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> The speaker urged people <input class="gap-input c3u15" data-id="u15c3_4" placeholder="correct phrase" style="min-width:160px;"/> him. <span class="muted-label">(that they should vote for → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> We agreed <input class="gap-input c3u15" data-id="u15c3_5" placeholder="correct phrase" style="min-width:160px;"/> our presentation to the group first. <span class="muted-label">(making → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> My tutor promised <input class="gap-input c3u15" data-id="u15c3_6" placeholder="correct phrase" style="min-width:120px;"/> the first draft of my dissertation immediately. <span class="muted-label">(mark → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> Jacques invited us <input class="gap-input c3u15" data-id="u15c3_7" placeholder="correct phrase" style="min-width:160px;"/> to his house for dinner on Friday. <span class="muted-label">(going → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> During the Speaking module the examiner asked me <input class="gap-input c3u15" data-id="u15c3_8" placeholder="correct phrase" style="min-width:160px;"/>. <span class="muted-label">(what were my hobbies → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> The customers complained <input class="gap-input c3u15" data-id="u15c3_9" placeholder="correct phrase" style="min-width:140px;"/> the quality of the food. <span class="muted-label">(add preposition)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> When the college <input class="gap-input c3u15" data-id="u15c3_10" placeholder="correct phrase" style="min-width:140px;"/> the changes, everyone was worried. <span class="muted-label">(announced about → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">11</span> I wanted to pay for myself but my boyfriend insisted <input class="gap-input c3u15" data-id="u15c3_11" placeholder="correct phrase" style="min-width:140px;"/>. <span class="muted-label">(to pay → …)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">12</span> The university sent me an email asking me <input class="gap-input c3u15" data-id="u15c3_12" placeholder="correct phrase" style="min-width:160px;"/>. <span class="muted-label">(when would I be arriving → …)</span></div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u15" class="btn-check">Check</button>
+          <button id="btn-show-c3u15" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u15" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Report each sentence using a verb from the box</h3></div>
+      <div class="exercise-body">
+        <p>Report each of the sentences below using a verb from the box. Remember that you do not need to report the original words exactly.</p>
+        <div class="word-box">
+          <span class="word-chip">agree</span><span class="word-chip">apologise</span><span class="word-chip">ask</span><span class="word-chip">deny</span><span class="word-chip">encourage</span><span class="word-chip">persuade</span><span class="word-chip">promise</span><span class="word-chip">refuse</span><span class="word-chip">suggest</span>
+        </div>
+        <div class="example-box">
+          <div><strong>0</strong> 'We are going to lower taxes and reduce unemployment!' → The government <em>promised to</em> lower taxes and reduce unemployment.</div>
+        </div>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> 'I really think you should apply for the job. You'd have a good chance of getting it.' → She <input class="gap-input c4u15" data-id="u15c4_1" placeholder="reporting phrase" style="min-width:200px;"/> for the job.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> 'No, I won't help you. Do it yourself!' → He <input class="gap-input c4u15" data-id="u15c4_2" placeholder="reporting phrase" style="min-width:160px;"/> help me.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> 'Oh, okay, I'll go to the meeting.' → She <input class="gap-input c4u15" data-id="u15c4_3" placeholder="reporting phrase" style="min-width:160px;"/> to the meeting.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> 'I didn't cause the accident. It wasn't me.' → He <input class="gap-input c4u15" data-id="u15c4_4" placeholder="reporting phrase" style="min-width:200px;"/> the accident.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> 'We are very sorry that we lost your application form.' → They <input class="gap-input c4u15" data-id="u15c4_5" placeholder="reporting phrase" style="min-width:200px;"/> the application form.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> 'Why aren't there many poisonous snakes in Britain?' → He <input class="gap-input c4u15" data-id="u15c4_6" placeholder="reporting phrase" style="min-width:200px;"/> many poisonous snakes in Britain.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> 'Are you going to the lecture tomorrow?' → She <input class="gap-input c4u15" data-id="u15c4_7" placeholder="reporting phrase" style="min-width:200px;"/> to the lecture the next day.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> 'Why don't you have a day off? You could do with a rest.' → She <input class="gap-input c4u15" data-id="u15c4_8" placeholder="reporting phrase" style="min-width:200px;"/> a day off.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> 'Please come to the theatre with me, Dan. I really think you'll enjoy it.' / 'Oh, alright then, Claire.' → Claire <input class="gap-input c4u15" data-id="u15c4_9" placeholder="reporting phrase" style="min-width:220px;"/> the theatre with her.</div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u15" class="btn-check">Check</button>
+          <button id="btn-show-c4u15" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u15" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Listening Section 3</div>
+  <div class="section-body">
+    <div class="test-tip">Read all the questions carefully before you listen. Try to identify the type of information you need to listen for (e.g. for question 2 you need to listen for a date, or for question 3 you need to listen for a place). Pay careful attention to the word limit and check your spelling at the end.</div>
+
+    <div class="audio-player">
+      <div class="track-badge">22</div>
+      <div class="track-info"><h4>Track 22 — three students discuss solar towers</h4><p>Listening Section 3 — an academic discussion</p></div>
+      <div id="audio-22"></div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–3</span><h3>Questions 1–3 — Sentence completion</h3></div>
+      <div class="exercise-body">
+        <p>Complete the sentences. Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.</p>
+        <div class="passage-text" style="line-height:2.6;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Solar towers create energy from moving <input class="gap-input d1u15" data-id="u15d1_1" placeholder="…" style="min-width:120px;"/>.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> The first ever recorded use of this type of energy was in the <input class="gap-input d1u15" data-id="u15d1_2" placeholder="…" style="min-width:160px;"/>.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> The location of the first solar tower was <input class="gap-input d1u15" data-id="u15d1_3" placeholder="…" style="min-width:120px;"/>.</div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u15" class="btn-check">Check</button>
+          <button id="btn-show-d1u15" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u15" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q4–8</span><h3>Questions 4–8 — Flowchart completion</h3></div>
+      <div class="exercise-body">
+        <p>Complete the flowchart. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+        <div class="test-tip">Completing a flowchart is similar to completing notes. Follow the sequence of the ideas carefully.</div>
+        <div class="passage-text" style="line-height:2.6;">
+          <p style="font-weight:700;text-align:center;margin-bottom:8px;">Solar tower flowchart</p>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> Towers are built using extra strong <input class="gap-input d2u15" data-id="u15d2_4" placeholder="…" style="min-width:120px;"/>.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> At the bottom they have a sunlight collector made of <input class="gap-input d2u15" data-id="u15d2_5" placeholder="…" style="min-width:120px;"/> spread over a large area of ground.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> The sunlight collector warms the air beneath it and operates in a similar way to a <input class="gap-input d2u15" data-id="u15d2_6" placeholder="…" style="min-width:120px;"/>.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> The air <input class="gap-input d2u15" data-id="u15d2_7" placeholder="…" style="min-width:120px;"/> through the tower, causing the turbines to turn.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> The turbines create <input class="gap-input d2u15" data-id="u15d2_8" placeholder="…" style="min-width:120px;"/> megawatts of electricity.</div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d2u15" class="btn-check">Check</button>
+          <button id="btn-show-d2u15" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u15" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q9–10</span><h3>Questions 9–10 — Multiple choice (circle two letters)</h3></div>
+      <div class="exercise-body">
+        <p>Circle <strong>two</strong> letters <strong>A–E</strong>: What are two disadvantages of solar towers?</p>
+        <div class="test-tip">Some of the options may not be mentioned at all; others will be incorrect. Pay attention to how many choices you need to make — here you need to choose two letters.</div>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">9</span><span>Disadvantage 1 —</span><input class="corr-input d3u15" data-id="u15d3_9" placeholder="A–E" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">10</span><span>Disadvantage 2 —</span><input class="corr-input d3u15" data-id="u15d3_10" placeholder="A–E" style="width:70px;"/></div>
+        </div>
+        <div class="example-box">
+          <div><strong>A</strong> &nbsp;they are too expensive to run</div>
+          <div><strong>B</strong> &nbsp;heat escapes from the solar collector</div>
+          <div><strong>C</strong> &nbsp;they require a great deal of land</div>
+          <div><strong>D</strong> &nbsp;they cannot produce electricity at night</div>
+          <div><strong>E</strong> &nbsp;they need to be able to withstand high winds</div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d3u15" class="btn-check">Check</button>
+          <button id="btn-show-d3u15" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d3u15" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at the extract from the recording and the summary of the discussion below. Complete the summary using <strong>reporting verbs from this unit</strong>. Do not use <em>say</em>.</div>
+    <div class="example-box">
+      <p style="margin:0;"><strong>From the recording:</strong></p>
+      <p style="margin:8px 0 0;"><strong>Luke:</strong> But what about at night when there is no sun?</p>
+      <p style="margin:8px 0 0;"><strong>Millie:</strong> Well, they've managed to find a way to store the electricity produced during the day so it's no problem at night or even on cloudy days.</p>
+      <p style="margin:8px 0 0;"><strong>Tanya:</strong> So, there are no drawbacks then?</p>
+      <p style="margin:8px 0 0;"><strong>Millie:</strong> I didn't say that. One problem they do have is that a lot of the energy in the sunlight is lost in the form of heat from the collector, and then, of the remaining heat, a large proportion escapes from the top of the tower. But they're still worth the investment because, as I said, sunlight is free!</p>
+    </div>
+    <div class="passage-text" style="line-height:2.6;">
+      <p>Luke 1 <input class="gap-input gftu15" data-id="u15gft_1" placeholder="reporting verb" style="min-width:120px;"/> what happened at night when there is no sun. Millie 2 <input class="gap-input gftu15" data-id="u15gft_2" placeholder="reporting verb" style="min-width:120px;"/> that they had managed to find a way to store electricity produced during the day. She 3 <input class="gap-input gftu15" data-id="u15gft_3" placeholder="reporting verb" style="min-width:120px;"/> having said that there were no drawbacks, and 4 <input class="gap-input gftu15" data-id="u15gft_4" placeholder="reporting verb" style="min-width:120px;"/> that one problem was that a lot of the solar energy is lost from the collector. However, she 5 <input class="gap-input gftu15" data-id="u15gft_5" placeholder="reporting verb" style="min-width:120px;"/> that they were still worth the investment because sunlight is free.</p>
+    </div>
+    <div class="exercise-actions">
+      <button id="btn-check-gftu15" class="btn-check">Check</button>
+      <button id="btn-show-gftu15" class="btn-show">Show Answers</button>
+      <button id="btn-reset-gftu15" class="btn-reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 15: Reported Speech</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('20','audio-20');
+  loadAudio('21','audio-21');
+  loadAudio('22','audio-22');
+
+  // A3 gap-fill transcript (key: 1 'll be offering 2 hope 3 Are these cuts
+  // 4 hasn't been doing 5 has 6 are you saying 7 are not 8 decided to change)
+  initGapFill({ inputSelector:'.a3u15', checkId:'btn-check-a3u15', showId:'btn-show-a3u15', resetId:'btn-reset-a3u15',
+    answers:{ u15a3_1:['will be offering',"'ll be offering",'we will be offering',"we'll be offering"],
+              u15a3_2:['hope'],
+              u15a3_3:['are these cuts'],
+              u15a3_4:['hasn\'t been doing','has not been doing'],
+              u15a3_5:['has'],
+              u15a3_6:['are you saying'],
+              u15a3_7:['are not','aren\'t'],
+              u15a3_8:['decided to change'] }});
+
+  // A4 reporting verbs
+  initGapFill({ inputSelector:'.a4u15', checkId:'btn-check-a4u15', showId:'btn-show-a4u15', resetId:'btn-reset-a4u15',
+    answers:{ u15a4_1:['announced'], u15a4_2:['hoped'], u15a4_3:['asked'], u15a4_4:['denied'],
+              u15a4_5:['said'], u15a4_6:['claimed'], u15a4_7:['assured'], u15a4_8:['promised'] }});
+
+  // C1 Tanya's email
+  initGapFill({ inputSelector:'.c1u15', checkId:'btn-check-c1u15', showId:'btn-show-c1u15', resetId:'btn-reset-c1u15',
+    answers:{ u15c1_1:['when i was taking'],
+              u15c1_2:['i was doing it the following','that i was doing it the following'],
+              u15c1_3:['if i felt','whether i felt','me if i felt','me whether i felt'],
+              u15c1_4:['that her classes had been','her classes had been'],
+              u15c1_5:['me that i\'d made','me i\'d made','me that i had made','me i had made'],
+              u15c1_6:['that i was feeling','i was feeling'],
+              u15c1_7:['me not to'],
+              u15c1_8:['that i\'d worked','i\'d worked','that i had worked','i had worked'],
+              u15c1_9:['that i thought i\'d be','i thought i\'d be','that i thought i would be','i thought i would be'],
+              u15c1_10:['was doing'] }});
+
+  // C2 underline correct verb
+  initGapFill({ inputSelector:'.c2u15', checkId:'btn-check-c2u15', showId:'btn-show-c2u15', resetId:'btn-reset-c2u15',
+    answers:{ u15c2_1:['argue'], u15c2_2:['urge'], u15c2_3:['reminded'], u15c2_4:['complained'],
+              u15c2_5:['suggested'], u15c2_6:['insisted'], u15c2_7:['refused'], u15c2_8:['apologised'],
+              u15c2_9:['advised'], u15c2_10:['warned'] }});
+
+  // C3 correct mistakes
+  initGapFill({ inputSelector:'.c3u15', checkId:'btn-check-c3u15', showId:'btn-show-c3u15', resetId:'btn-reset-c3u15',
+    answers:{ u15c3_1:['told me','said that'], u15c3_2:['to take out'],
+              u15c3_3:['if i wanted','whether i wanted'], u15c3_4:['to vote for','to vote'],
+              u15c3_5:['to make'], u15c3_6:['to mark'],
+              u15c3_7:['to go'], u15c3_8:['what my hobbies were'],
+              u15c3_9:['about'], u15c3_10:['announced'],
+              u15c3_11:['on paying'], u15c3_12:['when i would be arriving'] }});
+
+  // C4 report sentences
+  initGapFill({ inputSelector:'.c4u15', checkId:'btn-check-c4u15', showId:'btn-show-c4u15', resetId:'btn-reset-c4u15',
+    answers:{ u15c4_1:['encouraged me to apply'], u15c4_2:['refused to'],
+              u15c4_3:['agreed to go'], u15c4_4:['denied causing the','denied having caused the'],
+              u15c4_5:['apologised for losing'], u15c4_6:['asked why there were not','asked why there weren\'t'],
+              u15c4_7:['asked if i was going','asked whether i was going'],
+              u15c4_8:['suggested that i have','suggested i have','suggested that i had','suggested i had','suggested having'],
+              u15c4_9:['persuaded dan to go to','persuaded dan to come to'] }});
+
+  // D Q1-3 sentence completion
+  initGapFill({ inputSelector:'.d1u15', checkId:'btn-check-d1u15', showId:'btn-show-d1u15', resetId:'btn-reset-d1u15',
+    answers:{ u15d1_1:['air','hot air','columns of hot air'], u15d1_2:['the seventeenth century','seventeenth century','17th century','the 17th century'], u15d1_3:['spain'] }});
+
+  // D Q4-8 flowchart
+  initGapFill({ inputSelector:'.d2u15', checkId:'btn-check-d2u15', showId:'btn-show-d2u15', resetId:'btn-reset-d2u15',
+    answers:{ u15d2_4:['concrete'], u15d2_5:['plastic'], u15d2_6:['greenhouse'],
+              u15d2_7:['rises'], u15d2_8:['two hundred','200','two hundred megawatts'] }});
+
+  // D Q9-10 multiple choice letters (key: "9 and 10 B, E in any order")
+  const d3Inputs = document.querySelectorAll('.d3u15');
+  const d3Check  = document.getElementById('btn-check-d3u15');
+  const d3Show   = document.getElementById('btn-show-d3u15');
+  const d3Reset  = document.getElementById('btn-reset-d3u15');
+  if (d3Check) d3Check.addEventListener('click', () => {
+    const vals = Array.from(d3Inputs).map(i => norm(i.value).toUpperCase());
+    let got = 0;
+    Array.from(d3Inputs).forEach((inp, idx) => {
+      const v = vals[idx];
+      const ok = ['B','E'].includes(v) && vals.filter(x => x === v).length === 1;
+      if (ok) got++;
+      markInput(inp, ok);
+    });
+    clearFeedback(d3Check.parentElement);
+    d3Check.parentElement.appendChild(scoreBadge(got, d3Inputs.length));
+  });
+  if (d3Show) d3Show.addEventListener('click', () => {
+    Array.from(d3Inputs).forEach((inp, idx) => { inp.value = ['B','E'][idx]; markInput(inp, true); });
+    clearFeedback(d3Check.parentElement);
+  });
+  if (d3Reset) d3Reset.addEventListener('click', () => {
+    Array.from(d3Inputs).forEach(inp => { inp.value = ''; inp.classList.remove('correct','incorrect'); });
+    clearFeedback(d3Check.parentElement);
+  });
+
+  // GFT reporting verbs
+  initGapFill({ inputSelector:'.gftu15', checkId:'btn-check-gftu15', showId:'btn-show-gftu15', resetId:'btn-reset-gftu15',
+    answers:{ u15gft_1:['asked'], u15gft_2:['explained'], u15gft_3:['denied'],
+              u15gft_4:['admitted'], u15gft_5:['insisted'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 5 – Future 1 | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 5</span>
+    <span class="subtitle">Future 1 — plans, intentions and predictions: present continuous; <em>going to</em>; <em>will</em></span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening: A sports team trip</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear Tim, a sports team coach, talking to Amanda, a player in the team, about a trip they are going to make. Before you listen, look at the pictures. Which sport does the team play? Which two countries will they visit?</p>
+        <img src="../assets/image-contents/u5_a1_sport_picture.png" alt="Sports team picture: a sport and two countries to identify" class="diagram"/>
+        <p class="diagram-caption">Look at the picture — identify the sport and the two countries</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Which sport does the team play? <input class="gap-input a1u5" data-id="u5a1_1" placeholder="…" style="min-width:120px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Which two countries will they visit? <input class="gap-input a1u5" data-id="u5a1_2" placeholder="…" style="min-width:200px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a1u5" class="btn-check">Check</button>
+          <button id="btn-show-a1u5" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a1u5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and complete the table — Track 08</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">08</div>
+          <div class="track-info"><h4>Track 08 — Tim and Amanda's conversation</h4><p>Context listening — sports team trip</p></div>
+          <div id="audio-08"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Listen and complete the table below. Write <strong>no more than two words or a number</strong> for each answer.</p>
+        <table class="form-table" style="margin-top:10px;">
+          <thead><tr><th>Country</th><th>Number of matches</th><th>Number of free days</th><th>Accommodation</th><th>Other plans</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><input class="corr-input a2u5" data-id="u5a2_1" placeholder="…" style="width:110px;"/></td>
+              <td><input class="corr-input a2u5" data-id="u5a2_2" placeholder="…" style="width:70px;"/></td>
+              <td><input class="corr-input a2u5" data-id="u5a2_3" placeholder="…" style="width:70px;"/></td>
+              <td>stay in a <input class="corr-input a2u5" data-id="u5a2_4" placeholder="…" style="width:110px;"/></td>
+              <td>do lots of walking</td>
+            </tr>
+            <tr>
+              <td><input class="corr-input a2u5" data-id="u5a2_5" placeholder="…" style="width:110px;"/></td>
+              <td><input class="corr-input a2u5" data-id="u5a2_6" placeholder="…" style="width:70px;"/></td>
+              <td><input class="corr-input a2u5" data-id="u5a2_7" placeholder="…" style="width:70px;"/></td>
+              <td>stay in a <input class="corr-input a2u5" data-id="u5a2_8" placeholder="…" style="width:110px;"/></td>
+              <td>visit some <input class="corr-input a2u5" data-id="u5a2_9" placeholder="…" style="width:90px;"/></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="exercise-actions">
+          <button id="btn-check-a2u5" class="btn-check">Check</button>
+          <button id="btn-show-a2u5" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2u5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and write A, B or C — Track 08</h3></div>
+      <div class="exercise-body">
+        <p>Now listen again and write:</p>
+        <div class="example-box" style="margin-bottom:14px;">
+          <div><strong>A</strong> if Tim makes this statement</div>
+          <div><strong>B</strong> if Amanda makes this statement</div>
+          <div><strong>C</strong> if both Tim and Amanda make this statement</div>
+        </div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> We're travelling to Scotland by plane. <input class="corr-input a3u5" data-id="u5a3_1" placeholder="A/B/C" style="width:70px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> We'll have fun even if the weather is bad. <input class="corr-input a3u5" data-id="u5a3_2" placeholder="A/B/C" style="width:70px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> The team will be pleased with the accommodation in Athens. <input class="corr-input a3u5" data-id="u5a3_3" placeholder="A/B/C" style="width:70px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> The two countries are going to provide very different experiences. <input class="corr-input a3u5" data-id="u5a3_4" placeholder="A/B/C" style="width:70px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> The team manager is holding a party on our return. <input class="corr-input a3u5" data-id="u5a3_5" placeholder="A/B/C" style="width:70px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u5" class="btn-check">Check</button>
+          <button id="btn-show-a3u5" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Look at the statements in Exercise 3 and answer these questions</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Which tense is used in statements 1 and 5? <input class="gap-input a4u5" data-id="u5a4_1" placeholder="…" style="min-width:180px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Which structure is used in statements 2 and 3 to refer to the future? <input class="gap-input a4u5" data-id="u5a4_2" placeholder="…" style="min-width:100px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> Which structure is used in statement 4 to refer to the future? <input class="gap-input a4u5" data-id="u5a4_3" placeholder="…" style="min-width:120px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> Which statements talk about a fixed arrangement? <input class="gap-input a4u5" data-id="u5a4_4" placeholder="…" style="min-width:160px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> Which statements are predictions? <input class="gap-input a4u5" data-id="u5a4_5" placeholder="…" style="min-width:160px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u5" class="btn-check">Check</button>
+          <button id="btn-show-a4u5" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <h2 class="grammar-subtitle">B1 — Present Continuous</h2>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the present continuous to talk about <strong>plans or definite arrangements for the future</strong>:</p>
+    <ul class="use-list">
+      <li><em>We're <strong>staying</strong> in a small hotel.</em> (we have made the arrangements)</li>
+      <li>Notice that time expressions are used or understood from the context in order to show that we are talking about the future (and not the present):<br/>
+        <em>The manager <strong>is having</strong> a party just after we get back.</em> (time expression given)<br/>
+        <em>We're <strong>playing</strong> four matches there.</em> (future time expression understood)
+      </li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — <em>Will</em></h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>will</em> + verb</td><td><em>We'<strong>ll enjoy</strong> it.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>will not (won't)</em> + verb</td><td><em>He <strong>won't enjoy</strong> it.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Will</em> … + verb?</td><td><em><strong>Will</strong> they <strong>enjoy</strong> it?</em></td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use <em>will</em>:</p>
+    <ul class="use-list">
+      <li><strong>To make predictions, usually based on our opinions or our past experience:</strong><br/>
+        <em>I think it'<strong>ll be</strong> extremely hot there.</em>
+      </li>
+      <li><strong>To talk about future events we haven't arranged yet:</strong><br/>
+        <em>We'<strong>ll probably stay</strong> in some sort of mountain lodge there.</em>
+      </li>
+      <li><strong>To talk about future events or facts that are not personal:</strong><br/>
+        <em>The best player on the tour <strong>will get</strong> a special trophy.</em><br/>
+        <em>The prime minister <strong>will open</strong> the debate in parliament tomorrow.</em>
+      </li>
+      <li><strong>To talk about something we decide to do at the time of speaking:</strong><br/>
+        <em>Tell me all about it and I'<strong>ll pass</strong> on the information to the rest of the team.</em>
+      </li>
+      <li><strong>To make offers, promises or suggestions:</strong><br/>
+        <em>Don't worry, I'<strong>ll let</strong> everyone know.</em> (a promise)
+      </li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — <em>Going to</em></h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>am/is/are going to</em> + verb</td><td><em>We're <strong>going to hire</strong> a bus.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>am/is/are not going to</em> + verb</td><td><em>He's <strong>not going to hire</strong> a bus.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Am/Is/Are</em> … <em>going to</em> + verb?</td><td><em><strong>Are</strong> they <strong>going to hire</strong> a bus?</em></td></tr>
+      </tbody>
+    </table>
+    <div class="note-box"><em>Going to</em> often means the same as the present continuous and <em>will</em>.</div>
+
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use <em>going to</em>:</p>
+    <ul class="use-list">
+      <li><strong>To talk about events in the future we have already thought about and intend to do:</strong><br/>
+        <em>We're <strong>going to hire</strong> a bus.</em> (we intend to go, but we haven't made the arrangements yet)<br/>
+        <em>We're <strong>going to get</strong> a boat to a couple of the islands.</em>
+      </li>
+      <li><strong>To make predictions when there is present evidence:</strong><br/>
+        <em>Well, we're certainly <strong>going to have</strong> a varied trip.</em> (I am judging this from what I know about the plans)
+      </li>
+      <li><strong><em>Going to</em> and <em>will</em> can follow words like <span class="kw-tag">think</span><span class="kw-tag">doubt</span><span class="kw-tag">expect</span><span class="kw-tag">believe</span><span class="kw-tag">probably</span><span class="kw-tag">certainly</span><span class="kw-tag">definitely</span><span class="kw-tag">be sure</span> to show that it is an opinion about the future:</strong><br/>
+        <em>I think it's <strong>going to be</strong> a great trip.</em><br/>
+        <em>I'm sure we'<strong>ll enjoy</strong> it whatever the weather.</em><br/>
+        <em>It'<strong>ll probably rain</strong> every day.</em>
+      </li>
+    </ul>
+
+    <p style="margin:16px 0 8px;font-weight:700;color:#4a148c;">We can often choose different future forms to talk about the same future situation. It depends on the speaker's ideas about the situation:</p>
+    <div class="compare-table">
+      <div class="compare-col">
+        <div class="col-head">Present continuous or <em>going to</em>?</div>
+        <div class="col-body">
+          <ul>
+            <li><em>The manager <strong>is having</strong> a party when we get back.</em> (definite arrangement)</li>
+            <li><em>We're <strong>going to hire</strong> a bus and then drive through the mountains.</em> (less definite arrangement — we haven't booked the bus yet)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="col-head"><em>Going to</em> or <em>will</em>?</div>
+        <div class="col-body">
+          <ul>
+            <li><em>I'm sure we'<strong>ll enjoy</strong> it.</em> (prediction based on my guess)</li>
+            <li><em>We're <strong>going to have</strong> a very varied trip!</em> (prediction based on what I know about the weather)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:10px;">Often there is very little difference between <em>going to</em> and <em>will</em> for predictions.</p>
+
+    <div class="grammar-extra">
+      <h4>Grammar extra: Making predictions using words other than <em>will</em></h4>
+      <p>In formal writing we often use expressions other than <em>will</em> to predict the future (e.g. <em>be likely to</em>, <em>be predicted to</em>, <em>be estimated to</em>, <em>be certain to</em>):</p>
+      <p style="margin-top:8px;"><em>The population <strong>is likely to increase</strong> to 22 million in 2011.</em><br/>
+      <em>The average annual rainfall <strong>is predicted to be</strong> ten per cent lower than today's figures.</em></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Fill in the gaps in this model answer with phrases from the box</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps in the second half of this model answer with phrases from the box.</p>
+        <div class="word-box">
+          <span class="word-chip">are going to feel</span><span class="word-chip">are going to happen</span><span class="word-chip">are likely to lead to</span><span class="word-chip">are likely to occur</span><span class="word-chip">are predicted to work</span><span class="word-chip">is likely to become</span><span class="word-chip">will be</span><span class="word-chip">will continue</span><span class="word-chip">will develop</span><span class="word-chip">will find</span><span class="word-chip">will have</span><span class="word-chip">will result</span>
+        </div>
+        <div class="passage-text" style="line-height:2.4;">
+          … So, now let us consider the changes that <span class="item-num" style="display:inline-flex;vertical-align:middle;">1</span> <input class="gap-input c1u5" data-id="u5c1_1" placeholder="…" style="min-width:150px;"/> in the next 100 years. Unfortunately, I believe that not all changes <span class="item-num" style="display:inline-flex;vertical-align:middle;">2</span> <input class="gap-input c1u5" data-id="u5c1_2" placeholder="…" style="min-width:90px;"/> for the better. For example, in the future more and more people <span class="item-num" style="display:inline-flex;vertical-align:middle;">3</span> <input class="gap-input c1u5" data-id="u5c1_3" placeholder="…" style="min-width:170px;"/> from home and so they <span class="item-num" style="display:inline-flex;vertical-align:middle;">4</span> <input class="gap-input c1u5" data-id="u5c1_4" placeholder="…" style="min-width:140px;"/> more isolated from their colleagues. On the other hand, they <span class="item-num" style="display:inline-flex;vertical-align:middle;">5</span> <input class="gap-input c1u5" data-id="u5c1_5" placeholder="…" style="min-width:160px;"/> greater freedom to choose their working hours.<br/><br/>
+          A further possible change is that handwriting <span class="item-num" style="display:inline-flex;vertical-align:middle;">6</span> <input class="gap-input c1u5" data-id="u5c1_6" placeholder="…" style="min-width:150px;"/> obsolete. We are already so used to using a keyboard that today's children are losing the ability to spell without the aid of a word processor.<br/><br/>
+          Without a doubt, even greater changes <span class="item-num" style="display:inline-flex;vertical-align:middle;">7</span> <input class="gap-input c1u5" data-id="u5c1_7" placeholder="…" style="min-width:150px;"/> in technology used in the workplace. Computers <span class="item-num" style="display:inline-flex;vertical-align:middle;">8</span> <input class="gap-input c1u5" data-id="u5c1_8" placeholder="…" style="min-width:180px;"/> to grow even more powerful and this <span class="item-num" style="display:inline-flex;vertical-align:middle;">9</span> <input class="gap-input c1u5" data-id="u5c1_9" placeholder="…" style="min-width:150px;"/> in an even faster pace of life than we have now. Let us hope that our employers <span class="item-num" style="display:inline-flex;vertical-align:middle;">10</span> <input class="gap-input c1u5" data-id="u5c1_10" placeholder="…" style="min-width:100px;"/> a way to reduce the stress on workers this fast pace can bring.<br/><br/>
+          I also think these improvements in technology <span class="item-num" style="display:inline-flex;vertical-align:middle;">11</span> <input class="gap-input c1u5" data-id="u5c1_11" placeholder="…" style="min-width:170px;"/> even more globalisation than now and companies <span class="item-num" style="display:inline-flex;vertical-align:middle;">12</span> <input class="gap-input c1u5" data-id="u5c1_12" placeholder="…" style="min-width:120px;"/> very strong international links.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u5" class="btn-check">Check</button>
+          <button id="btn-show-c1u5" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Underline the most suitable form of the verbs — email</h3></div>
+      <div class="exercise-body">
+        <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;overflow:hidden;margin-bottom:14px;">
+          <div style="background:#e3f2fd;padding:8px 16px;font-size:.88rem;"><strong>Dear Paul and Claire</strong></div>
+          <div style="padding:16px;font-size:.93rem;line-height:1.9;">
+            We're having a wonderful time here in France. The weather is beautiful and we've got lots of plans for how to spend the next couple of weeks. Tomorrow
+            <span class="item-num" style="display:inline-flex;">1</span>&nbsp;<em>we're going out / we will go out</em> on a glass-bottomed boat to look at the wonderful sea life, and then on Wednesday we think
+            <span class="item-num" style="display:inline-flex;">2</span>&nbsp;<em>we're taking / we'll take</em> a tour of the old town. Ollie's aunt lives quite close, so
+            <span class="item-num" style="display:inline-flex;">3</span>&nbsp;<em>we're visiting / we're going to visit</em> her too if we have time.<br/><br/>
+            The hotel is lovely and lively and has lots of good night life. Tonight
+            <span class="item-num" style="display:inline-flex;">4</span>&nbsp;<em>they're holding / they'll hold</em> an international evening, with lots of food from different countries.<br/><br/>
+            As you know, we're here with our friends, John and Wendy, but
+            <span class="item-num" style="display:inline-flex;">5</span>&nbsp;<em>they aren't staying / they won't stay</em> as long as us, so
+            <span class="item-num" style="display:inline-flex;">6</span>&nbsp;<em>we're probably doing / we'll probably do</em> the really 'touristy' things with them, and be lazy in our second week. You can hire small sailing boats for the day, so we think
+            <span class="item-num" style="display:inline-flex;">7</span>&nbsp;<em>we're doing / we're going to do</em> that next week, and
+            <span class="item-num" style="display:inline-flex;">8</span>&nbsp;<em>we're also going to try / we're also trying</em> to have time to do some shopping!<br/><br/>
+            I hope you are ready for your big trip.
+            <span class="item-num" style="display:inline-flex;">9</span>&nbsp;<em>You're loving / You'll love</em> Australia. In fact
+            <span class="item-num" style="display:inline-flex;">10</span>&nbsp;<em>you're going to probably end up / you'll probably end up</em> staying there much longer than you've planned.<br/><br/>
+            Have a great time, and
+            <span class="item-num" style="display:inline-flex;">11</span>&nbsp;<em>we're going to see / we'll see</em> you when you get back.<br/><br/>
+            Love Kath and Ollie
+          </div>
+        </div>
+        <p style="margin-bottom:10px;font-weight:600;">Click the correct form for each numbered item:</p>
+        <div class="gft-item" data-id="u5c2_1" data-answered="0"><span class="item-num">1</span><div><div class="gft-options"><button class="gft-btn" data-value="we're going out">we're going out</button><button class="gft-btn" data-value="we will go out">we will go out</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_2" data-answered="0"><span class="item-num">2</span><div><div class="gft-options"><button class="gft-btn" data-value="we're taking">we're taking</button><button class="gft-btn" data-value="we'll take">we'll take</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_3" data-answered="0"><span class="item-num">3</span><div><div class="gft-options"><button class="gft-btn" data-value="we're visiting">we're visiting</button><button class="gft-btn" data-value="we're going to visit">we're going to visit</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_4" data-answered="0"><span class="item-num">4</span><div><div class="gft-options"><button class="gft-btn" data-value="they're holding">they're holding</button><button class="gft-btn" data-value="they'll hold">they'll hold</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_5" data-answered="0"><span class="item-num">5</span><div><div class="gft-options"><button class="gft-btn" data-value="they aren't staying">they aren't staying</button><button class="gft-btn" data-value="they won't stay">they won't stay</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_6" data-answered="0"><span class="item-num">6</span><div><div class="gft-options"><button class="gft-btn" data-value="we're probably doing">we're probably doing</button><button class="gft-btn" data-value="we'll probably do">we'll probably do</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_7" data-answered="0"><span class="item-num">7</span><div><div class="gft-options"><button class="gft-btn" data-value="we're doing">we're doing</button><button class="gft-btn" data-value="we're going to do">we're going to do</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_8" data-answered="0"><span class="item-num">8</span><div><div class="gft-options"><button class="gft-btn" data-value="we're also going to try">we're also going to try</button><button class="gft-btn" data-value="we're also trying">we're also trying</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_9" data-answered="0"><span class="item-num">9</span><div><div class="gft-options"><button class="gft-btn" data-value="You're loving">You're loving</button><button class="gft-btn" data-value="You'll love">You'll love</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_10" data-answered="0"><span class="item-num">10</span><div><div class="gft-options"><button class="gft-btn" data-value="you're going to probably end up">you're going to probably end up</button><button class="gft-btn" data-value="you'll probably end up">you'll probably end up</button></div></div></div>
+        <div class="gft-item" data-id="u5c2_11" data-answered="0"><span class="item-num">11</span><div><div class="gft-options"><button class="gft-btn" data-value="we're going to see">we're going to see</button><button class="gft-btn" data-value="we'll see">we'll see</button></div></div></div>
+        <div class="exercise-actions">
+          <button id="btn-show-c2u5" class="btn-show">Show All Answers</button>
+          <button id="btn-reset-c2u5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Fill in the gaps with the present continuous or <em>will</em> future form</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with the present continuous or <em>will</em>-future form of the verbs in brackets.</p>
+        <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:16px;font-size:.93rem;line-height:2.1;margin-bottom:14px;">
+          <strong>Kirsty:</strong> Hi Elaine. It's Kirsty here.<br/>
+          <strong>Elaine:</strong> Hello, how are you?<br/>
+          <strong>Kirsty:</strong> Fine. Listen, I know this is very short notice but <span class="item-num" style="display:inline-flex;vertical-align:middle;">1</span> <input class="gap-input c3u5" data-id="u5c3_1" placeholder="…" style="min-width:130px;"/> <span class="hint-text">(do)</span> anything tonight?<br/>
+          <strong>Elaine:</strong> Nothing. Why?<br/>
+          <strong>Kirsty:</strong> Well <span class="item-num" style="display:inline-flex;vertical-align:middle;">2</span> <input class="gap-input c3u5" data-id="u5c3_2" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(take)</span> my class to the theatre, but one of them can't go. Would you like to come?<br/>
+          <strong>Elaine:</strong> I'd love to. What's the play about?<br/>
+          <strong>Kirsty:</strong> Oh, <span class="item-num" style="display:inline-flex;vertical-align:middle;">3</span> <input class="gap-input c3u5" data-id="u5c3_3" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(tell)</span> you all about that a little later. <span class="item-num" style="display:inline-flex;vertical-align:middle;">4</span> <input class="gap-input c3u5" data-id="u5c3_4" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(pick)</span> you up at 6.30 — is that okay?<br/>
+          <strong>Elaine:</strong> Yes, OK. Or how about meeting a bit earlier? We could have a coffee beforehand.<br/>
+          <strong>Kirsty:</strong> Well, <span class="item-num" style="display:inline-flex;vertical-align:middle;">5</span> <input class="gap-input c3u5" data-id="u5c3_5" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(see)</span> the school principal at four, but I suppose I could come after that. My meeting <span class="item-num" style="display:inline-flex;vertical-align:middle;">6</span> <input class="gap-input c3u5" data-id="u5c3_6" placeholder="…" style="min-width:170px;"/> <span class="hint-text">(probably/finish)</span> at about 5.30. Is that okay?<br/>
+          <strong>Elaine:</strong> Yes, of course. What time does the play actually start?<br/>
+          <strong>Kirsty:</strong> At 7.30, although we <span class="item-num" style="display:inline-flex;vertical-align:middle;">7</span> <input class="gap-input c3u5" data-id="u5c3_7" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(need)</span> to be there before as <span class="item-num" style="display:inline-flex;vertical-align:middle;">8</span> <input class="gap-input c3u5" data-id="u5c3_8" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(meet)</span> my students at the theatre at seven. Afterwards they <span class="item-num" style="display:inline-flex;vertical-align:middle;">9</span> <input class="gap-input c3u5" data-id="u5c3_9" placeholder="…" style="min-width:160px;"/> <span class="hint-text">(probably/want)</span> to talk about the play for a little while. But I hope that <span class="item-num" style="display:inline-flex;vertical-align:middle;">10</span> <input class="gap-input c3u5" data-id="u5c3_10" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(not/go on)</span> for too long. There <span class="item-num" style="display:inline-flex;vertical-align:middle;">11</span> <input class="gap-input c3u5" data-id="u5c3_11" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(be)</span> plenty of time for us to discuss it at tomorrow's lesson.<br/>
+          <strong>Elaine:</strong> That's fine. <span class="item-num" style="display:inline-flex;vertical-align:middle;">12</span> <input class="gap-input c3u5" data-id="u5c3_12" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(see)</span> you at 5.30!
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u5" class="btn-check">Check</button>
+          <button id="btn-show-c3u5" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Write sentences about yourself</h3></div>
+      <div class="exercise-body">
+        <p>Write sentences about yourself. Answers will vary.</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Write two intentions about your future. <input class="gap-input c4u5-free" style="min-width:320px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Write three plans or arrangements for your future. <input class="gap-input c4u5-free" style="min-width:320px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> Predict three things that you think will happen to the workplace in the future. <input class="gap-input c4u5-free" style="min-width:320px;"/></div></div>
+        <p class="hint-text" style="margin-top:10px;">Suggested answers: 1 I'm going to visit my grandmother. (I will visit my grandmother at the weekend — sounds like a promise rather than a planned visit) · 2 I'm travelling to America next week. · 3 I think we will stop using fax machines.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — General Training Reading</div>
+  <div class="section-body">
+    <div class="test-tip">You should spend about 20 minutes on Questions 1–9 which are based on the Reading Passage below.</div>
+
+    <div class="reading-passage">
+      <h3>How to choose a university course</h3>
+      <div class="rp-sub">How do I choose a course?</div>
+      <div class="rp-body">
+        <div class="rp-para">You've decided you want to do a course. Whether you would like a career change, a better job, or just to learn something new, this guide can help you.</div>
+        <div class="rp-para"><strong>Qualifications — why do I need them?</strong><br/>Qualifications prove you've acquired knowledge or developed skills. For some careers like medicine and law, it's essential you have specific qualifications. For others, such as journalism, it helps to have a particular qualification. Most universities set entry requirements for degree courses. Mature entrants don't always need formal qualifications, but need evidence of recent study, relevant work experience or professional qualifications. Professional bodies may grant you membership if you have certain qualifications. It's not always essential to have a qualification. Working knowledge, such as being able to use computer software, can be just as important.</div>
+        <div class="rp-para"><strong>What type of course should I do?</strong><br/>Your motives will help you choose the best course for your aims and goals. If you are career-driven, you'll need a course relevant to your profession. If you are interested in self-development and meeting people, you should find out who else will be on the course. There are work-related (vocational) and academic courses. Further education colleges offer academic courses and work-related courses. Universities offer higher education qualifications, such as academic first degrees and higher degrees and the more vocational diplomas. For a career in plumbing, a vocational course is essential. For teaching, you need a degree. However, for many jobs, you have a choice between academic and vocational courses. A vocational course is better if you like doing things with your hands and working manually. You might prefer an academic course if you like researching, analysing and presenting arguments.</div>
+        <div class="rp-para"><strong>Which type of study would suit me best?</strong><br/>Do you prefer on-the-job training, or do you prefer to research and gather facts? Do you want to study full-time or part-time? If you prefer to work on your own, at your own pace, an open or distance learning course might suit you. You study from home, with the help of tuition packs, computers and tutor support via telephone or email. You can speed through the course or take your time. But you do need self-discipline and motivation.</div>
+        <div class="rp-para"><strong>What about my personal circumstances?</strong><br/>You might prefer an open or distance learning course if: you're working and you don't know how much time a week you can commit to; you work irregular hours; you're at home looking after pre-school children. Many colleges and training centres now offer flexible open-learning courses, where you can study at your own pace.</div>
+        <div class="rp-para"><strong>How do I know if it's a good course?</strong><br/>You've decided which subject and type of course you want, and how to study it. You now need to choose between different course titles and providers. There are many courses and they aren't of equal value. The only way to assess the quality and value of a course is to check whether the course is accredited or validated by a recognised body (this might be an awarding body or a professional body). This can add extra weight to your qualification. Don't take everything you read at face value; check out the facts about each course yourself. Ask course tutors as many questions as you want.</div>
+        <div class="rp-para"><strong>How can I be sure I'm making the right choice?</strong><br/>Be clear of your goal. If you've decided on a particular job, get an idea of what the job's about and if you'll like it. Read careers information, buy trade magazines, and speak to people currently working in the job. This research is well worth it. It's better to take your time rather than do a course that leads to a job you might not really want. You'll ensure that you don't waste any time or money.</div>
+        <div class="rp-para"><strong>What am I going to do after the course?</strong><br/>Plan for when you finish. If you're aiming for a particular job, do voluntary work while studying. If you're doing an English course and want to be a journalist, you could write for the student newspaper or work on the radio. Having a plan will help you make the most of the opportunities that come your way when you're on the course.</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–5</span><h3>Questions 1–5 — Complete each sentence with the correct ending A–F</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Sentence completion with a box of possible answers is similar to matching questions. Scan the passage for the key words in the questions and underline or highlight them. Then carefully read the ideas in the options (A–F). Remember there are more options than you need to use.</div>
+        <div class="example-box">
+          <div><strong>A</strong> &nbsp;will not need any experience to start a course</div>
+          <div><strong>B</strong> &nbsp;will benefit from open-learning courses</div>
+          <div><strong>C</strong> &nbsp;could get relevant work experience while they study</div>
+          <div><strong>D</strong> &nbsp;can be accepted onto a course without qualifications</div>
+          <div><strong>E</strong> &nbsp;should enquire about the other students on their course</div>
+          <div><strong>F</strong> &nbsp;must have certain qualifications</div>
+        </div>
+        <p style="margin:6px 0;">Write the correct letter <strong>A–F</strong> next to Questions 1–5.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span> Students who want to do law <input class="corr-input d1u5" data-id="u5d1_1" placeholder="A–F" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span> Mature students <input class="corr-input d1u5" data-id="u5d1_2" placeholder="A–F" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span> Students who are motivated by self-development <input class="corr-input d1u5" data-id="u5d1_3" placeholder="A–F" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span> Students who have young children <input class="corr-input d1u5" data-id="u5d1_4" placeholder="A–F" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span> Students who choose a career in journalism <input class="corr-input d1u5" data-id="u5d1_5" placeholder="A–F" style="width:65px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u5" class="btn-check">Check</button>
+          <button id="btn-show-d1u5" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q6–9</span><h3>Questions 6–9 — Classify the following statements</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Underline or highlight the key words in the reading passage (e.g. academic, vocational). Carefully read the information nearby and match it to the questions (6–9). Remember the words in the questions will not always match the words in the passage exactly.</div>
+        <p style="margin:10px 0;">Classify the following statements as applying to:</p>
+        <div class="example-box">
+          <div><strong>A</strong> &nbsp;academic courses</div>
+          <div><strong>B</strong> &nbsp;vocational courses</div>
+          <div><strong>C</strong> &nbsp;both academic and vocational courses</div>
+        </div>
+        <p style="margin:6px 0;">Write the correct letter <strong>A–C</strong> next to Questions 6–9.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">6</span> These courses are available through further education colleges. <input class="corr-input d2u5" data-id="u5d2_6" placeholder="A–C" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span> You must take this kind of course if you wish to have a career in plumbing. <input class="corr-input d2u5" data-id="u5d2_7" placeholder="A–C" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span> You will learn research methods on this type of course. <input class="corr-input d2u5" data-id="u5d2_8" placeholder="A–C" style="width:65px;"/></div>
+          <div class="correction-row"><span class="c-num">9</span> You will learn practical skills on this course. <input class="corr-input d2u5" data-id="u5d2_9" placeholder="A–C" style="width:65px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d2u5" class="btn-check">Check</button>
+          <button id="btn-show-d2u5" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">These are extracts from the text. Without looking back at the text, fill in the gaps with the correct form of the verbs in brackets and then answer the questions that follow.</div>
+    <div class="exercise">
+      <div class="exercise-header" style="background:#880e4f;"><span class="ex-num" style="color:#880e4f;">★</span><h3>Complete the extracts with the correct verb form</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text" style="line-height:2.4;">
+          1 &nbsp;Your motives <input class="gap-input gftu5" data-id="u5gft1" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(help)</span> you choose the best course for your aims and goals.<br/>
+          2 &nbsp;If you are career-driven, you <input class="gap-input gftu5" data-id="u5gft2" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(need)</span> a course relevant to your profession.<br/>
+          3 &nbsp;You <input class="gap-input gftu5" data-id="u5gft3" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(ensure)</span> that you don't waste any time or money.<br/>
+          4 &nbsp;What <input class="gap-input gftu5" data-id="u5gft4" placeholder="…" style="min-width:150px;"/> <span class="hint-text">(I/do)</span> after the course?<br/>
+          5 &nbsp;Having a plan <input class="gap-input gftu5" data-id="u5gft5" placeholder="…" style="min-width:90px;"/> <span class="hint-text">(help)</span> you make the most of the opportunities that come your way when you're on the course.
+        </div>
+        <p style="margin:14px 0 8px;font-weight:600;">Now answer these questions:</p>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> Which future forms are used? <input class="gap-input gftu5b" data-id="u5gft6" placeholder="…" style="min-width:180px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> Why? Write a short explanation. <input class="gap-input gftu5b" style="min-width:320px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-gftu5" class="btn-check">Check</button>
+          <button id="btn-show-gftu5" class="btn-show">Show Answers</button>
+          <button id="btn-reset-gftu5" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 5: Future 1</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('08','audio-08');
+
+  // A1 pre-listening
+  initGapFill({ inputSelector:'.a1u5', checkId:'btn-check-a1u5', showId:'btn-show-a1u5', resetId:'btn-reset-a1u5',
+    answers:{ u5a1_1:['hockey'], u5a1_2:['scotland and greece','greece and scotland'] }});
+
+  // A2 table
+  initGapFill({ inputSelector:'.a2u5', checkId:'btn-check-a2u5', showId:'btn-show-a2u5', resetId:'btn-reset-a2u5',
+    answers:{ u5a2_1:['scotland'], u5a2_2:['four','4'], u5a2_3:['three','3'], u5a2_4:['mountain lodge'],
+              u5a2_5:['greece'], u5a2_6:['three','3'], u5a2_7:['four','4'],
+              u5a2_8:['a small hotel','a (small) hotel','small hotel','a hotel','hotel'], u5a2_9:['islands'] }});
+
+  // A3 A/B/C
+  initGapFill({ inputSelector:'.a3u5', checkId:'btn-check-a3u5', showId:'btn-show-a3u5', resetId:'btn-reset-a3u5',
+    answers:{ u5a3_1:['A'], u5a3_2:['B'], u5a3_3:['A'], u5a3_4:['C'], u5a3_5:['A'] }});
+
+  // A4 analysis
+  initGapFill({ inputSelector:'.a4u5', checkId:'btn-check-a4u5', showId:'btn-show-a4u5', resetId:'btn-reset-a4u5',
+    answers:{ u5a4_1:['present continuous'], u5a4_2:['will'], u5a4_3:['going to'],
+              u5a4_4:['sentences 1 and 5','1 and 5'], u5a4_5:['sentences 2-4','sentences 2, 3 and 4','2-4','2, 3 and 4'] }});
+
+  // C1 model answer
+  initGapFill({ inputSelector:'.c1u5', checkId:'btn-check-c1u5', showId:'btn-show-c1u5', resetId:'btn-reset-c1u5',
+    answers:{ u5c1_1:['are likely to occur'], u5c1_2:['will be'], u5c1_3:['are predicted to work'],
+              u5c1_4:['are going to feel'], u5c1_5:['will certainly have'], u5c1_6:['is likely to become'],
+              u5c1_7:['are going to happen'], u5c1_8:['will undoubtedly continue'], u5c1_9:['will probably result'],
+              u5c1_10:['will find'], u5c1_11:['are likely to lead to'], u5c1_12:['will develop'] }});
+
+  // C2 email choose form
+  initGFT({ showId:'btn-show-c2u5', resetId:'btn-reset-c2u5',
+    answers:{ u5c2_1:"we're going out", u5c2_2:"we'll take", u5c2_3:"we're going to visit", u5c2_4:"they're holding",
+              u5c2_5:"they aren't staying", u5c2_6:"we'll probably do", u5c2_7:"we're going to do",
+              u5c2_8:"we're also going to try", u5c2_9:"You'll love", u5c2_10:"you'll probably end up", u5c2_11:"we'll see" }});
+
+  // C3 dialogue
+  initGapFill({ inputSelector:'.c3u5', checkId:'btn-check-c3u5', showId:'btn-show-c3u5', resetId:'btn-reset-c3u5',
+    answers:{ u5c3_1:['are you doing'], u5c3_2:["'m taking",'am taking'], u5c3_3:["'ll tell",'will tell'],
+              u5c3_4:["'ll pick",'will pick'], u5c3_5:["'m seeing",'am seeing'], u5c3_6:["'ll probably finish",'will probably finish'],
+              u5c3_7:["'ll need",'will need'], u5c3_8:["'m meeting",'am meeting'], u5c3_9:["'ll probably want",'will probably want'],
+              u5c3_10:["won't go on",'will not go on'], u5c3_11:['will be'], u5c3_12:["'ll see",'will see'] }});
+
+  // D Q1-5 sentence completion
+  initGapFill({ inputSelector:'.d1u5', checkId:'btn-check-d1u5', showId:'btn-show-d1u5', resetId:'btn-reset-d1u5',
+    answers:{ u5d1_1:['F'], u5d1_2:['D'], u5d1_3:['E'], u5d1_4:['B'], u5d1_5:['C'] }});
+
+  // D Q6-9 classification
+  initGapFill({ inputSelector:'.d2u5', checkId:'btn-check-d2u5', showId:'btn-show-d2u5', resetId:'btn-reset-d2u5',
+    answers:{ u5d2_6:['C'], u5d2_7:['B'], u5d2_8:['A'], u5d2_9:['B'] }});
+
+  // GFT
+  initGapFill({ inputSelector:'.gftu5', checkId:'btn-check-gftu5', showId:'btn-show-gftu5', resetId:'btn-reset-gftu5',
+    answers:{ u5gft1:["'ll help",'will help'], u5gft2:["'ll need",'will need'], u5gft3:["'ll ensure",'will ensure'],
+              u5gft4:['am i going to do'], u5gft5:["'ll help",'will help'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

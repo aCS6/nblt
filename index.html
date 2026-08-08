@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#070a13">
+<meta name="description" content="NBLT — the home for your IELTS preparation. One place that launches the Band 7+ Tracker, Vocab Builder, Task 1 Study Hub, Task 2 Lab and Grammar Book.">
+<title>NBLT — Your IELTS Apps</title>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='26' fill='%236366f1'/><text x='50' y='73' font-size='60' font-weight='800' text-anchor='middle' fill='white' font-family='system-ui,sans-serif'>N</text></svg>">
+
+<!-- Theme is applied before first paint so there is never a flash of the
+     wrong palette. The only value this page stores. -->
+<script>
+  (function () {
+    try {
+      var dark = localStorage.getItem('nblt.theme') !== 'light';
+      document.documentElement.classList.toggle('dark', dark);
+      document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400..800&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          bn: ['"Hind Siliguri"', 'Manrope', 'sans-serif']
+        },
+        maxWidth: { shell: '78rem' }
+      }
+    }
+  };
+</script>
+
+<link rel="stylesheet" href="assets/hub.css">
+<!-- defer preserves order: hub.js defines nbltHub() before Alpine boots. -->
+<script defer src="assets/hub.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+</head>
+
+<!-- No x-init: Alpine 3 calls a data object's init() automatically, and
+     calling it twice binds the keydown listener twice. -->
+<body x-data="nbltHub()" class="antialiased">
+
+<div class="nb-bg" aria-hidden="true"></div>
+<div class="nb-bg-grid" aria-hidden="true"></div>
+
+<a href="#apps" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] nb-btn nb-btn-primary">Skip to the apps</a>
+
+
+<!-- ══════════════════════════ HEADER ══════════════════════════ -->
+<header class="sticky top-0 z-50 nb-glass border-x-0 border-t-0" style="border-color: var(--border)">
+  <div class="mx-auto max-w-shell px-5 sm:px-8">
+    <div class="flex h-16 items-center gap-3">
+
+      <a href="#top" class="mr-auto flex items-center gap-3">
+        <span class="nb-tile nb-tile-sm font-display text-base font-extrabold" style="--accent:#6366f1;--accent-2:#a855f7">N</span>
+        <span class="leading-none">
+          <span class="block font-display text-lg font-extrabold tracking-tight">NBLT</span>
+          <span class="block text-[.6875rem] font-semibold" style="color: var(--faint)">IELTS study apps</span>
+        </span>
+      </a>
+
+      <nav class="mr-2 hidden items-center gap-1 text-sm font-semibold lg:flex" style="color: var(--muted)">
+        <a href="#apps"  class="rounded-full px-3 py-2 transition hover:bg-black/5 dark:hover:bg-white/5">Apps</a>
+        <a href="#route" class="rounded-full px-3 py-2 transition hover:bg-black/5 dark:hover:bg-white/5">Daily route</a>
+      </nav>
+
+      <button type="button" @click="toggleTheme()" class="nb-icon-btn"
+              :aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"
+             class="h-[1.05rem] w-[1.05rem]" x-html="theme === 'dark' ? icons.sun : icons.moon"></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<main id="top" class="mx-auto max-w-shell px-5 sm:px-8">
+
+  <!-- ══════════════════════════ HERO ══════════════════════════ -->
+  <section class="grid gap-10 pt-12 pb-14 lg:grid-cols-[minmax(0,1fr)_21rem] lg:pt-20 lg:pb-20">
+
+    <div class="nb-rise">
+      <div class="nb-chip nb-chip-accent mb-6" style="--accent:#6366f1">
+        <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
+        Five apps · one place
+      </div>
+
+      <p class="mb-3 text-sm font-bold" style="color: var(--muted)">
+        <span x-text="greeting">Good evening</span> — what are you studying today?
+      </p>
+
+      <h1 class="font-display text-[2.6rem] font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
+        Everything you need for
+        <span class="whitespace-nowrap bg-gradient-to-br from-indigo-500 via-purple-500 to-emerald-400 bg-clip-text text-transparent">Band 7+</span>,
+        in one place.
+      </h1>
+
+      <p class="mt-5 max-w-xl text-base leading-relaxed sm:text-lg" style="color: var(--muted)">
+        NBLT is the front door to your five study apps — the daily tracker, vocabulary,
+        both writing tasks and grammar. Pick one and go; each app keeps its own progress.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="#apps" class="nb-btn nb-btn-primary !px-6 !py-3.5 text-[.9375rem]" style="--accent:#6366f1;--accent-2:#8b5cf6">
+          Browse the apps
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" x-html="icons.arrow"></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick launch: the whole point of the page, one tap from the top. -->
+    <aside class="nb-card nb-rise p-4 lg:sticky lg:top-24 lg:self-start" style="--accent:#6366f1;--accent-2:#a855f7">
+      <h2 class="px-3 pt-2 pb-3 text-[.6875rem] font-bold uppercase tracking-wider" style="color: var(--faint)">Quick launch</h2>
+      <ul class="space-y-1">
+        <template x-for="app in apps" :key="app.id">
+          <li>
+            <button type="button" @click="go(app.href)" class="nb-hit"
+                    :style="'--accent:' + app.accent[0] + ';--accent-2:' + app.accent[1]">
+              <span class="nb-tile nb-tile-sm">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" x-html="app.icon"></svg>
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="block truncate text-sm font-bold" x-text="app.name">App</span>
+                <span class="block truncate text-xs font-semibold" style="color: var(--faint)" x-text="app.kind">Kind</span>
+              </span>
+              <kbd class="nb-kbd flex-none" x-text="app.hotkey">1</kbd>
+            </button>
+          </li>
+        </template>
+      </ul>
+      <p class="px-3 pt-3 pb-1 text-[.6875rem] leading-relaxed" style="color: var(--faint)">
+        Each app saves its own progress in this browser. Nothing is tracked on this page.
+      </p>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════ APPS ══════════════════════════ -->
+  <section id="apps" class="scroll-mt-24 pb-6">
+
+    <div class="mb-7 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h2 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Your apps</h2>
+        <p class="mt-2 hidden text-sm sm:block" style="color: var(--muted)">
+          Press <kbd class="nb-kbd">1</kbd>–<kbd class="nb-kbd">5</kbd> to open one straight from the keyboard.
+        </p>
+      </div>
+      <span class="nb-chip" x-text="apps.length + ' apps'">5 apps</span>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+
+      <!-- ── Featured: the tracker is where a study day starts ── -->
+      <template x-if="featured">
+        <article class="nb-card nb-card-link group flex flex-col p-7 md:col-span-2"
+                 :style="'--accent:' + featured.accent[0] + ';--accent-2:' + featured.accent[1]">
+          <a href="#" @click.prevent="go(featured.href)"
+             class="absolute inset-0 z-0 rounded-3xl" :aria-label="'Open ' + featured.name"></a>
+
+          <div class="pointer-events-none relative z-10 flex flex-1 flex-col">
+            <div class="flex items-start gap-4">
+              <span class="nb-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" x-html="featured.icon"></svg>
+              </span>
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <h3 class="font-display text-2xl font-extrabold tracking-tight" x-text="featured.name">Band 7+ Tracker</h3>
+                  <span class="nb-chip nb-chip-accent">Start here</span>
+                </div>
+                <p class="mt-1 text-sm font-semibold" style="color: var(--muted)" x-text="featured.tagline">31-day sprint</p>
+              </div>
+              <kbd class="nb-kbd hidden sm:inline-flex" x-text="featured.hotkey">1</kbd>
+            </div>
+
+            <p class="mt-5 max-w-2xl text-sm leading-relaxed" style="color: var(--muted)" x-text="featured.desc"></p>
+
+            <div class="mt-auto flex flex-wrap items-end gap-x-8 gap-y-4 pt-7">
+              <div>
+                <div class="font-display text-4xl font-extrabold tracking-tight" style="color: var(--accent)" x-text="featured.scale.n">31</div>
+                <div class="text-[.6875rem] font-bold uppercase tracking-wider" style="color: var(--faint)" x-text="featured.scale.unit">days planned</div>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <template x-for="t in featured.tags" :key="t">
+                  <span class="nb-chip" x-text="t">tag</span>
+                </template>
+              </div>
+              <div class="ml-auto hidden items-center gap-1.5 text-sm font-bold sm:flex" style="color: var(--accent)">
+                Open tracker
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                     class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" x-html="icons.arrow"></svg>
+              </div>
+            </div>
+          </div>
+        </article>
+      </template>
+
+      <!-- ── The other four ── -->
+      <template x-for="app in rest" :key="app.id">
+        <article class="nb-card nb-card-link group flex flex-col p-6"
+                 :style="'--accent:' + app.accent[0] + ';--accent-2:' + app.accent[1]">
+          <a href="#" @click.prevent="go(app.href)"
+             class="absolute inset-0 z-0 rounded-3xl" :aria-label="'Open ' + app.name"></a>
+
+          <div class="pointer-events-none relative z-10 flex flex-1 flex-col">
+            <div class="flex items-start gap-3.5">
+              <span class="nb-tile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" x-html="app.icon"></svg>
+              </span>
+              <div class="min-w-0 flex-1">
+                <h3 class="font-display text-lg font-extrabold leading-tight tracking-tight" x-text="app.name">App</h3>
+                <p class="mt-0.5 text-[.8125rem] font-semibold leading-snug" style="color: var(--muted)"
+                   :class="app.id === 'vocab' ? 'font-bn' : ''" x-text="app.tagline">Tagline</p>
+              </div>
+              <kbd class="nb-kbd hidden sm:inline-flex" x-text="app.hotkey">2</kbd>
+            </div>
+
+            <p class="mt-4 text-[.8125rem] leading-relaxed" style="color: var(--muted)" x-text="app.desc"></p>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <template x-for="t in app.tags" :key="t">
+                <span class="nb-chip" x-text="t">tag</span>
+              </template>
+            </div>
+
+            <div class="mt-auto flex items-end justify-between gap-3 pt-6">
+              <div class="min-w-0">
+                <div class="font-display text-3xl font-extrabold tracking-tight" style="color: var(--accent)" x-text="app.scale.n">0</div>
+                <div class="text-[.6875rem] font-bold uppercase tracking-wider" style="color: var(--faint)" x-text="app.scale.unit">unit</div>
+              </div>
+              <span class="flex items-center gap-1.5 pb-1 text-[.8125rem] font-bold" style="color: var(--accent)">
+                Open
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                     class="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" x-html="icons.arrow"></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Deep links opt back into pointer events so they beat the card link. -->
+          <template x-if="app.links.length">
+            <div class="pointer-events-auto relative z-10 mt-5 flex flex-wrap gap-2 border-t pt-4" style="border-color: var(--border-soft)">
+              <template x-for="l in app.links" :key="l.label">
+                <button type="button" @click.stop="go(l.href)" class="nb-btn nb-btn-sm nb-btn-ghost">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" x-html="l.icon"></svg>
+                  <span x-text="l.label">Link</span>
+                </button>
+              </template>
+            </div>
+          </template>
+        </article>
+      </template>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════ DAILY ROUTE ══════════════════════════ -->
+  <section id="route" class="scroll-mt-24 py-16">
+    <div class="grid gap-8 lg:grid-cols-[22rem_minmax(0,1fr)] lg:gap-12">
+
+      <div>
+        <h2 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">A suggested route</h2>
+        <p class="mt-3 text-sm leading-relaxed" style="color: var(--muted)">
+          Ninety minutes that touch every part of the exam. Work down the list — each step
+          hands off to the next app.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="nb-chip" x-text="route.reduce((n, s) => n + s.mins, 0) + ' min total'">90 min total</span>
+          <span class="nb-chip">4 steps</span>
+        </div>
+      </div>
+
+      <ol class="space-y-6">
+        <template x-for="(step, i) in route" :key="step.app">
+          <li class="nb-step"
+              :style="(() => { const a = appById(step.app); return a ? '--accent:' + a.accent[0] + ';--accent-2:' + a.accent[1] : ''; })()">
+            <span class="nb-step-dot" x-text="i + 1">1</span>
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h3 class="font-display text-lg font-extrabold tracking-tight" x-text="step.title">Step</h3>
+              <span class="nb-chip nb-chip-accent" x-text="step.mins + ' min'">5 min</span>
+            </div>
+            <p class="mt-1.5 text-sm leading-relaxed" style="color: var(--muted)" x-text="step.note">Note</p>
+            <button type="button" @click="go(appById(step.app).href)" class="nb-btn nb-btn-sm mt-3">
+              <span x-text="'Open ' + appById(step.app).name">Open</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" x-html="icons.arrow"></svg>
+            </button>
+          </li>
+        </template>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<footer class="border-t" style="border-color: var(--border)">
+  <div class="mx-auto max-w-shell px-5 sm:px-8 py-10">
+    <div class="flex flex-wrap items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <span class="nb-tile nb-tile-sm font-display text-sm font-extrabold" style="--accent:#6366f1;--accent-2:#a855f7">N</span>
+        <p class="text-sm font-bold">NBLT <span class="font-medium" style="color: var(--faint)">· built for one Band 7+ attempt</span></p>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold" style="color: var(--faint)">
+        <span class="flex items-center gap-1.5"><kbd class="nb-kbd">1</kbd>–<kbd class="nb-kbd">5</kbd> open an app</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

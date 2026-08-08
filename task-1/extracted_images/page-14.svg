@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="Inter, 'Segoe UI', system-ui, sans-serif">
+<rect width="800" height="400" fill="#ffffff"/>
+<text x="40" y="42" font-size="20" font-weight="800" fill="#1e2540">Map</text>
+<text x="40" y="64" font-size="13" fill="#4b5373">a place over time</text>
+<rect x="60" y="70" width="680" height="280" rx="14" fill="#eef7ee"/>
+<path d="M 640 70 C 620 140 660 210 620 280 C 600 320 630 350 640 350" fill="none" stroke="#7cc4e8" stroke-width="16" stroke-linecap="round"/>
+<text x="560" y="200" font-size="12" fill="#2c7fb8" font-weight="700">river</text>
+<path d="M 120 350 L 120 120" stroke="#fff" stroke-width="10"/>
+<path d="M 120 200 L 480 200" stroke="#fff" stroke-width="10"/>
+<rect x="170" y="120" width="34" height="26" rx="4" fill="#b7c4d8"/>
+<rect x="240" y="120" width="34" height="26" rx="4" fill="#b7c4d8"/>
+<rect x="310" y="120" width="34" height="26" rx="4" fill="#b7c4d8"/>
+<rect x="240" y="260" width="34" height="26" rx="4" fill="#b7c4d8"/>
+<rect x="310" y="260" width="34" height="26" rx="4" fill="#b7c4d8"/>
+<rect x="420" y="120" width="34" height="26" rx="4" fill="#b7c4d8"/>
+<text x="170" y="116" font-size="12" fill="#4b5373" font-weight="700">buildings</text>
+<circle cx="500" cy="90" r="14" fill="#7cc08a"/>
+<circle cx="560" cy="100" r="14" fill="#7cc08a"/>
+<circle cx="520" cy="160" r="14" fill="#7cc08a"/>
+<circle cx="580" cy="150" r="14" fill="#7cc08a"/>
+<circle cx="470" cy="260" r="14" fill="#7cc08a"/>
+<circle cx="530" cy="260" r="14" fill="#7cc08a"/>
+<text x="500" y="80" font-size="12" fill="#4b5373" font-weight="700">trees</text>
+<circle cx="700" cy="100" r="24" fill="#fff" stroke="#dde3ef"/>
+<text x="700" y="105" font-size="14" fill="#1e2540" text-anchor="middle" font-weight="700">N</text>
+</svg>

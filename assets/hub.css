@@ -1,0 +1,284 @@
+/* ==========================================================================
+   NBLT — hub.css
+   Design tokens + component layer for the orchestrator home app.
+
+   Tailwind (Play CDN) handles layout / spacing / typography in the markup.
+   This file owns the things utilities are bad at: theme tokens, the ambient
+   background, glass surfaces, accent-driven cards and motion.
+   ========================================================================== */
+
+/* ── Tokens ──────────────────────────────────────────────────────────────
+   Light is the base; `.dark` on <html> swaps the roles. Every colour used
+   by a component below resolves through one of these, so a theme flip is a
+   single class change with no flash of the wrong palette.
+
+   Surfaces are OPAQUE on purpose. Translucent surfaces needed
+   backdrop-filter to stay readable, and in Chrome a backdrop-filtered
+   element blurs content painted above it too — which made dialogs and
+   their text render soft. No blur anywhere now; text is always crisp. */
+:root {
+  --bg:           #f4f6fb;
+  --bg-tint-a:    rgba(99, 102, 241, .16);
+  --bg-tint-b:    rgba(16, 185, 129, .14);
+  --bg-tint-c:    rgba(245, 158, 11, .12);
+  --grid-line:    rgba(15, 23, 42, .055);
+
+  --card:         #ffffff;
+  --card-hover:   #ffffff;
+  --card-solid:   #ffffff;
+  --header:       #f7f9fdfa;
+  --border:       rgba(15, 23, 42, .11);
+  --border-soft:  rgba(15, 23, 42, .06);
+  --border-strong:rgba(15, 23, 42, .2);
+
+  --text:         #0d1424;
+  --muted:        #5a677f;
+  --faint:        #93a0b5;
+
+  --track:        rgba(15, 23, 42, .08);
+  --shadow-card:  0 1px 2px rgba(15, 23, 42, .04), 0 12px 32px -12px rgba(15, 23, 42, .18);
+  --shadow-lift:  0 2px 4px rgba(15, 23, 42, .05), 0 28px 60px -20px rgba(15, 23, 42, .28);
+
+  --accent:       #6366f1;   /* per-card override via inline style */
+  --accent-2:     #818cf8;
+}
+
+.dark {
+  --bg:           #070a13;
+  --bg-tint-a:    rgba(99, 102, 241, .22);
+  --bg-tint-b:    rgba(16, 185, 129, .14);
+  --bg-tint-c:    rgba(168, 85, 247, .16);
+  --grid-line:    rgba(255, 255, 255, .045);
+
+  --card:         #0f1626;
+  --card-hover:   #141d31;
+  --card-solid:   #111a2c;
+  --header:       #0a0f1cfa;
+  --border:       rgba(255, 255, 255, .1);
+  --border-soft:  rgba(255, 255, 255, .06);
+  --border-strong:rgba(255, 255, 255, .2);
+
+  --text:         #e9edf7;
+  --muted:        #93a1ba;
+  --faint:        #5f6c85;
+
+  --track:        rgba(255, 255, 255, .09);
+  --shadow-card:  0 1px 2px rgba(0, 0, 0, .3), 0 16px 40px -16px rgba(0, 0, 0, .7);
+  --shadow-lift:  0 2px 6px rgba(0, 0, 0, .35), 0 32px 70px -22px rgba(0, 0, 0, .85);
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+[x-cloak] { display: none !important; }
+
+:where(a, button, input, select, summary):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+::selection { background: color-mix(in srgb, var(--accent) 32%, transparent); }
+
+/* Scrollbars — only worth styling where they sit inside our own surfaces. */
+.nb-scroll { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; }
+.nb-scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.nb-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-strong); border-radius: 99px;
+  border: 3px solid transparent; background-clip: content-box;
+}
+.nb-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* ── Ambient background ──────────────────────────────────────────────────
+   Two fixed layers behind everything: soft colour fields, then a hairline
+   study-grid that fades out toward the bottom of the viewport. */
+.nb-bg {
+  position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(58rem 42rem at 12% -8%,  var(--bg-tint-a), transparent 62%),
+    radial-gradient(46rem 36rem at 92% 4%,   var(--bg-tint-c), transparent 60%),
+    radial-gradient(52rem 40rem at 50% 108%, var(--bg-tint-b), transparent 64%);
+  animation: nb-drift 26s ease-in-out infinite alternate;
+}
+
+.nb-bg-grid {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(to right,  var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(72rem 52rem at 50% 0%, #000 20%, transparent 78%);
+          mask-image: radial-gradient(72rem 52rem at 50% 0%, #000 20%, transparent 78%);
+}
+
+@keyframes nb-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(0, -2.5%, 0) scale(1.06); }
+}
+
+/* ── Surfaces ────────────────────────────────────────────────────────────
+   No backdrop-filter anywhere: it blurred anything painted above it,
+   including dialogs and their text. Opaque fills + borders instead. */
+.nb-glass {
+  background: var(--header);
+  border: 1px solid var(--border);
+}
+
+.nb-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1),
+              box-shadow .35s cubic-bezier(.2, .8, .2, 1),
+              border-color .3s ease, background-color .3s ease;
+}
+
+/* Accent wash that only shows on hover/focus, tinted by the card's --accent. */
+.nb-card::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(38rem 20rem at 82% -20%,
+              color-mix(in srgb, var(--accent) 26%, transparent), transparent 70%);
+  opacity: 0; transition: opacity .35s ease; pointer-events: none;
+}
+
+.nb-card-link:hover, .nb-card-link:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+  border-color: color-mix(in srgb, var(--accent) 46%, var(--border));
+  background: var(--card-hover);
+}
+.nb-card-link:hover::before, .nb-card-link:focus-within::before { opacity: 1; }
+
+/* ── Icon tile ───────────────────────────────────────────────────────────── */
+.nb-tile {
+  display: grid; place-items: center;
+  width: 3.25rem; height: 3.25rem; border-radius: 1rem;
+  color: #fff; flex: none;
+  background: linear-gradient(140deg, var(--accent), var(--accent-2));
+  box-shadow: 0 10px 26px -10px color-mix(in srgb, var(--accent) 78%, transparent),
+              inset 0 1px 0 rgba(255, 255, 255, .3);
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1);
+}
+.nb-card-link:hover .nb-tile { transform: translateY(-2px) rotate(-4deg) scale(1.04); }
+.nb-tile svg { width: 1.5rem; height: 1.5rem; }
+.nb-tile-sm { width: 2.25rem; height: 2.25rem; border-radius: .75rem; }
+.nb-tile-sm svg { width: 1.125rem; height: 1.125rem; }
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.nb-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  border-radius: 99px; padding: .625rem 1.125rem;
+  font-size: .875rem; font-weight: 700; line-height: 1;
+  border: 1px solid var(--border); color: var(--text);
+  background: var(--card);
+  cursor: pointer; white-space: nowrap;
+  transition: transform .18s ease, background-color .2s ease,
+              border-color .2s ease, box-shadow .25s ease, color .2s ease;
+}
+.nb-btn:hover { border-color: var(--border-strong); background: var(--card-hover); transform: translateY(-1px); }
+.nb-btn:active { transform: translateY(0); }
+
+.nb-btn-primary {
+  color: #fff; border-color: transparent;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 10px 28px -12px color-mix(in srgb, var(--accent) 90%, transparent);
+}
+.nb-btn-primary:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  filter: brightness(1.07);
+  box-shadow: 0 14px 34px -12px color-mix(in srgb, var(--accent) 95%, transparent);
+}
+
+.nb-btn-ghost { background: transparent; border-color: var(--border); color: var(--muted); }
+.nb-btn-ghost:hover { color: var(--text); background: var(--card); }
+
+.nb-btn-sm { padding: .4375rem .75rem; font-size: .78125rem; }
+
+.nb-icon-btn {
+  display: grid; place-items: center;
+  width: 2.375rem; height: 2.375rem; border-radius: .875rem;
+  border: 1px solid var(--border); background: var(--card); color: var(--muted);
+  cursor: pointer; flex: none;
+  transition: color .2s ease, border-color .2s ease, background-color .2s ease, transform .18s ease;
+}
+.nb-icon-btn:hover { color: var(--text); border-color: var(--border-strong); transform: translateY(-1px); }
+
+/* ── Chips, badges, keycaps ──────────────────────────────────────────────── */
+.nb-chip {
+  display: inline-flex; align-items: center; gap: .375rem;
+  border-radius: 99px; padding: .25rem .625rem;
+  font-size: .6875rem; font-weight: 700; letter-spacing: .02em;
+  border: 1px solid var(--border-soft); background: var(--track); color: var(--muted);
+  white-space: nowrap;
+}
+.nb-chip-accent {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.nb-kbd {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.5rem; height: 1.5rem; padding: 0 .375rem;
+  border-radius: .5rem; border: 1px solid var(--border);
+  border-bottom-width: 2px; background: var(--card-solid);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .6875rem; font-weight: 700; color: var(--muted);
+}
+
+/* ── Launch rows (Quick launch list) ─────────────────────────────────────── */
+.nb-hit {
+  display: flex; align-items: center; gap: .75rem; width: 100%;
+  padding: .625rem .75rem; border-radius: .875rem;
+  text-align: left; cursor: pointer; border: 1px solid transparent;
+  background: transparent; color: inherit;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.nb-hit:hover, .nb-hit:focus-visible {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+/* ── Route timeline ──────────────────────────────────────────────────────── */
+.nb-step { position: relative; padding-left: 2.75rem; }
+.nb-step::before {
+  content: ''; position: absolute; left: 1.09375rem; top: 2.25rem; bottom: -1.25rem;
+  width: 2px; background: var(--border);
+}
+.nb-step:last-child::before { display: none; }
+.nb-step-dot {
+  position: absolute; left: 0; top: .125rem;
+  width: 2.25rem; height: 2.25rem; border-radius: .75rem;
+  display: grid; place-items: center;
+  font-size: .75rem; font-weight: 800; color: #fff;
+  background: linear-gradient(140deg, var(--accent), var(--accent-2));
+  box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+
+/* ── Entrance motion ─────────────────────────────────────────────────────── */
+.nb-rise { animation: nb-rise .6s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes nb-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .nb-card-link:hover { transform: none; }
+}

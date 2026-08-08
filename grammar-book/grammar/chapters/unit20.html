@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 20 – Relative clauses | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 20</span>
+    <span class="subtitle">Relative pronouns; defining and non-defining relative clauses; prepositions</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text">
+          <p>You are going to hear part of a radio programme about making sure your home is safe when you are away. Before you listen, look at the picture. <strong>What do you think the radio programme will mention?</strong></p>
+        </div>
+        <img src="../assets/image-contents/u20_a1_house_picture.png" class="diagram" alt="Line drawing of a house with a ladder left outside, letters sticking out of the letterbox, an open upstairs window and overhanging branches."/>
+        <p class="diagram-caption">Look carefully at the house — what has been left unsafe?</p>
+        <div class="note-box">Make your own predictions first — then check them in Exercise 2.</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and see if you were right — Track 20</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">28</div>
+          <div class="track-info"><h4>Track 28 — 20i</h4><p>Context listening — radio programme on protecting your home</p></div>
+          <div id="audio-28"></div>
+        </div>
+        <details style="margin-top:14px;">
+          <summary style="cursor:pointer;font-weight:700;color:#6a1b9a;padding:8px 0;">Show the problems mentioned</summary>
+          <div class="note-box" style="margin-top:8px;">The problems mentioned are: <strong>the ladder left out</strong>, <strong>the letters in the letterbox</strong>, <strong>the open window</strong>, and <strong>overhanging branches</strong>.</div>
+        </details>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and complete the advice below — Track 20</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Use <strong>no more than three words</strong> from the recording for each gap.</div>
+        <div class="notes-form">
+          <h4 style="margin:0 0 12px;text-align:center;">How to protect your home</h4>
+
+          <p style="font-weight:700;margin:10px 0 6px;">Outdoors</p>
+          <div class="notes-row" style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">• <span>If you live in an area <span class="q-num">1</span> <input class="notes-input a3u20" data-id="u20a3_1" placeholder="…" style="min-width:160px;"/> a lot of tall trees, cut off overhanging or dead branches.</span></div>
+          <div class="notes-row" style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">• <span>Put away objects <span class="q-num">2</span> <input class="notes-input a3u20" data-id="u20a3_2" placeholder="…" style="min-width:160px;"/> damaging missiles.</span></div>
+
+          <p style="font-weight:700;margin:14px 0 6px;">Indoors</p>
+          <div class="notes-row" style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">• <span>If you are away for a long time then find someone <span class="q-num">3</span> <input class="notes-input a3u20" data-id="u20a3_3" placeholder="…" style="min-width:160px;"/> on your home for you.</span></div>
+          <div class="notes-row" style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">• <span>Install lights <span class="q-num">4</span> <input class="notes-input a3u20" data-id="u20a3_4" placeholder="…" style="min-width:160px;"/> a timer so that it looks as though you are home.</span></div>
+          <div class="notes-row" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">• <span>Find someone <span class="q-num">5</span> <input class="notes-input a3u20" data-id="u20a3_5" placeholder="…" style="min-width:160px;"/> your mail regularly.</span></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u20" class="btn-check">Check</button>
+          <button id="btn-show-a3u20" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u20" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Look at your answers and find the relative pronouns</h3></div>
+      <div class="exercise-body">
+        <p>Underline all of the relative pronouns in your Exercise 3 answers (<em>where, which, who, that</em>), then answer these questions.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="correction-row" style="align-items:flex-start;"><span class="c-num">1</span><span class="stem" style="flex:1;">Which relative pronoun refers to a <strong>place</strong>?</span><input class="corr-input a4u20" data-id="u20a4_1" placeholder="…" style="width:170px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;"><span class="c-num">2</span><span class="stem" style="flex:1;">Which relative pronouns are used to refer to <strong>people</strong>?</span><input class="corr-input a4u20" data-id="u20a4_2" placeholder="…" style="width:170px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;"><span class="c-num">3</span><span class="stem" style="flex:1;">Which relative pronouns are used to refer to <strong>things</strong>?</span><input class="corr-input a4u20" data-id="u20a4_3" placeholder="…" style="width:170px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u20" class="btn-check">Check</button>
+          <button id="btn-show-a4u20" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u20" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <p>Relative clauses give information about a <strong>noun</strong> (or noun phrase). They are linked to the noun by a <strong>relative pronoun</strong> (e.g. <em>who, which</em>). The relative pronoun can be either the <strong>subject</strong> or the <strong>object</strong> of the clause, and we do <strong>not</strong> use another pronoun in the clause to refer to the noun:</p>
+    <ul class="use-list">
+      <li><em>Why not install lights <strong>which have</strong> a timer?</em> (not <s>Why not install lights which they have a timer?</s>)</li>
+    </ul>
+
+    <div class="warning-box">⚠ We sometimes use a <strong>participle clause</strong> instead of a relative clause (see Unit 12):<br/>
+      <em>the man <strong>sitting</strong> beside me</em> (= the man who is sitting beside me)<br/>
+      <em>the food <strong>kept</strong> in the fridge</em> (= the food which is kept in the fridge)</div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B1 — Relative pronouns</h2>
+    <table class="form-table">
+      <thead><tr><th>Pronoun</th><th>Refers to</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr class="pos"><td><strong>who</strong></td><td>people</td><td><em>Please welcome Mike Bowers, <strong>who</strong> is going to talk to us about how to look after your home.</em></td></tr>
+        <tr class="pos"><td><strong>which</strong></td><td>things</td><td><em>These are dangerous if you live in <strong>a flat which</strong> is in a large high-rise building.</em></td></tr>
+        <tr class="pos"><td><strong>that</strong></td><td>people or things</td><td><em>Find <strong>someone that</strong> can check on your home while you're away.</em><br/><em>Store away any <strong>objects that</strong> could become damaging missiles.</em></td></tr>
+        <tr class="pos"><td><strong>where</strong></td><td>places</td><td><em>This is your home, <strong>the place where</strong> you keep your most treasured possessions.</em></td></tr>
+        <tr class="pos"><td><strong>when</strong></td><td>times</td><td><em>Programme them to come on at <strong>times when</strong> you would normally be home.</em></td></tr>
+        <tr class="pos"><td><strong>whose</strong></td><td>possession</td><td><em>You're <strong>a person whose job</strong> involves a lot of travel.</em><br/><em>He lives in <strong>an old house, whose roof</strong> needs repairing.</em></td></tr>
+        <tr class="pos"><td><strong>why</strong></td><td>after <em>the reason</em>/<em>reasons</em></td><td><em>There are often very good <strong>reasons why</strong> one house is burgled and another is not.</em></td></tr>
+      </tbody>
+    </table>
+
+    <div class="note-box">📌 <em>That</em> is an alternative to <em>who</em> and <em>which</em> and is more common in <strong>spoken English</strong>.</div>
+    <div class="warning-box">⚠ <em>That</em> is <strong>not</strong> used in non-defining relative clauses (see B3).</div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — Defining relative clauses</h2>
+    <p>Defining relative clauses give information after a noun to <strong>identify the noun more clearly</strong>:</p>
+    <ul class="use-list">
+      <li><em>Find someone <strong>who can collect your mail for you</strong>.</em></li>
+      <li><em>Store away any objects <strong>that could become damaging missiles</strong> if it gets windy.</em> (the relative clause identifies the type of objects)</li>
+    </ul>
+    <p>Without these relative clauses, it is unclear which person, place or thing we are referring to:</p>
+    <ul class="use-list">
+      <li><em>Store away any objects if it gets windy.</em> (we do not know which objects)</li>
+    </ul>
+
+    <div class="note-box">📌 We can <strong>leave out the relative pronoun</strong> when it refers back to the <strong>object</strong> of the defining relative clause. Compare:<br/>
+      <em>Maybe there's a neighbour <strong>(that)</strong> you can ask.</em> (<em>neighbour</em> is the object of the verb)<br/>
+      <em>In the evening, a house <strong>that</strong>'s very dark can really stand out.</em> (<em>house</em> is the subject of the verb: not <s>a house is very dark can really stand out</s>)</div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Non-defining relative clauses</h2>
+    <p>Non-defining relative clauses add <strong>extra, non-essential information</strong> about something. Compare:</p>
+    <div class="compare-table">
+      <div class="compare-col">
+        <h4>Non-defining</h4>
+        <p><em>I applied to the university, <strong>which is located in the centre of the city</strong>.</em></p>
+        <p style="font-size:.92rem;color:#555;">There is only one university, so its location is extra information.</p>
+      </div>
+      <div class="compare-col">
+        <h4>Defining</h4>
+        <p><em>I applied to the university <strong>which is located in the centre of the city</strong>.</em></p>
+        <p style="font-size:.92rem;color:#555;">There is another university which is not in the centre of the city.</p>
+      </div>
+    </div>
+    <p>Non-defining relative clauses are more common in <strong>written</strong> language than in spoken language.</p>
+
+    <p style="font-weight:700;margin-bottom:4px;">With non-defining relative clauses</p>
+    <ul class="use-list">
+      <li>we do <strong>not</strong> use the relative pronoun <em>that</em>: <em>The burglars got in through the kitchen window, <strong>which</strong> the owners had forgotten to shut.</em> (not <s>the kitchen window, that the owners…</s>)</li>
+      <li>we separate the relative clause from the main clause with <strong>commas</strong>. There may be two commas or one comma depending on whether the relative clause comes in the middle of a sentence or at the end: <em>A letterbox can become full of uncollected letters<strong>,</strong> which is a great help to a burglar.</em> / <em>Mr Smith<strong>,</strong> who was my primary school teacher<strong>,</strong> got married last week.</em></li>
+      <li>we <strong>cannot</strong> leave out the relative pronoun: <em>My new house, <strong>which</strong> I have just redecorated, is much larger than my old house.</em> (not <s>My new house, I have just redecorated,…</s>)</li>
+      <li>the relative pronoun can refer to a single noun phrase <strong>or to a whole clause</strong>: <em>My neighbour, <strong>who</strong> lives upstairs, often looks after my flat.</em> (<em>who</em> refers to my neighbour) / <em>Some people seem to think it's just a matter of locking all the doors, <strong>which</strong> is fine as long as there are no nasty storms while you are away.</em> (<em>which</em> refers to the whole of the first phrase)</li>
+    </ul>
+
+    <p style="font-weight:700;margin:18px 0 4px;">Key differences</p>
+    <div class="compare-table">
+      <div class="compare-col">
+        <h4>Defining relative clauses</h4>
+        <ul class="use-list">
+          <li>identify the thing that you are talking about</li>
+          <li><em>that</em> can replace <em>who</em> or <em>which</em></li>
+          <li>the relative pronoun can be left out if it refers to the object</li>
+          <li>no commas</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <h4>Non-defining relative clauses</h4>
+        <ul class="use-list">
+          <li>give additional, non-essential information</li>
+          <li><em>that</em> cannot be used</li>
+          <li>the relative pronoun cannot be left out</li>
+          <li>must have commas</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B4 — Prepositions</h2>
+    <p>When prepositions are used with relative clauses they usually come at the <strong>end of the clause</strong> in spoken English:</p>
+    <ul class="use-list">
+      <li><em>You may have a neighbour that you can rely <strong>on</strong>.</em> (informal)</li>
+    </ul>
+    <p>In <strong>formal</strong> style the preposition can be placed <strong>before</strong> the relative pronouns <em>which</em> or <em>whom</em>:</p>
+    <ul class="use-list">
+      <li><em>I was unsuccessful in obtaining a place at any of the universities <strong>to which</strong> I applied.</em></li>
+      <li><em>My boss, <strong>for whom</strong> I have worked for over 30 years, has decided to retire.</em></li>
+    </ul>
+
+    <div class="grammar-extra">
+      <h3 style="margin-top:0;">Grammar extra: Common collocations with relative pronouns</h3>
+      <p>We often use the expression <strong><em>the one</em></strong> with defining relative clauses:</p>
+      <ul class="use-list">
+        <li><em>He's <strong>the one who</strong> suggested I became a teacher.</em></li>
+        <li><em>My father is <strong>the one that</strong> taught me to play the piano.</em></li>
+        <li><em>That house is <strong>the one where</strong> I grew up.</em></li>
+      </ul>
+      <p><strong><em>Where</em></strong> can be used after expressions such as <em>the situation</em>, <em>the stage</em> or <em>the point</em>:</p>
+      <ul class="use-list">
+        <li><em>We were in <strong>a situation where</strong> there were no easy solutions.</em></li>
+        <li><em>I'm almost at <strong>the stage where</strong> I'm ready to quit my job and go into business for myself.</em></li>
+        <li><em>I've reached <strong>the point where</strong> I feel I should just give up.</em></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Match the beginnings (1–10) and endings (a–j), and join them with a relative pronoun</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">For each sentence type the <strong>relative pronoun</strong> in the first box and the <strong>ending letter</strong> (a–j) in the second. Then read the question below the exercise.</div>
+        <div class="word-box">
+          <span class="word-chip"><strong>a</strong> Mozart performed many of his operas.</span>
+          <span class="word-chip"><strong>b</strong> flat I rent.</span>
+          <span class="word-chip"><strong>c</strong> every student wants to have.</span>
+          <span class="word-chip" style="text-decoration:line-through;opacity:.55;"><strong>d</strong> are classed as 'mature' because they are over 21.</span>
+          <span class="word-chip"><strong>e</strong> advised me to study law.</span>
+          <span class="word-chip"><strong>f</strong> I'm not as busy.</span>
+          <span class="word-chip"><strong>g</strong> invented the first electric motor.</span>
+          <span class="word-chip"><strong>h</strong> factory burned down yesterday?</span>
+          <span class="word-chip"><strong>i</strong> didn't have very good sports facilities.</span>
+          <span class="word-chip"><strong>j</strong> manufacturers like to keep demand above supply?</span>
+        </div>
+
+        <div class="example-box">
+          <div><strong>1</strong> The college has many students <em>who</em> … <em>d</em> <em>(example)</em></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">2</span><span class="stem" style="flex:1;min-width:230px;">My cousin Phillip is a solicitor; he was the one …</span><input class="gap-input c1u20" data-id="u20c1_2p" placeholder="pronoun" style="width:110px;"/><input class="gap-input c1u20" data-id="u20c1_2e" placeholder="a–j" style="width:60px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">3</span><span class="stem" style="flex:1;min-width:230px;">I went to a school …</span><input class="gap-input c1u20" data-id="u20c1_3p" placeholder="pronoun" style="width:110px;"/><input class="gap-input c1u20" data-id="u20c1_3e" placeholder="a–j" style="width:60px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">4</span><span class="stem" style="flex:1;min-width:230px;">I visited the theatre …</span><input class="gap-input c1u20" data-id="u20c1_4p" placeholder="pronoun" style="width:110px;"/><input class="gap-input c1u20" data-id="u20c1_4e" placeholder="a–j" style="width:60px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">5</span><span class="stem" style="flex:1;min-width:230px;">Why don't you call again at a time …</span><input class="gap-input c1u20" data-id="u20c1_5p" placeholder="pronoun" style="width:110px;"/><input class="gap-input c1u20" data-id="u20c1_5e" placeholder="a–j" style="width:60px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">6</span><span class="stem" style="flex:1;min-width:230px;">Mrs Jackson is the kind of teacher …</span><input class="gap-input c1u20" data-id="u20c1_6p" placeholder="pronoun" style="width:110px;"/><input class="gap-input c1u20" data-id="u20c1_6e" placeholder="a–j" style="width:60px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">7</span><span class="stem" style="flex:1;min-width:230px;">Faraday was the man …</span><input class="gap-input c1u20" data-id="u20c1_7p" placeholder="pronoun" style="width:110px;"/><input class="gap-input c1u20" data-id="u20c1_7e" placeholder="a–j" style="width:60px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">8</span><span class="stem" style="flex:1;min-width:230px;">Is there any reason …</span><input class="gap-input c1u20" data-id="u20c1_8p" placeholder="pronoun" style="width:110px;"/><input class="gap-input c1u20" data-id="u20c1_8e" placeholder="a–j" style="width:60px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">9</span><span class="stem" style="flex:1;min-width:230px;">What was the name of that company …</span><input class="gap-input c1u20" data-id="u20c1_9p" placeholder="pronoun" style="width:110px;"/><input class="gap-input c1u20" data-id="u20c1_9e" placeholder="a–j" style="width:60px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">10</span><span class="stem" style="flex:1;min-width:230px;">That's the woman …</span><input class="gap-input c1u20" data-id="u20c1_10p" placeholder="pronoun" style="width:110px;"/><input class="gap-input c1u20" data-id="u20c1_10e" placeholder="a–j" style="width:60px;"/></div>
+
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;margin-top:8px;"><span class="c-num">?</span><span class="stem" style="flex:1;min-width:230px;">In which <strong>two</strong> sentences can the relative pronoun be left out? (write the two numbers)</span><input class="gap-input c1u20" data-id="u20c1_omit" placeholder="e.g. 3 and 5" style="width:130px;"/></div>
+        </div>
+
+        <div class="exercise-actions">
+          <button id="btn-check-c1u20" class="btn-check">Check</button>
+          <button id="btn-show-c1u20" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u20" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Rewrite the sentences as single sentences using non-defining relative clauses</h3></div>
+      <div class="exercise-body">
+        <div class="example-box">
+          <div><strong>1</strong> My father lives in a small house full of ornaments. This makes it really difficult to clean.</div>
+          <div style="margin-top:4px;"><em>My father lives in a small house full of ornaments, which makes it really difficult to clean. (example)</em></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div>
+            <div><span class="c-num">2</span> Some students take a year out before university. This allows them to work or travel.</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;"><span>Some students</span><input class="gap-input c2u20" data-id="u20c2_2" placeholder="…" style="min-width:420px;flex:1;"/></div>
+          </div>
+          <div>
+            <div><span class="c-num">3</span> The Guggenheim Museum is in Bilbao. It only displays contemporary art.</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;"><span>The Guggenheim Museum,</span><input class="gap-input c2u20" data-id="u20c2_3" placeholder="…" style="min-width:400px;flex:1;"/></div>
+          </div>
+          <div>
+            <div><span class="c-num">4</span> My English teacher is leaving. His lectures are very interesting.</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;"><span>My English teacher,</span><input class="gap-input c2u20" data-id="u20c2_4" placeholder="…" style="min-width:400px;flex:1;"/></div>
+          </div>
+          <div>
+            <div><span class="c-num">5</span> The lecture was about current economic policy. It was not very easy to understand.</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;"><span>The lecture</span><input class="gap-input c2u20" data-id="u20c2_5" placeholder="…" style="min-width:420px;flex:1;"/></div>
+          </div>
+          <div>
+            <div><span class="c-num">6</span> In 1951 my parents arrived in New York. They stayed there for the rest of their lives.</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;"><span>My parents arrived in New York</span><input class="gap-input c2u20" data-id="u20c2_6" placeholder="…" style="min-width:380px;flex:1;"/></div>
+          </div>
+          <div>
+            <div><span class="c-num">7</span> I gave my assignment to the faculty secretary. She was not very friendly.</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;"><span>I gave my assignment</span><input class="gap-input c2u20" data-id="u20c2_7" placeholder="…" style="min-width:400px;flex:1;"/></div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u20" class="btn-check">Check</button>
+          <button id="btn-show-c2u20" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u20" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Find and correct the mistake with relative clauses in each email extract</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">There is a mistake with relative clauses in <strong>each</strong> of the email extracts below. Write the <strong>corrected phrase</strong> in the box.</div>
+        <div class="example-box">
+          <div><strong>1</strong> I wonder if you can help me. I want to get in touch with the woman <s>which</s> we met at the meeting last week. Do you know the one I mean?</div>
+          <div style="margin-top:4px;">Correction: <em>who</em> <em>(example)</em></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">2</span><span class="stem" style="flex:1;min-width:260px;">I'm sending this email to ask for more information about the language courses which I saw them advertised in <em>The Daily Star</em> yesterday.</span><input class="corr-input c3u20" data-id="u20c3_2" placeholder="…" style="width:200px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">3</span><span class="stem" style="flex:1;min-width:260px;">How are you getting on with your new job? I'm finding my new job exhausting, that is not surprising considering I have to travel so much.</span><input class="corr-input c3u20" data-id="u20c3_3" placeholder="…" style="width:200px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">4</span><span class="stem" style="flex:1;min-width:260px;">I really enjoyed the lecture which you gave it on Wednesday, and am thinking about doing my assignment on the same topic.</span><input class="corr-input c3u20" data-id="u20c3_4" placeholder="…" style="width:200px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">5</span><span class="stem" style="flex:1;min-width:260px;">You left your notebook at my house. Do you need it? It's the one which in you have written your lecture notes.</span><input class="corr-input c3u20" data-id="u20c3_5" placeholder="…" style="width:200px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">6</span><span class="stem" style="flex:1;min-width:260px;">I'm just emailing you to find out if you want to go to the cinema on Thursday. I've got today's newspaper which has a list of films. If you're free, let me know.</span><input class="corr-input c3u20" data-id="u20c3_6" placeholder="…" style="width:200px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">7</span><span class="stem" style="flex:1;min-width:260px;">Can you pick up some shopping on your way home? I want some of those bread rolls what we had last week. Will you be able to stop at the shop?</span><input class="corr-input c3u20" data-id="u20c3_7" placeholder="…" style="width:200px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">8</span><span class="stem" style="flex:1;min-width:260px;">You are clearly a person who life is full and busy and that is why we think you would like our <em>Ladies Personal Organiser</em>. For just £15.99 you …</span><input class="corr-input c3u20" data-id="u20c3_8" placeholder="…" style="width:200px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u20" class="btn-check">Check</button>
+          <button id="btn-show-c3u20" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u20" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>How chocolate is made — add the relative clauses (a–i) and the relative pronoun</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">For each gap type the <strong>relative pronoun</strong> (<em>where, which</em> or <em>that</em>) in the first box and the <strong>clause letter</strong> (a–i) in the second.</div>
+
+        <img src="../assets/image-contents/u20_c4_chocolate_process.png" class="diagram" alt="Eight-panel illustrated flowchart of chocolate production, from cacao pods on the tree through drying, transport, roasting, grinding and pressing to finished cocoa powder."/>
+        <p class="diagram-caption">The stages of chocolate production, from cacao pod to cocoa powder.</p>
+
+        <div class="word-box">
+          <span class="word-chip"><strong>a</strong> … is removed by using presses</span>
+          <span class="word-chip"><strong>b</strong> … they are sorted and roasted</span>
+          <span class="word-chip"><strong>c</strong> … are left for several days to dry</span>
+          <span class="word-chip"><strong>d</strong> … can be used to make a hot chocolate drink</span>
+          <span class="word-chip"><strong>e</strong> … grows in equatorial regions such as South America, Africa and Indonesia</span>
+          <span class="word-chip"><strong>f</strong> … forms a solid at about room temperature</span>
+          <span class="word-chip" style="text-decoration:line-through;opacity:.55;"><strong>g</strong> … have evolved in different parts of the world</span>
+          <span class="word-chip"><strong>h</strong> inside … are the tree's seeds</span>
+          <span class="word-chip"><strong>i</strong> … grow in pods on the cacao tree</span>
+        </div>
+
+        <div class="passage-text" style="line-height:2.8;">
+          <p>Chocolate's varied flavours, colours, shapes and textures result from different recipe traditions <span class="q-num">1</span> <em>which … g (example)</em>. The essential ingredient in all chocolate is cocoa, which is made from the cream-coloured beans <span class="q-num">2</span> <input class="gap-input c4u20" data-id="u20c4_2p" placeholder="pronoun" style="width:100px;"/> <input class="gap-input c4u20" data-id="u20c4_2e" placeholder="a–i" style="width:55px;"/>. The cacao tree, <span class="q-num">3</span> <input class="gap-input c4u20" data-id="u20c4_3p" placeholder="pronoun" style="width:100px;"/> <input class="gap-input c4u20" data-id="u20c4_3e" placeholder="a–i" style="width:55px;"/>, produces a fruit about the size of a small pineapple, <span class="q-num">4</span> <input class="gap-input c4u20" data-id="u20c4_4p" placeholder="pronoun" style="width:100px;"/> <input class="gap-input c4u20" data-id="u20c4_4e" placeholder="a–i" style="width:55px;"/>.</p>
+          <p>After harvesting, the cocoa beans are removed from the pods and piled in heaps <span class="q-num">5</span> <input class="gap-input c4u20" data-id="u20c4_5p" placeholder="pronoun" style="width:100px;"/> <input class="gap-input c4u20" data-id="u20c4_5e" placeholder="a–i" style="width:55px;"/>. The dried beans are then transported to factories <span class="q-num">6</span> <input class="gap-input c4u20" data-id="u20c4_6p" placeholder="pronoun" style="width:100px;"/> <input class="gap-input c4u20" data-id="u20c4_6e" placeholder="a–i" style="width:55px;"/>. The shells are then removed and the beans are ground into chocolate liquor – a thick brown liquid <span class="q-num">7</span> <input class="gap-input c4u20" data-id="u20c4_7p" placeholder="pronoun" style="width:100px;"/> <input class="gap-input c4u20" data-id="u20c4_7e" placeholder="a–i" style="width:55px;"/>. This liquor contains a high percentage of fat (cocoa butter), <span class="q-num">8</span> <input class="gap-input c4u20" data-id="u20c4_8p" placeholder="pronoun" style="width:100px;"/> <input class="gap-input c4u20" data-id="u20c4_8e" placeholder="a–i" style="width:55px;"/>. The solid block of cocoa that remains is then made into a powder <span class="q-num">9</span> <input class="gap-input c4u20" data-id="u20c4_9p" placeholder="pronoun" style="width:100px;"/> <input class="gap-input c4u20" data-id="u20c4_9e" placeholder="a–i" style="width:55px;"/>, or is mixed back with some of the cocoa butter, sugar and other flavour such as vanilla to make the different kinds of chocolate.</p>
+        </div>
+
+        <div class="exercise-actions">
+          <button id="btn-check-c4u20" class="btn-check">Check</button>
+          <button id="btn-show-c4u20" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u20" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice</div>
+  <div class="section-body">
+
+    <h2 class="grammar-subtitle">Academic Reading</h2>
+    <div class="test-tip">You should spend about <strong>20 minutes</strong> on Questions 1–12, which are based on the Reading Passage below.</div>
+
+    <div class="reading-passage">
+      <h3 style="margin-top:0;font-size:1.5rem;">Robotic approach to crop breeding</h3>
+      <p style="font-style:italic;color:#555;margin-top:-6px;">Jennifer Manyweathers takes a look at a robot that is being used to identify drought-tolerant crop varieties</p>
+
+      <div class="rp-para"><span class="para-label">A</span> The Australian sunflower industry is the major source of polyunsaturated fatty acids found in margarines and spreads. Recognised as the type of fatty acid most able to protect against heart disease, it is in everybody's best interest that Australia has a competitive and healthy sunflower industry, but in Australia there is a constant struggle with the harsh climate. However, thanks to one special robot, farmers may be able to win the battle against drought.</div>
+
+      <div class="rp-para"><span class="para-label">B</span> Dr Chris Lambrides, a research fellow at the University of Queensland, is nearing the end of a project that aims to develop more drought-tolerant sunflowers by selecting flowers that use water more efficiently. He's done this with the help of a robot developed by the Australian National University's Research School of Biological Sciences.</div>
+
+      <div class="rp-para"><span class="para-label">C</span> Plants undergo photosynthesis to produce energy in the form of sugar. This involves allowing carbon dioxide to enter the leaves through pores called stomata. Transpiration is the mechanism by which plants lose water through their leaves. This system is thought to facilitate the passage of minerals through the plant and is vital for healthy plants.</div>
+
+      <div class="rp-para"><span class="para-label">D</span> However, in conditions of drought, the plants that can use the available water efficiently and lose less to the environment will be more likely to thrive and, in a commercial sense become more profitable. These plants are classified as having a high transpiration efficiency. When plants transpire, the leaves become cooler due to evaporation. Therefore, by measuring the temperature of the leaves, scientists can determine how much water is being lost through transpiration.</div>
+
+      <div class="rp-para"><span class="para-label">E</span> When the project first began, the researchers used hand-held infrared thermometers to measure the temperature difference between leaves of different varieties of sunflowers in an experimental plot. Wind can affect leaf temperature, and the research team discovered that its initial approach did not cater for changes in wind speed, which could not be controlled as an experimental variable. The team therefore needed a technique to measure temperature continuously that would allow it to examine the effects of other variables such as humidity. They needed a robot.</div>
+
+      <div class="rp-para"><span class="para-label">F</span> They designed a robot with two infrared thermometers set at 180° to each other. The robot runs on an oblong track around the experimental plot and the thermometers operate on each side of the track. In order to minimize any variables from the two thermometers, they are rotated 180° at the beginning of each run and the results are averaged. The infrared thermometers can be rotated on an angle to examine different parts of the foliage.</div>
+
+      <div class="rp-para"><span class="para-label">G</span> The robot is also able to detect light intensity. It has a garage on the track, where it waits until the light intensity is high enough to give useful results. If the skies darken due to rain, heavy cloud cover or sunset, the robot makes its way back to the garage to wait.</div>
+
+      <div class="rp-para"><span class="para-label">H</span> The main difficulty faced by the research group was to find an agronomist who could grow the perfect crop of sunflowers. The sunflower canopy had to be complete, with no visible soil, so that the thermometers would only measure the temperature of the plants and not the surrounding environment. Eight varieties of sunflower were examined. The data collected by the robot has been used by the research team to determine which variety has the highest transpiration efficiency.</div>
+
+      <div class="rp-para"><span class="para-label">I</span> This is not the first time such methods have been used to determine drought-resistance in plants. The team and their robot have already made a major breakthrough in the Australian wheat industry with Drysdale Wheat, which signalled the arrival of a new technique for selecting drought-resistant species.</div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Questions 1–4 — Complete the sentences</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Complete the sentences with words taken from the passage. Use <strong>NO MORE THAN TWO WORDS</strong> for each answer. First identify the type of information you need to find (e.g. for question 1 you need to find a disease or health problem). It may help to turn the sentences into questions — and stick to the word limit.</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">1</span><span class="stem" style="flex:1;min-width:260px;">In terms of our health, sunflowers are important in defending humans against <input class="gap-input d1u20" data-id="u20d1_1" placeholder="…" style="min-width:150px;"/>.</span></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">2</span><span class="stem" style="flex:1;min-width:260px;">The research team wanted to find a sunflower that could cope well in <input class="gap-input d1u20" data-id="u20d1_2" placeholder="…" style="min-width:150px;"/> conditions.</span></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">3</span><span class="stem" style="flex:1;min-width:260px;">The name of the process which is believed to help keep plants in good condition is <input class="gap-input d1u20" data-id="u20d1_3" placeholder="…" style="min-width:150px;"/>.</span></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">4</span><span class="stem" style="flex:1;min-width:260px;">The research team had to rethink their initial approach when they realised they needed to measure the impact of external conditions such as <input class="gap-input d1u20" data-id="u20d1_4a" placeholder="…" style="min-width:130px;"/> and <input class="gap-input d1u20" data-id="u20d1_4b" placeholder="…" style="min-width:130px;"/>.</span></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u20" class="btn-check">Check</button>
+          <button id="btn-show-d1u20" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u20" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Questions 5–12 — Locating information</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">The reading passage has nine paragraphs labelled <strong>A–I</strong>. Which paragraph contains the following information? Write the correct letter <strong>A–I</strong>. Scan the passage for relevant information, then check that it matches the question exactly — the words in the passage may paraphrase the words in the questions.</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">5</span><span class="stem" style="flex:1;min-width:260px;">the precise growing conditions required to allow the experiment to work</span><input class="gap-input d2u20" data-id="u20d2_5" placeholder="A–I" style="width:80px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">6</span><span class="stem" style="flex:1;min-width:260px;">a description of the how the robot operates</span><input class="gap-input d2u20" data-id="u20d2_6" placeholder="A–I" style="width:80px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">7</span><span class="stem" style="flex:1;min-width:260px;">an explanation of two important processes used by plants</span><input class="gap-input d2u20" data-id="u20d2_7" placeholder="A–I" style="width:80px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">8</span><span class="stem" style="flex:1;min-width:260px;">a reference to a previous study using a different crop</span><input class="gap-input d2u20" data-id="u20d2_8" placeholder="A–I" style="width:80px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">9</span><span class="stem" style="flex:1;min-width:260px;">details of what the robot does when conditions are poor</span><input class="gap-input d2u20" data-id="u20d2_9" placeholder="A–I" style="width:80px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">10</span><span class="stem" style="flex:1;min-width:260px;">the name of the group responsible for making the robot</span><input class="gap-input d2u20" data-id="u20d2_10" placeholder="A–I" style="width:80px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">11</span><span class="stem" style="flex:1;min-width:260px;">the number of different types of sunflower tested</span><input class="gap-input d2u20" data-id="u20d2_11" placeholder="A–I" style="width:80px;"/></div>
+          <div class="correction-row" style="align-items:flex-start;flex-wrap:wrap;"><span class="c-num">12</span><span class="stem" style="flex:1;min-width:260px;">the purpose of taking the temperature of the plants</span><input class="gap-input d2u20" data-id="u20d2_12" placeholder="A–I" style="width:80px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d2u20" class="btn-check">Check</button>
+          <button id="btn-show-d2u20" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u20" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at these extracts from the reading text. For each extract answer the three questions:
+      <strong>(1)</strong> Does it contain a <em>defining</em> or a <em>non-defining</em> relative clause?
+      <strong>(2)</strong> Which word or idea does the relative pronoun refer to?
+      <strong>(3)</strong> Does the relative pronoun act as the <em>subject</em> or the <em>object</em> of the verb?</div>
+
+    <div style="display:flex;flex-direction:column;gap:18px;margin-top:14px;">
+
+      <div class="exercise" style="margin:0;">
+        <div class="exercise-body">
+          <p><span class="c-num">1</span> Dr Chris Lambrides, a research fellow at the University of Queensland, is nearing the end of a project <strong>that</strong> aims to develop more drought-tolerant sunflowers by selecting flowers that use water more efficiently.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+            <input class="gap-input gftu20" data-id="u20gft_1a" placeholder="defining / non-defining" style="min-width:190px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_1b" placeholder="refers to…" style="min-width:150px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_1c" placeholder="subject / object" style="min-width:140px;"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise" style="margin:0;">
+        <div class="exercise-body">
+          <p><span class="c-num">2</span> … the research team discovered that its initial approach did not cater for changes in wind speed, <strong>which</strong> could not be controlled as an experimental variable.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+            <input class="gap-input gftu20" data-id="u20gft_2a" placeholder="defining / non-defining" style="min-width:190px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_2b" placeholder="refers to…" style="min-width:150px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_2c" placeholder="subject / object" style="min-width:140px;"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise" style="margin:0;">
+        <div class="exercise-body">
+          <p><span class="c-num">3</span> It has a garage on the track, <strong>where</strong> it waits until the light intensity is high enough to give useful results.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+            <input class="gap-input gftu20" data-id="u20gft_3a" placeholder="defining / non-defining" style="min-width:190px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_3b" placeholder="refers to…" style="min-width:150px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_3c" placeholder="subject / object" style="min-width:140px;"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise" style="margin:0;">
+        <div class="exercise-body">
+          <p><span class="c-num">4</span> The main difficulty faced by the research group was to find an agronomist <strong>who</strong> could grow the perfect crop of sunflowers.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+            <input class="gap-input gftu20" data-id="u20gft_4a" placeholder="defining / non-defining" style="min-width:190px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_4b" placeholder="refers to…" style="min-width:150px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_4c" placeholder="subject / object" style="min-width:140px;"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise" style="margin:0;">
+        <div class="exercise-body">
+          <p><span class="c-num">5</span> The team and their robot have already made a major breakthrough in the Australian wheat industry with Drysdale Wheat, <strong>which</strong> signalled the arrival of a new technique for selecting drought-resistant species.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+            <input class="gap-input gftu20" data-id="u20gft_5a" placeholder="defining / non-defining" style="min-width:190px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_5b" placeholder="refers to…" style="min-width:150px;"/>
+            <input class="gap-input gftu20" data-id="u20gft_5c" placeholder="subject / object" style="min-width:140px;"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="exercise-actions">
+      <button id="btn-check-gftu20" class="btn-check">Check</button>
+      <button id="btn-show-gftu20" class="btn-show">Show Answers</button>
+      <button id="btn-reset-gftu20" class="btn-reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 20: Relative clauses</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('28','audio-28');
+
+  // A3 — "How to protect your home" notes (5 gaps, key numbering starts at 1)
+  initGapFill({ inputSelector:'.a3u20', checkId:'btn-check-a3u20', showId:'btn-show-a3u20', resetId:'btn-reset-a3u20',
+    answers:{
+      u20a3_1:['where there are'],
+      u20a3_2:['that could become','which could become'],
+      u20a3_3:['that can check','who can check','which can check'],
+      u20a3_4:['which have','that have'],
+      u20a3_5:['who can collect','that can collect']
+    }});
+
+  // A4 — which pronoun refers to what
+  initGapFill({ inputSelector:'.a4u20', checkId:'btn-check-a4u20', showId:'btn-show-a4u20', resetId:'btn-reset-a4u20',
+    answers:{
+      u20a4_1:['where'],
+      u20a4_2:['that and who','who and that','that, who','who, that','that/who','who/that'],
+      u20a4_3:['that and which','which and that','that, which','which, that','that/which','which/that']
+    }});
+
+  // C1 — match + relative pronoun (item 1 is the printed example: who; d)
+  initGapFill({ inputSelector:'.c1u20', checkId:'btn-check-c1u20', showId:'btn-show-c1u20', resetId:'btn-reset-c1u20',
+    answers:{
+      u20c1_2p:['who','that','who/that'],       u20c1_2e:['e'],
+      u20c1_3p:['which','that','which/that'],   u20c1_3e:['i'],
+      u20c1_4p:['where'],                       u20c1_4e:['a'],
+      u20c1_5p:['when','that','when/that'],     u20c1_5e:['f'],
+      // head noun is "the kind of teacher" → which/that, not who
+      u20c1_6p:['which','that','which/that'],   u20c1_6e:['c'],
+      u20c1_7p:['who','that','who/that'],       u20c1_7e:['g'],
+      u20c1_8p:['why'],                         u20c1_8e:['j'],
+      u20c1_9p:['whose'],                       u20c1_9e:['h'],
+      u20c1_10p:['whose'],                      u20c1_10e:['b'],
+      u20c1_omit:['6 and 8','sentences 6 and 8','6, 8','6,8','8 and 6','6 & 8','6 and 8.']
+    }});
+
+  // C2 — rewrite using non-defining relative clauses (item 1 is the printed example)
+  initGapFill({ inputSelector:'.c2u20', checkId:'btn-check-c2u20', showId:'btn-show-c2u20', resetId:'btn-reset-c2u20',
+    answers:{
+      u20c2_2:[
+        'take a year out before university, which allows them to work or travel',
+        'take a year out before university, which allows them to work or travel.'
+      ],
+      u20c2_3:[
+        'which is in Bilbao, only displays contemporary art',
+        'which is in Bilbao, only displays contemporary art.',
+        'which only displays contemporary art, is in Bilbao',
+        'which only displays contemporary art, is in Bilbao.'
+      ],
+      u20c2_4:[
+        'whose lectures are very interesting, is leaving',
+        'whose lectures are very interesting, is leaving.'
+      ],
+      u20c2_5:[
+        ', which was about current economic policy, was not very easy to understand',
+        ', which was about current economic policy, was not very easy to understand.',
+        'which was about current economic policy, was not very easy to understand',
+        'which was about current economic policy, was not very easy to understand.',
+        ', which was not very easy to understand, was about current economic policy',
+        ', which was not very easy to understand, was about current economic policy.',
+        'which was not very easy to understand, was about current economic policy',
+        'which was not very easy to understand, was about current economic policy.'
+      ],
+      u20c2_6:[
+        'in 1951, where they stayed for the rest of their lives',
+        'in 1951, where they stayed for the rest of their lives.'
+      ],
+      u20c2_7:[
+        'to the faculty secretary, who was not very friendly',
+        'to the faculty secretary, who was not very friendly.'
+      ]
+    }});
+
+  // C3 — correct the relative-clause mistake (item 1 is the printed example: which → who)
+  initGapFill({ inputSelector:'.c3u20', checkId:'btn-check-c3u20', showId:'btn-show-c3u20', resetId:'btn-reset-c3u20',
+    answers:{
+      // delete "them"
+      u20c3_2:['which I saw advertised','courses which I saw advertised','that I saw advertised','which i saw advertised'],
+      // that → which
+      u20c3_3:['exhausting, which is not','which is not surprising','exhausting, which is not surprising','which is not'],
+      // delete "it"
+      u20c3_4:['the lecture which you gave on Wednesday','which you gave on Wednesday','that you gave on Wednesday','the lecture you gave on Wednesday'],
+      // move "in" to the end
+      u20c3_5:['the one which you have written your lecture notes in','which you have written your lecture notes in','the one in which you have written your lecture notes','in which you have written your lecture notes'],
+      // add a comma — non-defining
+      u20c3_6:["today's newspaper, which has","newspaper, which has",", which has","today's newspaper, which has a list of films"],
+      // what → which/that
+      u20c3_7:['those bread rolls which we had','those bread rolls that we had','bread rolls which we had','bread rolls that we had','which we had','that we had'],
+      // who → whose
+      u20c3_8:['a person whose life is full','person whose life is full','whose life is full']
+    }});
+
+  // C4 — chocolate text (gap 1 is the printed example: which; g)
+  initGapFill({ inputSelector:'.c4u20', checkId:'btn-check-c4u20', showId:'btn-show-c4u20', resetId:'btn-reset-c4u20',
+    answers:{
+      u20c4_2p:['which','that','which/that'],  u20c4_2e:['i'],
+      // gap 3 sits between commas (non-defining) so "which" is the form to learn,
+      // but the printed key also allows "that" here
+      u20c4_3p:['which','that','which/that'],  u20c4_3e:['e'],
+      u20c4_4p:['which'],                      u20c4_4e:['h'],
+      u20c4_5p:['which','that','which/that'],  u20c4_5e:['c'],
+      u20c4_6p:['where'],                      u20c4_6e:['b'],
+      u20c4_7p:['which','that','which/that'],  u20c4_7e:['f'],
+      u20c4_8p:['which'],                      u20c4_8e:['a'],
+      u20c4_9p:['which','that','which/that'],  u20c4_9e:['d']
+    }});
+
+  // D Q1–4 sentence completion (Q4 takes two answers, either order)
+  initGapFill({ inputSelector:'.d1u20', checkId:'btn-check-d1u20', showId:'btn-show-d1u20', resetId:'btn-reset-d1u20',
+    answers:{
+      u20d1_1:['heart disease'],
+      u20d1_2:['drought'],
+      u20d1_3:['transpiration'],
+      u20d1_4a:['wind speed','wind','humidity'],
+      u20d1_4b:['humidity','wind speed','wind']
+    }});
+
+  // D Q5–12 locating information
+  initGapFill({ inputSelector:'.d2u20', checkId:'btn-check-d2u20', showId:'btn-show-d2u20', resetId:'btn-reset-d2u20',
+    answers:{
+      u20d2_5:['h'],  u20d2_6:['f'],  u20d2_7:['c'],  u20d2_8:['i'],
+      u20d2_9:['g'],  u20d2_10:['b'], u20d2_11:['h'], u20d2_12:['d']
+    }});
+
+  // Grammar focus task — clause type / referent / subject or object
+  const DEF    = ['defining','defining relative clause','d'];
+  const NONDEF = ['non-defining','nondefining','non defining','non-defining relative clause','nd'];
+  const SUBJ   = ['subject','subj','s'];
+  const OBJ    = ['object','obj','o'];
+  initGapFill({ inputSelector:'.gftu20', checkId:'btn-check-gftu20', showId:'btn-show-gftu20', resetId:'btn-reset-gftu20',
+    answers:{
+      u20gft_1a:DEF,    u20gft_1b:['a project','project'],             u20gft_1c:SUBJ,
+      u20gft_2a:NONDEF, u20gft_2b:['wind speed','changes in wind speed'], u20gft_2c:SUBJ,
+      u20gft_3a:NONDEF, u20gft_3b:['a garage','garage'],               u20gft_3c:OBJ,
+      u20gft_4a:DEF,    u20gft_4b:['an agronomist','agronomist'],      u20gft_4c:SUBJ,
+      u20gft_5a:NONDEF, u20gft_5b:['drysdale wheat','wheat'],          u20gft_5c:SUBJ
+    }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

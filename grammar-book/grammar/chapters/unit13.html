@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 13 – Modals 1 | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 13</span>
+    <span class="subtitle">Ability, possibility, certainty/impossibility; alternatives to modals</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear two doctors discussing a patient. Before you listen, look at the newspaper headline and guess how it relates to the patient.</p>
+        <div class="word-box">
+          <span class="word-chip">Morning Herald</span><span class="word-chip">Today's top stories</span><span class="word-chip">Does anyone know who this man is?</span>
+        </div>
+        <p style="margin:14px 0 8px;">These words are used in the recording: <strong>could, couldn't, might, must, can't, will, be able to</strong>.</p>
+        <p>Looking at the words, decide which refer to the following.</p>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>Which words refer to ability?</span><input class="gap-input a4u13" data-id="u13a4_1" placeholder="…" style="min-width:160px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>Which words refer to certainty or impossibility?</span><input class="gap-input a4u13" data-id="u13a4_2" placeholder="…" style="min-width:160px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>Which words refer to possibility?</span><input class="gap-input a4u13" data-id="u13a4_3" placeholder="…" style="min-width:160px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u13" class="btn-check">Check</button>
+          <button id="btn-show-a4u13" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u13" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and check if you were right — Track 17</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">17</div>
+          <div class="track-info"><h4>Track 17 — two doctors discuss a patient</h4><p>Context listening — a talk</p></div>
+          <div id="audio-17"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Listen and underline the words in the questions and answers in exercise 3 that refer to the patient's memory.</p>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and say whether the sentences are true or false</h3></div>
+      <div class="exercise-body">
+        <p>Listen again and say whether the sentences below are true or false. Correct the sentences that are false.</p>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>The patient could remember all his personal details.</span><input class="corr-input a3u13" data-id="u13a3_1" placeholder="T/F" style="width:60px;"/><input class="corr-input a3corru13" data-id="u13a3c_1" placeholder="correction if false" style="min-width:250px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>The patient definitely came from Yorkshire.</span><input class="corr-input a3u13" data-id="u13a3_2" placeholder="T/F" style="width:60px;"/><input class="corr-input a3corru13" data-id="u13a3c_2" placeholder="correction if false" style="min-width:250px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>The patient could speak French and Italian.</span><input class="corr-input a3u13" data-id="u13a3_3" placeholder="T/F" style="width:60px;"/><input class="corr-input a3corru13" data-id="u13a3c_3" placeholder="correction if false" style="min-width:250px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><span>Joe thinks that the patient might have been running away from something.</span><input class="corr-input a3u13" data-id="u13a3_4" placeholder="T/F" style="width:60px;"/><input class="corr-input a3corru13" data-id="u13a3c_4" placeholder="correction if false" style="min-width:250px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>Joe thinks that the patient was definitely unmarried.</span><input class="corr-input a3u13" data-id="u13a3_5" placeholder="T/F" style="width:60px;"/><input class="corr-input a3corru13" data-id="u13a3c_5" placeholder="correction if false" style="min-width:250px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>The patient has been unable to make contact with anyone he knows.</span><input class="corr-input a3u13" data-id="u13a3_6" placeholder="T/F" style="width:60px;"/><input class="corr-input a3corru13" data-id="u13a3c_6" placeholder="correction if false" style="min-width:250px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span><span>Deborah thinks that the patient can't have hit his head.</span><input class="corr-input a3u13" data-id="u13a3_7" placeholder="T/F" style="width:60px;"/><input class="corr-input a3corru13" data-id="u13a3c_7" placeholder="correction if false" style="min-width:250px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span><span>Deborah thinks that the patient will never recover his memory.</span><input class="corr-input a3u13" data-id="u13a3_8" placeholder="T/F" style="width:60px;"/><input class="corr-input a3corru13" data-id="u13a3c_8" placeholder="correction if false" style="min-width:250px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u13" class="btn-check">Check</button>
+          <button id="btn-show-a3u13" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u13" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <p>Modal verbs (<em>can, could, may, might, must, will, would, shall, should, ought to, need</em>) are auxiliary verbs that give information about <strong>ability, possibility or necessity</strong>.</p>
+
+    <h2 class="grammar-subtitle">B1 — Ability: can, can't, could, couldn't, be able to, manage to</h2>
+    <ul class="use-list">
+      <li>We use the following verbs to talk about ability: <em>can, can't, could, couldn't, be able to, manage to</em>.</li>
+      <li>We use <em>can/could</em> to talk about general ability in the present and past: <em>I can't swim; He could speak French and Italian.</em> (not <del>He coulds speak</del>)</li>
+      <li>We use <em>be able to</em> or <em>manage to</em> with <strong>perfect</strong> or <strong>future</strong> forms: <em>Apparently he's been able to find his family; I won't be able to meet you later; Have you managed to finish the report yet?</em></li>
+      <li>It is more common to use <em>can/could</em> to talk about general ability in the present and past than <em>be able to</em>: <em>Can you remember much about it?</em> (= Are you able to remember?); <em>He could speak French and Italian, but he couldn't remember his name.</em></li>
+      <li>To talk about ability on one <strong>specific occasion</strong> in the past we use <em>couldn't</em>, <em>was(n't)/were(n't) able to</em>, but not <em>could</em>: <em>The police were able to find out that he could speak French and Italian.</em> (not <del>The police could find out…</del>); <em>He couldn't remember who he was.</em></li>
+      <li>We sometimes use <em>manage to</em> to show that something is difficult to achieve: <em>I've finally managed to give up smoking after all these years!</em></li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — Other uses of can</h2>
+    <ul class="use-list">
+      <li>We use <em>can/could</em> to ask for and give <strong>permission</strong>: <em>Can I borrow the car this afternoon? You can borrow it, but I need it later this evening.</em></li>
+      <li>We use <em>can</em> to mean 'sometimes'. This use is common in written academic texts: <em>People can do funny things when they've experienced something terrible.</em> (= people sometimes do funny things)</li>
+      <li>In questions about past ability we use <em>could</em>, not <em>did … could</em>: <em>Could you speak French before you lived there?</em> (not <del>Did you could speak French…</del>)</li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Possibility</h2>
+    <ul class="use-list">
+      <li>We use <em>must, may, might, could, couldn't</em> and <em>can't</em> when there is some evidence, information or belief that something is probably or possibly true (or not true). The modal verb we choose depends on the <strong>strength of the evidence</strong> we have to support our ideas:
+        <table class="form-table">
+          <tbody>
+            <tr><td>very likely</td><td><em>must</em></td></tr>
+            <tr><td>possible</td><td><em>might, may, could, may not, might not</em></td></tr>
+            <tr><td>very unlikely</td><td><em>can't, couldn't</em></td></tr>
+          </tbody>
+        </table>
+      </li>
+      <li><em>Could, may</em> and <em>might</em> express the same degree of possibility: <em>He <strong>may/might/could</strong> remember some things already.</em></li>
+      <li><em>Couldn't</em> expresses the same probability as <em>can't</em>. It is usually used to talk about the past: <em>The police realised he <strong>couldn't</strong> be Canadian.</em> (= it was very unlikely that he was Canadian)</li>
+      <li>We use <em>may (not), might (not), could(n't), must, can't</em> + infinitive without <em>to</em> to talk about <strong>possibility in the present</strong>: <em>He may remember some things already.</em> (= it is possible he remembers some things now); <em>It can't be very easy living with someone who doesn't remember any of the past.</em> (= it is very unlikely that it is easy)</li>
+      <li>We use <em>may (not), might (not), could(n't), must, can't</em> + <em>be</em> + <em>-ing</em> to talk about things (possibly) happening or in progress <strong>at the time of speaking</strong>: <em>They must be having a difficult time adjusting to it all.</em> <em>The phone is engaged. She might be talking to her sister on the phone.</em></li>
+      <li>We can use <em>may (not), might (not), could(n't), must, can't</em> + <em>have</em> + past participle to talk about <strong>possibility in the past</strong>: <em>In the attack he must have hit his head.</em> (= there is strong evidence that he hit his head); <em>He could have had a wife and children.</em> (this is a possible situation); <em>He can't have been married.</em> (= there is strong evidence that he wasn't married)</li>
+      <li>We can use <em>may (not), might (not), could(n't), must, can't</em> + <em>have been</em> + <em>-ing</em> to talk about things possibly happening or in progress <strong>in the past</strong>: <em>He might have been trying to run away from his past.</em></li>
+      <li>We can use <em>may (not), might (not)</em> and <em>could (not)</em> + infinitive without <em>to</em> to talk about possibility or uncertainty in the <strong>future</strong>: <em>He could make a total recovery one day.</em> We can use <em>may (not), might (not), could (not), must, can't</em> + <em>be</em> + <em>-ing</em> to talk about things possibly happening at a time in the future: <em>I might be meeting John later.</em></li>
+    </ul>
+    <div class="note-box">
+      <em>May not</em> and <em>might not</em> do not express the same probability as <em>couldn't</em>: <em>The supermarket may/might not be open today because it's a Bank Holiday.</em> (not <del>the supermarket couldn't be open</del>)
+    </div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B4 — Expressing possibility and opinions in written texts</h2>
+    <p>Modals are very important in written texts because they 'soften' the message and help to show that the author is expressing an <strong>opinion</strong> rather than a proven fact. <em>May</em> is very common in these kinds of texts as well as <em>can</em> used to mean 'sometimes' (see B2).</p>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">Compare these sentences and the teacher's comments:</p>
+    <table class="form-table">
+      <thead><tr><th>Student's work</th><th>Teacher's comment</th></tr></thead>
+      <tbody>
+        <tr><td>People are unkind about their colleagues but it is simply because they are feeling insecure at work.</td><td>How do you know this?</td></tr>
+        <tr><td>People <em>can</em> be unkind about their colleagues but it <em>may</em> simply be because they are feeling insecure at work.</td><td>Good sentence.</td></tr>
+        <tr><td>Banning cars with high fuel consumption is a good idea, as it will result in less pollution.</td><td>This is a very strong opinion.</td></tr>
+        <tr><td>Banning cars with high fuel consumption <em>may</em> be a good idea, as it <em>could</em> result in less pollution.</td><td>Good sentence. You are making your opinion 'softer'.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="grammar-subtitle">B5 — Alternatives to modals</h2>
+    <ul class="use-list">
+      <li>We can use adverbs like <em>certainly, probably, possibly, perhaps</em> and <em>maybe</em> to express similar ideas to modal verbs: <em>He had probably been attacked and robbed.</em> (= he must have been attacked and robbed)</li>
+      <li>We can use <em>it + be + certain/likely/probable/possible/impossible</em> to express ability, probability and possibility: <em>It is possible to program your computer to translate texts automatically.</em> (= you can program your computer); <em>It is possible that the train will be late.</em> (= the train might be late)</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Choose the most suitable word. Sometimes both options are possible.</h3></div>
+      <div class="exercise-body">
+        <p>Choose the most suitable word in each sentence. Sometimes both options are possible.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> He's a concert pianist and he <input class="gap-input c1u13" data-id="u13c1_1" placeholder="word" style="min-width:80px;"/> play all Beethoven's sonatas. <span class="muted-label">(can / manages to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> When I lived in a small town I <input class="gap-input c1u13" data-id="u13c1_2" placeholder="word" style="min-width:80px;"/> walk almost everywhere, but now I live in the capital city I need a car. <span class="muted-label">(was able to / could)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> They worked all night and <input class="gap-input c1u13" data-id="u13c1_3" placeholder="word" style="min-width:80px;"/> finish the report just in time. <span class="muted-label">(could / managed to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> The protestors <input class="gap-input c1u13" data-id="u13c1_4" placeholder="word" style="min-width:80px;"/> persuade the president to change the law. <span class="muted-label">(didn't manage to / couldn't)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> Next year she <input class="gap-input c1u13" data-id="u13c1_5" placeholder="word" style="min-width:80px;"/> join the club, but she's not old enough yet. <span class="muted-label">(can / will be able to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> In my country it <input class="gap-input c1u13" data-id="u13c1_6" placeholder="word" style="min-width:80px;"/> get very cold in the winter. <span class="muted-label">(can / is able to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> I was nearly late as the bus didn't come, but luckily I <input class="gap-input c1u13" data-id="u13c1_7" placeholder="word" style="min-width:80px;"/> get a taxi. <span class="muted-label">(could / managed to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> I hope that I <input class="gap-input c1u13" data-id="u13c1_8" placeholder="word" style="min-width:80px;"/> do some sightseeing when I'm in New York. <span class="muted-label">(will be able to / will manage to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> She didn't get good enough grades to go to her first choice of university but she <input class="gap-input c1u13" data-id="u13c1_9" placeholder="word" style="min-width:80px;"/> get a place at another one. <span class="muted-label">(could / was able to)</span></div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u13" class="btn-check">Check</button>
+          <button id="btn-show-c1u13" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u13" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Tick the sentence, a or b, which best matches the sentence on the right</h3></div>
+      <div class="exercise-body">
+        <p>Tick (<em>✓</em>) the sentence, <strong>a</strong> or <strong>b</strong>, which best matches the sentence on the right. Write <strong>a</strong> or <strong>b</strong> next to each sentence.</p>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>He has a British passport.</span><input class="corr-input c2u13" data-id="u13c2_1" placeholder="a/b" style="width:60px;"/>
+            <div class="opt-inline"><strong>a</strong> He might be British. &nbsp; <strong>b</strong> He must be British.</div></div>
+          <div class="correction-row"><span class="c-num">2</span><span>I just saw him in the corridor talking to a student.</span><input class="corr-input c2u13" data-id="u13c2_2" placeholder="a/b" style="width:60px;"/>
+            <div class="opt-inline"><strong>a</strong> Our teacher can't be off sick. &nbsp; <strong>b</strong> Our teacher may not be off sick.</div></div>
+          <div class="correction-row"><span class="c-num">3</span><span>I advise you to take some warm clothes just in case.</span><input class="corr-input c2u13" data-id="u13c2_3" placeholder="a/b" style="width:60px;"/>
+            <div class="opt-inline"><strong>a</strong> It can be cold in Delhi in December. &nbsp; <strong>b</strong> It must be cold in Delhi in December.</div></div>
+          <div class="correction-row"><span class="c-num">4</span><span>He wasn't home when I called at seven.</span><input class="corr-input c2u13" data-id="u13c2_4" placeholder="a/b" style="width:60px;"/>
+            <div class="opt-inline"><strong>a</strong> John can't have been working late last night. &nbsp; <strong>b</strong> John might have been working late last night.</div></div>
+          <div class="correction-row"><span class="c-num">5</span><span>He has shares in the most successful company of all time.</span><input class="corr-input c2u13" data-id="u13c2_5" placeholder="a/b" style="width:60px;"/>
+            <div class="opt-inline"><strong>a</strong> He can't be a millionaire. &nbsp; <strong>b</strong> He must be a millionaire.</div></div>
+          <div class="correction-row"><span class="c-num">6</span><span>It depends if I finish my essay before then.</span><input class="corr-input c2u13" data-id="u13c2_6" placeholder="a/b" style="width:60px;"/>
+            <div class="opt-inline"><strong>a</strong> I may come to the lecture this afternoon. &nbsp; <strong>b</strong> I must come to the lecture this afternoon.</div></div>
+          <div class="correction-row"><span class="c-num">7</span><span>Not many people passed it.</span><input class="corr-input c2u13" data-id="u13c2_7" placeholder="a/b" style="width:60px;"/>
+            <div class="opt-inline"><strong>a</strong> The exam may have been very difficult. &nbsp; <strong>b</strong> The exam must have been very difficult.</div></div>
+          <div class="correction-row"><span class="c-num">8</span><span>We will have to give him directions.</span><input class="corr-input c2u13" data-id="u13c2_8" placeholder="a/b" style="width:60px;"/>
+            <div class="opt-inline"><strong>a</strong> John couldn't know how to get here. &nbsp; <strong>b</strong> John might not know how to get here.</div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u13" class="btn-check">Check</button>
+          <button id="btn-show-c2u13" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u13" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Replace the underlined phrases with a suitable past modal phrase</h3></div>
+      <div class="exercise-body">
+        <p>Read the passage. Replace each of the bracketed phrases in the passage with a suitable past modal phrase.</p>
+        <div class="passage-text">
+          <p>The mummy of Djedmaatesankh, a young woman from the ninth century BC, lies behind a glass display in the Royal Ontario Museum. 2,800 years ago she lived in Thebes with her husband on the east bank of the river Nile. They were well-off, although as a double-income couple without children <input class="gap-input c3u13" data-id="u13c3_1" placeholder="modal + 3 words" style="min-width:150px;"/> (they were likely) rather unusual.</p>
+          <p>Djedmaatesankh was a musician at the great Temple of Amun-Re at nearby Karnak, where her husband was a temple doorkeeper. Their jobs at the temple <input class="gap-input c3u13" data-id="u13c3_2" placeholder="modal + verb" style="min-width:150px;"/> (it is possible that they provided) the couple with a small wage and other benefits to supplement their main income from a piece of fertile Nile land on which <input class="gap-input c3u13" data-id="u13c3_3" placeholder="modal + verb" style="min-width:150px;"/> (it is possible that they grew) crops of barley, sesame, or dates.</p>
+          <p>We can only guess at what Djedmaatesankh's life would have been like, and try to imagine what her problems were. She <input class="gap-input c3u13" data-id="u13c3_4" placeholder="modal + verb" style="min-width:150px;"/> (it is possible she was) anxious about her inability to have children and certainly, as she approached her thirties, she <input class="gap-input c3u13" data-id="u13c3_5" placeholder="modal + verb" style="min-width:150px;"/> (it is highly likely she worried) about her health.</p>
+          <p>Looking upon a face from so long ago, a face not unlike that of any other young woman in Egypt today, ties us more personally to history. In a way that <input class="gap-input c3u13" data-id="u13c3_6" placeholder="modal + verb" style="min-width:150px;"/> (was impossible for her to imagine). Djedmaatesankh has achieved a degree of fame in our 21st century, appearing in dozens of newspapers and magazines.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u13" class="btn-check">Check</button>
+          <button id="btn-show-c3u13" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u13" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Find seven places where you can add may, can or can't</h3></div>
+      <div class="exercise-body">
+        <p>Read the following essay. Find seven places where you can add <strong>may</strong>, <strong>can</strong> or <strong>can't</strong> to soften the verbs. Write the modal in each gap.</p>
+        <div class="test-tip">Using modals like <em>may, can</em> and <em>can't</em> makes the writer's claims about a controversial topic 'softer' and more cautious, which is appropriate in academic writing.</div>
+        <div class="example-box">
+          <p>"Children can be adversely affected by the influence of television."</p>
+          <p>To what extent do you agree with this statement? Give reasons for your answer.</p>
+        </div>
+        <div class="passage-text" style="line-height:2.3;">
+          <p>Almost every family has a television these days, and many children watch a whole range of programmes every day. Some people believe that television <input class="gap-input c4u13" data-id="u13c4_1" placeholder="modal" style="min-width:60px;"/> be harmful to children, saying that it <input class="gap-input c4u13" data-id="u13c4_2" placeholder="modal" style="min-width:60px;"/> influence behaviour in a negative way.</p>
+          <p>There are a lot of programmes on television that are not educational and that contain violence and bad language. However, watching violence on television <input class="gap-input c4u13" data-id="u13c4_3" placeholder="modal" style="min-width:60px;"/> encourage violent behaviour in children. This <input class="gap-input c4u13" data-id="u13c4_4" placeholder="modal" style="min-width:60px;"/> be true in cases of children who have already exhibited violent tendencies, but it <input class="gap-input c4u13" data-id="u13c4_5" placeholder="modal" style="min-width:60px;"/> be true of all children, otherwise we would have an epidemic of child crime. It is also argued that bad language on television <input class="gap-input c4u13" data-id="u13c4_6" placeholder="modal" style="min-width:60px;"/> encourage the same in children.</p>
+          <p>Nevertheless, overall I believe that restricting children's television viewing to mainly educational programmes shown at a time of day when there is no violence or bad language <input class="gap-input c4u13" data-id="u13c4_7" placeholder="modal" style="min-width:60px;"/> overcome any risks of television being a bad influence.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u13" class="btn-check">Check</button>
+          <button id="btn-show-c4u13" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u13" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Listening Section 4</div>
+  <div class="section-body">
+    <div class="test-tip">Listen to the recording and complete the summary. Pay careful attention to the word limit and check your spelling at the end.</div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–10</span><h3>Questions 1–10 — Summary completion</h3></div>
+      <div class="exercise-body">
+        <div style="margin-bottom:12px;">
+          <div class="track-badge">18</div>
+          <p style="margin:6px 0 0;font-size:0.9em;color:#666;">Listen — The history of soap</p>
+          <div id="audio-18"></div>
+        </div>
+        <p>Complete the summary below. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+        <div class="passage-text">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">The history of soap</div>
+          <p>In ancient times, soap was used to clean <input class="gap-input d1u13" data-id="u13d1_1" placeholder="…" style="min-width:110px;"/>. The use of soap for personal hygiene was unheard of until relatively <input class="gap-input d1u13" data-id="u13d1_2" placeholder="…" style="min-width:110px;"/> times. Ancient people had little technology but many <input class="gap-input d1u13" data-id="u13d1_3" placeholder="…" style="min-width:110px;"/>, so they were probably able to discover soap by chance. Soap was probably only used in <input class="gap-input d1u13" data-id="u13d1_4" placeholder="…" style="min-width:110px;"/> societies.</p>
+          <p>There is no evidence that tribespeople at the time of the British <input class="gap-input d1u13" data-id="u13d1_5" placeholder="…" style="min-width:110px;"/> used soap. The history of soap has mostly been discovered from <input class="gap-input d1u13" data-id="u13d1_6" placeholder="…" style="min-width:110px;"/>. The earliest known use of soap, in 2500 BC, was to wash <input class="gap-input d1u13" data-id="u13d1_7" placeholder="…" style="min-width:110px;"/>. The Egyptians made soap by mixing salts with oil taken from <input class="gap-input d1u13" data-id="u13d1_8" placeholder="…" style="min-width:110px;"/>. The Romans saw washing themselves as a social activity. They removed dirt using steam and a <input class="gap-input d1u13" data-id="u13d1_9" placeholder="…" style="min-width:110px;"/>. When Pompeii was excavated, they discovered a <input class="gap-input d1u13" data-id="u13d1_10" placeholder="…" style="min-width:110px;"/> for making soap.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u13" class="btn-check">Check</button>
+          <button id="btn-show-d1u13" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u13" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Complete the gaps with a <strong>modal</strong> and the <strong>verb in brackets</strong> in the correct form. Then decide whether the modal is used to show <strong>ability</strong> or <strong>possibility</strong>.</div>
+    <div class="passage-text" style="line-height:2.4;">
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> While you <input class="gap-input gftu13" data-id="u13gft_1" placeholder="modal + verb" style="min-width:150px;"/> (find) some information on the origins of soap, it is not a substance which has excited a great deal of study so far. <input class="gap-input gftu13" data-id="u13gftc_1" placeholder="ability/possibility" style="min-width:130px;"/></div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> We can only assume that other activities <input class="gap-input gftu13" data-id="u13gft_2" placeholder="modal + verb" style="min-width:150px;"/> (provide) the basis from which this key concept arose. <input class="gap-input gftu13" data-id="u13gftc_2" placeholder="ability/possibility" style="min-width:130px;"/></div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> So, how is it that these primitive people from over two thousand years ago <input class="gap-input gftu13" data-id="u13gft_3" placeholder="modal + verb" style="min-width:150px;"/> (discover) soap? <input class="gap-input gftu13" data-id="u13gftc_3" placeholder="ability/possibility" style="min-width:130px;"/></div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> I carried out some experiments using basic techniques to try to find out what people <input class="gap-input gftu13" data-id="u13gft_4" placeholder="modal + verb" style="min-width:150px;"/> (observe). <input class="gap-input gftu13" data-id="u13gftc_4" placeholder="ability/possibility" style="min-width:130px;"/></div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> I was able to demonstrate that they would indeed <input class="gap-input gftu13" data-id="u13gft_5" placeholder="modal + verb" style="min-width:150px;"/> (make) a soap that is not dissimilar to the one we know today. <input class="gap-input gftu13" data-id="u13gftc_5" placeholder="ability/possibility" style="min-width:130px;"/></div></div>
+    </div>
+    <div class="exercise-actions">
+      <button id="btn-check-gftu13" class="btn-check">Check</button>
+      <button id="btn-show-gftu13" class="btn-show">Show Answers</button>
+      <button id="btn-reset-gftu13" class="btn-reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 13: Modals 1</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('17','audio-17');
+  loadAudio('18','audio-18');
+
+  // A4 classify the modal verbs
+  initGapFill({ inputSelector:'.a4u13', checkId:'btn-check-a4u13', showId:'btn-show-a4u13', resetId:'btn-reset-a4u13',
+    answers:{ u13a4_1:["could, couldn't, be able to","could, be able to, couldn't","couldn't, be able to, could","be able to, could, couldn't","could and couldn't and be able to"],
+              u13a4_2:["will, must, can't","must, can't, will","will, can't, must","can't, must, will","will and must and can't"],
+              u13a4_3:["could, might","might, could","could and might"] }});
+
+  // A3 true/false
+  initGapFill({ inputSelector:'.a3u13,.a3corru13', checkId:'btn-check-a3u13', showId:'btn-show-a3u13', resetId:'btn-reset-a3u13',
+    answers:{ u13a3_1:['F'], u13a3_2:['F'], u13a3_3:['T'], u13a3_4:['T'], u13a3_5:['F'],
+              u13a3_6:['F'], u13a3_7:['F'], u13a3_8:['F'],
+              u13a3c_1:["he couldn't remember his personal details","he couldn't remember his personal details."],
+              u13a3c_2:["he could have come from yorkshire","he could have come from yorkshire.","he might have come from yorkshire","he might have come from yorkshire."],
+              u13a3c_3:[''], u13a3c_4:[''],
+              u13a3c_5:["joe thinks he could have been married","joe thinks he could have been married.","joe thinks that he could have been married","joe thinks that he could have been married."],
+              u13a3c_6:["he's been able to find his parents","he's been able to find his parents.","he has been able to find his parents","he has been able to find his parents."],
+              u13a3c_7:["she thinks that he must have hit his head","she thinks that he must have hit his head."],
+              u13a3c_8:["she thinks he could make a total recovery","she thinks he could make a total recovery.","she thinks that he could make a total recovery","she thinks that he could make a total recovery."] }});
+
+  // C1 underline most suitable word
+  initGapFill({ inputSelector:'.c1u13', checkId:'btn-check-c1u13', showId:'btn-show-c1u13', resetId:'btn-reset-c1u13',
+    answers:{ u13c1_1:['can'], u13c1_2:['could','was able to'], u13c1_3:['managed to'],
+              u13c1_4:["didn't manage to",'couldn\'t'], u13c1_5:['will be able to','can'], u13c1_6:['can'],
+              u13c1_7:['managed to'], u13c1_8:['will be able to','will manage to'], u13c1_9:['was able to'] }});
+
+  // C2 tick a or b
+  initGapFill({ inputSelector:'.c2u13', checkId:'btn-check-c2u13', showId:'btn-show-c2u13', resetId:'btn-reset-c2u13',
+    answers:{ u13c2_1:['b'], u13c2_2:['a'], u13c2_3:['a'], u13c2_4:['b'], u13c2_5:['b'],
+              u13c2_6:['a'], u13c2_7:['b'], u13c2_8:['b'] }});
+
+  // C3 past modal phrases
+  initGapFill({ inputSelector:'.c3u13', checkId:'btn-check-c3u13', showId:'btn-show-c3u13', resetId:'btn-reset-c3u13',
+    answers:{ u13c3_1:['must have been'], u13c3_2:['may have provided','might have provided','could have provided'],
+              u13c3_3:['may have grown','might have grown','could have grown'],
+              u13c3_4:['may have been','might have been','could have been'], u13c3_5:['must have worried'],
+              u13c3_6:['could not have imagined',"couldn't have imagined",'cannot have imagined'] }});
+
+  // C4 essay modals
+  initGapFill({ inputSelector:'.c4u13', checkId:'btn-check-c4u13', showId:'btn-show-c4u13', resetId:'btn-reset-c4u13',
+    answers:{ u13c4_1:['can','may'], u13c4_2:['may','can'], u13c4_3:['can','may'], u13c4_4:['may'],
+              u13c4_5:["can't",'cannot'], u13c4_6:['may','can'], u13c4_7:['may'] }});
+
+  // D listening summary
+  initGapFill({ inputSelector:'.d1u13', checkId:'btn-check-d1u13', showId:'btn-show-d1u13', resetId:'btn-reset-d1u13',
+    answers:{ u13d1_1:['clothing'], u13d1_2:['modern'], u13d1_3:['practical skills'],
+              u13d1_4:['wealthy'], u13d1_5:['Iron Age'], u13d1_6:['written texts'],
+              u13d1_7:['wool'], u13d1_8:['vegetables'], u13d1_9:['metal blade'], u13d1_10:['factory','soap factory'] }});
+
+  // GFT modal + verb
+  initGapFill({ inputSelector:'.gftu13', checkId:'btn-check-gftu13', showId:'btn-show-gftu13', resetId:'btn-reset-gftu13',
+    answers:{ u13gft_1:['may be able to find'], u13gft_2:['must have provided'],
+              u13gft_3:['could have discovered'],
+              u13gft_4:['might have observed'],
+              u13gft_5:['have been able to make'],
+              u13gftc_1:['possibility','poss'], u13gftc_2:['possibility','poss'],
+              u13gftc_3:['ability','abil'], u13gftc_4:['possibility','poss'],
+              u13gftc_5:['ability','abil'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

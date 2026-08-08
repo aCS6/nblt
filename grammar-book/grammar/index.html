@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cambridge Grammar for IELTS — Interactive App</title>
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <!-- NBLT hub: floating "back to home" pill. Optional — the app runs without it. -->
+  <script defer src="../../assets/nblt-home.js"></script>
+  <style type="text/tailwindcss">
+    :root { --brand: #7c3aed; --accent: #f59e0b; }
+    body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-100">
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="sticky top-0 z-50 shadow-lg bg-gradient-to-r from-violet-700 via-purple-600 to-fuchsia-500 text-white">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center gap-4">
+    <div class="flex items-center gap-3">
+      <span class="w-11 h-11 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center text-2xl">📘</span>
+      <div>
+        <div class="text-xl font-black tracking-tight">IELTS Grammar</div>
+        <div class="text-xs text-white/80">Cambridge Grammar for IELTS — Diane Hopkins</div>
+      </div>
+    </div>
+    <div class="ml-auto hidden sm:block text-right">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold">
+        <span x-data x-text="'25 of 25 units live'" class="text-white/90"></span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="bg-gradient-to-br from-violet-700 via-purple-600 to-indigo-700 text-white">
+  <div class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Interactive Grammar App
+      </div>
+      <h1 class="text-4xl md:text-5xl font-black leading-tight mb-4">Master every grammar<br/>topic tested in IELTS</h1>
+      <p class="text-white/85 text-lg mb-7 max-w-lg">
+        25 units covering every grammar topic tested in IELTS — grammar lessons,
+        interactive exercises, listening practice and reading tasks.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="#units" class="inline-flex items-center gap-2 rounded-full bg-white text-purple-700 px-7 py-3 font-bold shadow-lg hover:bg-slate-100 transition">
+          Browse units <span>↓</span>
+        </a>
+        <a href="chapters/unit1.html" class="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-7 py-3 font-bold hover:bg-white/10 transition">
+          Jump to Unit 1 →
+        </a>
+      </div>
+      <div class="mt-10 grid grid-cols-3 gap-4 text-center">
+        <div class="rounded-2xl bg-white/10 p-4"><div class="text-3xl font-black">25</div><div class="text-xs text-white/80 mt-1">Units live</div></div>
+        <div class="rounded-2xl bg-white/10 p-4"><div class="text-3xl font-black">100+</div><div class="text-xs text-white/80 mt-1">Exercises</div></div>
+        <div class="rounded-2xl bg-white/10 p-4"><div class="text-3xl font-black">25</div><div class="text-xs text-white/80 mt-1">Audio tracks</div></div>
+      </div>
+    </div>
+    <div class="hidden md:block">
+      <div class="rounded-3xl bg-white/10 p-6 backdrop-blur">
+        <div class="text-sm font-bold mb-4 text-white/90">Suggested study path</div>
+        <div class="space-y-3">
+          <a href="chapters/unit1.html" class="block rounded-2xl bg-white text-purple-800 p-4 shadow-lg"><div class="font-bold">1 · Present Tenses</div><div class="text-xs text-purple-500 mt-1">Start here</div></a>
+          <a href="chapters/unit2.html" class="block rounded-xl bg-white/80 text-purple-800 p-4"><div class="font-bold">2 · Past Tenses 1</div><div class="text-xs text-purple-500 mt-1">Completed actions</div></a>
+          <a href="chapters/unit3.html" class="block rounded-xl bg-white/80 text-purple-800 p-4"><div class="font-bold">3 · Present Perfect</div><div class="text-xs text-purple-500 mt-1">Past–present link</div></a>
+          <a href="chapters/unit4.html" class="block rounded-xl bg-white/60 text-purple-700 p-4"><div class="font-bold">4 · Past Tenses 2</div><div class="text-xs text-purple-500 mt-1">Past perfect</div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TABLE OF CONTENTS ═══════════ -->
+<main id="units" class="max-w-6xl mx-auto px-6 py-14 pb-24" x-data="catalog()">
+
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+    <div>
+      <h2 class="text-3xl font-black text-slate-800">All units</h2>
+      <p class="text-slate-500 mt-1">Search the syllabus or filter by availability.</p>
+    </div>
+    <div class="sm:max-w-xs w-full">
+      <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Search</label>
+      <div class="relative">
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+        <input type="search" x-model="q" placeholder="e.g. future, modals…"
+               class="w-full rounded-xl border-2 border-slate-200 bg-white pl-10 pr-4 py-2.5 focus:border-purple-500 focus:ring-2 focus:ring-purple-100 outline-none transition"/>
+      </div>
+      <div class="mt-3 flex gap-2 text-sm">
+        <button @click="only='all'" :class="only==='all' ? 'bg-purple-600 text-white' : 'bg-white text-purple-700 border border-purple-300'" class="flex-1 rounded-full px-3 py-1.5 font-semibold transition">All</button>
+        <button @click="only='ready'" :class="only==='ready' ? 'bg-emerald-600 text-white' : 'bg-white text-emerald-700 border border-emerald-300'" class="flex-1 rounded-full px-3 py-1.5 font-semibold transition">Available</button>
+        <button @click="only='soon'" :class="only==='soon' ? 'bg-amber-500 text-white' : 'bg-white text-amber-600 border border-amber-300'" class="flex-1 rounded-full px-3 py-1.5 font-semibold transition">Coming soon</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-6 rounded-2xl bg-white border border-slate-200 p-4 flex items-center gap-4">
+    <div class="flex-1">
+      <div class="flex justify-between text-sm font-bold text-slate-700 mb-1.5">
+        <span>Units completed</span><span x-text="progress + ' / 25 · ' + progressPct + '%'"></span>
+      </div>
+      <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+        <div class="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 transition-all" :style="'width:'+ progressPct +'%'"></div>
+      </div>
+      <p class="text-xs text-slate-500 mt-2">
+        Mark a unit complete at the bottom of its page. Progress is shared with your NBLT home.
+      </p>
+    </div>
+    <div class="text-2xl" :class="progress===25 ? 'text-emerald-500' : 'text-slate-400'">🏆</div>
+  </div>
+
+  <div x-show="filtered.length === 0" class="text-center py-20 text-slate-400">
+    <div class="text-5xl mb-3">🔎</div>
+    <p class="font-semibold">No units match "<span x-text="q"></span>".</p>
+  </div>
+
+  <!-- Unit cards -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <template x-for="u in filtered" :key="u.n">
+      <a :href="u.href" class="group rounded-2xl bg-white border overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+         :class="u.done ? 'border-emerald-300' : 'border-slate-200'">
+        <div :class="u.done ? 'bg-gradient-to-br from-emerald-600 to-teal-500' : (u.ready ? 'bg-gradient-to-br from-violet-600 to-fuchsia-500' : 'bg-slate-200')" class="text-white px-5 py-4 flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-black text-lg shrink-0" x-text="u.done ? '✓' : u.n"></span>
+          <div>
+            <h3 class="font-bold leading-tight" :class="u.ready ? 'text-white' : 'text-slate-500'" x-text="u.title"></h3>
+            <p class="text-xs" :class="u.ready ? 'text-white/75' : 'text-slate-400'" x-text="u.sub"></p>
+          </div>
+        </div>
+        <div class="px-5 py-4">
+          <div class="text-sm italic text-slate-500" x-text="u.topics"></div>
+          <div class="mt-3">
+            <span x-show="u.done" class="inline-flex items-center gap-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1">✓ Completed</span>
+            <span x-show="u.ready && !u.done" class="inline-flex items-center gap-1 rounded-full bg-violet-100 text-violet-700 text-xs font-bold px-3 py-1">✔ Available</span>
+            <span x-show="!u.ready" class="inline-flex items-center gap-1 rounded-full bg-amber-100 text-amber-600 text-xs font-bold px-3 py-1">⏳ Coming soon</span>
+          </div>
+          <div class="mt-3 text-sm font-bold inline-flex items-center gap-1 group-hover:gap-2 transition-all"
+               :class="u.done ? 'text-emerald-600' : 'text-purple-600'">
+            <span x-text="u.done ? 'Review unit' : 'Open unit'"></span> <span>→</span>
+          </div>
+        </div>
+      </a>
+    </template>
+  </div>
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="bg-slate-900 text-white/60 text-center py-6 text-sm">
+  Cambridge Grammar for IELTS — Diane Hopkins &nbsp;|&nbsp; Interactive Grammar App
+</footer>
+
+<script>
+  function catalog() {
+    const units = [
+      { n: 1,  title: "Present Tenses", sub: "present simple · continuous · state verbs", topics: "Habits, facts, temporary situations, state verbs and their exceptions", ready: true },
+      { n: 2,  title: "Past Tenses 1", sub: "past simple · continuous · used to · would", topics: "Completed actions, background scenes, repeated past actions", ready: true },
+      { n: 3,  title: "Present Perfect", sub: "present perfect simple & continuous", topics: "Past–present link, for/since, result vs. duration", ready: true },
+      { n: 4,  title: "Past Tenses 2", sub: "past perfect simple & continuous", topics: "Actions before another past time, duration before a past point", ready: true },
+      { n: 5,  title: "Future 1", sub: "will · going to · present for future", topics: "Predictions, intentions, arrangements, timetables", ready: true },
+      { n: 6,  title: "Future 2", sub: "will & would · future perfect/continuous", topics: "Future as seen from the past, completed future actions", ready: true },
+      { n: 7,  title: "Countable & Uncountable", sub: "noun types · quantifiers", topics: "Count/non-count distinctions, much/many/a lot of", ready: true },
+      { n: 8,  title: "Referring to Nouns", sub: "articles · determiners", topics: "a/an, the, zero article, generic reference", ready: true },
+      { n: 9,  title: "Pronouns & Referencing", sub: "pronouns · referencing devices", topics: "Personal, demonstrative, relative pronouns", ready: true },
+      { n: 10, title: "Adjectives & Adverbs", sub: "form and use", topics: "Adjective order, adverb types, intensifiers", ready: true },
+      { n: 11, title: "Comparing Things", sub: "comparatives · superlatives", topics: "Comparative/superlative forms, as…as, the more…the more", ready: true },
+      { n: 12, title: "The Noun Phrase", sub: "pre- and post-modification", topics: "Noun phrase structure, compound nouns, participle phrases", ready: true },
+      { n: 13, title: "Modals 1", sub: "ability · possibility · necessity", topics: "can/could, may/might, must/have to, should", ready: true },
+      { n: 14, title: "Modals 2", sub: "past modals · deduction", topics: "must/can't have, should have, could have, would have", ready: true },
+      { n: 15, title: "Reported Speech", sub: "statements · questions · commands", topics: "Backshift, reporting verbs, indirect questions", ready: true },
+      { n: 16, title: "Verb + Verb Patterns", sub: "infinitive · gerund", topics: "Verbs followed by infinitive, gerund, or both", ready: true },
+      { n: 17, title: "Likelihood & Conditions 1", sub: "zero & first conditional", topics: "Facts, open conditions, likely future outcomes", ready: true },
+      { n: 18, title: "Likelihood & Conditions 2", sub: "second & third conditional", topics: "Hypothetical and past counterfactual conditions", ready: true },
+      { n: 19, title: "Prepositions", sub: "verbs · adjectives · nouns", topics: "Verb/adjective/noun + preposition", ready: true },
+      { n: 20, title: "Relative Clauses", sub: "defining & non-defining", topics: "who/which/that/where/whose, reduced clauses", ready: true },
+      { n: 21, title: "Ways of Organising Texts", sub: "subject choice; introductory it; ellipsis", topics: "Subject choice, introductory it, ellipsis, organising information, it- and what-clauses, repeating ideas", ready: true },
+      { n: 22, title: "The Passive", sub: "passive forms and uses", topics: "Passive across all tenses, by-agent, get-passive", ready: true },
+      { n: 23, title: "Linking Ideas", sub: "connectives · conjunctions", topics: "Addition, contrast, cause/effect, purpose, result", ready: true },
+      { n: 24, title: "Showing Your Position", sub: "stance & hedging", topics: "Hedging language, boosters, attitude adverbials", ready: true },
+      { n: 25, title: "Nominalisation", sub: "nominalisation in writing", topics: "Converting verbs/adjectives to nouns for academic writing", ready: true },
+    ];
+    return {
+      units,
+      q: '',
+      only: 'all',
+      /* Units the reader has marked complete, written by
+         assets/nblt-unit-progress.js on each unit page and shared with the
+         NBLT home. Read once at init and refreshed on return to this tab. */
+      done: {},
+      init() {
+        this.reload();
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) this.reload(); });
+        window.addEventListener('pageshow', () => this.reload());
+      },
+      reload() {
+        try {
+          const raw = localStorage.getItem('nblt.grammar.v1');
+          const s = raw ? JSON.parse(raw) : null;
+          this.done = (s && s.units) || {};
+        } catch (e) { this.done = {}; }
+      },
+      get readyCount() { return this.units.filter(u => u.ready).length; },
+      get progress() { return this.units.filter(u => this.done[u.n]).length; },
+      get progressPct() { return Math.round((this.progress / 25) * 100); },
+      get filtered() {
+        const term = this.q.toLowerCase().trim();
+        return this.units.filter(u => {
+          if (this.only === 'ready' && !u.ready) return false;
+          if (this.only === 'soon' && u.ready) return false;
+          if (term) return (u.title + ' ' + u.sub + ' ' + u.topics).toLowerCase().includes(term);
+          return true;
+        }).map(u => ({ ...u, href: 'chapters/unit' + u.n + '.html', done: !!this.done[u.n] }));
+      }
+    };
+  }
+</script>
+</body>
+</html>

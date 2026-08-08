@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 14 – Modals 2 | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 14</span>
+    <span class="subtitle">Obligation and necessity; suggestions and advice; adverbs</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear a man asking a colleague for advice about living in Hong Kong. Before you listen, look at the pictures and guess which of these topics they talk about.</p>
+        <div class="word-box">
+          <span class="word-chip">accommodation</span><span class="word-chip">transport</span><span class="word-chip">clothes</span><span class="word-chip">food</span><span class="word-chip">weather</span><span class="word-chip">work permits</span><span class="word-chip">language lessons</span><span class="word-chip">social life</span>
+        </div>
+        <div class="example-box">
+          <div>My guess: <input class="gap-input a1u14" data-id="u14a1_1" placeholder="…" style="min-width:260px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a1u14" class="btn-check">Check</button>
+          <button id="btn-show-a1u14" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a1u14" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and check if you were right — Track 19</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">19</div>
+          <div class="track-info"><h4>Track 19 — advice about living in Hong Kong</h4><p>Context listening — a conversation</p></div>
+          <div id="audio-19"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Listen again and complete the table below with words from the recording.</p>
+        <table class="form-table">
+          <thead><tr><th>Type</th><th>Words</th></tr></thead>
+          <tbody>
+            <tr><td class="pos" style="color:#b71c1c;">Strong obligation or necessity</td><td><input class="gap-input a4u14" data-id="u14a4_1" placeholder="…" style="min-width:200px;"/></td></tr>
+            <tr><td class="pos" style="color:#1565c0;">Advice or suggestions</td><td><input class="gap-input a4u14" data-id="u14a4_2" placeholder="…" style="min-width:200px;"/></td></tr>
+            <tr><td class="pos" style="color:#2e7d32;">No obligation or necessity</td><td><input class="gap-input a4u14" data-id="u14a4_3" placeholder="…" style="min-width:200px;"/></td></tr>
+          </tbody>
+        </table>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u14" class="btn-check">Check</button>
+          <button id="btn-show-a4u14" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u14" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and fill in the gaps in the colleague's advice</h3></div>
+      <div class="exercise-body">
+        <p>Listen again and fill in the gaps in the colleague's advice with an appropriate modal verb or <em>(not) need to</em>.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> You <input class="gap-input a3u14" data-id="u14a3_1" placeholder="modal + verb" style="min-width:150px;"/> a few days to recover from jet lag.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> You <input class="gap-input a3u14" data-id="u14a3_2" placeholder="modal + verb" style="min-width:150px;"/> the underground system as much as possible.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> You <input class="gap-input a3u14" data-id="u14a3_3" placeholder="modal + verb" style="min-width:150px;"/> some Cantonese to travel on the public light buses.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> You <input class="gap-input a3u14" data-id="u14a3_4" placeholder="modal + verb" style="min-width:150px;"/> loose change on the ferries and the buses.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> You <input class="gap-input a3u14" data-id="u14a3_5" placeholder="modal" style="min-width:90px;"/> to speak Cantonese in some market stalls.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> You <input class="gap-input a3u14" data-id="u14a3_6" placeholder="modal + verb" style="min-width:150px;"/> a work permit before you go.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> You <input class="gap-input a3u14" data-id="u14a3_7" placeholder="modal + verb" style="min-width:150px;"/> too casually for work.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> You <input class="gap-input a3u14" data-id="u14a3_8" placeholder="modal + verb" style="min-width:150px;"/> guide books in England.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> You <input class="gap-input a3u14" data-id="u14a3_9" placeholder="modal + verb" style="min-width:150px;"/> lots of passport photos with you.</div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u14" class="btn-check">Check</button>
+          <button id="btn-show-a3u14" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u14" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <p>We use expressions of obligation and necessity when there is a need to do something. <em>Need</em> can be internal (the speaker feels it is necessary) or external (rules or the situation make it necessary).</p>
+
+    <h2 class="grammar-subtitle">B1 — Obligation and necessity: must, have to, have got to, need to</h2>
+    <ul class="use-list">
+      <li>We use <em>must(n't), have to, have got to</em> and <em>need to</em> to express obligation and necessity: <em>You'll need to allow a bit of extra time to get over jet lag; You have to get a work permit before you go; You mustn't dress too casually for work.</em></li>
+      <li><em>Must</em> is a modal verb and its form doesn't change: <em>He must try a bit harder.</em> (not <del>He musts</del>)</li>
+      <li>We use <em>must</em> when the obligation comes from the speaker: <em>You must invite me to visit you.</em> (the speaker wants this)</li>
+      <li>When there is an institutional rule or a law, <em>have to</em> or <em>need to</em> are more common than <em>must</em>: <em>You have to get a work permit before you go.</em> (this is a rule)</li>
+      <li><em>Have to</em> is more common in spoken English than <em>must</em>, but in written English either is used.</li>
+      <li><em>Have got to</em> is more common in spoken English than written English: <em>I've got to find somewhere to live quite quickly.</em></li>
+      <li><em>Must</em> is usually used on signs, notices and printed information: <em>All employees must hold a valid work permit.</em></li>
+      <li>To talk about obligation and necessity in the <strong>present</strong> we can use <em>must(n't), have to, have got to</em> or <em>need to</em>. We use <em>have to</em> or <em>need to</em> with <strong>past and future</strong> tenses (there is no past or future form of <em>must</em>): <em>You will have to learn some Cantonese.</em> (not <del>You will must learn</del>); <em>He had to get up really early to catch the ferry to work.</em> (not <del>He must get up early</del>)</li>
+    </ul>
+    <div class="note-box">
+      We do not usually make questions with <em>must</em> and <em>ought to</em>: <em>What sort of things do you need to know?</em> (not <del>What sort of things must you / ought you to know?</del>)
+    </div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — No obligation: don't have to, don't need to, needn't</h2>
+    <ul class="use-list">
+      <li>We use <em>not have to</em>, <em>not need to</em> and <em>needn't</em> to suggest that there is <strong>no obligation or necessity</strong> to do something: <em>You needn't buy lots of guide books before you go.</em> (= it is not necessary to buy guide books before you go)</li>
+      <li>To talk about lack of obligation in the <strong>past</strong> we can use <em>needn't have</em> + past participle, <em>didn't need to</em> or <em>didn't have to</em>: <em>We didn't have to worry about work permits when I was there; I needn't have bothered to get a work permit.</em> (= it wasn't necessary)</li>
+      <li>There is a difference between <em>didn't need to</em> and <em>needn't have</em>:
+        <ul class="use-list">
+          <li><em>didn't need to</em> + infinitive: it wasn't necessary, so it was not done — <em>John picked me up from the station so I didn't need to get a taxi home.</em> (= it wasn't necessary, so I didn't get a taxi)</li>
+          <li><em>needn't have</em> + past participle: it wasn't necessary, but it was done — <em>I needn't have got a taxi because John's flat wasn't far from the station.</em> (= I got a taxi but it wasn't necessary)</li>
+        </ul>
+      </li>
+      <li>To talk about the <strong>future</strong> we use <em>not have to</em> or <em>not need to</em>: <em>I hope I won't have to work late tonight; He's not going to need to come to the meeting after all.</em></li>
+    </ul>
+    <div class="note-box">
+      <strong><em>Mustn't</em> does not mean the same as <em>don't have to</em>, <em>don't need to</em> and <em>needn't</em>.</strong> <em>You don't have to wait for ages.</em> (= it is not necessary to wait); <em>You mustn't wait here.</em> (= it is not allowed to wait here)
+    </div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Suggestions and advice: should, ought to</h2>
+    <ul class="use-list">
+      <li>We use <em>should(n't)</em> and <em>ought (not) to</em> to make suggestions or give advice: <em>You should try and use it whenever you can.</em> (= I think it is a good idea); <em>You ought to take lots of passport photos with you; You shouldn't dress casually for work.</em></li>
+      <li>We can use <em>must</em> to give strong advice: <em>You must phone me when you get there.</em></li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B4 — Adverbs with modals</h2>
+    <ul class="use-list">
+      <li>Adverbs like <em>also, always, never, sometimes, just</em> and <em>only</em> come <strong>after</strong> modal verbs: <em>You should always carry plenty of loose change; You must never do that again.</em></li>
+      <li>To add extra emphasis we can use <em>really</em> before the verb: <em>You really have to see it to believe it.</em></li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B5 — Formal written English</h2>
+    <ul class="use-list">
+      <li>Verbs of obligation, necessity and suggestion are common in formal and academic writing when giving opinions: <em>Governments should take advice from the experts before making new laws; Companies need to consider cultural differences when engaging in business with overseas organisations.</em></li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Underline the correct word. Sometimes both options are possible.</h3></div>
+      <div class="exercise-body">
+        <p>Choose the correct word in each sentence. Sometimes both options are possible.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> In my office you <input class="gap-input c1u14" data-id="u14c1_1" placeholder="word" style="min-width:90px;"/> wear a suit but lots of people do. <span class="muted-label">(have to / don't have to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> These pills <input class="gap-input c1u14" data-id="u14c1_2" placeholder="word" style="min-width:90px;"/> be taken if you are under twelve years old. <span class="muted-label">(must not / don't have to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> I <input class="gap-input c1u14" data-id="u14c1_3" placeholder="word" style="min-width:90px;"/> leave now because I have a meeting. <span class="muted-label">(must / have to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> I <input class="gap-input c1u14" data-id="u14c1_4" placeholder="word" style="min-width:90px;"/> to the station to pick her up because she decided to get the bus, so I finished my essay instead. <span class="muted-label">(didn't need to go / needn't have gone)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> Please note that you <input class="gap-input c1u14" data-id="u14c1_5" placeholder="word" style="min-width:90px;"/> register before entering the conference hall. <span class="muted-label">(must / have got to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> You <input class="gap-input c1u14" data-id="u14c1_6" placeholder="word" style="min-width:90px;"/> smoke inside, but you can smoke outside. <span class="muted-label">(mustn't / don't have to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> When I was at university I <input class="gap-input c1u14" data-id="u14c1_7" placeholder="word" style="min-width:90px;"/> write my assignments by hand because there weren't any computers then. <span class="muted-label">(must / had to)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> British dog-owners <input class="gap-input c1u14" data-id="u14c1_8" placeholder="word" style="min-width:90px;"/> have passports for their dogs when they travel abroad. <span class="muted-label">(have to / must)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> Next year I <input class="gap-input c1u14" data-id="u14c1_9" placeholder="word" style="min-width:90px;"/> get a job to pay back all the money I've borrowed from the bank for my university fees. <span class="muted-label">('ll have to / 'll must)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">10</span> The interview went really well so I <input class="gap-input c1u14" data-id="u14c1_10" placeholder="words" style="min-width:120px;"/> about it so much beforehand. <span class="muted-label">(didn't need to worry / needn't have worried)</span></div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u14" class="btn-check">Check</button>
+          <button id="btn-show-c1u14" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u14" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Fill in the gaps with the correct form of (not) have to, must, (not) need or should</h3></div>
+      <div class="exercise-body">
+        <p>Complete these short conversations with the correct form of <em>(not) have to</em>, <em>must</em>, <em>(not) need</em> or <em>should</em>.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> A: I'm going to Florence next week so I <em>have to</em> buy a guidebook.</div></div>
+          <div class="gap-fill-item"><div class="gf-row">B: Ah, well, you're in luck. You <input class="gap-input c2u14" data-id="u14c2_1" placeholder="modal" style="min-width:110px;"/> buy a book because I've got a small guide to Florence I can lend you.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> A: What's Mike doing these days?</div></div>
+          <div class="gap-fill-item"><div class="gf-row">B: He's studying really hard. He <input class="gap-input c2u14" data-id="u14c2_2" placeholder="modal" style="min-width:110px;"/> pass his exams in order to get the promotion his company have promised him.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> A: <input class="gap-input c2u14" data-id="u14c2_3" placeholder="modal" style="min-width:110px;"/> you wear a uniform at work?</div></div>
+          <div class="gap-fill-item"><div class="gf-row">B: Yes, and I find it rather strange because I've never worn one before. When I was at school we <input class="gap-input c2u14" data-id="u14c2_4" placeholder="modal" style="min-width:110px;"/> wear a uniform although the girls <input class="gap-input c2u14" data-id="u14c2_5" placeholder="modal" style="min-width:110px;"/> wear skirts and not trousers.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> A: The rules for university fees have just changed. I was really lucky because I <input class="gap-input c2u14" data-id="u14c2_6" placeholder="modal" style="min-width:110px;"/> pay for my education, but unfortunately my brother <input class="gap-input c2u14" data-id="u14c2_7" placeholder="modal" style="min-width:110px;"/> pay when he goes to university next year.</div></div>
+          <div class="gap-fill-item"><div class="gf-row">B: Yes, I know. My sister will be affected too.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> A: The bread's in the oven. Can you remind me to get it out in 20 minutes? I <input class="gap-input c2u14" data-id="u14c2_8" placeholder="modal" style="min-width:110px;"/> forget like last time when I burnt the loaf.</div></div>
+          <div class="gap-fill-item"><div class="gf-row">B: I'm sorry. I'm afraid I <input class="gap-input c2u14" data-id="u14c2_9" placeholder="modal" style="min-width:110px;"/> go now, so I won't be able to remind you. Can't you set a timer?</div></div>
+          <div class="gap-fill-item"><div class="gf-row">A: Oh, <input class="gap-input c2u14" data-id="u14c2_10" placeholder="modal" style="min-width:150px;"/> (you/really) go? I'd hoped you'd stay to lunch and have some of my bread!</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> A: I've just joined the tennis club. They've got all sorts of rules, you know.</div></div>
+          <div class="gap-fill-item"><div class="gf-row">B: Really? Like what?</div></div>
+          <div class="gap-fill-item"><div class="gf-row">A: Well, you <input class="gap-input c2u14" data-id="u14c2_11" placeholder="modal" style="min-width:110px;"/> wear white clothes on the courts, of course. But the really silly rule is that you <input class="gap-input c2u14" data-id="u14c2_12" placeholder="modal" style="min-width:110px;"/> turn your mobile off as soon as you arrive at the club. I don't want to do that — what if I'm needed at work or something?</div></div>
+          <div class="gap-fill-item"><div class="gf-row">B: Perhaps they don't know you're a doctor. You <input class="gap-input c2u14" data-id="u14c2_13" placeholder="modal" style="min-width:110px;"/> tell them.</div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u14" class="btn-check">Check</button>
+          <button id="btn-show-c2u14" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u14" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Correct the underlined phrases in the essay</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Read the extract from an Academic Writing Task 2. Decide if the underlined phrases are correct or not. Write <strong>✓</strong> if they are right, or write the correct phrase if they are wrong.</div>
+        <div class="passage-text">
+          <p>Pollution is causing enormous problems all over the world these days. Governments 1 <input class="gap-input c3u14" data-id="u14c3_1" placeholder="✓ or correction" style="min-width:120px;"/> (need to act) quickly to stop this problem before it is too late. The first thing I believe we 2 <input class="gap-input c3u14" data-id="u14c3_2" placeholder="✓ or correction" style="min-width:120px;"/> (absolutely should do) is reduce the amount of fuel we use in our cars. Our governments 3 <input class="gap-input c3u14" data-id="u14c3_3" placeholder="✓ or correction" style="min-width:120px;"/> (must to encourage) us to use public transport.</p>
+          <p>In my country, public transport is not very reliable, so the first thing that governments 4 <input class="gap-input c3u14" data-id="u14c3_4" placeholder="✓ or correction" style="min-width:120px;"/> (have to do) is to ensure that buses and trains are a viable alternative to the car. They 5 <input class="gap-input c3u14" data-id="u14c3_5" placeholder="✓ or correction" style="min-width:120px;"/> (also should reduce) the costs to the public of travelling on public transport.</p>
+          <p>However, it is not only the government that 6 <input class="gap-input c3u14" data-id="u14c3_6" placeholder="✓ or correction" style="min-width:120px;"/> (needs to make) an effort. All of us 7 <input class="gap-input c3u14" data-id="u14c3_7" placeholder="✓ or correction" style="min-width:120px;"/> (should make) some effort to reduce pollution. First of all, we 8 <input class="gap-input c3u14" data-id="u14c3_8" placeholder="✓ or correction" style="min-width:120px;"/> (ought try to walk) or cycle if we can, rather than using our cars. In the past people 9 <input class="gap-input c3u14" data-id="u14c3_9" placeholder="✓ or correction" style="min-width:120px;"/> (must walk) or cycle because they did not have cars. Secondly, we 10 <input class="gap-input c3u14" data-id="u14c3_10" placeholder="✓ or correction" style="min-width:120px;"/> (should trying) to share car use with our friends and colleagues. All of us 11 <input class="gap-input c3u14" data-id="u14c3_11" placeholder="✓ or correction" style="min-width:120px;"/> (will must make) some changes to our lives if we want to reduce pollution. Fortunately, we 12 <input class="gap-input c3u14" data-id="u14c3_12" placeholder="✓ or correction" style="min-width:120px;"/> (mustn't make) big changes to make big improvements in the situation.</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u14" class="btn-check">Check</button>
+          <button id="btn-show-c3u14" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u14" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Fill in the gaps with the correct form of (not) have to, ought to or must(n't) and the verbs in brackets</h3></div>
+      <div class="exercise-body">
+        <p>Complete the interview with the correct form of <em>(not) have to</em>, <em>ought to</em> or <em>must(n't)</em> and the verbs in brackets.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Teacher: Do you think it's a good thing for young people to travel to different countries before settling down to a job?</div></div>
+          <div class="gap-fill-item"><div class="gf-row">Student: Yes, I think it's a really exciting and interesting thing to do.</div></div>
+          <div class="gap-fill-item"><div class="gf-row">Teacher: What <em>do you have to think</em> (you/think) about if you're going to go travelling?</div></div>
+          <div class="gap-fill-item"><div class="gf-row">Student: Well, you <input class="gap-input c4u14" data-id="u14c4_2" placeholder="modal + verb" style="min-width:160px;"/> (consider) lots of things first. For example, you <input class="gap-input c4u14" data-id="u14c4_3" placeholder="modal + verb" style="min-width:160px;"/> (have) enough money in the first place, so you <input class="gap-input c4u14" data-id="u14c4_4" placeholder="modal + verb" style="min-width:160px;"/> (work) at first to save some money.</div></div>
+          <div class="gap-fill-item"><div class="gf-row">Then another important thing to consider is who to go with. You <input class="gap-input c4u14" data-id="u14c4_5" placeholder="modal + verb" style="min-width:160px;"/> (travel) with a friend, but it is probably safer and less lonely if you do. Also, you <input class="gap-input c4u14" data-id="u14c4_6" placeholder="modal + verb" style="min-width:160px;"/> (learn) a bit about the countries before you go.</div></div>
+          <div class="gap-fill-item"><div class="gf-row">It's a good idea to research cultural issues, so that you don't offend people by your behaviour. If you go to Nepal, for example, you <input class="gap-input c4u14" data-id="u14c4_7" placeholder="modal + verb" style="min-width:160px;"/> (shout) or raise your voice in public, and you <input class="gap-input c4u14" data-id="u14c4_8" placeholder="modal + verb" style="min-width:160px;"/> (always/walk) around a Buddhist temple in a clockwise direction. You <input class="gap-input c4u14" data-id="u14c4_9" placeholder="modal + verb" style="min-width:160px;"/> (find out) these things before you go.</div></div>
+          <div class="gap-fill-item"><div class="gf-row">Teacher: What things <input class="gap-input c4u14" data-id="u14c4_10" placeholder="modal + verb" style="min-width:160px;"/> (you/arrange) before you travel?</div></div>
+          <div class="gap-fill-item"><div class="gf-row">Student: Well, to visit some countries you <input class="gap-input c4u14" data-id="u14c4_11" placeholder="modal + verb" style="min-width:160px;"/> (have) a visa, so you <input class="gap-input c4u14" data-id="u14c4_12" placeholder="modal + verb" style="min-width:160px;"/> (organise) that before you go.</div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u14" class="btn-check">Check</button>
+          <button id="btn-show-c4u14" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u14" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — General Training Reading Section 2</div>
+  <div class="section-body">
+    <div class="test-tip">Read the questions (1–6) carefully to identify the kind of information you need. Remember the words in the questions will not always match the words in the passage exactly. You may use any letter more than once.</div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–6</span><h3>Questions 1–6 — Multiple matching</h3></div>
+      <div class="exercise-body">
+        <p>Read the passage below and answer Questions 1–6. The reading passage has eleven rules labelled <strong>A–K</strong>. Which rule contains the following information? Write the correct letter <strong>A–K</strong> next to Questions 1–6 below.</p>
+        <div class="passage-text">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">School rules</div>
+          <p><strong>A</strong> Pupils are required to be in their classrooms by 8.30 a.m. each morning for registration. Pupils coming late will be punished accordingly. Pupils may not leave the school grounds during the normal working day without permission. During study periods and recreation students in the sixth form may leave the school grounds provided that parents have given written authorization at the beginning of the year.</p>
+          <p><strong>B</strong> Students must come to school in proper attire. If this basic rule is not observed, the school reserves the right to refuse entry to any student.</p>
+          <p><strong>C</strong> The school strongly disapproves of pupils taking paid employment. It should certainly never interfere with school activities, and will not be accepted as an excuse for missing any school commitment.</p>
+          <p><strong>D</strong> In the case of a pupil being absent from school, please telephone on the first day in all instances. Messages can be left on the answering machine before 7.30 a.m. or you can send an email to the school address to reach us by 8.30 a.m. at the latest.</p>
+          <p><strong>E</strong> Except in the case of illness, students are expected to be present for the entire school year. Routine medical and dental appointments should be arranged so as not to conflict with school commitments, as should family travel.</p>
+          <p><strong>F</strong> The school regards the completion of careful and regular work at home as an indispensable part of the curriculum. Every pupil has a study plan outlining his/her evening obligations day by day and parents are asked to ensure that their child has a suitable place and time in which to do the work prescribed. If a pupil appears to be doing too little work, parents should contact the form teacher at once.</p>
+          <p><strong>G</strong> Homework can be excused only after the receipt and approval by the teacher concerned of a letter from a parent setting out the reasons. Social engagements are not acceptable as an excuse. It is essential that pupils endeavour to catch up on any missed work as soon as possible.</p>
+          <p><strong>H</strong> During the holidays the school and its grounds are out-of-bounds for all pupils, unless accompanied by a teacher. Pupils visiting the school's sports hall or any of the school's grounds or taking part in a school visit of any kind, whether in term or in the holidays, are subject to school rules.</p>
+          <p><strong>I</strong> No pupil may drive a car or motorbike within the school grounds without permission from the headmaster. Permission to come by bicycle should be obtained from the form teacher. Bikes must be walked onto the school grounds. Cycle helmets must be worn and lights used after dark. Rollerblades, roller skates and skateboards are not permitted within the school grounds at any time.</p>
+          <p><strong>J</strong> Bicycles must not be chained to the school railings. Any bicycles brought onto school grounds should be clearly labelled with the owner's name and must be left locked in the bicycle sheds provided.</p>
+          <p><strong>K</strong> Parents are strongly advised to put name tags on their children's belongings. The school cannot be held responsible for any loss or theft of students' property. Students must keep track of their belongings and not leave them lying around unattended.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>information about what to do if your child cannot attend school</span><input class="corr-input d1u14" data-id="u14d1_1" placeholder="A–K" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>the person to contact about how much homework your child should be doing</span><input class="corr-input d1u14" data-id="u14d1_2" placeholder="A–K" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>advice about how students can keep their bicycles secure</span><input class="corr-input d1u14" data-id="u14d1_3" placeholder="A–K" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><span>the school's opinion about schoolchildren working to earn money</span><input class="corr-input d1u14" data-id="u14d1_4" placeholder="A–K" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>details of what parents should do if their child cannot complete their homework</span><input class="corr-input d1u14" data-id="u14d1_5" placeholder="A–K" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>rules about visiting the school property outside school time</span><input class="corr-input d1u14" data-id="u14d1_6" placeholder="A–K" style="width:70px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u14" class="btn-check">Check</button>
+          <button id="btn-show-d1u14" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u14" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q7–13</span><h3>Questions 7–13 — True / False / Not Given</h3></div>
+      <div class="exercise-body">
+        <p>Read the passage below and answer Questions 7–13.</p>
+        <div class="test-tip">True means the ideas or opinions in the statement agree with the information in the passage. False means the ideas or opinions in the statement are incorrect and do not match the passage. Not Given means that these ideas are not mentioned in the passage.</div>
+        <div class="passage-text">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">School of Independent Study — Tuition and fees</div>
+          <p>The university's Independent Study online and correspondence courses offer you the flexibility to reach your educational goals without giving up your life. The study materials you use in your course have been developed by the university faculty, so the material you cover is the same as in the courses offered on campus. The only difference is that you can study and take tests when it's convenient for you.</p>
+          <p>The Independent Study tuition fee is $115 per course. Students may take as many courses as they want. There is a shipping and handling fee of $30 for each course. All Independent Study students must purchase a Study Guide at a cost of $30. The university also charges a connectivity fee of $12 per course. Students enrolling for the first time will be charged a $9 per course Academic Excellence fee; for returning students this fee is just $3 per course. A $15 Academic Records fee is charged once each term, regardless of the number of courses taken. This fee entitles a student to free replacement copies of end-of-course documentation for life. Tuition and fees for out-of-state students are the same as those of local residents.</p>
+          <p>A course can be finished in a minimum of two weeks per module and must be finished in a maximum of four weeks. For example, if your course has three modules you must remain in it for a minimum of six weeks and a maximum of twelve weeks. If you need to meet a deadline, you should take these minimum and maximum periods into account. These periods are calculated from the date you receive your first lesson from the Independent Study office. Modules cannot always be completed in the minimum amount of time. You need to make sure that you know whether your instructors are on vacation at any stage during your enrolment, as this could affect the return of assignments, exams and final grades. Your enrolment is valid for nine months, which begins on the day we post your enrolment application.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">7</span><span>The course content offered through the School of Independent Study is different to the other courses the university offers.</span><input class="corr-input d2u14" data-id="u14d2_7" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">8</span><span>Students will receive all course materials by post.</span><input class="corr-input d2u14" data-id="u14d2_8" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">9</span><span>The Study Guide is optional for Independent Study students.</span><input class="corr-input d2u14" data-id="u14d2_9" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">10</span><span>Students will need to pay for extra copies if they lose their final certificate.</span><input class="corr-input d2u14" data-id="u14d2_10" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">11</span><span>Students are able to complete each module in less than two weeks.</span><input class="corr-input d2u14" data-id="u14d2_11" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">12</span><span>Students may take four weeks to complete a module if necessary.</span><input class="corr-input d2u14" data-id="u14d2_12" placeholder="T/F/NG" style="width:70px;"/></div>
+          <div class="correction-row"><span class="c-num">13</span><span>Some modules take longer than two weeks to complete.</span><input class="corr-input d2u14" data-id="u14d2_13" placeholder="T/F/NG" style="width:70px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-d2u14" class="btn-check">Check</button>
+          <button id="btn-show-d2u14" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u14" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">This is an extract from the second reading text. Without looking back, fill in the gaps with the <strong>correct modal verb or need to</strong>. Then decide whether each verb is used to show <strong>obligation</strong>, <strong>necessity</strong> or <strong>advice</strong>.</div>
+    <div class="passage-text" style="line-height:2.4;">
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> A course can be finished in a minimum of two weeks per module and <input class="gap-input gftu14" data-id="u14gft_1" placeholder="modal" style="min-width:90px;"/> be finished in a maximum of four weeks. <input class="gap-input gftc14" data-id="u14gftc_1" placeholder="obligation/necessity/advice" style="min-width:170px;"/></div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> For example, if your course has three modules you <input class="gap-input gftu14" data-id="u14gft_2" placeholder="modal" style="min-width:90px;"/> remain in it for a minimum of six weeks and a maximum of twelve weeks. <input class="gap-input gftc14" data-id="u14gftc_2" placeholder="obligation/necessity/advice" style="min-width:170px;"/></div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> If you <input class="gap-input gftu14" data-id="u14gft_3" placeholder="modal" style="min-width:90px;"/> meet a deadline, you <input class="gap-input gftu14" data-id="u14gft_4" placeholder="modal" style="min-width:90px;"/> take these minimum and maximum periods into account. <input class="gap-input gftc14" data-id="u14gftc_3" placeholder="obligation/necessity/advice" style="min-width:170px;"/> <input class="gap-input gftc14" data-id="u14gftc_4" placeholder="obligation/necessity/advice" style="min-width:170px;"/></div></div>
+      <div class="gap-fill-item"><div class="gf-row">These periods are calculated from the date you receive your first lesson from the Independent Study office. Modules cannot always be completed in the minimum amount of time.</div></div>
+      <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> You <input class="gap-input gftu14" data-id="u14gft_5" placeholder="modal" style="min-width:90px;"/> make sure that you know whether your instructors are on vacation at any stage during your enrolment, as this could affect the return of assignments, exams and final grades. <input class="gap-input gftc14" data-id="u14gftc_5" placeholder="obligation/necessity/advice" style="min-width:170px;"/></div></div>
+    </div>
+    <div class="exercise-actions">
+      <button id="btn-check-gftu14" class="btn-check">Check</button>
+      <button id="btn-show-gftu14" class="btn-show">Show Answers</button>
+      <button id="btn-reset-gftu14" class="btn-reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 14: Modals 2</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('19','audio-19');
+
+  // A1 pre-listening prediction
+  initGapFill({ inputSelector:'.a1u14', checkId:'btn-check-a1u14', showId:'btn-show-a1u14', resetId:'btn-reset-a1u14',
+    answers:{ u14a1_1:['transport, language lessons, work permits and accommodation',
+                       'transport, language lessons, work permits, accommodation',
+                       'accommodation, transport, work permits, language lessons'] }});
+
+  // A4 classify the modal verbs from the recording
+  initGapFill({ inputSelector:'.a4u14', checkId:'btn-check-a4u14', showId:'btn-show-a4u14', resetId:'btn-reset-a4u14',
+    answers:{ u14a4_1:["mustn't, have to, need","mustn't, 'll have to, 'll need","have to, need, mustn't","need, have to, mustn't","'ll have to, 'll need, mustn't","must, have to, need"],
+              u14a4_2:['should, ought to','ought to, should'],
+              u14a4_3:["needn't, don't need to","don't need to, needn't","needn't","don't have to"] }});
+
+  // A3 advice gaps
+  initGapFill({ inputSelector:'.a3u14', checkId:'btn-check-a3u14', showId:'btn-show-a3u14', resetId:'btn-reset-a3u14',
+    answers:{ u14a3_1:["'ll need to allow","will need to allow",'need to allow'],
+              u14a3_2:['should try to use'],
+              u14a3_3:["'ll have to learn",'will have to learn','have to learn'],
+              u14a3_4:['should always carry'],
+              u14a3_5:["'ll need",'will need'],
+              u14a3_6:['have to get',"'ll have to get",'will have to get'],
+              u14a3_7:["mustn't dress",'must not dress'],
+              u14a3_8:["needn't buy",'don\'t need to buy','do not need to buy'],
+              u14a3_9:['ought to take'] }});
+
+  // C1 underline correct word
+  initGapFill({ inputSelector:'.c1u14', checkId:'btn-check-c1u14', showId:'btn-show-c1u14', resetId:'btn-reset-c1u14',
+    answers:{ u14c1_1:["don't have to"], u14c1_2:['must not'], u14c1_3:['have to'],
+              u14c1_4:["didn't need to go"], u14c1_5:['must'],
+              u14c1_6:["mustn't"], u14c1_7:['had to'], u14c1_8:['have to','must'],
+              u14c1_9:["'ll have to"], u14c1_10:["needn't have worried"] }});
+
+  // C2 dialogue modals
+  initGapFill({ inputSelector:'.c2u14', checkId:'btn-check-c2u14', showId:'btn-show-c2u14', resetId:'btn-reset-c2u14',
+    answers:{ u14c2_1:["won't have to",'needn\'t',"don't need to","don't have to"],
+              u14c2_2:['has to','must','need to'],
+              u14c2_3:['do you have to'],
+              u14c2_4:["didn't have to","didn't need to"],
+              u14c2_5:['had to'],
+              u14c2_6:["didn't have to","didn't need to"],
+              u14c2_7:['will have to',"'ll have to"],
+              u14c2_8:["mustn't"],
+              u14c2_9:['have to'],
+              u14c2_10:['do you really have to'],
+              u14c2_11:['have to'],
+              u14c2_12:['have to'],
+              u14c2_13:['should','must'] }});
+
+  // C3 essay corrections
+  initGapFill({ inputSelector:'.c3u14', checkId:'btn-check-c3u14', showId:'btn-show-c3u14', resetId:'btn-reset-c3u14',
+    answers:{ u14c3_1:['✓','✔','correct','right','tick','ok','c'], u14c3_2:['absolutely must do','must do'],
+              u14c3_3:['must encourage'], u14c3_4:['✓','✔','correct','right','tick','ok','c'],
+              u14c3_5:['should also reduce'], u14c3_6:['✓','✔','correct','right','tick','ok','c'],
+              u14c3_7:['✓','✔','correct','right','tick','ok','c'], u14c3_8:['ought to try to walk','ought to try'],
+              u14c3_9:['had to walk'], u14c3_10:['should try'],
+              u14c3_11:['will have to make','must make'],
+              u14c3_12:["don't have to make",'needn\'t make',"don't need to make"] }});
+
+  // C4 interview dialogue
+  initGapFill({ inputSelector:'.c4u14', checkId:'btn-check-c4u14', showId:'btn-show-c4u14', resetId:'btn-reset-c4u14',
+    answers:{ u14c4_2:['have to consider','ought to consider','should consider'],
+              u14c4_3:['have to have','must have','need to have'],
+              u14c4_4:['ought to work','should work'],
+              u14c4_5:["don't have to travel",'needn\'t travel',"don't need to travel"],
+              u14c4_6:['ought to learn','should learn'],
+              u14c4_7:["mustn't shout",'must not shout'],
+              u14c4_8:['must always walk'],
+              u14c4_9:['ought to find out','should find out'],
+              u14c4_10:['do you have to arrange','do you need to arrange'],
+              u14c4_11:['have to have','must have'],
+              u14c4_12:['ought to organise','have to organise','should organise'] }});
+
+  // D Q1-6 matching
+  initGapFill({ inputSelector:'.d1u14', checkId:'btn-check-d1u14', showId:'btn-show-d1u14', resetId:'btn-reset-d1u14',
+    answers:{ u14d1_1:['D'], u14d1_2:['F'], u14d1_3:['J'], u14d1_4:['C'], u14d1_5:['G'], u14d1_6:['H'] }});
+
+  // D Q7-13 True/False/Not Given
+  initGapFill({ inputSelector:'.d2u14', checkId:'btn-check-d2u14', showId:'btn-show-d2u14', resetId:'btn-reset-d2u14',
+    answers:{ u14d2_7:['FALSE','F'], u14d2_8:['NOT GIVEN','NG','Not Given'], u14d2_9:['FALSE','F'],
+              u14d2_10:['FALSE','F'], u14d2_11:['FALSE','F'], u14d2_12:['TRUE','T'], u14d2_13:['TRUE','T'] }});
+
+  // GFT modals
+  initGapFill({ inputSelector:'.gftu14,.gftc14', checkId:'btn-check-gftu14', showId:'btn-show-gftu14', resetId:'btn-reset-gftu14',
+    answers:{ u14gft_1:['must'], u14gft_2:['must'], u14gft_3:['need to'],
+              u14gft_4:['should'], u14gft_5:['need to'],
+              u14gftc_1:['obligation','obl'], u14gftc_2:['obligation','obl'],
+              u14gftc_3:['necessity','nec'], u14gftc_4:['advice','adv'],
+              u14gftc_5:['necessity','nec'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

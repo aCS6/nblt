@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 24 – Showing Your Position | IELTS Grammar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+:root{--brand:#7c3aed;--brand-dark:#6d28d9;--brand-soft:#ede9fe;--accent:#f59e0b;--good:#16a34a;--good-soft:#dcfce7;--bad:#dc2626;--bad-soft:#fee2e2}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{background:linear-gradient(135deg,#6d28d9,#8b5cf6);color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 10px 25px -5px rgb(0 0 0/.25)}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
+.header-inner .logo{font-size:1.5rem;font-weight:900;letter-spacing:.5px}
+.header-inner .subtitle{font-size:.9rem;opacity:.85}
+.header-back{color:#fff;font-size:.9rem;font-weight:600;margin-left:auto;border:2px solid rgb(255 255 255/.5);border-radius:9999px;padding:5px 16px;transition:.2s;text-decoration:none}
+.header-back:hover{background:rgb(255 255 255/.15)}
+nav{background:#7c3aed;overflow-x:auto;white-space:nowrap;position:sticky;top:var(--header-h,64px);z-index:99;box-shadow:0 4px 12px -4px rgb(0 0 0/.2)}
+nav ul{list-style:none;display:inline-flex;max-width:1100px;margin:0 auto;padding:0 24px}
+nav ul li a{display:inline-block;color:rgb(255 255 255/.82);padding:11px 18px;font-size:.88rem;font-weight:600;border-bottom:3px solid transparent;transition:.2s;text-decoration:none}
+nav ul li a:hover,nav ul li a.active{color:#fff;border-bottom-color:var(--accent)}
+main{max-width:1100px;margin:32px auto;padding:0 20px 60px}
+.section-panel{display:none}.section-panel.active{display:block}
+.section-title{background:linear-gradient(90deg,#7c3aed,#a78bfa);color:#fff;padding:12px 20px;border-radius:12px 12px 0 0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:1.15rem}
+.section-badge{width:32px;height:32px;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:.95rem;background:rgb(255 255 255/.25)}
+.section-body{background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px;padding:28px;margin-bottom:32px}
+.grammar-subtitle{color:#6d28d9;font-weight:700;font-size:1.25rem;margin:0 0 16px;padding-bottom:6px;border-bottom:2px solid #ede9fe}
+.form-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.94rem}
+.form-table th,.form-table td{border:1px solid #e5e7eb;padding:8px 14px;text-align:left}
+.form-table th{background:#7c3aed;color:#fff;font-weight:700}
+.form-table tr:nth-child(even) td{background:#f5f3ff}
+.use-list{list-style:none;margin:14px 0}
+.use-list li{padding:10px 16px 10px 40px;margin-bottom:8px;border-radius:8px;background:#f5f3ff;position:relative}
+.use-list li::before{content:'◆';color:#7c3aed;position:absolute;left:14px}
+.use-list li em{color:#581c87;font-style:italic}
+.warning-box{background:#fffbeb;border-left:4px solid #fbbf24;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.note-box{background:#f0fdf4;border-left:4px solid #16a34a;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.grammar-extra{background:#fff1f2;border:2px solid #f9a8d4;border-radius:12px;padding:16px 20px;margin:16px 0}
+.grammar-extra h4{color:#9f1239;font-weight:700;margin-bottom:8px;font-size:.95rem}
+.kw-tag{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:9999px;padding:2px 10px;font-size:.82rem;font-style:italic;margin:2px}
+.compare-table{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+@media(max-width:768px){.compare-table{grid-template-columns:1fr}}
+.compare-col{border:1px solid #e5e7eb;border-radius:12px;overflow:hidden}
+.compare-col .col-head{background:#c084fc;color:#fff;padding:8px 14px;font-weight:700;font-size:.92rem}
+.compare-col .col-body{padding:12px 14px;font-size:.9rem}
+.audio-player{background:#ede9fe;border-radius:16px;padding:16px 20px;margin:18px 0;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.track-badge{background:#7c3aed;color:#fff;border-radius:9999px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;flex-shrink:0}
+.track-info h4{color:#581c87;font-size:.92rem;font-weight:700}
+.track-info p{color:#6b7280;font-size:.8rem}
+.audio-player iframe{border:none;border-radius:8px;flex:1;min-width:260px;height:80px}
+.exercise{background:#fff;border:1px solid #e5e7eb;border-radius:16px;margin:20px 0;overflow:hidden;box-shadow:0 4px 16px -8px rgb(0 0 0/.08)}
+.exercise-header{background:#6b21a8;color:#fff;padding:12px 20px;display:flex;align-items:center;gap:10px}
+.exercise-header .ex-num{background:#fff;color:#6b21a8;border-radius:9999px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;flex-shrink:0}
+.exercise-header h3{font-size:.95rem;font-weight:600}
+.exercise-body{padding:20px}
+.tf-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f3f4f6}
+.tf-item:last-child{border-bottom:none}
+.item-num{background:#ede9fe;color:#6d28d9;border-radius:9999px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem;flex-shrink:0;margin-top:2px}
+.tf-buttons{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.tf-btn{padding:5px 15px;border:2px solid #7c3aed;border-radius:9999px;background:#fff;color:#7c3aed;font-weight:700;font-size:.82rem;cursor:pointer;transition:.2s}
+.tf-btn:hover{background:#ede9fe}
+.tf-btn.sel-true{background:#bbf7d0;border-color:#16a34a;color:#166534}
+.tf-btn.sel-false{background:#fecaca;border-color:#dc2626;color:#991b1b}
+.tf-feedback{margin-top:4px;font-size:.85rem;font-weight:600}
+.gap-fill-item{margin-bottom:16px}
+.gf-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px;line-height:2.2}
+.gap-input{border:none;border-bottom:2px solid #8b5cf6;padding:2px 5px;font-size:.93rem;color:#3730a3;background:transparent;min-width:90px;outline:none;transition:.2s}
+.gap-input:focus{border-bottom-color:#6d28d9}
+.gap-input.correct{border-bottom-color:#16a34a;background:#f0fdf4;color:#15803d}
+.gap-input.incorrect{border-bottom-color:#dc2626;background:#fef2f2;color:#b91c1c}
+.word-box{background:#f9fafb;border:2px solid #c4b5fd;border-radius:12px;padding:10px 16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.word-chip{background:#ede9fe;color:#581c87;border-radius:9999px;padding:3px 11px;font-size:.88rem;font-style:italic}
+.passage-text{background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:16px 20px;line-height:2.4;margin-bottom:12px;font-size:.93rem}
+.corr-input{border:2px solid #c4b5fd;border-radius:6px;padding:4px 9px;font-size:.9rem;color:#312e81;outline:none}
+.corr-input:focus{border-color:#7c3aed}
+.corr-input.correct{border-color:#16a34a;background:#f0fdf4;color:#15803d}
+.corr-input.incorrect{border-color:#dc2626;background:#fef2f2;color:#b91c1c}
+.test-tip{background:#eff6ff;border-left:4px solid #2563eb;border-radius:6px;padding:10px 16px;margin:12px 0;font-size:.88rem}
+.test-tip::before{content:'💡 Test tip: ';font-weight:700;color:#2563eb}
+.example-box{background:#f5f3ff;border:2px dashed #a78bfa;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.eg-label{font-weight:700;color:#6d28d9;font-size:.84rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.match-select{padding:5px 9px;border:2px solid #c4b5fd;border-radius:6px;font-size:.88rem;color:#581c87;background:#fdf2f8;cursor:pointer;min-width:160px}
+.match-select:focus{outline:none;border-color:#7c3aed}
+.match-select.correct{background:#dcfce7;border-color:#16a34a;color:#166534}
+.match-select.incorrect{background:#fee2e2;border-color:#dc2626;color:#991b1b}
+.btn-check{background:#7c3aed;color:#fff;border:none;padding:10px 26px;border-radius:9999px;font-size:.92rem;font-weight:700;cursor:pointer;transition:.2s;box-shadow:0 4px 14px -4px rgb(124 58 237/.5)}
+.btn-check:hover{background:#6d28d9}
+.btn-show{background:#fff;color:#7c3aed;border:2px solid #7c3aed;padding:7px 20px;border-radius:9999px;font-size:.86rem;font-weight:700;cursor:pointer;transition:.2s}
+.btn-show:hover{background:#f5f3ff}
+.btn-reset{background:#fff;color:#dc2626;border:2px solid #dc2626;padding:7px 20px;border-radius:9999px;font-size:.86rem;font-weight:700;cursor:pointer;transition:.2s}
+.btn-reset:hover{background:#fef2f2}
+.exercise-actions{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.score-badge{display:inline-block;background:#ede9fe;color:#581c87;border-radius:9999px;padding:4px 15px;font-size:.86rem;font-weight:700}
+.score-badge.full{background:#bbf7d0;color:#166534}
+.q-num{background:#f97316;color:#fff;border-radius:4px;padding:1px 6px;font-size:.78rem;font-weight:700}
+.example-label{font-size:.78rem;color:#15803d;font-weight:700}
+footer{background:#581c87;color:rgb(255 255 255/.7);text-align:center;padding:16px;font-size:.82rem}
+@media(max-width:700px){.header-inner .logo{font-size:1.2rem}.section-body{padding:14px}.exercise-body{padding:14px}nav ul li a{padding:9px 12px;font-size:.8rem}}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 24</span>
+    <span class="subtitle">Showing Your Position in a Text — pronouns; adverbs; verbs; adjectives</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active==='sec-a'?'active':''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active==='sec-b'?'active':''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active==='sec-c'?'active':''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active==='sec-d'?'active':''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active==='sec-gft'?'active':''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ SECTION A ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>You are going to hear two students, Nick and Tina, discussing a topic with their tutor. What do you think the topic is?</h3></div>
+      <div class="exercise-body">
+        <div class="note-box">The topic is whether children should be educated at home or at school.</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen (Track 32) and decide whether the statements are True or False.</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">32</div>
+          <div class="track-info"><h4>Track 32 — Unit 24</h4><p>Nick and Tina discuss home vs school education</p></div>
+          <div id="audio-32"></div>
+        </div>
+        <div class="tf-item"><div class="item-num">1</div><div><p>Tina believes that her time at school was good for her.</p><div class="tf-buttons"><button class="tf-btn" onclick="tfClick24(this,'1','T')">True</button><button class="tf-btn" onclick="tfClick24(this,'1','T')">False</button></div><div class="tf-feedback" id="tf24_1"></div></div></div>
+        <div class="tf-item"><div class="item-num">2</div><div><p>Nick had a bad experience at school.</p><div class="tf-buttons"><button class="tf-btn" onclick="tfClick24(this,'2','F')">True</button><button class="tf-btn" onclick="tfClick24(this,'2','F')">False</button></div><div class="tf-feedback" id="tf24_2"></div></div></div>
+        <div class="tf-item"><div class="item-num">3</div><div><p>Nick believes the boy who was bullied probably feels bad about his school days.</p><div class="tf-buttons"><button class="tf-btn" onclick="tfClick24(this,'3','T')">True</button><button class="tf-btn" onclick="tfClick24(this,'3','T')">False</button></div><div class="tf-feedback" id="tf24_3"></div></div></div>
+        <div class="tf-item"><div class="item-num">4</div><div><p>Nick likes the idea of staying at home all day.</p><div class="tf-buttons"><button class="tf-btn" onclick="tfClick24(this,'4','F')">True</button><button class="tf-btn" onclick="tfClick24(this,'4','F')">False</button></div><div class="tf-feedback" id="tf24_4"></div></div></div>
+        <div class="tf-item"><div class="item-num">5</div><div><p>Tina's friend was able to meet new friends easily.</p><div class="tf-buttons"><button class="tf-btn" onclick="tfClick24(this,'5','F')">True</button><button class="tf-btn" onclick="tfClick24(this,'5','F')">False</button></div><div class="tf-feedback" id="tf24_5"></div></div></div>
+        <div class="tf-item"><div class="item-num">6</div><div><p>Tina believes that you receive a better standard of education in school.</p><div class="tf-buttons"><button class="tf-btn" onclick="tfClick24(this,'6','F')">True</button><button class="tf-btn" onclick="tfClick24(this,'6','F')">False</button></div><div class="tf-feedback" id="tf24_6"></div></div></div>
+        <div class="note-box" style="margin-top:10px;"><strong>Answers:</strong> 1 T &nbsp; 2 F &nbsp; 3 T &nbsp; 4 F &nbsp; 5 F &nbsp; 6 F</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and fill in the gaps.</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item">
+          <p style="margin-bottom:6px;font-weight:600;">Nick says:</p>
+          <div class="gf-row">'Well, I'm a bit like you, Tina. I went to a normal school and,
+            <input class="gap-input u24a3" data-id="a3_1a" size="14" placeholder="…"/>, I had a great experience there. Mind you,
+            <input class="gap-input u24a3" data-id="a3_1b" size="10" placeholder="…"/>
+            that being educated at home would be good for some children. There was a boy in my class who was bullied by some older boys, and
+            <input class="gap-input u24a3" data-id="a3_1c" size="12" placeholder="…"/> he must look back at his school days and feel really bad.'
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p style="margin-bottom:6px;font-weight:600;">Tina says:</p>
+          <div class="gf-row">'Yes, I think that's a good point. But,
+            <input class="gap-input u24a3" data-id="a3_2a" size="15" placeholder="…"/>, schools do seem to be more overcrowded and less well-funded these days and
+            <input class="gap-input u24a3" data-id="a3_2b" size="16" placeholder="…"/>
+            the advantages of home education in terms of the quality of education. That's
+            <input class="gap-input u24a3" data-id="a3_2c" size="14" placeholder="…"/>
+            the way my friend felt. Mind you,
+            <input class="gap-input u24a3" data-id="a3_2d" size="12" placeholder="…"/>
+            she finds it hard to interact in large groups of people. And,
+            <input class="gap-input u24a3" data-id="a3_2e" size="14" placeholder="…"/>, she doesn't have a great relationship with her parents these days.
+            <input class="gap-input u24a3" data-id="a3_2f" size="14" placeholder="…"/>
+            she had enough of them as a child!'
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkA3_24()">Check</button>
+          <button class="btn-show" onclick="showA3_24()">Show Answers</button>
+          <button class="btn-reset" onclick="resetA3_24()">Reset</button>
+          <span id="a3-24-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="a3-24-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong><br>
+          1: <em>fortunately; I can see / I think; I think</em><br>
+          2: <em>unfortunately; I can see; certainly / that's; apparently; interestingly; Perhaps</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Look at your answers in Exercise 3 and find examples of:</h3></div>
+      <div class="exercise-body">
+        <ol style="padding-left:20px;line-height:2.4;font-size:.93rem;">
+          <li>Two verbs that express the speaker's attitude or opinion: <span style="color:#581c87;font-style:italic;">I can see; I think</span></li>
+          <li>Three adverbs that show how the speaker feels about the idea: <span style="color:#581c87;font-style:italic;">fortunately; unfortunately; interestingly</span></li>
+          <li>Two adverbs that show possibility: <span style="color:#581c87;font-style:italic;">certainly; perhaps</span></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /sec-a -->
+
+<!-- ═══ SECTION B ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+    <h2 class="grammar-subtitle" style="font-size:1.35rem;margin-bottom:20px;">Showing Your Position in a Text</h2>
+    <p style="margin-bottom:14px;">When speaking or writing we can choose language to indicate our feelings, attitudes, judgments and beliefs. We have to decide where to position ourselves on the topic and demonstrate this through the language we use.</p>
+
+    <h3 class="grammar-subtitle">1 Pronouns</h3>
+    <p style="margin-bottom:10px;">In formal writing, first person pronouns (<em>I, you, we</em>) are not very common, but we can use them to:</p>
+    <ul class="use-list">
+      <li><strong>Give our opinion</strong> with <em>I</em> or <em>we</em>:<br><em>I would argue that all children should attend school.</em></li>
+      <li><strong>Identify with the reader</strong> using <em>we</em> or <em>us</em>:<br><em>Is it better for <strong>us</strong> to educate our children at home?</em> (subjective — includes the writer)<br><em>Is it better for <strong>parents</strong> to educate their children at home?</em> (more objective)</li>
+    </ul>
+
+    <h3 class="grammar-subtitle" style="margin-top:24px;">2 Adverbs</h3>
+    <p style="margin-bottom:10px;">To show our attitude, feelings or assessment we can use:</p>
+    <ul class="use-list">
+      <li><strong>Single adverbs</strong> of attitude (e.g. <em>actually, frankly, fortunately, unfortunately, personally, luckily, interestingly, naturally, surprisingly</em>):<br><em><strong>Frankly</strong>, I'd be totally bored staying at home all day.</em><br><em>But, <strong>unfortunately</strong>, schools do seem to be more overcrowded.</em></li>
+      <li><strong>Adverbial phrases of generalisation</strong> (e.g. <em>broadly speaking, by and large, in general, overall, on the whole, to a great extent</em>):<br><em>But, <strong>in general</strong>, I don't think it is a good idea.</em></li>
+      <li><strong>Adverbial phrases of opinion</strong> (e.g. <em>in my/our view, in my opinion</em>):<br><em><strong>In my opinion</strong> that's a disadvantage.</em></li>
+    </ul>
+    <p style="margin-bottom:10px;">To soften the tone we can use <strong>adverbs of possibility</strong> (e.g. <em>certainly, definitely, maybe, perhaps, possibly, presumably, probably</em>):</p>
+    <div class="example-box">
+      <p><em>Well, that's <strong>certainly</strong> the way my friend felt.</em></p>
+      <p><em><strong>Perhaps</strong> she had enough of them as a child!</em></p>
+    </div>
+    <p style="margin:12px 0 6px;">To report the views of others use (e.g. <em>apparently, according to (somebody), evidently</em>):</p>
+    <div class="example-box">
+      <p><em><strong>According to my friend</strong> they did fun things like going out for walks.</em></p>
+      <p><em><strong>Apparently</strong> there is a network of parents who teach at home.</em></p>
+    </div>
+    <div class="warning-box">⚠ <strong>Definitely</strong> is not usually used at the beginning of a clause:<br>
+    <em>I am <strong>definitely</strong> coming to the party.</em> (NOT <s>Definitely I am coming to the party.</s>)</div>
+    <div class="note-box"><strong>Position of adverbs:</strong> Comment adverbs often come at the beginning or end of a clause (<em>fortunately, interestingly, unfortunately…</em>). Many can also come before the main verb or after <em>be</em>: <em>It is <strong>probably</strong> best. He would <strong>possibly</strong> feel differently.</em></div>
+
+    <h3 class="grammar-subtitle" style="margin-top:24px;">3 Verbs</h3>
+    <p style="margin-bottom:10px;">To show opinion or feelings use verbs such as <em>think, suppose, believe, feel, guess, see</em>:</p>
+    <ul class="use-list">
+      <li><em>I <strong>think</strong> that's a good point.</em></li>
+      <li><em>I <strong>can see</strong> that being educated at home would be good for some children.</em> (= I can understand)</li>
+      <li>When subject is <em>I</em>, it is sometimes preceded by <em>personally</em>: <em><strong>Personally</strong>, I feel the teachers did a really good job.</em></li>
+    </ul>
+    <p style="margin-bottom:10px;">To sound cautious, use <strong>modal verbs of possibility</strong> (<em>may, might, could, must, can</em>) and verbs like <em>seem</em> or <em>appear</em>:</p>
+    <div class="example-box">
+      <p><em>I think he <strong>must</strong> look back at his school days and feel really bad.</em></p>
+      <p><em>Schools <strong>seem</strong> to be more overcrowded and less well-funded these days.</em></p>
+    </div>
+
+    <h3 class="grammar-subtitle" style="margin-top:24px;">4 Adjectives</h3>
+    <p style="margin-bottom:10px;">We can use adjectives:</p>
+    <ul class="use-list">
+      <li><strong>To show feelings</strong> (e.g. <em>glad, delighted, overwhelmed</em>):<br><em>Anyway, I'm <strong>glad</strong> that my parents didn't educate me at home.</em></li>
+      <li><strong>With <em>it + be + adjective + that</em></strong> to show possibility and opinion (e.g. <em>clear, possible, probable, likely</em>):<br><em>Yes, but <strong>it is likely that</strong> those people will be very similar.</em></li>
+    </ul>
+  </div>
+</div><!-- /sec-b -->
+
+<!-- ═══ SECTION C ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <!-- C1 Underline correct word -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Underline the correct word or phrase in the sentences below.</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text" style="line-height:2.8;">
+          <p>1. I'm very worried about the plans to build a new shopping centre here. <em>According to / Apparently</em> my friend they want to knock down some of the houses.</p>
+          <p>2. <em>Apparently, / Personally,</em> I believe that we will live longer in the future.</p>
+          <p>3. Joshua is working this weekend so <em>presumably / actually</em> he will have some time off at a later date.</p>
+          <p>4. We cannot say for sure but <em>definitely / perhaps</em> an advertising campaign would encourage people to recycle their waste more.</p>
+          <p>5. <em>Overall, / Luckily,</em> we can see that the experiments done by the early scientists have had a great effect on our lives today.</p>
+          <p>6. We should <em>probably / personally</em> all reflect on the way we live our lives and try to be more environmentally aware.</p>
+          <p>7. <em>Certainly, / Surprisingly,</em> John agreed to come when I invited him — I hadn't expected that!</p>
+          <p>8. <em>In my opinion / Unfortunately</em> the number of students leaving university without completing their degrees is rising.</p>
+        </div>
+        <div class="note-box" style="margin-top:10px;">
+          <strong>Answers:</strong> 1 According to &nbsp; 2 Personally, &nbsp; 3 presumably &nbsp; 4 perhaps &nbsp;
+          5 Overall, &nbsp; 6 probably &nbsp; 7 Surprisingly, &nbsp; 8 Unfortunately
+        </div>
+      </div>
+    </div>
+
+    <!-- C2 Insert adverb -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Put the words in brackets into the sentences in a suitable place. There may be more than one possible answer.</h3></div>
+      <div class="exercise-body">
+        <p style="font-size:.85rem;color:#6b7280;margin-bottom:12px;">Item 1 is done as an example.</p>
+        <div class="gap-fill-item">
+          <p><span class="q-num">1</span> I <span style="color:#15803d;font-weight:600;font-style:italic;">certainly</span> believe she is the right person for the job, but I feel she may need some further training. (<em>certainly</em>) <span class="example-label">(example)</span></p>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">2</span>
+            <input class="gap-input u24c2" data-id="c2_2" size="14" placeholder="adverb…"/>
+            <span>, the start of the course has been delayed because the tutor is ill. (<em>apparently</em>)</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">3</span>
+            <span>I</span>
+            <input class="gap-input u24c2" data-id="c2_3" size="13" placeholder="adverb…"/>
+            <span>want to go to university when I leave school. (<em>definitely</em>)</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">4</span>
+            <span>I was late for the exam because my bus didn't come, but the exam hadn't started on time so I</span>
+            <input class="gap-input u24c2" data-id="c2_4" size="9" placeholder="adverb…"/>
+            <span>only missed a few minutes. (<em>luckily</em>)</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">5</span>
+            <input class="gap-input u24c2" data-id="c2_5" size="16" placeholder="adverb…"/>
+            <span>, the university has decided to close the music department. (<em>unfortunately</em>)</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">6</span>
+            <input class="gap-input u24c2" data-id="c2_6" size="10" placeholder="adverb…"/>
+            <span>it is time to reorganise our company structure. (<em>perhaps</em>)</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">7</span>
+            <input class="gap-input u24c2" data-id="c2_7" size="14" placeholder="adverb…"/>
+            <span>, my tutor was impressed with the effort I had put into my assignment, but suggested a few changes. (<em>On the whole</em>)</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">8</span>
+            <span>It is</span>
+            <input class="gap-input u24c2" data-id="c2_8" size="10" placeholder="adverb…"/>
+            <span>true that people are living longer today than in the past. (<em>probably</em>)</span>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkC2_24()">Check</button>
+          <button class="btn-show" onclick="showC2_24()">Show Answers</button>
+          <button class="btn-reset" onclick="resetC2_24()">Reset</button>
+          <span id="c2-24-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="c2-24-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong> 2 Apparently &nbsp; 3 definitely &nbsp; 4 luckily &nbsp;
+          5 Unfortunately &nbsp; 6 Perhaps &nbsp; 7 On the whole &nbsp; 8 probably
+        </div>
+      </div>
+    </div>
+
+    <!-- C3 Replace underlined with adverb -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Replace the underlined part of each sentence with an adverb from the box.</h3></div>
+      <div class="exercise-body">
+        <div class="word-box">
+          <span class="word-chip">actually</span><span class="word-chip">apparently</span>
+          <span class="word-chip">evidently</span><span class="word-chip">frankly</span>
+          <span class="word-chip">on the whole</span><span class="word-chip">possibly</span>
+          <span class="word-chip">surprisingly</span><span class="word-chip">unfortunately</span>
+        </div>
+        <div class="gap-fill-item">
+          <p><span class="q-num">1</span> <u>I've heard that</u> he is a teacher. <span style="color:#15803d;font-weight:600;font-style:italic;">Apparently</span> <span class="example-label">(example)</span></p>
+        </div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">2</span><span><u>To be honest</u> I don't really like this kind of literature.</span><input class="gap-input u24c3" data-id="c3_2" size="12" placeholder="adverb…"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">3</span><span><u>I found it unexpected that</u> the survey revealed that university students today spend longer on their work than in the past.</span><input class="gap-input u24c3" data-id="c3_3" size="14" placeholder="adverb…"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">4</span><span><u>I'm not happy about it but</u> I can't come to your party because I'm working.</span><input class="gap-input u24c3" data-id="c3_4" size="16" placeholder="adverb…"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">5</span><span><u>To sum it up, it seems that</u> people prefer to spend festivals with their families or friends rather than alone.</span><input class="gap-input u24c3" data-id="c3_5" size="14" placeholder="adverb…"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">6</span><span><u>From what I have read in the journal, it seems that</u> scientists believe the new drug will work.</span><input class="gap-input u24c3" data-id="c3_6" size="12" placeholder="adverb…"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">7</span><span><u>I am not absolutely certain about this but</u> if we reduce the amount we consume, we will become happier.</span><input class="gap-input u24c3" data-id="c3_7" size="10" placeholder="adverb…"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">8</span><span><u>As a matter of fact</u> I think this is the best piece of work you've done so far.</span><input class="gap-input u24c3" data-id="c3_8" size="10" placeholder="adverb…"/></div></div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkC3_24()">Check</button>
+          <button class="btn-show" onclick="showC3_24()">Show Answers</button>
+          <button class="btn-reset" onclick="resetC3_24()">Reset</button>
+          <span id="c3-24-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="c3-24-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong> 2 Frankly &nbsp; 3 Surprisingly &nbsp; 4 Unfortunately &nbsp;
+          5 On the whole &nbsp; 6 Evidently/Apparently &nbsp; 7 Possibly &nbsp; 8 Actually
+        </div>
+      </div>
+    </div>
+
+    <!-- C4 Insert expressions into model answer -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Put the words or expressions in brackets into a suitable place in the model answer and make any necessary changes.</h3></div>
+      <div class="exercise-body">
+        <div class="example-box" style="margin-bottom:12px;">
+          <div class="eg-label">Essay question</div>
+          <p style="font-weight:700;font-style:italic;">Many people have changed from a mainly meat-based diet to a vegetarian one in recent years. What are the possible reasons for this and to what extent do you consider it a sensible option?</p>
+        </div>
+        <div class="passage-text" style="line-height:2.4;">
+          <p style="margin-bottom:10px;">There are many reasons why people follow a vegetarian diet. Firstly, it is because [<em>they believe that</em>] it is wrong to kill animals. This [<em>may be / could be</em>] due to religious beliefs or it is their own personal philosophy.</p>
+          <p style="margin-bottom:10px;">Another motivation for stopping eating meat is health. The high fibre content of a vegetarian diet reduces the likelihood of suffering from some bowel problems and heart disease. In addition, fewer vegetarians than meat-eaters are overweight. A further advantage is that a vegetarian diet is cheaper than eating meat. [<em>it is possible that; according to research; seems to; can be</em>]</p>
+          <p>Nevertheless, there are some disadvantages. Vegetarians lack a lot of the vitamins and minerals that are present in meat, such as iron or vitamin B12, or calcium if you do not include dairy products in your diet. There is also the social problem of not being able to eat food available at parties and restaurants. However, in terms of health a vegetarian is more likely to be healthy than a non-vegetarian and the advantages outweigh the disadvantages. [<em>it is clear that; can; overall; personally I feel that</em>]</p>
+        </div>
+        <div class="note-box" style="margin-top:10px;">
+          <strong>Notes:</strong> The bracketed words show positions where those adverbs/expressions can be inserted. Multiple placements are possible — the model answer uses them to soften claims and express opinion.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /sec-c -->
+
+<!-- ═══ SECTION D ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice</div>
+  <div class="section-body">
+    <h2 class="grammar-subtitle">Academic Writing Task 2</h2>
+    <div class="test-tip">Make sure you read all parts of the question carefully and address each point. Organise your thoughts well. Do not try to memorise essays. Allow at least 40 minutes and leave time to check spelling.</div>
+    <div style="background:#f0f9ff;border:2px solid #0ea5e9;border-radius:12px;padding:20px;margin:16px 0;">
+      <p style="font-size:.88rem;color:#0369a1;margin-bottom:8px;font-weight:700;">WRITING TASK 2</p>
+      <p style="margin-bottom:8px;">You should spend about 40 minutes on this task. Write about the following topic:</p>
+      <p style="font-style:italic;font-weight:700;color:#312e81;font-size:1rem;margin-bottom:8px;">School children are becoming far too dependent on computers. This is having an alarming effect on reading and writing skills. Teachers need to avoid using computers in the classroom at all costs and go back to teaching basic study skills.</p>
+      <p style="font-style:italic;font-weight:700;color:#312e81;font-size:1rem;margin-bottom:12px;">Do you agree or disagree?</p>
+      <p style="margin-bottom:8px;">Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+      <p style="font-weight:700;">Write at least 250 words.</p>
+    </div>
+    <div class="grammar-extra" style="margin-top:16px;">
+      <h4>Model answer</h4>
+      <p style="font-size:.9rem;line-height:1.9;margin-bottom:10px;">Nowadays, modern technology has totally changed our approach to study. In many countries students no longer have to copy notes by hand from the blackboard; instead the teacher gives them a photocopy. Rather than messy ink and pen, students present a typed-up copy of their assignments. Their computer even checks their spelling as they go. In fact, some people believe that modern technology does a lot of our thinking for us and, as a result, we are losing our ability to think for ourselves.</p>
+      <p style="font-size:.9rem;line-height:1.9;margin-bottom:10px;">In my opinion, spelling skills have definitely deteriorated in recent years. So many young people use mobile phones to send text messages where speed and conciseness are more important than spelling or grammar. Some teachers complain that these students take the same attitude towards their written assignments.</p>
+      <p style="font-size:.9rem;line-height:1.9;margin-bottom:10px;">On the other hand, typed assignments are much easier to read and are much neater. Frankly, I find some notes or texts which are handwritten almost impossible to read. Doctors, for example, have often had a reputation for illegible handwriting, which could lead to disastrous medical mistakes. Perhaps it is time we focused not on handwriting but on presenting information as accurately as possible.</p>
+      <p style="font-size:.9rem;line-height:1.9;">One advantage of computers is that access to the Internet has opened up a world of learning to us. On the whole, rather than holding students back, I believe modern technology has actually improved standards of education considerably.</p>
+    </div>
+  </div>
+</div><!-- /sec-d -->
+
+<!-- ═══ SECTION GFT ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">GFT</span><h3>Look at sentences from a model answer. Fill in the gaps using the words in the box.</h3></div>
+      <div class="exercise-body">
+        <div class="word-box">
+          <span class="word-chip">actually</span><span class="word-chip">definitely</span>
+          <span class="word-chip">frankly</span><span class="word-chip">I believe</span>
+          <span class="word-chip">in my opinion</span>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">1</span>
+            <span>Modern technology does a lot of our thinking for us and as a result</span>
+            <input class="gap-input u24gft" data-id="gft_1" size="14" placeholder="…"/>
+            <span>we are losing our ability to work things out for ourselves.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">2</span>
+            <span>Rather than holding students back, I believe modern technology has</span>
+            <input class="gap-input u24gft" data-id="gft_2" size="10" placeholder="…"/>
+            <span>improved standards of education considerably.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">3</span>
+            <input class="gap-input u24gft" data-id="gft_3" size="16" placeholder="…"/>
+            <span>, handwriting and spelling skills have</span>
+            <input class="gap-input u24gft" data-id="gft_3b" size="13" placeholder="…"/>
+            <span>deteriorated in recent years.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="q-num">4</span>
+            <input class="gap-input u24gft" data-id="gft_4" size="10" placeholder="…"/>
+            <span>, I find some notes or texts which are handwritten impossible to read.</span>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkGFT24()">Check</button>
+          <button class="btn-show" onclick="showGFT24()">Show Answers</button>
+          <button class="btn-reset" onclick="resetGFT24()">Reset</button>
+          <span id="gft24-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="gft24-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong> 1 I believe (in my opinion) &nbsp; 2 actually &nbsp;
+          3 In my opinion (I believe); definitely &nbsp; 4 Frankly
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /sec-gft -->
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 24: Showing Your Position in a Text</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+  loadAudio('32', 'audio-32');
+
+  function norm(s){ return s.trim().toLowerCase().replace(/['']/g,"'"); }
+
+  /* T/F */
+  window.tfClick24 = function(btn, num, correct){
+    var item = btn.closest('.tf-item');
+    item.querySelectorAll('.tf-btn').forEach(function(b){ b.classList.remove('sel-true','sel-false'); });
+    var chose = btn.textContent.trim() === 'True' ? 'T' : 'F';
+    btn.classList.add(chose === 'T' ? 'sel-true' : 'sel-false');
+    var fb = document.getElementById('tf24_'+num);
+    fb.textContent = chose === correct ? '✓ Correct' : '✗ Incorrect — Answer: '+(correct==='T'?'True':'False');
+    fb.style.color = chose === correct ? '#16a34a' : '#dc2626';
+  };
+
+  function makeGap(cls, ans, scoreId, ansId){
+    return {
+      check: function(){
+        var ok=0,tot=0;
+        document.querySelectorAll('.'+cls).forEach(function(inp){
+          var acc=ans[inp.dataset.id]||[];
+          var v=norm(inp.value);
+          inp.classList.remove('correct','incorrect');
+          if(v){tot++;if(acc.some(function(a){return norm(a)===v;})){inp.classList.add('correct');ok++;}else{inp.classList.add('incorrect');}}
+        });
+        var sc=document.getElementById(scoreId);
+        sc.style.display='inline-block';sc.textContent=ok+' / '+tot;
+        sc.className='score-badge'+(ok===tot&&tot>0?' full':'');
+      },
+      show: function(){
+        document.querySelectorAll('.'+cls).forEach(function(inp){
+          var a=ans[inp.dataset.id];if(a){inp.value=a[0];inp.classList.remove('correct','incorrect');inp.classList.add('correct');}
+        });
+        document.getElementById(ansId).style.display='block';
+      },
+      reset: function(){
+        document.querySelectorAll('.'+cls).forEach(function(inp){inp.value='';inp.classList.remove('correct','incorrect');});
+        document.getElementById(scoreId).style.display='none';
+        document.getElementById(ansId).style.display='none';
+      }
+    };
+  }
+
+  /* A3 */
+  var A3 = {
+    a3_1a:['fortunately','luckily'],a3_1b:['i can see','i think'],
+    a3_1c:['i think','i suppose'],
+    a3_2a:['unfortunately'],a3_2b:['i can see','you can see'],
+    a3_2c:["certainly","that's certainly"],a3_2d:['apparently'],
+    a3_2e:['interestingly'],a3_2f:['perhaps','maybe']
+  };
+  var a3h=makeGap('u24a3',A3,'a3-24-score','a3-24-ans');
+  window.checkA3_24=a3h.check; window.showA3_24=a3h.show; window.resetA3_24=a3h.reset;
+
+  /* C2 */
+  var C2 = {
+    c2_2:['apparently'],c2_3:['definitely'],c2_4:['luckily'],
+    c2_5:['unfortunately'],c2_6:['perhaps','maybe'],
+    c2_7:['on the whole'],c2_8:['probably']
+  };
+  var c2h=makeGap('u24c2',C2,'c2-24-score','c2-24-ans');
+  window.checkC2_24=c2h.check; window.showC2_24=c2h.show; window.resetC2_24=c2h.reset;
+
+  /* C3 */
+  var C3 = {
+    c3_2:['frankly'],c3_3:['surprisingly'],c3_4:['unfortunately'],
+    c3_5:['on the whole'],c3_6:['evidently','apparently'],
+    c3_7:['possibly'],c3_8:['actually']
+  };
+  var c3h=makeGap('u24c3',C3,'c3-24-score','c3-24-ans');
+  window.checkC3_24=c3h.check; window.showC3_24=c3h.show; window.resetC3_24=c3h.reset;
+
+  /* GFT */
+  var GFT = {
+    gft_1:['i believe','in my opinion'],
+    gft_2:['actually'],
+    gft_3:['in my opinion','i believe'],
+    gft_3b:['definitely'],
+    gft_4:['frankly']
+  };
+  var gfth=makeGap('u24gft',GFT,'gft24-score','gft24-ans');
+  window.checkGFT24=gfth.check; window.showGFT24=gfth.show; window.resetGFT24=gfth.reset;
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

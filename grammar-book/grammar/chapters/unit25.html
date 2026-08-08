@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 25 – Nominalisation | IELTS Grammar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+:root{--brand:#7c3aed;--brand-dark:#6d28d9;--brand-soft:#ede9fe;--accent:#f59e0b;--good:#16a34a;--bad:#dc2626}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{background:linear-gradient(135deg,#6d28d9,#8b5cf6);color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 10px 25px -5px rgb(0 0 0/.25)}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
+.header-inner .logo{font-size:1.5rem;font-weight:900;letter-spacing:.5px}
+.header-inner .subtitle{font-size:.9rem;opacity:.85}
+.header-back{color:#fff;font-size:.9rem;font-weight:600;margin-left:auto;border:2px solid rgb(255 255 255/.5);border-radius:9999px;padding:5px 16px;transition:.2s;text-decoration:none}
+.header-back:hover{background:rgb(255 255 255/.15)}
+nav{background:#7c3aed;overflow-x:auto;white-space:nowrap;position:sticky;top:var(--header-h,64px);z-index:99;box-shadow:0 4px 12px -4px rgb(0 0 0/.2)}
+nav ul{list-style:none;display:inline-flex;max-width:1100px;margin:0 auto;padding:0 24px}
+nav ul li a{display:inline-block;color:rgb(255 255 255/.82);padding:11px 18px;font-size:.88rem;font-weight:600;border-bottom:3px solid transparent;transition:.2s;text-decoration:none}
+nav ul li a:hover,nav ul li a.active{color:#fff;border-bottom-color:var(--accent)}
+main{max-width:1100px;margin:32px auto;padding:0 20px 60px}
+.section-panel{display:none}.section-panel.active{display:block}
+.section-title{background:linear-gradient(90deg,#7c3aed,#a78bfa);color:#fff;padding:12px 20px;border-radius:12px 12px 0 0;font-weight:700;display:flex;align-items:center;gap:10px;font-size:1.15rem}
+.section-badge{width:32px;height:32px;border-radius:9999px;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:.95rem;background:rgb(255 255 255/.25)}
+.section-body{background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px;padding:28px;margin-bottom:32px}
+.grammar-subtitle{color:#6d28d9;font-weight:700;font-size:1.25rem;margin:0 0 16px;padding-bottom:6px;border-bottom:2px solid #ede9fe}
+.form-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.94rem}
+.form-table th,.form-table td{border:1px solid #e5e7eb;padding:8px 14px;text-align:left}
+.form-table th{background:#7c3aed;color:#fff;font-weight:700}
+.form-table tr:nth-child(even) td{background:#f5f3ff}
+.use-list{list-style:none;margin:14px 0}
+.use-list li{padding:10px 16px 10px 40px;margin-bottom:8px;border-radius:8px;background:#f5f3ff;position:relative}
+.use-list li::before{content:'◆';color:#7c3aed;position:absolute;left:14px}
+.use-list li em{color:#581c87;font-style:italic}
+.warning-box{background:#fffbeb;border-left:4px solid #fbbf24;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.note-box{background:#f0fdf4;border-left:4px solid #16a34a;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.grammar-extra{background:#fff1f2;border:2px solid #f9a8d4;border-radius:12px;padding:16px 20px;margin:16px 0}
+.grammar-extra h4{color:#9f1239;font-weight:700;margin-bottom:8px;font-size:.95rem}
+.compare-table{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+@media(max-width:768px){.compare-table{grid-template-columns:1fr}}
+.compare-col{border:1px solid #e5e7eb;border-radius:12px;overflow:hidden}
+.compare-col .col-head{background:#c084fc;color:#fff;padding:8px 14px;font-weight:700;font-size:.92rem}
+.compare-col .col-body{padding:12px 14px;font-size:.9rem}
+.audio-player{background:#ede9fe;border-radius:16px;padding:16px 20px;margin:18px 0;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.track-badge{background:#7c3aed;color:#fff;border-radius:9999px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;flex-shrink:0}
+.track-info h4{color:#581c87;font-size:.92rem;font-weight:700}
+.track-info p{color:#6b7280;font-size:.8rem}
+.audio-player iframe{border:none;border-radius:8px;flex:1;min-width:260px;height:80px}
+.exercise{background:#fff;border:1px solid #e5e7eb;border-radius:16px;margin:20px 0;overflow:hidden;box-shadow:0 4px 16px -8px rgb(0 0 0/.08)}
+.exercise-header{background:#6b21a8;color:#fff;padding:12px 20px;display:flex;align-items:center;gap:10px}
+.exercise-header .ex-num{background:#fff;color:#6b21a8;border-radius:9999px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;flex-shrink:0}
+.exercise-header h3{font-size:.95rem;font-weight:600}
+.exercise-body{padding:20px}
+.gap-fill-item{margin-bottom:16px}
+.gf-row{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px;line-height:2.2}
+.gap-input{border:none;border-bottom:2px solid #8b5cf6;padding:2px 5px;font-size:.93rem;color:#3730a3;background:transparent;min-width:90px;outline:none;transition:.2s}
+.gap-input:focus{border-bottom-color:#6d28d9}
+.gap-input.correct{border-bottom-color:#16a34a;background:#f0fdf4;color:#15803d}
+.gap-input.incorrect{border-bottom-color:#dc2626;background:#fef2f2;color:#b91c1c}
+.word-box{background:#f9fafb;border:2px solid #c4b5fd;border-radius:12px;padding:10px 16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.word-chip{background:#ede9fe;color:#581c87;border-radius:9999px;padding:3px 11px;font-size:.88rem;font-style:italic}
+.passage-text{background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:16px 20px;line-height:2.4;margin-bottom:12px;font-size:.93rem}
+.test-tip{background:#eff6ff;border-left:4px solid #2563eb;border-radius:6px;padding:10px 16px;margin:12px 0;font-size:.88rem}
+.test-tip::before{content:'💡 Test tip: ';font-weight:700;color:#2563eb}
+.example-box{background:#f5f3ff;border:2px dashed #a78bfa;border-radius:8px;padding:12px 16px;margin:12px 0;font-size:.9rem}
+.eg-label{font-weight:700;color:#6d28d9;font-size:.84rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.btn-check{background:#7c3aed;color:#fff;border:none;padding:10px 26px;border-radius:9999px;font-size:.92rem;font-weight:700;cursor:pointer;transition:.2s;box-shadow:0 4px 14px -4px rgb(124 58 237/.5)}
+.btn-check:hover{background:#6d28d9}
+.btn-show{background:#fff;color:#7c3aed;border:2px solid #7c3aed;padding:7px 20px;border-radius:9999px;font-size:.86rem;font-weight:700;cursor:pointer;transition:.2s}
+.btn-show:hover{background:#f5f3ff}
+.btn-reset{background:#fff;color:#dc2626;border:2px solid #dc2626;padding:7px 20px;border-radius:9999px;font-size:.86rem;font-weight:700;cursor:pointer;transition:.2s}
+.btn-reset:hover{background:#fef2f2}
+.exercise-actions{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.score-badge{display:inline-block;background:#ede9fe;color:#581c87;border-radius:9999px;padding:4px 15px;font-size:.86rem;font-weight:700}
+.score-badge.full{background:#bbf7d0;color:#166534}
+.q-num{background:#f97316;color:#fff;border-radius:4px;padding:1px 6px;font-size:.78rem;font-weight:700}
+.example-label{font-size:.78rem;color:#15803d;font-weight:700}
+footer{background:#581c87;color:rgb(255 255 255/.7);text-align:center;padding:16px;font-size:.82rem}
+@media(max-width:700px){.header-inner .logo{font-size:1.2rem}.section-body{padding:14px}.exercise-body{padding:14px}nav ul li a{padding:9px 12px;font-size:.8rem}}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 25</span>
+    <span class="subtitle">Nominalisation in Written English — forming nouns from verbs, adjectives and linking words</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active==='sec-a'?'active':''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active==='sec-b'?'active':''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active==='sec-c'?'active':''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active==='sec-d'?'active':''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active==='sec-gft'?'active':''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ SECTION A ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>You are going to hear Julie describing what happened when she was stung by a bee. Which symptoms do you think she had?</h3></div>
+      <div class="exercise-body">
+        <div class="word-box">
+          <span class="word-chip">itching</span><span class="word-chip">pain</span><span class="word-chip">redness</span>
+          <span class="word-chip">shaking</span><span class="word-chip">sneezing</span><span class="word-chip">swelling</span>
+        </div>
+        <div class="note-box">Think about which symptoms are typical of a bee sting before you listen.</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen (Track 33) and check if you were right.</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">33</div>
+          <div class="track-info"><h4>Track 33 — Unit 25</h4><p>Julie describes her bee sting experience</p></div>
+          <div id="audio-33"></div>
+        </div>
+        <div class="note-box"><strong>Answer:</strong> She experienced itching, pain, swelling and redness.</div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and answer the questions.</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><p><strong>1.</strong> What was unusual about what happened when Julie was stung?</p>
+          <div class="note-box">She had a very bad reaction and had to go to hospital.</div></div>
+        <div class="gap-fill-item"><p><strong>2.</strong> Where did she get stung?</p>
+          <div class="note-box">On her foot.</div></div>
+        <div class="gap-fill-item"><p><strong>3.</strong> How did it feel?</p>
+          <div class="note-box">It hurt / It was very painful.</div></div>
+        <div class="gap-fill-item"><p><strong>4.</strong> What happened to her foot?</p>
+          <div class="note-box">It went red and swelled up.</div></div>
+        <div class="gap-fill-item"><p><strong>5.</strong> What other effects were there?</p>
+          <div class="note-box">Her foot itched, it was difficult for her to breathe and she kept coughing.</div></div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Read this written scientific account and find how the underlined spoken words are expressed in the written text.</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text" style="font-style:italic;">Following a bee sting the normal reaction is burning pain, redness, irritation and itching. After a person has been stung by a bee once, they may become allergic to the bee's venom. There is a 60% risk of a serious reaction upon re-sting. In this situation there may be swelling in the area around the bite, it may become red and sore, the victim may have breathing difficulties, a dry cough, abdominal pain and vomiting. In extremely serious cases, the throat may swell, blocking the airway and the heart may stop.</div>
+        <ol style="padding-left:20px;line-height:2.4;font-size:.93rem;margin-top:12px;">
+          <li><em>I was really surprised by how much <u>it hurt</u>.</em> → <strong>pain</strong></li>
+          <li><em><u>It itched</u> a bit too.</em> → <strong>itching</strong></li>
+          <li><em>My foot began to go red and <u>swell up</u>.</em> → <strong>swelling</strong></li>
+          <li><em>Then I began to find it <u>difficult to breathe</u> and <u>kept coughing</u>.</em> → <strong>breathing difficulties; a dry cough</strong></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">5</span><h3>Compare the language in the written report with the spoken language.</h3></div>
+      <div class="exercise-body">
+        <ol style="padding-left:20px;line-height:2.4;font-size:.93rem;">
+          <li>What happens to the spoken verbs in the written report? <span style="color:#581c87;font-style:italic;">The verbs are changed to nouns.</span></li>
+          <li>What are the most common verbs in the written text? <span style="color:#581c87;font-style:italic;">be, become (non-action verbs)</span></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /sec-a -->
+
+<!-- ═══ SECTION B ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+    <h2 class="grammar-subtitle" style="font-size:1.35rem;margin-bottom:20px;">Nominalisation in Written English</h2>
+    <p style="margin-bottom:12px;">When we choose to give the main information in a clause as a noun phrase rather than as a verb, this is called <strong>nominalisation</strong>.</p>
+
+    <h3 class="grammar-subtitle">1 Nominalisation in written English</h3>
+    <div class="compare-table">
+      <div class="compare-col">
+        <div class="col-head">Spoken English</div>
+        <div class="col-body">
+          <ul style="padding-left:0;list-style:none;line-height:2;">
+            <li>◆ Actions/events as <strong>verbs</strong>: <em>swell up</em></li>
+            <li>◆ Events happen to people: <em>I reacted badly, my foot began to go red</em></li>
+            <li>◆ Personal pronouns as subjects: <em>I, she</em></li>
+            <li>◆ Action/event verbs: <em>reacted, trod, itched</em></li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-col">
+        <div class="col-head">Written English</div>
+        <div class="col-body">
+          <ul style="padding-left:0;list-style:none;line-height:2;">
+            <li>◆ Actions/events as <strong>nouns</strong>: <em>swelling</em></li>
+            <li>◆ Events expressed impersonally: <em>the normal reaction is…</em></li>
+            <li>◆ Nouns as subjects: <em>a person, the throat</em></li>
+            <li>◆ Non-action verbs: <em>be, have</em></li>
+            <li>◆ Sentences have a lot of vocabulary words</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p style="margin:12px 0 8px;">We can also change <strong>adjectives to nouns</strong>:</p>
+    <div class="example-box">
+      <p><em>The cathedral is <strong>tall</strong> and can be seen from all over the town.</em></p>
+      <p><em>The cathedral's <strong>height</strong> makes it visible all over town.</em></p>
+    </div>
+
+    <h3 class="grammar-subtitle" style="margin-top:24px;">2 Reasons for using nominalisation</h3>
+
+    <h4 style="color:#7c3aed;font-weight:700;margin:12px 0 6px;">Making texts impersonal and authoritative</h4>
+    <p style="margin-bottom:8px;">By turning actions into nouns we make the text less personal and more authoritative. We avoid personal pronouns.</p>
+
+    <h4 style="color:#7c3aed;font-weight:700;margin:12px 0 6px;">Adding information</h4>
+    <p style="margin-bottom:8px;">Nominalisation is particularly useful for Academic Writing Task 1 because we can count, describe and classify noun phrases in ways we cannot do with verbs:</p>
+    <div class="example-box">
+      <p>count: <em>the <strong>two</strong> charts</em></p>
+      <p>describe: <em>the two <strong>coloured</strong> charts</em></p>
+      <p>classify: <em>the two coloured <strong>bar</strong> charts</em></p>
+    </div>
+
+    <h4 style="color:#7c3aed;font-weight:700;margin:12px 0 6px;">Avoiding repetition</h4>
+    <p style="margin-bottom:8px;">We can use nominalisation to refer back to a previously mentioned idea:</p>
+    <div class="example-box">
+      <p><em>The number of unemployed <strong>increased</strong> by 5% last month. The reason for <strong>this increase</strong> is still unclear.</em></p>
+    </div>
+    <p style="margin-bottom:8px;">Nominalisation also helps paraphrase in IELTS Listening and Reading:</p>
+    <div class="example-box">
+      <p><strong>Listening text:</strong> <em>Then I began to find it difficult to <strong>breathe</strong> and kept <strong>coughing</strong>.</em></p>
+      <p><strong>Question options:</strong> A <em>breathing problems</em> &nbsp; C <em>a cough</em> → both are nominalisations of the verbs used.</p>
+    </div>
+  </div>
+</div><!-- /sec-b -->
+
+<!-- ═══ SECTION C ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <!-- C1 Noun forms of verbs -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Write possible noun forms for the following verbs.</h3></div>
+      <div class="exercise-body">
+        <div class="note-box" style="margin-bottom:12px;">There may be more than one correct noun form. Item 1 is given as an example.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">1</span><span>to research:</span><span style="color:#15803d;font-style:italic;font-weight:600;">research, researcher</span><span class="example-label">(example)</span></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">2</span><span>to study:</span><input class="gap-input u25c1" data-id="c1_2" size="20" placeholder="noun form(s)…"/></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">3</span><span>to find:</span><input class="gap-input u25c1" data-id="c1_3" size="20" placeholder="noun form(s)…"/></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">4</span><span>to respond:</span><input class="gap-input u25c1" data-id="c1_4" size="20" placeholder="noun form(s)…"/></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">5</span><span>to measure:</span><input class="gap-input u25c1" data-id="c1_5" size="20" placeholder="noun form(s)…"/></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">6</span><span>to earn:</span><input class="gap-input u25c1" data-id="c1_6" size="20" placeholder="noun form(s)…"/></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">7</span><span>to advertise:</span><input class="gap-input u25c1" data-id="c1_7" size="22" placeholder="noun form(s)…"/></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">8</span><span>to examine:</span><input class="gap-input u25c1" data-id="c1_8" size="22" placeholder="noun form(s)…"/></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">9</span><span>to suggest:</span><input class="gap-input u25c1" data-id="c1_9" size="20" placeholder="noun form(s)…"/></div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="q-num">10</span><span>to create:</span><input class="gap-input u25c1" data-id="c1_10" size="20" placeholder="noun form(s)…"/></div></div>
+        </div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkC1_25()">Check</button>
+          <button class="btn-show" onclick="showC1_25()">Show Answers</button>
+          <button class="btn-reset" onclick="resetC1_25()">Reset</button>
+          <span id="c1-25-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="c1-25-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong><br>
+          2 study; studies; student &nbsp; 3 findings; find &nbsp; 4 response; respondent &nbsp; 5 measurement; measure &nbsp;
+          6 earnings; earner &nbsp; 7 advertisement; advertiser; advertising &nbsp; 8 examination; examiner &nbsp;
+          9 suggestion &nbsp; 10 creation; creativity
+        </div>
+      </div>
+    </div>
+
+    <!-- C2 Adjective to noun -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Complete the sentences with the noun form of the adjective in brackets.</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">1</span><span>The graphs show a significant</span><span style="color:#15803d;font-weight:600;font-style:italic;">difference</span><span>(<em>different</em>) between the ages at which men and women marry.</span><span class="example-label">(example)</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">2</span><span>The</span><input class="gap-input u25c2" data-id="c2_2" size="10" placeholder="…"/><span>(<em>strong</em>) of the government's argument is that many car accidents happen whilst drivers are speaking on mobile phones.</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">3</span><span>The</span><input class="gap-input u25c2" data-id="c2_3" size="8" placeholder="…"/><span>(<em>deep</em>) of the lake means that no one has ever seen the bottom.</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">4</span><span>Some parts of the world also have a special</span><input class="gap-input u25c2" data-id="c2_4" size="8" placeholder="…"/><span>(<em>beautiful</em>) that must be conserved.</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">5</span><span>This is a good essay in parts, but you need to express yourself with more</span><input class="gap-input u25c2" data-id="c2_5" size="9" placeholder="…"/><span>(<em>clear</em>) at times.</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">6</span><span>The discovery of a new species is of great</span><input class="gap-input u25c2" data-id="c2_6" size="11" placeholder="…"/><span>(<em>interesting</em>) to naturalists.</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">7</span><span>The</span><input class="gap-input u25c2" data-id="c2_7" size="12" placeholder="…"/><span>(<em>difficult</em>) facing the scientists is how to prove their theory.</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">8</span><span>The results of this research need to be treated with</span><input class="gap-input u25c2" data-id="c2_8" size="9" placeholder="…"/><span>(<em>cautious</em>).</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">9</span><span>The</span><input class="gap-input u25c2" data-id="c2_9" size="13" placeholder="…"/><span>(<em>significant</em>) of the findings surprised even the researchers.</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">10</span><span>Many older people are afraid to go out at night due to the increase in</span><input class="gap-input u25c2" data-id="c2_10" size="10" placeholder="…"/><span>(<em>violent</em>) in our cities.</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">11</span><span>The current</span><input class="gap-input u25c2" data-id="c2_11" size="15" placeholder="…"/><span>(<em>controversial</em>) over pensions is likely to continue.</span></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="q-num">12</span><span>We apologise for any</span><input class="gap-input u25c2" data-id="c2_12" size="12" placeholder="…"/><span>(<em>confusing</em>) caused by the last-minute change to the schedule.</span></div></div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkC2_25()">Check</button>
+          <button class="btn-show" onclick="showC2_25()">Show Answers</button>
+          <button class="btn-reset" onclick="resetC2_25()">Reset</button>
+          <span id="c2-25-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="c2-25-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong> 2 strength &nbsp; 3 depth &nbsp; 4 beauty &nbsp; 5 clarity &nbsp;
+          6 interest &nbsp; 7 difficulty &nbsp; 8 caution &nbsp; 9 significance &nbsp;
+          10 violence &nbsp; 11 controversy &nbsp; 12 confusion
+        </div>
+      </div>
+    </div>
+
+    <!-- C3 Underline best answers (pie charts) -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Underline the best answers in this model answer about household expenditure pie charts.</h3></div>
+      <div class="exercise-body">
+        <div class="note-box" style="margin-bottom:12px;"><strong>Task:</strong> The two pie charts show the average spending by households in a country at two different points in its economic development (1920 and 2000). Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</div>
+        <div class="passage-text" style="line-height:2.6;">
+          <p>The two pie charts give information about 1 <em>what households spent their money on / <u>household expenditure on goods and services</u></em> in 1920 and 2000. It is immediately obvious that 2 <em><u>there are some quite significant differences</u> / some things are significantly different</em> between the two charts.</p>
+          <p style="margin-top:8px;">In 2000 3 <em><u>the largest proportion of expenditure was</u> / most money was spent</em> on recreation and other items whereas in 1920 it was on food, with recreation and other items accounting for just 7.7%. There is a great difference in terms of 4 <em>the amount of money people spent on food / <u>food expenditure</u></em> between the two years. In 1920 nearly 72% of 5 <em><u>the total household budget</u> / the total of what households spent</em> went towards food, compared to only 22% in 2000.</p>
+          <p style="margin-top:8px;">6 <em><u>There has been a notable increase in</u> / People have notably increased</em> the amount of money spent on travelling and communications between the two dates. In addition, the charts show 7 <em><u>a significant rise in the proportion of money spent on clothing</u> / that people spent more on clothes</em> in 2000 compared to 1920.</p>
+          <p style="margin-top:8px;">There are some similarities, however. For example, in both 1920 and 2000 8 <em>people spent a similar proportion on fuel and lighting. / <u>the proportion of fuel and lighting expenditure was roughly the same.</u></em></p>
+        </div>
+        <div class="note-box" style="margin-top:10px;">
+          <strong>Answers (underlined forms preferred):</strong><br>
+          1 household expenditure on goods and services &nbsp; 2 there are some quite significant differences &nbsp;
+          3 the largest proportion of expenditure was &nbsp; 4 food expenditure &nbsp; 5 the total household budget &nbsp;
+          6 There has been a notable increase in &nbsp; 7 a significant rise in the proportion of money spent on clothing &nbsp;
+          8 the proportion of fuel and lighting expenditure was roughly the same
+        </div>
+      </div>
+    </div>
+
+    <!-- C4 Rewrite using nouns -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Fill in the gaps in the (b) sentences with nouns so they have a similar meaning to the (a) sentences.</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item">
+          <p><strong>1a</strong> She wrote books that children enjoyed.</p>
+          <p><strong>1b</strong> Children enjoyed <span style="color:#15803d;font-style:italic;font-weight:600;">her writing</span>. <span class="example-label">(example)</span></p>
+        </div>
+        <div class="gap-fill-item">
+          <p><strong>2a</strong> Young girls are spending increasing amounts on make-up because they have been influenced by advertising.</p>
+          <div class="gf-row" style="margin-left:1em;"><strong>2b</strong>&nbsp;
+            <input class="gap-input u25c4" data-id="c4_2a" size="10" placeholder="…"/>
+            <span>on make-up amongst young girls is on the</span>
+            <input class="gap-input u25c4" data-id="c4_2b" size="10" placeholder="…"/>
+            <span>due to the</span>
+            <input class="gap-input u25c4" data-id="c4_2c" size="10" placeholder="…"/>
+            <span>of advertising.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><strong>3a</strong> I failed to get good enough grades to get into university because I was ill on the day of the exam.</p>
+          <div class="gf-row" style="margin-left:1em;"><strong>3b</strong>&nbsp;
+            <span>The reason for my</span>
+            <input class="gap-input u25c4" data-id="c4_3a" size="10" placeholder="…"/>
+            <span>to get good enough grades was my</span>
+            <input class="gap-input u25c4" data-id="c4_3b" size="10" placeholder="…"/>
+            <span>on the day of the exam.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><strong>4a</strong> If you eat healthily you can reduce the chances of getting ill.</p>
+          <div class="gf-row" style="margin-left:1em;"><strong>4b</strong>&nbsp;
+            <span>A healthy</span>
+            <input class="gap-input u25c4" data-id="c4_4a" size="6" placeholder="…"/>
+            <span>can lead to a</span>
+            <input class="gap-input u25c4" data-id="c4_4b" size="11" placeholder="…"/>
+            <span>in the chances of getting ill.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><strong>5a</strong> If you use the Internet you risk getting viruses and losing important information.</p>
+          <div class="gf-row" style="margin-left:1em;"><strong>5b</strong>&nbsp;
+            <input class="gap-input u25c4" data-id="c4_5a" size="6" placeholder="…"/>
+            <span>of the Internet increases the</span>
+            <input class="gap-input u25c4" data-id="c4_5b" size="6" placeholder="…"/>
+            <span>of getting viruses which may cause the</span>
+            <input class="gap-input u25c4" data-id="c4_5c" size="6" placeholder="…"/>
+            <span>of important information.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><strong>6a</strong> When people are content because their lives are successful they tend to be easier to communicate with.</p>
+          <div class="gf-row" style="margin-left:1em;"><strong>6b</strong>&nbsp;
+            <input class="gap-input u25c4" data-id="c4_6a" size="12" placeholder="…"/>
+            <span>due to personal</span>
+            <input class="gap-input u25c4" data-id="c4_6b" size="10" placeholder="…"/>
+            <span>tends to lead to improved</span>
+            <input class="gap-input u25c4" data-id="c4_6c" size="14" placeholder="…"/>
+            <span>with other people.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><strong>7a</strong> In the thirteenth century engineers developed new ways to construct buildings which made it possible to build the soaring arches of Salisbury Cathedral.</p>
+          <div class="gf-row" style="margin-left:1em;"><strong>7b</strong>&nbsp;
+            <input class="gap-input u25c4" data-id="c4_7a" size="14" placeholder="…"/>
+            <span>in</span>
+            <input class="gap-input u25c4" data-id="c4_7b" size="14" placeholder="…"/>
+            <span>in the thirteenth century made it possible to build the soaring arches of Salisbury Cathedral.</span>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><strong>8a</strong> The IELTS reading module is difficult because it has long articles with lots of new vocabulary.</p>
+          <div class="gf-row" style="margin-left:1em;"><strong>8b</strong>&nbsp;
+            <span>The</span>
+            <input class="gap-input u25c4" data-id="c4_8" size="12" placeholder="…"/>
+            <span>of the IELTS reading module is due to its long articles containing a lot of new vocabulary.</span>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button class="btn-show" onclick="document.getElementById('c4-25-ans').style.display='block'">Show Answers</button>
+          <button class="btn-reset" onclick="resetC4_25()">Reset</button>
+        </div>
+        <div id="c4-25-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Model answers:</strong><br>
+          2b Spending; increase; influence &nbsp; 3b failure; illness &nbsp; 4b diet; reduction &nbsp;
+          5b Use; risk; loss &nbsp; 6b Contentment; success; communication &nbsp;
+          7b Developments; construction &nbsp; 8b difficulty
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /sec-c -->
+
+<!-- ═══ SECTION D ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice</div>
+  <div class="section-body">
+    <h2 class="grammar-subtitle">Academic Writing Task 1</h2>
+    <div class="test-tip">Spend time studying the information first. Try to identify key areas in the graph where the data changes considerably or where there is no change over a period of time. Do not miss out any important details and make sure you stick to the time limit.</div>
+    <div style="background:#f0f9ff;border:2px solid #0ea5e9;border-radius:12px;padding:20px;margin:16px 0;">
+      <p style="font-size:.88rem;color:#0369a1;margin-bottom:8px;font-weight:700;">WRITING TASK 1</p>
+      <p style="margin-bottom:8px;">You should spend 20 minutes on this task.</p>
+      <p style="font-style:italic;font-weight:700;color:#312e81;margin-bottom:8px;">The graph below shows the population figures of different types of wild birds in the United Kingdom between 1970 and 2004.</p>
+      <p style="font-style:italic;color:#312e81;margin-bottom:12px;">Summarise the information by selecting and reporting the main features, and make comparisons where relevant.</p>
+      <p style="font-weight:700;">Write at least 150 words.</p>
+    </div>
+    <div class="note-box">
+      <strong>Graph data (Population of wild birds 1970–2004, Index 1970=100):</strong><br>
+      • All species (111): relatively stable overall, notable drops 1977–79 and 1982–86, improvement since 1994, slight decrease 2000<br>
+      • Coastal species (20): steady increase to ~135 by 2004<br>
+      • Woodland species (33): decline ~30% between 1974–1992, slight increase 2000, dropped again 2004<br>
+      • Farmland species (19): severe decline from 1978, fell dramatically, rate of decline slowed since 2000, remains ~60
+    </div>
+    <div class="grammar-extra" style="margin-top:16px;">
+      <h4>Model answer</h4>
+      <p style="font-size:.9rem;line-height:1.9;margin-bottom:10px;">The total number of all species of wild birds in the UK has been relatively stable over the last two decades, although there were significant drops in numbers between 1977 and 1979 and again in 1982 and 1986. Since 1994 there has been an improvement in numbers of all species, although the graph shows a slight decrease in 2000.</p>
+      <p style="font-size:.9rem;line-height:1.9;margin-bottom:10px;">In contrast, the population of farmland birds has suffered a severe decline, particularly in 1978 when numbers fell dramatically. The rate of decline in the population appears to have slowed and it has remained relatively stable since 2000.</p>
+      <p style="font-size:.9rem;line-height:1.9;margin-bottom:10px;">There was also a fall in the number of woodland birds of around 30% between 1974 and 1992. The population increased slightly in 2000 but it had dropped again by 2004.</p>
+      <p style="font-size:.9rem;line-height:1.9;">It is only coastal species that have seen a steady increase in population over this period. Their numbers dropped slightly in 1995 and again in 2003 but the overall trend has been a positive one.</p>
+    </div>
+  </div>
+</div><!-- /sec-d -->
+
+<!-- ═══ SECTION GFT ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">GFT</span><h3>Look at extracts from the model answer and underline all examples of nominalisation.</h3></div>
+      <div class="exercise-body">
+        <p style="margin-bottom:14px;font-size:.9rem;">Each sentence below contains at least one nominalisation. Identify and type them.</p>
+        <div class="gap-fill-item">
+          <p><strong>1.</strong> "Since 1994 there has been an improvement in numbers of all species, although the graph shows a slight decrease in 2000."</p>
+          <div class="gf-row" style="margin-left:1em;">
+            Nominalisations: <input class="gap-input u25gft" data-id="gft_1" size="40" placeholder="e.g. improvement, decrease"/>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><strong>2.</strong> "There was also a fall in the number of woodland birds of around 30% between 1974 and 1992."</p>
+          <div class="gf-row" style="margin-left:1em;">
+            Nominalisations: <input class="gap-input u25gft" data-id="gft_2" size="30" placeholder="…"/>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <p><strong>3.</strong> "It is only coastal species that have seen a steady increase in population over this period."</p>
+          <div class="gf-row" style="margin-left:1em;">
+            Nominalisations: <input class="gap-input u25gft" data-id="gft_3" size="30" placeholder="…"/>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button class="btn-check" onclick="checkGFT25()">Check</button>
+          <button class="btn-show" onclick="showGFT25()">Show Answers</button>
+          <button class="btn-reset" onclick="resetGFT25()">Reset</button>
+          <span id="gft25-score" class="score-badge" style="display:none"></span>
+        </div>
+        <div id="gft25-ans" style="display:none;margin-top:12px;" class="note-box">
+          <strong>Answers:</strong><br>
+          1 <em>an improvement in numbers; a slight decrease</em><br>
+          2 <em>a fall in the number of woodland birds</em><br>
+          3 <em>a steady increase in population</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /sec-gft -->
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 25: Nominalisation in Written English</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+  loadAudio('33', 'audio-33');
+
+  function norm(s){ return s.trim().toLowerCase().replace(/['']/g,"'"); }
+
+  function makeGap(cls, ans, scoreId, ansId){
+    return {
+      check: function(){
+        var ok=0,tot=0;
+        document.querySelectorAll('.'+cls).forEach(function(inp){
+          var acc=ans[inp.dataset.id]||[];
+          var v=norm(inp.value);
+          inp.classList.remove('correct','incorrect');
+          if(v){tot++;if(acc.some(function(a){return norm(a)===v;})){inp.classList.add('correct');ok++;}else{inp.classList.add('incorrect');}}
+        });
+        var sc=document.getElementById(scoreId);
+        sc.style.display='inline-block';sc.textContent=ok+' / '+tot;
+        sc.className='score-badge'+(ok===tot&&tot>0?' full':'');
+      },
+      show: function(){
+        document.querySelectorAll('.'+cls).forEach(function(inp){
+          var a=ans[inp.dataset.id];if(a){inp.value=a[0];inp.classList.remove('correct','incorrect');inp.classList.add('correct');}
+        });
+        document.getElementById(ansId).style.display='block';
+      },
+      reset: function(){
+        document.querySelectorAll('.'+cls).forEach(function(inp){inp.value='';inp.classList.remove('correct','incorrect');});
+        document.getElementById(scoreId).style.display='none';
+        document.getElementById(ansId).style.display='none';
+      }
+    };
+  }
+
+  /* C1 */
+  var C1={
+    c1_2:['study','studies','student'],c1_3:['findings','find'],
+    c1_4:['response','respondent'],c1_5:['measurement','measure'],
+    c1_6:['earnings','earner'],c1_7:['advertisement','advertiser','advertising'],
+    c1_8:['examination','examiner'],c1_9:['suggestion'],c1_10:['creation','creativity']
+  };
+  var c1h=makeGap('u25c1',C1,'c1-25-score','c1-25-ans');
+  window.checkC1_25=c1h.check; window.showC1_25=c1h.show; window.resetC1_25=c1h.reset;
+
+  /* C2 */
+  var C2={
+    c2_2:['strength'],c2_3:['depth'],c2_4:['beauty'],c2_5:['clarity'],
+    c2_6:['interest'],c2_7:['difficulty'],c2_8:['caution'],c2_9:['significance'],
+    c2_10:['violence'],c2_11:['controversy'],c2_12:['confusion']
+  };
+  var c2h=makeGap('u25c2',C2,'c2-25-score','c2-25-ans');
+  window.checkC2_25=c2h.check; window.showC2_25=c2h.show; window.resetC2_25=c2h.reset;
+
+  /* C4 */
+  window.resetC4_25=function(){
+    document.querySelectorAll('.u25c4').forEach(function(i){i.value='';i.classList.remove('correct','incorrect');});
+    document.getElementById('c4-25-ans').style.display='none';
+  };
+
+  /* GFT */
+  var GFT={
+    gft_1:['improvement, decrease','an improvement in numbers; a slight decrease','improvement; decrease'],
+    gft_2:['a fall in the number of woodland birds','fall'],
+    gft_3:['a steady increase in population','increase']
+  };
+  var gfth=makeGap('u25gft',GFT,'gft25-score','gft25-ans');
+  window.checkGFT25=gfth.check; window.showGFT25=gfth.show; window.resetGFT25=gfth.reset;
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

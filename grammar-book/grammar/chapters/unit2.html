@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 2 – Past Tenses 1 | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 2</span>
+    <span class="subtitle">Past Tenses 1 — past simple; past continuous; <em>used to</em>; <em>would</em></span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening: Items in a home</h3></div>
+      <div class="exercise-body">
+        <p>You will hear a man giving a talk on the radio about protecting your home from burglaries. Before you listen, look at the pictures of items below. Make a list of all of the items.</p>
+        <img src="../assets/image-contents/u2-section-1-items.png" alt="Six labelled items: A=CDs, B=laptop computer, C=roast chicken, D=purse, E=handbag, F=TV" class="diagram"/>
+        <p class="diagram-caption">Items A–F — identify each one before you listen</p>
+        <ul class="use-list" style="margin-top:12px;">
+          <li>A — CDs</li>
+          <li>B — a laptop computer</li>
+          <li>C — a roast chicken</li>
+          <li>D — a purse</li>
+          <li>E — a handbag</li>
+          <li>F — a TV</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and answer — Track 04</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">04</div>
+          <div class="track-info"><h4>Track 04 — Burglary Radio Talk</h4><p>Context listening — home security</p></div>
+          <div id="audio-04"></div>
+        </div>
+        <p style="margin-top:14px;font-weight:600;">Listen and answer the following questions:</p>
+        <div class="gap-fill-item" style="margin-top:12px;">
+          <div class="gf-row"><span class="item-num">1</span> Which three items from your list were stolen?
+            <input class="gap-input a2-inp" data-id="a2_1" placeholder="…" style="min-width:200px;"/>
+          </div>
+        </div>
+        <div class="gap-fill-item">
+          <div class="gf-row"><span class="item-num">2</span> Why did the man tell this story?</div>
+          <div class="mc-options a2-mc" data-id="a2_2" data-answered="0" style="margin-top:8px;">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> to show that crime has increased</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> to show that crime can happen at any time</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> to show that burglars can open any lock</div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a2" class="btn-check">Check Answers</button>
+          <button id="btn-show-a2" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and complete these sentences — Track 04</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> A few weeks ago a woman <input class="gap-input a3-inp" data-id="a3_1" placeholder="…" style="min-width:100px;"/> to report a burglary.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> It <input class="gap-input a3-inp" data-id="a3_2" placeholder="…" style="min-width:90px;"/> at five in the afternoon when she <input class="gap-input a3-inp" data-id="a3_3" placeholder="…" style="min-width:130px;"/> the news on TV.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> This woman <input class="gap-input a3-inp" data-id="a3_4" placeholder="…" style="min-width:130px;"/> the front door locked.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> When her son got older she <input class="gap-input a3-inp" data-id="a3_5" placeholder="…" style="min-width:150px;"/> the door unlocked whenever she was at home.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> The burglar simply <input class="gap-input a3-inp" data-id="a3_6" placeholder="…" style="min-width:100px;"/> in through the front door.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> The son <input class="gap-input a3-inp" data-id="a3_7" placeholder="…" style="min-width:120px;"/> anything because he <input class="gap-input a3-inp" data-id="a3_8" placeholder="…" style="min-width:130px;"/> to music.</div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> Then the burglar <input class="gap-input a3-inp" data-id="a3_9" placeholder="…" style="min-width:100px;"/> into the front room, <input class="gap-input a3-inp" data-id="a3_10" placeholder="…" style="min-width:130px;"/> all the cupboards and <input class="gap-input a3-inp" data-id="a3_11" placeholder="…" style="min-width:100px;"/> a valuable collection of CDs.</div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3" class="btn-check">Check Answers</button>
+          <button id="btn-show-a3" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Look at sentences 1–7 and answer these questions</h3></div>
+      <div class="exercise-body">
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> Which two sentences provide a background scene and an action? <input class="gap-input a4-inp" data-id="a4_1" placeholder="…" style="min-width:80px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> Which two sentences talk about a single completed action in the past? <input class="gap-input a4-inp" data-id="a4_2" placeholder="…" style="min-width:80px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> Which sentence describes a series of completed actions in the past? <input class="gap-input a4-inp" data-id="a4_3" placeholder="…" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> Which two sentences talk about a repeated action in the past? <input class="gap-input a4-inp" data-id="a4_4" placeholder="…" style="min-width:80px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> Which four tenses or structures are used in sentences 1–7? <input class="gap-input a4-inp" data-id="a4_5" placeholder="…" style="min-width:300px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4" class="btn-check">Check Answers</button>
+          <button id="btn-show-a4" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <!-- B1 Past Simple -->
+    <h2 class="grammar-subtitle">B1 — Past Simple</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; verb + <em>-ed</em> (or <em>-d</em>)</td><td><em>He <strong>worked</strong> for the police.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>did not</em> + verb</td><td><em>She <strong>didn't work</strong> for the police.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Did</em> … + verb?</td><td><em><strong>Did</strong> they <strong>work</strong> for the police?</em></td></tr>
+      </tbody>
+    </table>
+    <div class="warning-box"><strong>Irregular verbs:</strong> Many verbs are irregular: <em><strong>went</strong> (go), <strong>came</strong> (come), <strong>wrote</strong> (write)</em>. Note: <em>be</em> → <em>I/he/she/it <strong>was</strong>; you/we/they <strong>were</strong></em>.</div>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the past simple:</p>
+    <ul class="use-list">
+      <li><strong>To talk about single past completed actions</strong> (the time is often mentioned):<br/>
+        <em>A few weeks ago a woman <strong>called</strong> to report a robbery at her house.</em><br/>
+        But no time reference is necessary if it is already known:<br/>
+        <em>How <strong>did</strong> the burglar <strong>break</strong> in without anybody hearing him?</em>
+      </li>
+      <li><strong>To give a series of actions in the order that they happened:</strong><br/>
+        <em>The burglar <strong>came in</strong> through the front door, <strong>picked up</strong> the woman's handbag, <strong>emptied</strong> it out and <strong>stole</strong> her purse.</em>
+        <img src="../assets/image-contents/u2_timeline_sequence.png" alt="Timeline: sequence of past actions" class="diagram"/>
+        <p class="diagram-caption">Sequence of completed past actions on a timeline (THE PAST → NOW)</p>
+        We often use words like <em>next</em> or <em>then</em> to indicate the sequence of events.
+      </li>
+      <li><strong>To talk about past repeated actions:</strong><br/>
+        <em>When her son got older he often <strong>went out</strong> to visit his friends after school.</em><br/>
+        Note that <em>used to</em> and <em>would</em> can also be used (see B3).
+      </li>
+      <li><strong>To talk about long-term situations in the past which are no longer true:</strong><br/>
+        <em>Bill Murphy <strong>worked</strong> for the police force for over 17 years.</em>
+        <img src="../assets/image-contents/u2_timeline_17years.png" alt="Timeline: 17 years in the past" class="diagram"/>
+        <p class="diagram-caption">A long-term past situation: ← 17 YEARS → NOW</p>
+        <em>Explorers at that time <strong>believed</strong> that the world was flat.</em><br/>
+        Note that <em>used to</em> can also be used (see B3).
+      </li>
+    </ul>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <!-- B2 Past Continuous -->
+    <h2 class="grammar-subtitle">B2 — Past Continuous</h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>was/were</em> + verb + <em>-ing</em></td><td><em>She <strong>was watching</strong> the news.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>was/were not</em> + verb + <em>-ing</em></td><td><em>They <strong>weren't watching</strong> the news.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Was/Were</em> … + verb + <em>-ing?</em></td><td><em><strong>Were</strong> you <strong>watching</strong> the news?</em></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use the past continuous:</p>
+    <ul class="use-list">
+      <li><strong>To provide the background scene to an action or event</strong> (usually in the past simple). Often used with <em>when</em>, <em>while</em> and <em>as</em>:<br/>
+        <em>It happened at five in the afternoon <strong>while</strong> she <strong>was watching</strong> the news on TV.</em><br/>
+        <em>He <strong>was doing</strong> his homework in his bedroom <strong>when</strong> the burglar came into the house.</em>
+        <img src="../assets/image-contents/u2_timeline_pastcont.png" alt="Past continuous background + past simple event" class="diagram"/>
+        <p class="diagram-caption">Past continuous (background) interrupted by a past simple event</p>
+        It is possible to have more than one background scene happening at the same time:<br/>
+        <em>He <strong>was listening</strong> to music and <strong>working</strong> on his computer.</em>
+      </li>
+      <li><strong>When we want to emphasise the activity without focusing on its completion:</strong><br/>
+        <em>For a while last year I <strong>was working</strong> at the cinema, <strong>studying</strong> for my degree and <strong>writing</strong> a column for the local newspaper.</em> (we don't know if the actions were completed or not)<br/>
+        Compare: <em>Last year I <strong>worked</strong> at the cinema, <strong>studied</strong> for my degree and <strong>wrote</strong> a column.</em> (suggests all jobs are now complete, and probably happened in that order)
+      </li>
+    </ul>
+    <div class="warning-box">State verbs (see Unit 1) do not generally have a continuous form.</div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <!-- B3 Used to / Would -->
+    <h2 class="grammar-subtitle">B3 — <em>Used to</em> and <em>Would</em></h2>
+    <table class="form-table">
+      <thead><tr><th>Form</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">+&nbsp; <em>used to / would</em> + infinitive</td><td><em>She <strong>used to</strong> / <strong>would</strong> lock the door.</em></td></tr>
+        <tr><td class="neg">−&nbsp; <em>did not + use to</em> + infinitive</td><td><em>I <strong>didn't use to</strong> lock the door.</em></td></tr>
+        <tr><td class="ques">?&nbsp; <em>Did … use to</em> + infinitive?</td><td><em><strong>Did</strong> they <strong>use to</strong> lock the door?</em></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use <em>used to</em> + infinitive or <em>would</em> + infinitive to talk about past repeated actions:</p>
+    <ul class="use-list">
+      <li><em>She <strong>used to keep</strong> the front door locked.</em> (but she stopped doing this)<br/>
+        <em>She <strong>would leave</strong> the door unlocked whenever she was at home.</em>
+      </li>
+    </ul>
+    <div class="warning-box"><em>Would</em> is unusual in the negative form and in Yes/No questions.</div>
+    <p style="margin:14px 0 8px;">We use <em>used to</em> + infinitive to talk about <strong>permanent situations that are usually no longer true</strong>:</p>
+    <ul class="use-list">
+      <li><em>Bill Murphy <strong>used to work</strong> for the police force.</em> (but he doesn't now)<br/>
+        <span style="text-decoration:line-through;color:#999;">not: Bill Murphy would work for the police force.</span>
+      </li>
+    </ul>
+    <div class="warning-box">We do <strong>not</strong> use <em>used to</em> if we want to talk about <strong>how long</strong> the situation lasted:<br/>
+      <em>Bill Murphy <strong>worked</strong> for the police force for over 17 years.</em><br/>
+      <span style="text-decoration:line-through;color:#999;">not: Bill Murphy used to work for the police force for over 17 years.</span>
+    </div>
+    <div class="warning-box">We do <strong>not</strong> use <em>would</em> with state verbs.</div>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Fill in the gaps with past simple verbs from the box</h3></div>
+      <div class="exercise-body">
+        <div class="word-box"><strong>Word box:</strong><span class="word-chip">allow</span><span class="word-chip">be (×3)</span><span class="word-chip">invent</span><span class="word-chip">increase</span><span class="word-chip">lay</span><span class="word-chip">mean</span><span class="word-chip">own</span><span class="word-chip">receive</span><span class="word-chip">replace</span><span class="word-chip">ride</span><span class="word-chip">take</span><span class="word-chip">walk</span></div>
+        <div class="passage-text">
+          It 1&nbsp;<input class="gap-input c1u2" data-id="u2c1_1" placeholder="…" style="min-width:90px;"/> (not) long ago that the postal service 2&nbsp;<input class="gap-input c1u2" data-id="u2c1_2" placeholder="…" style="min-width:90px;"/> our only way to communicate over any distance. It 3&nbsp;<input class="gap-input c1u2" data-id="u2c1_3" placeholder="…" style="min-width:70px;"/> days to receive letters. The news in letters 4&nbsp;<input class="gap-input c1u2" data-id="u2c1_4" placeholder="…" style="min-width:70px;"/> out of date when people 5&nbsp;<input class="gap-input c1u2" data-id="u2c1_5" placeholder="…" style="min-width:90px;"/> them. This 6&nbsp;<input class="gap-input c1u2" data-id="u2c1_6" placeholder="…" style="min-width:70px;"/> that business was mostly local. When Alexander Graham Bell 7&nbsp;<input class="gap-input c1u2" data-id="u2c1_7" placeholder="…" style="min-width:100px;"/> the telephone in 1876 it 8&nbsp;<input class="gap-input c1u2" data-id="u2c1_8" placeholder="…" style="min-width:70px;"/> the foundation for modern communication. The telephone 9&nbsp;<input class="gap-input c1u2" data-id="u2c1_9" placeholder="…" style="min-width:80px;"/> two people to communicate across a great distance. Eventually computers 10&nbsp;<input class="gap-input c1u2" data-id="u2c1_10" placeholder="…" style="min-width:90px;"/> typewriters and dramatically 11&nbsp;<input class="gap-input c1u2" data-id="u2c1_11" placeholder="…" style="min-width:100px;"/> the speed of work life. Only 50 years ago most people 12&nbsp;<input class="gap-input c1u2" data-id="u2c1_12" placeholder="…" style="min-width:110px;"/> (not) a car. People 13&nbsp;<input class="gap-input c1u2" data-id="u2c1_13" placeholder="…" style="min-width:80px;"/> to work or 14&nbsp;<input class="gap-input c1u2" data-id="u2c1_14" placeholder="…" style="min-width:80px;"/> bicycles.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u2" class="btn-check">Check Answers</button>
+          <button id="btn-show-c1u2" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u2" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Fill in gaps — past simple or past continuous. Where could you use <em>used to</em>?</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text">
+          I 1&nbsp;<input class="gap-input c2u2" data-id="u2c2_1" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(have)</span> a wonderful biology teacher, Mrs Hughes. She 2&nbsp;<input class="gap-input c2u2" data-id="u2c2_2" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(make)</span> us excited about the subject. I remember one lesson; we 3&nbsp;<input class="gap-input c2u2" data-id="u2c2_3" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(study)</span> different types of plants, and Mrs Hughes 4&nbsp;<input class="gap-input c2u2" data-id="u2c2_4" placeholder="…" style="min-width:130px;"/> <span class="hint-text">(describe)</span> the parts of the flower. She 5&nbsp;<input class="gap-input c2u2" data-id="u2c2_5" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(pick up)</span> a purple flower, and then suddenly we 6&nbsp;<input class="gap-input c2u2" data-id="u2c2_6" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(notice)</span> that she 7&nbsp;<input class="gap-input c2u2" data-id="u2c2_7" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(cry)</span>! She 8&nbsp;<input class="gap-input c2u2" data-id="u2c2_8" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(apologise)</span> and 9&nbsp;<input class="gap-input c2u2" data-id="u2c2_9" placeholder="…" style="min-width:70px;"/> <span class="hint-text">(say)</span> nature was so beautiful it made her cry. We 10&nbsp;<input class="gap-input c2u2" data-id="u2c2_10" placeholder="…" style="min-width:130px;"/> <span class="hint-text">(not/know)</span> what to do, but it certainly 11&nbsp;<input class="gap-input c2u2" data-id="u2c2_11" placeholder="…" style="min-width:70px;"/> <span class="hint-text">(make)</span> us think. Something similar 12&nbsp;<input class="gap-input c2u2" data-id="u2c2_12" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(happen)</span> while she 13&nbsp;<input class="gap-input c2u2" data-id="u2c2_13" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(show)</span> us the microscope. She 14&nbsp;<input class="gap-input c2u2" data-id="u2c2_14" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(examine)</span> a slide and she 15&nbsp;<input class="gap-input c2u2" data-id="u2c2_15" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(smile)</span>. She suddenly 16&nbsp;<input class="gap-input c2u2" data-id="u2c2_16" placeholder="…" style="min-width:70px;"/> <span class="hint-text">(get)</span> excited and 17&nbsp;<input class="gap-input c2u2" data-id="u2c2_17" placeholder="…" style="min-width:70px;"/> <span class="hint-text">(say)</span> 'Isn't it wonderful?' Some students 18&nbsp;<input class="gap-input c2u2" data-id="u2c2_18" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(laugh)</span> at her when she 19&nbsp;<input class="gap-input c2u2" data-id="u2c2_19" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(not/look)</span> but I didn't. Her enthusiasm 20&nbsp;<input class="gap-input c2u2" data-id="u2c2_20" placeholder="…" style="min-width:100px;"/> <span class="hint-text">(inspire)</span> me, and I 21&nbsp;<input class="gap-input c2u2" data-id="u2c2_21" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(start)</span> to like biology.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u2" class="btn-check">Check Answers</button>
+          <button id="btn-show-c2u2" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u2" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Use <em>would</em> or <em>used to</em> where possible — Japanese customs dialogue</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text">
+          <p><strong>Teacher:</strong> What sort of things 1&nbsp;<input class="gap-input c3u2" data-id="u2c3_1" placeholder="…" style="min-width:160px;"/> <span class="hint-text">(you/do)</span> as a child?</p>
+          <p><strong>Yoko:</strong> There were many customs that we 2&nbsp;<input class="gap-input c3u2" data-id="u2c3_2" placeholder="…" style="min-width:130px;"/> <span class="hint-text">(follow)</span>. We 3&nbsp;<input class="gap-input c3u2" data-id="u2c3_3" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(move)</span> house when I was seven and we 4&nbsp;<input class="gap-input c3u2" data-id="u2c3_4" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(visit)</span> new neighbours with gifts. People 5&nbsp;<input class="gap-input c3u2" data-id="u2c3_5" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(give)</span> gifts of Japanese noodles.</p>
+          <p><strong>Teacher:</strong> 6&nbsp;<input class="gap-input c3u2" data-id="u2c3_6" placeholder="…" style="min-width:140px;"/> <span class="hint-text">(have)</span> one tradition you particularly remember?</p>
+          <p><strong>Yoko:</strong> Yes — in spring when the cherry blossoms were out. As a family we 7&nbsp;<input class="gap-input c3u2" data-id="u2c3_7" placeholder="…" style="min-width:110px;"/> <span class="hint-text">(go)</span> into the countryside and we 8&nbsp;<input class="gap-input c3u2" data-id="u2c3_8" placeholder="…" style="min-width:120px;"/> <span class="hint-text">(spend)</span> the day eating, drinking and singing. One year my father 9&nbsp;<input class="gap-input c3u2" data-id="u2c3_9" placeholder="…" style="min-width:80px;"/> <span class="hint-text">(take)</span> a lovely photo of me and my sisters.</p>
+          <p><strong>Teacher:</strong> And 10&nbsp;<input class="gap-input c3u2" data-id="u2c3_10" placeholder="…" style="min-width:160px;"/> <span class="hint-text">(you/have to)</span> do anything you didn't like?</p>
+          <p><strong>Yoko:</strong> Yes. We 11&nbsp;<input class="gap-input c3u2" data-id="u2c3_11" placeholder="…" style="min-width:140px;"/> <span class="hint-text">(have to)</span> clean the house thoroughly. My sisters and I 12&nbsp;<input class="gap-input c3u2" data-id="u2c3_12" placeholder="…" style="min-width:190px;"/> <span class="hint-text">(not/look forward to)</span> it very much!</p>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u2" class="btn-check">Check Answers</button>
+          <button id="btn-show-c3u2" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u2" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Tick (✓) correct underlined verbs, correct the wrong ones</h3></div>
+      <div class="exercise-body">
+        <p style="margin-bottom:10px;font-style:italic;">Speaking task: "Describe an unforgettable trip you once made."</p>
+        <img src="../assets/image-contents/u2-section-4-question-image.png" alt="Speaking task card showing: Describe an unforgettable trip you once made — where you went, why you went there, what happened, and explain why you remember it so well. Illustration of people beside a car stuck in snow." class="diagram"/>
+        <p class="diagram-caption">Speaking task context — family car stuck in snow during a winter trip</p>
+        <div class="passage-text" style="line-height:2.4;">
+          I remember a trip I once 1&nbsp;<u>made</u> to my grandmother's house. She 2&nbsp;<u>would live</u> about 30 km away and we 3&nbsp;<u>used to going</u> there quite often. On this occasion we 4&nbsp;<u>set off</u> after school on a cold winter's day. We 5&nbsp;<u>were noticing</u> snow beginning to fall, and as we 6&nbsp;<u>were driving</u> we 7&nbsp;<u>were realising</u> it 8&nbsp;<u>snowed</u> more and more heavily. We 9&nbsp;<u>were skidding</u> and 10&nbsp;<u>went off</u> the road into a ditch. My mother 11&nbsp;<u>was phoning</u> for help. While we 12&nbsp;<u>were waiting</u> it 13&nbsp;<u>was stopping</u> snowing and we 14&nbsp;<u>sang</u> songs to stay cheerful. Eventually the truck 15&nbsp;<u>was coming</u> and we 16&nbsp;<u>decided</u> to go home.
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><input class="corr-input c4u2" data-id="u2c4_1" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">2</span><input class="corr-input c4u2" data-id="u2c4_2" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">3</span><input class="corr-input c4u2" data-id="u2c4_3" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">4</span><input class="corr-input c4u2" data-id="u2c4_4" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">5</span><input class="corr-input c4u2" data-id="u2c4_5" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">6</span><input class="corr-input c4u2" data-id="u2c4_6" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">7</span><input class="corr-input c4u2" data-id="u2c4_7" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">8</span><input class="corr-input c4u2" data-id="u2c4_8" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">9</span><input class="corr-input c4u2" data-id="u2c4_9" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">10</span><input class="corr-input c4u2" data-id="u2c4_10" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">11</span><input class="corr-input c4u2" data-id="u2c4_11" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">12</span><input class="corr-input c4u2" data-id="u2c4_12" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">13</span><input class="corr-input c4u2" data-id="u2c4_13" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">14</span><input class="corr-input c4u2" data-id="u2c4_14" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">15</span><input class="corr-input c4u2" data-id="u2c4_15" placeholder="✓ or correct"/></div>
+          <div class="correction-row"><span class="c-num">16</span><input class="corr-input c4u2" data-id="u2c4_16" placeholder="✓ or correct"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u2" class="btn-check">Check Answers</button>
+          <button id="btn-show-c4u2" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u2" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Academic Reading</div>
+  <div class="section-body">
+    <div class="test-tip">You should spend about 20 minutes on Questions 1–13 which are based on the Reading Passage below.</div>
+
+    <div class="reading-passage">
+      <h3>Jumping Spiders</h3>
+      <div class="rp-sub">Peter Aldhons examines how Portia spiders catch their prey</div>
+      <div class="rp-body">
+        <div class="rp-para"><span class="para-label">A</span>For a stalking predator, the element of surprise is crucial. For jumping spiders that sneak onto other spiders' webs to prey on their owners, it can be the difference between having lunch and becoming it. Now zoologists have discovered the secret of these spiders' tactics: creeping forward when their prey's web is vibrating.</div>
+        <div class="rp-para"><span class="para-label">B</span>The fifteen known species of Portia jumping spiders are relatively small, with adults being about two centimetres long. They habitually stay in the webs of other spiders. Portia spiders live mostly in tropical forests. They will attack something about twice their own size if they are really hungry.</div>
+        <div class="rp-para"><span class="para-label">C</span>All jumping spiders have large eyes that look like binocular lenses. Most jumping spiders locate their prey visually, and then jump and capture from one centimetre to over ten centimetres away. Jumping spiders, including Portia spiders, prey on insects and other arthropods by stalking. Sometimes they lure their victims by vibrating the web to mimic the struggles of a trapped insect.</div>
+        <div class="rp-para"><span class="para-label">D</span>The researchers allowed various prey spiders to spin webs in the laboratory and then introduced Portia spiders. To simulate the shaking effect of a breeze the zoologists used either a model aircraft propeller or attached a tiny magnet to the centre of the web. The researchers noticed that the stalking Portia spiders moved more when the webs were shaking than when they were still.</div>
+        <div class="rp-para"><span class="para-label">E</span>It is the Portia spider's tactic of making its victims' webs shake that has most intrigued the researchers. They noticed that the spiders would sometimes shake their quarry's web violently, then creep forwards up to five millimetres before the vibrations died down. These twangs were much more powerful than the gentler vibrations Portia spiders use to mimic a trapped insect.</div>
+        <div class="rp-para"><span class="para-label">F</span>Other predators make use of natural 'smokescreens' or disguises. 'But this is the first example of an animal making its own smokescreen that we know of,' says Wilcox. 'Portia spiders are clearly intelligent and they often learn from their prey as they are trying to capture it. They do this by making different signals on the web of their prey until the prey spider makes a movement. Portia spiders adjust their stalking strategy according to their prey. Sometimes they will even take an indirect route to reach a prey spider they can see from a distance.'</div>
+      </div>
+    </div>
+
+    <!-- Q1–9 locating information -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q1–9</span><h3>Questions 1–9 — Which paragraph (A–F) contains the following information?</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Scan the passage for relevant information, then check it matches the question exactly. You may use any letter more than once.</div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> the reaction of the Portia spider's prey to strong web vibrations <input class="gap-input d1u2" data-id="u2d1_1" placeholder="A–F" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> a description of how the researchers set up their experiment <input class="gap-input d1u2" data-id="u2d1_2" placeholder="A–F" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> a comparison between Portia spiders and another animal species <input class="gap-input d1u2" data-id="u2d1_3" placeholder="A–F" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> an explanation of how the researchers mimicked natural conditions <input class="gap-input d1u2" data-id="u2d1_4" placeholder="A–F" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> a comparison between Portia spiders and their prey <input class="gap-input d1u2" data-id="u2d1_5" placeholder="A–F" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> the reason why concealment is important to Portia spiders <input class="gap-input d1u2" data-id="u2d1_6" placeholder="A–F" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> a description of the Portia spider's habitat <input class="gap-input d1u2" data-id="u2d1_7" placeholder="A–F" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> the number of species of Portia spiders <input class="gap-input d1u2" data-id="u2d1_8" placeholder="A–F" style="min-width:60px;"/></div></div>
+        <div class="gap-fill-item"><div class="gf-row"><span class="item-num">9</span> an example of the Portia spider's cleverness <input class="gap-input d1u2" data-id="u2d1_9" placeholder="A–F" style="min-width:60px;"/></div></div>
+        <div class="exercise-actions">
+          <button id="btn-check-d1u2" class="btn-check">Check</button>
+          <button id="btn-show-d1u2" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d1u2" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q10–13 multiple choice -->
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">Q10–13</span><h3>Questions 10–13 — Choose the correct letter A, B, C or D</h3></div>
+      <div class="exercise-body">
+        <div class="test-tip">Read all questions and underline key words. Use the questions to locate the relevant part of the passage. If you cannot find an answer, move on and come back later.</div>
+
+        <div class="mc-item">
+          <div class="mc-question">10 In their laboratory experiments, the researchers found that the Portia spiders moved most when the web was</div>
+          <div class="mc-options d2u2-mc" data-id="u2d2_10" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> vibrating.</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> motionless.</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> undisturbed.</div>
+            <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> unoccupied.</div>
+          </div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">11 What discovery did the researchers make about Portia spiders?</div>
+          <div class="mc-options d2u2-mc" data-id="u2d2_11" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> They make very strong vibrations with one leg.</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> They move 5 mm at a time on a still web.</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> They move slowly when vibrations stop.</div>
+            <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> They use energetic vibrations to mimic a trapped insect.</div>
+          </div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">12 Portia spiders are the only known animal to</div>
+          <div class="mc-options d2u2-mc" data-id="u2d2_12" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> use the weather to disguise themselves.</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> mimic other prey-eating animals.</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> create their own smokescreen.</div>
+            <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> stalk using 'trial and error'.</div>
+          </div>
+        </div>
+        <div class="mc-item">
+          <div class="mc-question">13 The Portia spider demonstrates 'thinking ahead' when it</div>
+          <div class="mc-options d2u2-mc" data-id="u2d2_13" data-answered="0">
+            <div class="mc-option" data-letter="A"><span class="opt-letter">A</span> chooses prey that is a short distance away.</div>
+            <div class="mc-option" data-letter="B"><span class="opt-letter">B</span> takes a longer route to reach its prey.</div>
+            <div class="mc-option" data-letter="C"><span class="opt-letter">C</span> reaches its prey in a short time.</div>
+            <div class="mc-option" data-letter="D"><span class="opt-letter">D</span> solves the problem of locating its prey.</div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-show-d2u2" class="btn-show">Show Answers</button>
+          <button id="btn-reset-d2u2" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at the underlined verbs in these sentences from the reading text. Match each sentence (1–3) to an explanation (a–c) by selecting the correct option.</div>
+    <div class="exercise">
+      <div class="exercise-header" style="background:#880e4f;"><span class="ex-num" style="color:#880e4f;">★</span><h3>Match each sentence to its grammatical explanation</h3></div>
+      <div class="exercise-body">
+        <p style="margin-bottom:14px;">Sentences from the text:</p>
+        <ol style="margin-left:20px;margin-bottom:18px;line-height:2;">
+          <li>The researchers <u>allowed</u> various prey spiders to spin webs in the laboratory and then <u>introduced</u> Portia spiders.</li>
+          <li>Portia spiders <u>moved</u> more when the webs <u>were shaking</u> than when they were still.</li>
+          <li>They noticed that the spiders <u>would</u> sometimes <u>shake</u> their quarry's web violently.</li>
+        </ol>
+        <p style="margin-bottom:12px;">Explanations:</p>
+        <div class="gft-item" data-id="u2gft1" data-answered="0">
+          <span class="item-num" style="background:#880e4f;">1</span>
+          <div><div style="margin-bottom:6px;">Sentence 1 shows …</div>
+            <div class="gft-options">
+              <button class="gft-btn" data-value="a">a &nbsp;a series of single past completed actions</button>
+              <button class="gft-btn" data-value="b">b &nbsp;a repeated action in the past</button>
+              <button class="gft-btn" data-value="c">c &nbsp;a background scene and an action</button>
+            </div>
+          </div>
+        </div>
+        <div class="gft-item" data-id="u2gft2" data-answered="0">
+          <span class="item-num" style="background:#880e4f;">2</span>
+          <div><div style="margin-bottom:6px;">Sentence 2 shows …</div>
+            <div class="gft-options">
+              <button class="gft-btn" data-value="a">a &nbsp;a series of single past completed actions</button>
+              <button class="gft-btn" data-value="b">b &nbsp;a repeated action in the past</button>
+              <button class="gft-btn" data-value="c">c &nbsp;a background scene and an action</button>
+            </div>
+          </div>
+        </div>
+        <div class="gft-item" data-id="u2gft3" data-answered="0">
+          <span class="item-num" style="background:#880e4f;">3</span>
+          <div><div style="margin-bottom:6px;">Sentence 3 shows …</div>
+            <div class="gft-options">
+              <button class="gft-btn" data-value="a">a &nbsp;a series of single past completed actions</button>
+              <button class="gft-btn" data-value="b">b &nbsp;a repeated action in the past</button>
+              <button class="gft-btn" data-value="c">c &nbsp;a background scene and an action</button>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-show-gftu2" class="btn-show">Show Answers</button>
+          <button id="btn-reset-gftu2" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 2: Past Tenses 1</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('04','audio-04');
+
+  // A2 MC
+  initMCGroups({ groupSelector:'.a2-mc', answers:{ a2_2:'B' }, showId:'btn-show-a2', resetId:'btn-reset-a2' });
+  initGapFill({ inputSelector:'.a2-inp', checkId:'btn-check-a2', showId:'btn-show-a2', resetId:'btn-reset-a2',
+    answers:{ a2_1:['CDs; a roast chicken; a purse','CDs, a roast chicken and a purse'] }});
+
+  // A3 gap fill
+  initGapFill({ inputSelector:'.a3-inp', checkId:'btn-check-a3', showId:'btn-show-a3', resetId:'btn-reset-a3',
+    answers:{ a3_1:['called'], a3_2:['happened'], a3_3:['was watching'], a3_4:['used to keep','kept'], a3_5:['would leave','left'], a3_6:['walked'], a3_7:["didn't hear","did not hear"], a3_8:['was listening'], a3_9:['went'], a3_10:['opened'], a3_11:['took'] }});
+
+  // A4 gap fill
+  initGapFill({ inputSelector:'.a4-inp', checkId:'btn-check-a4', showId:'btn-show-a4', resetId:'btn-reset-a4',
+    answers:{ a4_1:['2 and 6','sentences 2 and 6'], a4_2:['1 and 5','sentences 1 and 5'], a4_3:['7','sentence 7'], a4_4:['3 and 4','sentences 3 and 4'], a4_5:['past simple; past continuous; would; used to'] }});
+
+  // C1
+  initGapFill({ inputSelector:'.c1u2', checkId:'btn-check-c1u2', showId:'btn-show-c1u2', resetId:'btn-reset-c1u2',
+    answers:{ u2c1_1:["wasn't",'was not'], u2c1_2:['was'], u2c1_3:['took'], u2c1_4:['was'], u2c1_5:['received'], u2c1_6:['meant'], u2c1_7:['invented'], u2c1_8:['laid'], u2c1_9:['allowed'], u2c1_10:['replaced'], u2c1_11:['increased'], u2c1_12:["didn't own",'did not own'], u2c1_13:['walked'], u2c1_14:['rode'] }});
+
+  // C2
+  initGapFill({ inputSelector:'.c2u2', checkId:'btn-check-c2u2', showId:'btn-show-c2u2', resetId:'btn-reset-c2u2',
+    answers:{ u2c2_1:['had'], u2c2_2:['made'], u2c2_3:['were studying'], u2c2_4:['was describing'], u2c2_5:['picked up'], u2c2_6:['noticed'], u2c2_7:['was crying'], u2c2_8:['apologised'], u2c2_9:['said'], u2c2_10:["didn't know",'did not know'], u2c2_11:['made'], u2c2_12:['happened'], u2c2_13:['was showing'], u2c2_14:['was examining'], u2c2_15:['was smiling'], u2c2_16:['got'], u2c2_17:['said'], u2c2_18:['laughed'], u2c2_19:["wasn't looking",'was not looking'], u2c2_20:['inspired'], u2c2_21:['started'] }});
+
+  // C3
+  initGapFill({ inputSelector:'.c3u2', checkId:'btn-check-c3u2', showId:'btn-show-c3u2', resetId:'btn-reset-c3u2',
+    answers:{ u2c3_1:['did you use to do'], u2c3_2:['used to follow','would follow'], u2c3_3:['moved'], u2c3_4:['visited'], u2c3_5:['used to give','would give'], u2c3_6:['Did you use to have'], u2c3_7:['really used to like','used to really like'], u2c3_8:['used to go','would go'], u2c3_9:['used to spend','would spend'], u2c3_10:['took'], u2c3_11:['did you use to have to'], u2c3_12:['used to have to','had to'], u2c3_13:["didn't use to look forward to"] }});
+
+  // C4
+  initGapFill({ inputSelector:'.c4u2', checkId:'btn-check-c4u2', showId:'btn-show-c4u2', resetId:'btn-reset-c4u2',
+    answers:{ u2c4_1:['✓'], u2c4_2:['used to live','lived'], u2c4_3:['used to go'], u2c4_4:['✓'], u2c4_5:['noticed'], u2c4_6:['✓'], u2c4_7:['realised'], u2c4_8:['was snowing'], u2c4_9:['skidded'], u2c4_10:['✓'], u2c4_11:['phoned'], u2c4_12:['✓'], u2c4_13:['stopped'], u2c4_14:['✓'], u2c4_15:['came'], u2c4_16:['✓'] }});
+
+  // D Q1–9 locating
+  initGapFill({ inputSelector:'.d1u2', checkId:'btn-check-d1u2', showId:'btn-show-d1u2', resetId:'btn-reset-d1u2',
+    answers:{ u2d1_1:['E'], u2d1_2:['D'], u2d1_3:['F'], u2d1_4:['D'], u2d1_5:['B'], u2d1_6:['A'], u2d1_7:['B'], u2d1_8:['B'], u2d1_9:['F'] }});
+
+  // D Q10–13 MC
+  initMCGroups({ groupSelector:'.d2u2-mc', answers:{ u2d2_10:'A', u2d2_11:'A', u2d2_12:'C', u2d2_13:'B' }, showId:'btn-show-d2u2', resetId:'btn-reset-d2u2' });
+
+  // GFT
+  initGFT({ showId:'btn-show-gftu2', resetId:'btn-reset-gftu2',
+    answers:{ u2gft1:'a', u2gft2:'c', u2gft3:'b' }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>

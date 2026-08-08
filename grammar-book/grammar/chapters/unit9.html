@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 9 – Pronouns and Referencing | IELTS Grammar</title>
+
+  <!-- Tailwind CSS + Alpine.js (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+  <style id="grammar-components">
+/* ==========================================================================
+   IELTS Grammar App – shared component styles
+   styles/tailwind-components.css
+   ---------------------------------------------------------------
+   Inlined into every page as a normal <style> block. Uses the Tailwind
+   v3 colour palette by name/value but is written as plain CSS (NO @apply),
+   so it renders identically regardless of whether the Play CDN compiles
+   custom @apply blocks. It is Tailwind-driven in look and feel.
+   ========================================================================== */
+
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-soft: #ede9fe;
+  --accent: #f59e0b;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ── Header & nav ── */
+header {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / .25);
+}
+.header-inner {
+  max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-inner .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: .5px; }
+.header-inner .subtitle { font-size: .9rem; opacity: .85; }
+.header-back {
+  color: #fff; font-size: .9rem; font-weight: 600; margin-left: auto;
+  border: 2px solid rgb(255 255 255 / .5); border-radius: 9999px;
+  padding: 5px 16px; transition: .2s; text-decoration: none;
+}
+.header-back:hover { background: rgb(255 255 255 / .15); }
+
+nav {
+  background: #7c3aed; overflow-x: auto; white-space: nowrap;
+  position: sticky; top: var(--header-h, 64px); z-index: 99;
+  box-shadow: 0 4px 12px -4px rgb(0 0 0 / .2);
+}
+nav ul { list-style: none; display: inline-flex; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav ul li a {
+  display: inline-block; color: rgb(255 255 255 / .82); padding: 11px 18px;
+  font-size: .88rem; font-weight: 600; border-bottom: 3px solid transparent; transition: .2s;
+  text-decoration: none;
+}
+nav ul li a:hover, nav ul li a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* ── Layout ── */
+main { max-width: 1100px; margin: 32px auto; padding: 0 20px 60px; }
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.section-title {
+  background: linear-gradient(90deg, #7c3aed, #a78bfa); color: #fff;
+  padding: 12px 20px; border-radius: 12px 12px 0 0; font-weight: 700;
+  display: flex; align-items: center; gap: 10px; font-size: 1.15rem;
+}
+.section-badge {
+  width: 32px; height: 32px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; flex-shrink: 0; font-size: .95rem;
+  background: rgb(255 255 255 / .25);
+}
+.section-body {
+  background: #fff; border: 1px solid #e2e8f0; border-top: none;
+  border-radius: 0 0 16px 16px; padding: 28px; margin-bottom: 32px;
+}
+
+/* ── Grammar reference ── */
+.grammar-subtitle { color: #6d28d9; font-weight: 700; font-size: 1.25rem; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 2px solid #ede9fe; }
+.form-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: .94rem; }
+.form-table th, .form-table td { border: 1px solid #e5e7eb; padding: 8px 14px; text-align: left; }
+.form-table th { background: #7c3aed; color: #fff; font-weight: 700; }
+.form-table tr:nth-child(even) td { background: #f5f3ff; }
+.form-table .pos { background: #d1fae5; color: #166534; font-weight: 700; }
+.form-table .neg { background: #fee2e2; color: #991b1b; font-weight: 700; }
+.form-table .ques { background: #dbeafe; color: #1e40af; font-weight: 700; }
+
+.use-list { list-style: none; margin: 14px 0; }
+.use-list li { padding: 10px 16px 10px 40px; margin-bottom: 8px; border-radius: 8px; background: #f5f3ff; position: relative; }
+.use-list li::before { content: '◆'; color: #7c3aed; position: absolute; left: 14px; }
+.use-list li em { color: #581c87; font-style: italic; }
+.use-list li strong { color: #312e81; }
+
+.warning-box { background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.note-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.grammar-extra { background: #fff1f2; border: 2px solid #f9a8d4; border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.grammar-extra h4 { color: #9f1239; font-weight: 700; margin-bottom: 8px; font-size: .95rem; }
+.kw-tag { display: inline-block; background: #eef2ff; color: #3730a3; border-radius: 9999px; padding: 2px 10px; font-size: .82rem; font-style: italic; margin: 2px; }
+
+/* ── Compare table ── */
+.compare-table { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+@media (max-width: 768px) { .compare-table { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.compare-col .col-head { background: #c084fc; color: #fff; padding: 8px 14px; font-weight: 700; font-size: .92rem; }
+.compare-col .col-body { padding: 12px 14px; font-size: .9rem; }
+.compare-col .col-body li { padding: 6px 0; list-style: none; border-bottom: 1px solid #f9fafb; }
+.compare-col .col-body li:last-child { border-bottom: none; }
+
+/* ── Diagram image ── */
+.diagram { display: block; max-width: 100%; border: 1px solid #e5e7eb; border-radius: 8px; margin: 16px auto; background: #fafafa; padding: 8px; }
+.diagram-caption { text-align: center; font-size: .82rem; color: #6b7280; font-style: italic; margin-top: -10px; margin-bottom: 14px; }
+
+/* ── State verb grid ── */
+.state-verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin: 14px 0; }
+.state-verb-card { background: #ede9fe; border-radius: 12px; padding: 12px; }
+.state-verb-card h4 { color: #581c87; font-size: .85rem; text-transform: uppercase; letter-spacing: .5px; font-weight: 700; margin-bottom: 6px; }
+.state-verb-card p { font-size: .85rem; color: #374151; font-style: italic; }
+.exception-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 6px; padding: 16px 20px; margin: 14px 0; }
+.exception-box h4 { color: #166534; font-weight: 700; margin-bottom: 10px; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
+.cp-item { background: #fff; border-radius: 4px; padding: 8px 12px; font-size: .88rem; }
+.cp-item em { color: #15803d; }
+.cp-item span { color: #6b7280; font-size: .8rem; }
+
+/* ── Audio player ── */
+.audio-player { background: #ede9fe; border-radius: 16px; padding: 16px 20px; margin: 18px 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.track-badge { background: #7c3aed; color: #fff; border-radius: 9999px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.track-info h4 { color: #581c87; font-size: .92rem; font-weight: 700; }
+.track-info p { color: #6b7280; font-size: .8rem; }
+.audio-player .no-link { background: #fff7ed; border: 1px dashed #fbbf24; border-radius: 6px; padding: 8px 14px; font-size: .85rem; color: #c2410c; flex: 1; min-width: 200px; }
+.audio-player iframe { border: none; border-radius: 8px; flex: 1; min-width: 260px; height: 80px; }
+
+/* ── Exercise containers ── */
+.exercise { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 16px -8px rgb(0 0 0 / .08); }
+.exercise-header { background: #6b21a8; color: #fff; padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+.exercise-header .ex-num { background: #fff; color: #6b21a8; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .85rem; flex-shrink: 0; }
+.exercise-header h3 { font-size: .95rem; font-weight: 600; }
+.exercise-body { padding: 20px; }
+
+/* ── True/False ── */
+.tf-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+.tf-item:last-child { border-bottom: none; }
+.item-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; margin-top: 2px; }
+.tf-buttons { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.tf-btn { padding: 5px 15px; border: 2px solid #7c3aed; border-radius: 9999px; background: #fff; color: #7c3aed; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .2s; }
+.tf-btn:hover { background: #ede9fe; }
+.tf-btn.sel-true { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.tf-btn.sel-false { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+.tf-feedback { margin-top: 4px; font-size: .85rem; font-weight: 600; }
+.correction-text { color: #b91c1c; font-style: italic; font-size: .85rem; margin-top: 3px; }
+
+/* ── Multiple choice ── */
+.mc-item { margin-bottom: 22px; }
+.mc-question { font-weight: 600; margin-bottom: 10px; }
+.mc-options { display: flex; flex-direction: column; gap: 8px; }
+.mc-option { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: .2s; font-size: .93rem; }
+.mc-option:hover { border-color: #a78bfa; background: #f5f3ff; }
+.opt-letter { background: #ede9fe; color: #7c3aed; border-radius: 9999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.mc-option.correct { border-color: #16a34a; background: #dcfce7; }
+.mc-option.incorrect { border-color: #dc2626; background: #fee2e2; }
+.mc-option.correct .opt-letter { background: #16a34a; color: #fff; }
+.mc-option.incorrect .opt-letter { background: #dc2626; color: #fff; }
+.mc-feedback { margin-top: 6px; font-size: .85rem; font-weight: 600; }
+
+/* ── Sentence endings ── */
+.endings-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.endings-item .stem { flex: 1; min-width: 180px; }
+.endings-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ending-btn { padding: 6px 12px; border: 2px solid #c084fc; border-radius: 8px; background: #fff; color: #581c87; font-size: .86rem; cursor: pointer; transition: .2s; text-align: left; }
+.ending-btn:hover { background: #f5f3ff; }
+.ending-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; }
+.ending-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; }
+
+/* ── Gap fill ── */
+.gap-fill-item { margin-bottom: 16px; }
+.gf-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px; line-height: 2.2; }
+.gap-input { border: none; border-bottom: 2px solid #8b5cf6; padding: 2px 5px; font-size: .93rem; color: #3730a3; background: transparent; min-width: 90px; outline: none; transition: .2s; }
+.gap-input:focus { border-bottom-color: #6d28d9; }
+.gap-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.gap-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.hint-text { font-size: .8rem; color: #9ca3af; font-style: italic; }
+.example-label { font-size: .78rem; color: #15803d; font-weight: 700; }
+
+/* ── Word box ── */
+.word-box { background: #f9fafb; border: 2px solid #c4b5fd; border-radius: 12px; padding: 10px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.word-chip { background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 3px 11px; font-size: .88rem; font-style: italic; }
+
+/* ── Passage text ── */
+.passage-text { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 20px; line-height: 2.4; margin-bottom: 12px; font-size: .93rem; }
+
+/* ── Correction exercise ── */
+.correction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 14px; }
+@media (max-width: 768px) { .correction-grid { grid-template-columns: 1fr; } }
+.correction-extract { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.correction-extract h4 { background: #c084fc; color: #fff; padding: 7px 14px; font-size: .92rem; }
+.extract-body { padding: 12px; font-style: italic; font-size: .9rem; line-height: 1.9; color: #374151; background: #f9fafb; }
+.wrong-verb { text-decoration: underline wavy #dc2626; color: #dc2626; font-weight: 700; }
+.chore-label { font-size: .78rem; font-weight: 700; color: #6d28d9; text-transform: uppercase; letter-spacing: .5px; margin-top: 12px; margin-bottom: 6px; }
+.free-area { margin-top: 8px; }
+.correction-answers { padding: 0 12px 12px; }
+.correction-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.c-num { background: #ede9fe; color: #6d28d9; border-radius: 9999px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .78rem; flex-shrink: 0; }
+.corr-input { border: 2px solid #c4b5fd; border-radius: 6px; padding: 4px 9px; font-size: .9rem; color: #312e81; width: 150px; outline: none; }
+.corr-input:focus { border-color: #7c3aed; }
+.corr-input.correct { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.corr-input.incorrect { border-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+.muted-label { color: #6d28d9; font-size: .82rem; font-style: italic; margin-left: 6px; }
+.opt-inline { font-size: .85rem; color: #312e81; margin-top: 2px; }
+
+/* ── Test practice ── */
+.test-tip { background: #eff6ff; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 16px; margin: 12px 0; font-size: .88rem; }
+.test-tip::before { content: '💡 Test tip: '; font-weight: 700; color: #2563eb; }
+.example-box { background: #f5f3ff; border: 2px dashed #a78bfa; border-radius: 8px; padding: 12px 16px; margin: 12px 0; font-size: .9rem; }
+.eg-label { font-weight: 700; color: #6d28d9; font-size: .84rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 5px; }
+
+/* ── Notes completion ── */
+.notes-form { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 16px; padding: 20px; margin-top: 14px; }
+.notes-form h4 { font-size: 1rem; color: #c2410c; margin-bottom: 14px; border-bottom: 2px solid #fde68a; padding-bottom: 5px; font-weight: 700; }
+.notes-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; font-size: .93rem; line-height: 2.2; }
+.q-num { background: #f97316; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: .78rem; font-weight: 700; }
+.notes-input { border: none; border-bottom: 2px solid #f97316; padding: 2px 5px; min-width: 100px; font-size: .93rem; background: transparent; outline: none; color: #312e81; }
+.notes-input:focus { border-bottom-color: #ea580c; }
+.notes-input.correct { border-bottom-color: #16a34a; background: #f0fdf4; color: #15803d; }
+.notes-input.incorrect { border-bottom-color: #dc2626; background: #fef2f2; color: #b91c1c; }
+
+/* ── Grammar focus task ── */
+.gft-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.gft-item .item-num { background: #9d174d; color: #fff; }
+.gft-options { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.gft-btn { padding: 5px 15px; border: 2px solid #ec4899; border-radius: 9999px; background: #fff; color: #9d174d; font-style: italic; font-size: .88rem; cursor: pointer; transition: .2s; }
+.gft-btn:hover { background: #fdf2f8; }
+.gft-btn.correct { background: #bbf7d0; border-color: #16a34a; color: #166534; font-style: normal; }
+.gft-btn.incorrect { background: #fecaca; border-color: #dc2626; color: #991b1b; text-decoration: line-through; }
+
+/* ── Match exercise ── */
+.match-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.match-item .stem { flex: 1; }
+.match-select { padding: 5px 9px; border: 2px solid #c4b5fd; border-radius: 6px; font-size: .88rem; color: #581c87; background: #fdf2f8; cursor: pointer; min-width: 200px; }
+.match-select:focus { outline: none; border-color: #7c3aed; }
+.match-select.correct { background: #dcfce7; border-color: #16a34a; color: #166534; }
+.match-select.incorrect { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+/* ── Reading passage ── */
+.reading-passage { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.reading-passage h3 { background: #7c3aed; color: #fff; padding: 10px 16px; font-size: 1.1rem; }
+.reading-passage .rp-sub { background: #c084fc; color: #fff; padding: 6px 16px; font-size: .88rem; font-style: italic; }
+.reading-passage .rp-body { padding: 16px; }
+.rp-para { margin-bottom: 14px; }
+.rp-para .para-label { font-weight: 900; color: #7c3aed; margin-right: 6px; }
+
+/* ── Buttons ── */
+.btn-check { background: #7c3aed; color: #fff; border: none; padding: 10px 26px; border-radius: 9999px; font-size: .92rem; font-weight: 700; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px -4px rgb(124 58 237 / .5); }
+.btn-check:hover { background: #6d28d9; }
+.btn-show { background: #fff; color: #7c3aed; border: 2px solid #7c3aed; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-show:hover { background: #f5f3ff; }
+.btn-reset { background: #fff; color: #dc2626; border: 2px solid #dc2626; padding: 7px 20px; border-radius: 9999px; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s; }
+.btn-reset:hover { background: #fef2f2; }
+.exercise-actions { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ── Score ── */
+.score-badge { display: inline-block; background: #ede9fe; color: #581c87; border-radius: 9999px; padding: 4px 15px; font-size: .86rem; font-weight: 700; }
+.score-badge.full { background: #bbf7d0; color: #166534; }
+.feedback-correct { color: #16a34a; font-weight: 700; font-size: .86rem; }
+.feedback-incorrect { color: #dc2626; font-weight: 700; font-size: .86rem; }
+
+/* ── Footer ── */
+footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; padding: 16px; font-size: .82rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .header-inner .logo { font-size: 1.2rem; }
+  .section-body { padding: 14px; }
+  .exercise-body { padding: 14px; }
+  nav ul li a { padding: 9px 12px; font-size: .8rem; }
+}
+  </style>
+</head>
+<body x-data="grammar()">
+<header>
+  <div class="header-inner">
+    <span class="logo">Unit 9</span>
+    <span class="subtitle">Personal, possessive and reflexive pronouns; avoiding repetition</span>
+    <a class="header-back" href="../index.html">← All Units</a>
+  </div>
+</header>
+<nav>
+  <ul>
+    <li><a href="#" data-section="sec-a" @click.prevent="show('sec-a')" :class="active === 'sec-a' ? 'active' : ''">A – Context Listening</a></li>
+    <li><a href="#" data-section="sec-b" @click.prevent="show('sec-b')" :class="active === 'sec-b' ? 'active' : ''">B – Grammar</a></li>
+    <li><a href="#" data-section="sec-c" @click.prevent="show('sec-c')" :class="active === 'sec-c' ? 'active' : ''">C – Grammar Exercises</a></li>
+    <li><a href="#" data-section="sec-d" @click.prevent="show('sec-d')" :class="active === 'sec-d' ? 'active' : ''">D – Test Practice</a></li>
+    <li><a href="#" data-section="sec-gft" @click.prevent="show('sec-gft')" :class="active === 'sec-gft' ? 'active' : ''">Grammar Focus Task</a></li>
+  </ul>
+</nav>
+<main>
+
+<!-- ═══ A: CONTEXT LISTENING ═══ -->
+<div id="sec-a" class="section-panel">
+  <div class="section-title"><span class="section-badge">A</span> Context Listening</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Pre-listening</h3></div>
+      <div class="exercise-body">
+        <p>You are going to hear a conversation between <strong>Chi Wen</strong>, a student from Hong Kong who is studying in Australia, and her homestay host <strong>Mrs Smith</strong>.</p>
+        <p>Which household chores do you think Chi Wen will have to do?</p>
+        <div class="example-box" style="max-width:420px;">
+          <div><label class="chore-label"><input type="checkbox"/> cook dinner</label></div>
+          <div><label class="chore-label"><input type="checkbox"/> make breakfast</label></div>
+          <div><label class="chore-label"><input type="checkbox"/> buy food</label></div>
+          <div><label class="chore-label"><input type="checkbox"/> make lunches</label></div>
+          <div><label class="chore-label"><input type="checkbox"/> wash clothes</label></div>
+          <div><label class="chore-label"><input type="checkbox"/> wash sheets</label></div>
+          <div><label class="chore-label"><input type="checkbox"/> clean the house</label></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Listen and write A, B or C — Track 13</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">13</div>
+          <div class="track-info"><h4>Track 13 — Chi Wen and Mrs Smith</h4><p>Context listening — household chores</p></div>
+          <div id="audio-13"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Listen and write <strong>A</strong> if Mrs Smith will do this, <strong>B</strong> if Chi Wen will do this, or <strong>C</strong> if both of them will do it.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0;">
+          <div class="correction-row"><span class="c-num">1</span><span>cook dinner</span><input class="corr-input a2u9" data-id="u9a2_1" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">2</span><span>make breakfast</span><input class="corr-input a2u9" data-id="u9a2_2" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">3</span><span>buy food</span><input class="corr-input a2u9" data-id="u9a2_3" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">4</span><span>make lunches</span><input class="corr-input a2u9" data-id="u9a2_4" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">5</span><span>wash clothes</span><input class="corr-input a2u9" data-id="u9a2_5" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">6</span><span>wash sheets</span><input class="corr-input a2u9" data-id="u9a2_6" placeholder="A/B/C" style="width:60px;"/></div>
+          <div class="correction-row"><span class="c-num">7</span><span>clean the house</span><input class="corr-input a2u9" data-id="u9a2_7" placeholder="A/B/C" style="width:60px;"/></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a2u9" class="btn-check">Check</button>
+          <button id="btn-show-a2u9" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a2u9" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Listen again and fill in the gaps</h3></div>
+      <div class="exercise-body">
+        <div class="audio-player">
+          <div class="track-badge">13</div>
+          <div class="track-info"><h4>Track 13 — Chi Wen and Mrs Smith (again)</h4><p>Context listening — fill in the gaps</p></div>
+          <div id="audio-13b"></div>
+        </div>
+        <p style="margin:14px 0 8px;">Listen again and fill in the gaps.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">1</span> I can introduce <input class="gap-input a3u9" data-id="u9a3_1" placeholder="…" style="min-width:90px;"/> to a friend of <input class="gap-input a3u9" data-id="u9a3_2" placeholder="…" style="min-width:90px;"/>, Yi Ling.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">2</span> I know <input class="gap-input a3u9" data-id="u9a3_3" placeholder="…" style="min-width:90px;"/>'s really enjoying <input class="gap-input a3u9" data-id="u9a3_4" placeholder="…" style="min-width:90px;"/> here in Australia.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">3</span> Now, I have had a lot of students staying with <input class="gap-input a3u9" data-id="u9a3_5" placeholder="…" style="min-width:90px;"/> over the years and I do have a few rules.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">4</span> First of all, my husband and <input class="gap-input a3u9" data-id="u9a3_6" placeholder="…" style="min-width:90px;"/> want everyone to feel at home so <input class="gap-input a3u9" data-id="u9a3_7" placeholder="…" style="min-width:90px;"/> treat everyone like <input class="gap-input a3u9" data-id="u9a3_8" placeholder="…" style="min-width:90px;"/>'re a member of our own family.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">5</span> And what about other meals? Can I cook for <input class="gap-input a3u9" data-id="u9a3_9" placeholder="…" style="min-width:90px;"/>?</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">6</span> Yes, everyone makes their own breakfast and I always make sure there is plenty of food in the fridge so <input class="gap-input a3u9" data-id="u9a3_10" placeholder="…" style="min-width:90px;"/> can prepare <input class="gap-input a3u9" data-id="u9a3_11" placeholder="…" style="min-width:90px;"/> a packed lunch if you like.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">7</span> I expect everyone to wash and iron for <input class="gap-input a3u9" data-id="u9a3_12" placeholder="…" style="min-width:90px;"/>.</div></div>
+          <div class="gap-fill-item"><div class="gf-row"><span class="item-num">8</span> Can I use <input class="gap-input a3u9" data-id="u9a3_13" placeholder="…" style="min-width:90px;"/> to make local calls?</div></div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a3u9" class="btn-check">Check</button>
+          <button id="btn-show-a3u9" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a3u9" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Put the words into four groups</h3></div>
+      <div class="exercise-body">
+        <p>Put the words you wrote in Exercise 3 into four groups.</p>
+        <div class="word-box">
+          <span class="word-chip">I</span><span class="word-chip">me</span><span class="word-chip">myself</span><span class="word-chip">mine</span><span class="word-chip">you</span><span class="word-chip">you</span><span class="word-chip">yourself</span><span class="word-chip">yours</span><span class="word-chip">she</span><span class="word-chip">herself</span><span class="word-chip">we</span><span class="word-chip">they</span><span class="word-chip">themselves</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0;">
+          <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:10px;">
+            <div style="font-weight:700;margin-bottom:8px;">Subject pronouns</div>
+            <input class="gap-input a4u9" data-id="u9a4_1" placeholder="…" style="min-width:70px;"/>, <input class="gap-input a4u9" data-id="u9a4_2" placeholder="…" style="min-width:70px;"/>, <input class="gap-input a4u9" data-id="u9a4_3" placeholder="…" style="min-width:70px;"/>, <input class="gap-input a4u9" data-id="u9a4_4" placeholder="…" style="min-width:70px;"/>, <input class="gap-input a4u9" data-id="u9a4_5" placeholder="…" style="min-width:70px;"/>
+          </div>
+          <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:10px;">
+            <div style="font-weight:700;margin-bottom:8px;">Object pronouns</div>
+            <input class="gap-input a4u9" data-id="u9a4_6" placeholder="…" style="min-width:70px;"/>, <input class="gap-input a4u9" data-id="u9a4_7" placeholder="…" style="min-width:70px;"/>
+          </div>
+          <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:10px;">
+            <div style="font-weight:700;margin-bottom:8px;">Reflexive pronouns</div>
+            <input class="gap-input a4u9" data-id="u9a4_8" placeholder="…" style="min-width:70px;"/>, <input class="gap-input a4u9" data-id="u9a4_9" placeholder="…" style="min-width:70px;"/>, <input class="gap-input a4u9" data-id="u9a4_10" placeholder="…" style="min-width:70px;"/>, <input class="gap-input a4u9" data-id="u9a4_11" placeholder="…" style="min-width:70px;"/>
+          </div>
+          <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:8px;padding:10px;">
+            <div style="font-weight:700;margin-bottom:8px;">Possessive pronouns</div>
+            <input class="gap-input a4u9" data-id="u9a4_12" placeholder="…" style="min-width:70px;"/>, <input class="gap-input a4u9" data-id="u9a4_13" placeholder="…" style="min-width:70px;"/>
+          </div>
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-a4u9" class="btn-check">Check</button>
+          <button id="btn-show-a4u9" class="btn-show">Show Answers</button>
+          <button id="btn-reset-a4u9" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: GRAMMAR ═══ -->
+<div id="sec-b" class="section-panel">
+  <div class="section-title"><span class="section-badge">B</span> Grammar</div>
+  <div class="section-body">
+
+    <h2 class="grammar-subtitle">B1 — Personal and possessive pronouns</h2>
+    <table class="form-table">
+      <thead><tr><th></th><th>Subject</th><th>Object</th><th>Possessive</th></tr></thead>
+      <tbody>
+        <tr><td class="pos">singular</td><td>I, you, he, she, it</td><td>me, you, him, her, it</td><td>mine, yours, his, hers</td></tr>
+        <tr><td class="pos">plural</td><td>we, you, they</td><td>us, you, them</td><td>ours, yours, theirs</td></tr>
+      </tbody>
+    </table>
+    <ul class="use-list">
+      <li><strong>We use subject pronouns before verbs:</strong> <em>I can introduce you to my friend, Yi Ling. <strong>She's</strong> a student from Taiwan.</em> (not <del>Yi Ling's a student</del>)</li>
+      <li><strong>We use object pronouns after verbs or prepositions:</strong> <em>I only arrived last month.</em> → <em>I have had a lot of students staying with <strong>me</strong> over the years.</em></li>
+      <li><strong>We use possessive pronouns to replace a possessive determiner and a noun:</strong> <em>I don't have a phone here. Can I use <strong>yours</strong>?</em> (= your phone)</li>
+    </ul>
+    <div class="note-box"><em>Its</em> is not used as a possessive pronoun.</div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B2 — Reflexive pronouns</h2>
+    <p><strong>Reflexive pronouns:</strong> <em>myself, yourself, himself, herself, itself, ourselves, yourselves, themselves</em></p>
+    <p style="margin:14px 0 8px;font-weight:700;color:#4a148c;">We use reflexive pronouns:</p>
+    <ul class="use-list">
+      <li><strong>when the subject and the object of the verb are the same:</strong> <em>You can prepare <strong>yourself</strong> a packed lunch if you like.</em></li>
+      <li><strong>to add emphasis to the subject or object:</strong> <em>I clean the kitchen and the living areas <strong>myself</strong>.</em> (= I do it, not anybody else)</li>
+      <li><strong>with <em>by</em> to mean <em>on my own</em>/<em>on your own</em> etc.:</strong> <em>I clean the kitchen and the living areas <strong>by myself</strong>.</em> (= on my own)</li>
+      <li><strong>after some set expressions in the imperative with <em>yourself</em>/<em>yourselves</em>:</strong> <em>Help <strong>yourself</strong>. Look after <strong>yourself</strong> (= be careful). Enjoy <strong>yourselves</strong>.</em></li>
+    </ul>
+    <div class="note-box">Notice the use of <em>each other</em>/<em>one another</em> below: <em>The boys taught <strong>themselves</strong> English.</em> (= each boy taught himself English) vs <em>The boys taught <strong>each other</strong>/<strong>one another</strong> some new words.</em> (= each boy taught the other boy some new words)</div>
+
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:26px 0;"/>
+    <h2 class="grammar-subtitle">B3 — Some special situations</h2>
+    <h3 style="color:#6a1b9a;margin:14px 0 6px;"><em>It</em></h3>
+    <p style="margin:6px 0 8px;font-weight:700;color:#4a148c;">We can use <em>it</em>:</p>
+    <ul class="use-list">
+      <li><strong>as a subject to start a sentence without carrying any meaning</strong> — often about the weather, the time or distance: <em><strong>It</strong> didn't always rain. <strong>It's</strong> five o'clock. <strong>It's</strong> 10 km from the sea.</em></li>
+      <li><strong>to start sentences when the real subject is an infinitive or an -ing form:</strong> <em><strong>It</strong> won't take long to settle in.</em> (= to settle in won't take long)</li>
+      <li><strong>to refer to phrases, whole sentences or ideas:</strong> <em>I only arrived last month and I am still finding <strong>it</strong> all a bit strange, actually.</em> (= living in a foreign country)</li>
+    </ul>
+    <div class="note-box">We use <em>there</em> + <em>be</em> + noun phrase to show something exists (or doesn't exist), not <em>it</em>: <em><strong>There's</strong> a good coffee shop near here.</em> (not <del>It is a good coffee shop near here</del>)</div>
+
+    <h3 style="color:#6a1b9a;margin:20px 0 6px;"><em>You</em> and <em>we</em></h3>
+    <p style="margin:6px 0 8px;font-weight:700;color:#4a148c;">To talk about everybody in general we can use:</p>
+    <ul class="use-list">
+      <li><strong><em>you</em>:</strong> <em>In Australia <strong>you</strong> often eat sandwiches for lunch.</em> (= people in Australia)</li>
+      <li><strong><em>we</em></strong> (when we include ourselves in the group): <em><strong>We</strong> often eat lunch in a bit of a hurry.</em> (= Australian people in general, and the speaker is Australian)</li>
+    </ul>
+
+    <h3 style="color:#6a1b9a;margin:20px 0 6px;"><em>They</em></h3>
+    <p style="margin:6px 0 8px;font-weight:700;color:#4a148c;">We can use <em>they</em>:</p>
+    <ul class="use-list">
+      <li><strong>to mean experts or authorities:</strong> <em><strong>They</strong> have changed the law recently.</em> (= the government) <em><strong>They</strong> have discovered a new kind of beetle.</em> (= scientists)</li>
+      <li><strong>when we do not know or do not need to say if the person is male or female:</strong> <em>I asked a student if <strong>they</strong> liked learning English and <strong>they</strong> said no!</em></li>
+    </ul>
+
+    <h3 style="color:#6a1b9a;margin:20px 0 6px;"><em>One</em>/<em>ones</em></h3>
+    <p style="margin:6px 0 8px;">We can use <em>one</em>/<em>ones</em> to avoid repetition of a countable noun:</p>
+    <ul class="use-list">
+      <li><em>I do have a few rules. The most important <strong>one</strong> is that I want everyone to feel at home.</em> (= the most important rule)</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- ═══ C: GRAMMAR EXERCISES ═══ -->
+<div id="sec-c" class="section-panel">
+  <div class="section-title"><span class="section-badge">C</span> Grammar Exercises</div>
+  <div class="section-body">
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">1</span><h3>Fill in the gaps with it, its, itself, they, their or themselves</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with <strong>it</strong>, <strong>its</strong>, <strong>itself</strong>, <strong>they</strong>, <strong>their</strong> or <strong>themselves</strong>.</p>
+        <img src="../assets/image-contents/u9-bat-anatomy.png" alt="Anatomy of a bat" class="diagram"/>
+        <div class="passage-text" style="line-height:2.4;">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">Anatomy of a bat</div>
+          The entire wing of a bat is called the <em>patagium</em>. Many species also have a membrane between <input class="gap-input c1u9" data-id="u9c1_1" placeholder="…" style="min-width:80px;"/> hind limbs enclosing the tail. The patagium is full of fine blood vessels, muscle fibres and nerves. When it is cold, these bats wrap <input class="gap-input c1u9" data-id="u9c1_2" placeholder="…" style="min-width:80px;"/> up in <input class="gap-input c1u9" data-id="u9c1_3" placeholder="…" style="min-width:80px;"/> wings like a coat. In warm weather <input class="gap-input c1u9" data-id="u9c1_4" placeholder="…" style="min-width:80px;"/> flap <input class="gap-input c1u9" data-id="u9c1_5" placeholder="…" style="min-width:80px;"/> wings in order to cool <input class="gap-input c1u9" data-id="u9c1_6" placeholder="…" style="min-width:80px;"/> bodies.<br/><br/>
+          The bat has claws on <input class="gap-input c1u9" data-id="u9c1_7" placeholder="…" style="min-width:80px;"/> thumbs and sometimes on the toes of <input class="gap-input c1u9" data-id="u9c1_8" placeholder="…" style="min-width:80px;"/> fore and hind limbs. The rear claws enable <input class="gap-input c1u9" data-id="u9c1_9" placeholder="…" style="min-width:80px;"/> to hang <input class="gap-input c1u9" data-id="u9c1_10" placeholder="…" style="min-width:80px;"/> on to a tree branch or ledge.<br/><br/>
+          All bats are active at night or at twilight, so <input class="gap-input c1u9" data-id="u9c1_11" placeholder="…" style="min-width:80px;"/> eyes are poorly developed. Instead <input class="gap-input c1u9" data-id="u9c1_12" placeholder="…" style="min-width:80px;"/> use <input class="gap-input c1u9" data-id="u9c1_13" placeholder="…" style="min-width:80px;"/> nose and ears to orientate <input class="gap-input c1u9" data-id="u9c1_14" placeholder="…" style="min-width:80px;"/>.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c1u9" class="btn-check">Check</button>
+          <button id="btn-show-c1u9" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c1u9" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">2</span><h3>Find and correct 13 places where nouns could be replaced with pronouns</h3></div>
+      <div class="exercise-body">
+        <p>Find and correct 13 places where nouns could be replaced with the pronouns in the box to make the email sound more natural.</p>
+        <div class="word-box">
+          <span class="word-chip">He</span><span class="word-chip">he</span><span class="word-chip">he</span><span class="word-chip">he</span><span class="word-chip">he</span><span class="word-chip">him</span><span class="word-chip">himself</span><span class="word-chip">it</span><span class="word-chip">it</span><span class="word-chip">it</span><span class="word-chip">mine</span><span class="word-chip">They</span><span class="word-chip">us</span><span class="word-chip">yours</span>
+        </div>
+        <div class="passage-text" style="line-height:2.4;">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">University life</div>
+          <em>From: Sandy Moore — To: Liz Jenkins</em><br/><br/>
+          Dear Liz<br/>
+          I'm sorry I haven't emailed you for a while. I'm really busy with my studies at the moment. My course is going well and I'm enjoying my course <input class="gap-input c2u9" data-id="u9c2_1" placeholder="…" style="min-width:70px;"/> a lot. The trouble is that my course takes up all my time. How is your course <input class="gap-input c2u9" data-id="u9c2_2" placeholder="…" style="min-width:70px;"/> going?<br/><br/>
+          I hope you will be able to visit me soon. I'd like you to meet my friends. My best friend here is Paul. Paul <input class="gap-input c2u9" data-id="u9c2_3" placeholder="…" style="min-width:70px;"/> lives in the flat next to my flat <input class="gap-input c2u9" data-id="u9c2_4" placeholder="…" style="min-width:70px;"/>, and I usually eat most of my meals with Paul <input class="gap-input c2u9" data-id="u9c2_5" placeholder="…" style="min-width:70px;"/>. At the moment I'm doing most of the cooking though, because Paul <input class="gap-input c2u9" data-id="u9c2_6" placeholder="…" style="min-width:70px;"/> had an accident last week. One of the reasons for the accident is connected to some changes at the university recently. The university authorities <input class="gap-input c2u9" data-id="u9c2_7" placeholder="…" style="min-width:70px;"/> have decided that students shouldn't be allowed to bring cars up to the campus, so more and more of the students are cycling. Because of this new rule, Paul was riding his bicycle to the university. While he was cycling along a car driver drove into the back of his bike. The car driver <input class="gap-input c2u9" data-id="u9c2_8" placeholder="…" style="min-width:70px;"/> didn't stop and check if Paul <input class="gap-input c2u9" data-id="u9c2_9" placeholder="…" style="min-width:70px;"/> was okay. Luckily Paul <input class="gap-input c2u9" data-id="u9c2_10" placeholder="…" style="min-width:70px;"/> was not badly hurt and managed to pick up his bike and get to the doctor's surgery. The doctor said his finger was probably broken and strapped his finger <input class="gap-input c2u9" data-id="u9c2_11" placeholder="…" style="min-width:70px;"/> up, so he can't hold anything in his right hand at the moment and Paul <input class="gap-input c2u9" data-id="u9c2_12" placeholder="…" style="min-width:70px;"/> can't really cook for Paul <input class="gap-input c2u9" data-id="u9c2_13" placeholder="…" style="min-width:70px;"/>.<br/><br/>
+          Anyway, he'd like to meet you, so we must arrange a time for you to come here.<br/>
+          Get in touch soon.<br/>
+          Love, Sandy
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c2u9" class="btn-check">Check</button>
+          <button id="btn-show-c2u9" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c2u9" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">3</span><h3>Fill in the gaps with a suitable pronoun or there</h3></div>
+      <div class="exercise-body">
+        <p>Fill in the gaps with a suitable pronoun or <strong>there</strong>.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          <div style="font-weight:700;text-align:center;margin-bottom:8px;">A student's opinion on space exploration</div>
+          <strong>Teacher:</strong> Do you think that governments spend too much on space exploration nowadays?<br/><br/>
+          <strong>Student:</strong> Well, I think that <input class="gap-input c3u9" data-id="u9c3_1" placeholder="…" style="min-width:80px;"/> are a lot of different factors to take into consideration. For example, some countries want to show the rest of the world that <input class="gap-input c3u9" data-id="u9c3_2" placeholder="…" style="min-width:80px;"/> are successful and <input class="gap-input c3u9" data-id="u9c3_3" placeholder="…" style="min-width:80px;"/> can do this with a space exploration programme. <input class="gap-input c3u9" data-id="u9c3_4" placeholder="…" style="min-width:80px;"/> seems that <input class="gap-input c3u9" data-id="u9c3_5" placeholder="…" style="min-width:80px;"/> is more important for these countries to impress the world than to look after their own people. Sometimes <input class="gap-input c3u9" data-id="u9c3_6" placeholder="…" style="min-width:80px;"/> is difficult to understand this because every country in the world has <input class="gap-input c3u9" data-id="u9c3_7" placeholder="…" style="min-width:80px;"/> problems and has poor people that need to be looked after because they can't look after <input class="gap-input c3u9" data-id="u9c3_8" placeholder="…" style="min-width:80px;"/>. So, yes, I do think that these countries should look after people first before <input class="gap-input c3u9" data-id="u9c3_9" placeholder="…" style="min-width:80px;"/> start trying to send men to the moon! <input class="gap-input c3u9" data-id="u9c3_10" placeholder="…" style="min-width:80px;"/> are too many other problems here on earth that we need to sort out.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c3u9" class="btn-check">Check</button>
+          <button id="btn-show-c3u9" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c3u9" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">4</span><h3>Underline the correct words</h3></div>
+      <div class="exercise-body">
+        <p>Underline the correct words.</p>
+        <div class="passage-text" style="line-height:2.4;">
+          There are many reasons why <input class="gap-input c4u9" data-id="u9c4_1" placeholder="…" style="min-width:80px;"/> should recycle household waste. The main reason is to avoid using up valuable resources making new things when <input class="gap-input c4u9" data-id="u9c4_2" placeholder="…" style="min-width:80px;"/> is not necessary. However, I do not think the government should make <input class="gap-input c4u9" data-id="u9c4_3" placeholder="…" style="min-width:80px;"/> compulsory for people to recycle their waste. If the government makes a law that all households must recycle <input class="gap-input c4u9" data-id="u9c4_4" placeholder="…" style="min-width:80px;"/> rubbish, <input class="gap-input c4u9" data-id="u9c4_5" placeholder="…" style="min-width:80px;"/> could lead to more problems. For example, how can <input class="gap-input c4u9" data-id="u9c4_6" placeholder="…" style="min-width:80px;"/> check that people are recycling everything? <input class="gap-input c4u9" data-id="u9c4_7" placeholder="…" style="min-width:80px;"/> is not practical to do this. In addition, there is the argument that individuals should be allowed to decide for <input class="gap-input c4u9" data-id="u9c4_8" placeholder="…" style="min-width:80px;"/> whether to throw something away or to recycle <input class="gap-input c4u9" data-id="u9c4_9" placeholder="…" style="min-width:80px;"/>. I believe the most sensible approach is for the government to put more money into recycling schemes. The most successful are <input class="gap-input c4u9" data-id="u9c4_10" placeholder="…" style="min-width:80px;"/> where the government gives each household special boxes to put different kinds of waste in, and <input class="gap-input c4u9" data-id="u9c4_11" placeholder="…" style="min-width:80px;"/> provide a regular collection service. <input class="gap-input c4u9" data-id="u9c4_12" placeholder="…" style="min-width:80px;"/> are separate boxes for plastic, metal, glass etc. This makes <input class="gap-input c4u9" data-id="u9c4_13" placeholder="…" style="min-width:120px;"/> easier for people to recycle and <input class="gap-input c4u9" data-id="u9c4_14" placeholder="…" style="min-width:80px;"/> are therefore less likely to throw things in the rubbish bin.
+        </div>
+        <div class="exercise-actions">
+          <button id="btn-check-c4u9" class="btn-check">Check</button>
+          <button id="btn-show-c4u9" class="btn-show">Show Answers</button>
+          <button id="btn-reset-c4u9" class="btn-reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: TEST PRACTICE ═══ -->
+<div id="sec-d" class="section-panel">
+  <div class="section-title"><span class="section-badge">D</span> Test Practice — Academic Writing Task 2</div>
+  <div class="section-body">
+    <div class="test-tip">Make sure that you read all parts of the question carefully and address each point made. Organize your thoughts and ideas well. Do not try to memorize essays. Make sure you leave time at the end to check your spelling.</div>
+
+    <div class="exercise">
+      <div class="exercise-header"><span class="ex-num">★</span><h3>Write about the following topic</h3></div>
+      <div class="exercise-body">
+        <div class="example-box">
+          <p style="margin:0 0 10px;">You should spend about <strong>40 minutes</strong> on this task.</p>
+          <p style="margin:0 0 10px;">Write about the following topic:</p>
+          <p style="margin:0 0 10px;font-style:italic;">Governments spend millions of dollars each year on their space programmes. Most recently, Mars is the focus of scientists' attention. Some people think this money would be better spent on dealing with problems closer to home.</p>
+          <p style="margin:0;"><strong>Do you agree or disagree?</strong></p>
+        </div>
+        <p style="margin:14px 0 8px;">Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+        <p style="margin:0 0 8px;">You should write <strong>at least 250 words</strong>.</p>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-header" style="background:#4a148c;"><span class="ex-num" style="color:#4a148c;">★</span><h3>Model answer</h3></div>
+      <div class="exercise-body">
+        <div class="passage-text">
+          There is always going to be a discussion about the amount of money that is spent on space exploration. Scientific studies of the moon and the planets may provide information that is useful for us on earth. However, some people believe this cannot justify the huge amount of money spent on space research when there is a greater need for it here on earth.<br/><br/>
+          In the past, different countries used space exploration to compete with each other. For example, the United States and the USSR raced each other to see who could put a man on the moon first. It would have been much easier and cheaper if they had pooled resources and information, and made a joint expedition into space. Fortunately, nowadays this is happening more and more, and thus less money overall is being wasted.<br/><br/>
+          Nevertheless, some critics believe that all money given to space exploration is wasted. They argue that if the millions of dollars spent on space research were put into health and education programmes around the world, many lives would be significantly improved. If this money were used to support crop development in different parts of the world, we could save many more lives in countries where people do not have enough food. It is very difficult to argue against these criticisms.<br/><br/>
+          In my opinion, we need a balance between how much money is spent on space exploration and how much money is invested into solving problems here on earth. With continued co-operation between nations over space travel more will be achieved for less money. This should leave more money to be spent on problems at home.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR FOCUS TASK ═══ -->
+<div id="sec-gft" class="section-panel">
+  <div class="section-title" style="background:linear-gradient(90deg,#880e4f,#c2185b);"><span class="section-badge">★</span> Grammar Focus Task</div>
+  <div class="section-body">
+    <div class="note-box">Look at these extracts from a model answer. Match the pronouns (1–5) to the uses (A–E).</div>
+    <div class="passage-text" style="line-height:2.4;margin-bottom:14px;">
+      &nbsp;&nbsp;… However, some people believe this cannot justify the huge amount of money spent on space research when there is a greater need for <strong>1</strong> <em>it</em> here on earth …<br/><br/>
+      &nbsp;&nbsp;… For example, the United States and the USSR raced each other to see who could put a man on the moon first. <strong>2</strong> <em>It</em> would have been much easier and cheaper if <strong>3</strong> <em>they</em> had pooled resources and information, and made a joint expedition into space …<br/><br/>
+      &nbsp;&nbsp;… <strong>4</strong> <em>It</em> is very difficult to argue against these criticisms …<br/><br/>
+      &nbsp;&nbsp;… In my opinion, <strong>5</strong> <em>we</em> need a balance between how much money is spent on space exploration and how much money is invested into solving problems here on earth. With continued co-operation between nations over space travel more will be achieved for less money. This should leave more money to be spent on problems at home …
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0;">
+      <div class="correction-row"><span class="c-num">1</span><span>it</span><input class="corr-input gftu9" data-id="u9gft_1" placeholder="A–E" style="width:60px;"/></div>
+      <div class="correction-row"><span class="c-num">2</span><span>It</span><input class="corr-input gftu9" data-id="u9gft_2" placeholder="A–E" style="width:60px;"/></div>
+      <div class="correction-row"><span class="c-num">3</span><span>they</span><input class="corr-input gftu9" data-id="u9gft_3" placeholder="A–E" style="width:60px;"/></div>
+      <div class="correction-row"><span class="c-num">4</span><span>It</span><input class="corr-input gftu9" data-id="u9gft_4" placeholder="A–E" style="width:60px;"/></div>
+      <div class="correction-row"><span class="c-num">5</span><span>we</span><input class="corr-input gftu9" data-id="u9gft_5" placeholder="A–E" style="width:60px;"/></div>
+    </div>
+    <div class="example-box">
+      <div><strong>A</strong> &nbsp;a subject which doesn't carry a specific meaning</div>
+      <div><strong>B</strong> &nbsp;to refer to the United States and the USSR</div>
+      <div><strong>C</strong> &nbsp;to refer to money</div>
+      <div><strong>D</strong> &nbsp;to refer to people in general</div>
+      <div><strong>E</strong> &nbsp;to replace an infinitive as a subject</div>
+    </div>
+    <div class="exercise-actions">
+      <button id="btn-check-gftu9" class="btn-check">Check</button>
+      <button id="btn-show-gftu9" class="btn-show">Show Answers</button>
+      <button id="btn-reset-gftu9" class="btn-reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+</main>
+<footer>Cambridge Grammar for IELTS — Unit 9: Pronouns and Referencing</footer>
+<script src="../scripts/utils.js"></script>
+<script>
+window.__grammarInit = function () {
+
+  loadAudio('13','audio-13');
+  loadAudio('13','audio-13b');
+
+  // A2 chores (A/B/C)
+  initGapFill({ inputSelector:'.a2u9', checkId:'btn-check-a2u9', showId:'btn-show-a2u9', resetId:'btn-reset-a2u9',
+    answers:{ u9a2_1:['A'], u9a2_2:['B'], u9a2_3:['A'], u9a2_4:['B'], u9a2_5:['C'], u9a2_6:['A'], u9a2_7:['C'] }});
+
+  // A3 gap fill dialogue
+  initGapFill({ inputSelector:'.a3u9', checkId:'btn-check-a3u9', showId:'btn-show-a3u9', resetId:'btn-reset-a3u9',
+    answers:{ u9a3_1:['you'], u9a3_2:['mine'], u9a3_3:['she'], u9a3_4:['herself'], u9a3_5:['me'],
+              u9a3_6:['I'], u9a3_7:['we'], u9a3_8:['they'], u9a3_9:['myself'], u9a3_10:['you'],
+              u9a3_11:['yourself'], u9a3_12:['themselves'], u9a3_13:['yours'] }});
+
+  // A4 word groups
+  initGapFill({ inputSelector:'.a4u9', checkId:'btn-check-a4u9', showId:'btn-show-a4u9', resetId:'btn-reset-a4u9',
+    answers:{ u9a4_1:['I'], u9a4_2:['you'], u9a4_3:['she'], u9a4_4:['we'], u9a4_5:['they'],
+              u9a4_6:['me'], u9a4_7:['you'], u9a4_8:['myself'], u9a4_9:['yourself'], u9a4_10:['herself'],
+              u9a4_11:['themselves'], u9a4_12:['mine'], u9a4_13:['yours'] }});
+
+  // C1 bat anatomy
+  initGapFill({ inputSelector:'.c1u9', checkId:'btn-check-c1u9', showId:'btn-show-c1u9', resetId:'btn-reset-c1u9',
+    answers:{ u9c1_1:['their'], u9c1_2:['themselves'], u9c1_3:['their'], u9c1_4:['they'], u9c1_5:['their'],
+              u9c1_6:['their'], u9c1_7:['its'], u9c1_8:['its'], u9c1_9:['it'], u9c1_10:['itself'],
+              u9c1_11:['their'], u9c1_12:['they'], u9c1_13:['their'], u9c1_14:['themselves'] }});
+
+  // C2 email pronoun replacement
+  initGapFill({ inputSelector:'.c2u9', checkId:'btn-check-c2u9', showId:'btn-show-c2u9', resetId:'btn-reset-c2u9',
+    answers:{ u9c2_1:['it'], u9c2_2:['yours'], u9c2_3:['He'], u9c2_4:['mine'], u9c2_5:['him'],
+              u9c2_6:['he'], u9c2_7:['They'], u9c2_8:['He'], u9c2_9:['he'], u9c2_10:['he'],
+              u9c2_11:['it'], u9c2_12:['he'], u9c2_13:['himself'] }});
+
+  // C3 space exploration dialogue
+  initGapFill({ inputSelector:'.c3u9', checkId:'btn-check-c3u9', showId:'btn-show-c3u9', resetId:'btn-reset-c3u9',
+    answers:{ u9c3_1:['there'], u9c3_2:['they'], u9c3_3:['they'], u9c3_4:['It'], u9c3_5:['it'],
+              u9c3_6:['it'], u9c3_7:['its'], u9c3_8:['themselves'], u9c3_9:['they'], u9c3_10:['There'] }});
+
+  // C4 underline correct words
+  initGapFill({ inputSelector:'.c4u9', checkId:'btn-check-c4u9', showId:'btn-show-c4u9', resetId:'btn-reset-c4u9',
+    answers:{ u9c4_1:['we'], u9c4_2:['it is','it'], u9c4_3:['it'], u9c4_4:['their'], u9c4_5:['it'],
+              u9c4_6:['you'], u9c4_7:['it','it is not practical to do this','to do this is not practical'],
+              u9c4_8:['themselves'], u9c4_9:['it'], u9c4_10:['the ones'], u9c4_11:['they'],
+              u9c4_12:['There'], u9c4_13:['it'], u9c4_14:['they'] }});
+
+  // GFT match pronouns to uses
+  initGapFill({ inputSelector:'.gftu9', checkId:'btn-check-gftu9', showId:'btn-show-gftu9', resetId:'btn-reset-gftu9',
+    answers:{ u9gft_1:['C'], u9gft_2:['A'], u9gft_3:['B'], u9gft_4:['E'], u9gft_5:['D'] }});
+};
+</script>
+  <!-- NBLT hub: back-to-home pill + unit completion tracking. Optional. -->
+  <script defer src="../../../assets/nblt-home.js"></script>
+  <script defer src="../../../assets/nblt-unit-progress.js"></script>
+</body>
+</html>
