@@ -28,6 +28,11 @@
 <!-- defer preserves order: hub.js defines nbltHub() before Alpine boots. -->
 <script defer src="assets/hub.js"></script>
 <script defer src="assets/alpine.min.js"></script>
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/web-analytics/script.js"></script>
 </head>
 
 <!-- No x-init: Alpine 3 calls a data object's init() automatically, and
