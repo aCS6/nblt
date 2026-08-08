@@ -41,9 +41,13 @@ Thumbs.db
 *.swo
 *~
 
-# ── Node (if ever used locally) ──────────────────────────────
+# ── Node / Tailwind build tooling ────────────────────────────
 node_modules/
 npm-debug.log*
+package.json
+package-lock.json
+tailwind.config.js
+assets/tailwind.src.css
 
 # ── Python ───────────────────────────────────────────────────
 __pycache__/

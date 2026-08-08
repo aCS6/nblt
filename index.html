@@ -20,33 +20,14 @@
       document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
     } catch (e) {}
   })();
-</script>
+</script><link rel="stylesheet" href="assets/fonts.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400..800&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
-
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-          sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-          bn: ['"Hind Siliguri"', 'Manrope', 'sans-serif']
-        },
-        maxWidth: { shell: '78rem' }
-      }
-    }
-  };
-</script>
+<link rel="stylesheet" href="assets/tailwind.css">
 
 <link rel="stylesheet" href="assets/hub.css">
 <!-- defer preserves order: hub.js defines nbltHub() before Alpine boots. -->
 <script defer src="assets/hub.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+<script defer src="assets/alpine.min.js"></script>
 </head>
 
 <!-- No x-init: Alpine 3 calls a data object's init() automatically, and
