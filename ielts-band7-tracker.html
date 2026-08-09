@@ -585,6 +585,240 @@ body {
   transform: translateY(-1px);
 }
 
+/* NOTE OF THE DAY */
+.note-section {
+  margin-bottom: 40px;
+}
+
+.note-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.note-block {
+  background: linear-gradient(135deg, rgba(26, 29, 47, 0.4) 0%, rgba(20, 22, 37, 0.4) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 14px;
+  padding: 18px 20px;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.2s ease;
+}
+
+.note-block:hover {
+  border-color: rgba(91, 127, 255, 0.35);
+}
+
+.note-block-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.note-block ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.note-block ul li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.note-block ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.note-block ul li strong {
+  color: var(--text-bright);
+}
+
+.mnemonic-callout {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, rgba(245, 158, 11, 0.04) 100%);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-left: 4px solid var(--accent2);
+  border-radius: 14px;
+  padding: 18px 20px;
+  backdrop-filter: blur(10px);
+}
+
+.mnemonic-callout .mnem-badge {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--yellow);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: rgba(245, 158, 11, 0.08);
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 10px;
+}
+
+.mnemonic-callout .mnem-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.mnemonic-callout .mnem-help {
+  font-size: 0.9rem;
+  color: var(--dim);
+  line-height: 1.55;
+}
+
+/* VOCAB CAPTURE */
+.vocab-section {
+  margin-bottom: 40px;
+}
+
+.vocab-subtitle {
+  font-size: 0.82rem;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+
+.vocab-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vocab-item {
+  background: rgba(20, 22, 37, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  transition: all 0.2s ease;
+}
+
+.vocab-item:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.03);
+}
+
+.vocab-item-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vocab-word {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.vocab-bn {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--accent2);
+}
+
+.vocab-sentence {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.vocab-src {
+  margin-top: 6px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--dim);
+}
+
+/* DAY TABS (Tasks | Note of the Day | Vocab Builder) */
+.day-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  margin-bottom: 24px;
+  background: rgba(17, 19, 34, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.day-tab {
+  flex: 1;
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--dim);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.day-tab:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-bright);
+}
+
+.day-tab.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+  animation: tabFade 0.25s ease;
+}
+
+@keyframes tabFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 900px) {
+  .day-tabs {
+    position: static;
+  }
+}
+
 /* NAVIGATION FOOTER */
 .day-navigation-footer {
   display: flex;
@@ -858,20 +1092,47 @@ body {
         <div class="focus-desc" id="week-focus-desc">...</div>
       </div>
       
-      <!-- Hour To-Dos -->
-      <div class="section-title">✍️ Focus Sessions for Today</div>
-      <div class="tasks-list" id="tasks-container"></div>
-      
-      <!-- Essay Liz reading list -->
-      <div class="reading-section" id="reading-section">
-        <div class="section-title">📖 Recommended Reading Focus</div>
-        <div class="reading-grid" id="reading-container"></div>
+      <!-- Day tabs -->
+      <div class="day-tabs">
+        <button class="day-tab active" data-tab="tasks" onclick="setDayTab('tasks')">✅ Tasks</button>
+        <button class="day-tab" data-tab="notes" onclick="setDayTab('notes')">📓 Note of the Day</button>
+        <button class="day-tab" data-tab="vocab" onclick="setDayTab('vocab')">🗂️ Vocab Builder</button>
       </div>
       
-      <!-- Regular resources links -->
-      <div class="resources-section" id="other-links-section">
-        <div class="section-title">🔗 Supporting Liz Lessons</div>
-        <div class="resources-list" id="other-links-container"></div>
+      <!-- Panel: Tasks -->
+      <div class="tab-panel active" id="panel-tasks">
+        <!-- Hour To-Dos -->
+        <div class="section-title">✍️ Focus Sessions for Today</div>
+        <div class="tasks-list" id="tasks-container"></div>
+        
+        <!-- Essay Liz reading list -->
+        <div class="reading-section" id="reading-section">
+          <div class="section-title">📖 Recommended Reading Focus</div>
+          <div class="reading-grid" id="reading-container"></div>
+        </div>
+        
+        <!-- Regular resources links -->
+        <div class="resources-section" id="other-links-section">
+          <div class="section-title">🔗 Supporting Liz Lessons</div>
+          <div class="resources-list" id="other-links-container"></div>
+        </div>
+      </div>
+      
+      <!-- Panel: Note of the Day -->
+      <div class="tab-panel" id="panel-notes">
+        <div class="note-section" id="note-section">
+          <div class="section-title">📓 Note of the Day</div>
+          <div class="note-blocks" id="note-container"></div>
+        </div>
+      </div>
+      
+      <!-- Panel: Vocab Builder -->
+      <div class="tab-panel" id="panel-vocab">
+        <div class="vocab-section" id="vocab-section">
+          <div class="section-title">🗂️ Vocab Builder</div>
+          <p class="vocab-subtitle">word = অর্থ (বাংলা) · sentence directly from today's Liz lesson</p>
+          <div class="vocab-list" id="vocab-container"></div>
+        </div>
       </div>
       
       <!-- Prev / Complete / Next page actions -->
@@ -1443,6 +1704,543 @@ const DAYS_22_31 = [
 const ALL_DAYS = [...DAYS, ...DAYS_11_21, ...DAYS_22_31];
 const STORAGE_KEY = 'ielts_tracker_v2';
 
+// ── NOTE OF THE DAY + VOCAB CAPTURE (per-day content from the linked Liz lessons) ──
+const DAY_EXTRA = {
+  1: {
+    notes: [
+      {head:"💡 Reading 60-Second Snapshot", pts:["40 questions = 40 points; 1 hour; you manage the clock","3 passages; Academic & GT share the same question types & techniques","Goal: locate answers and win points — not understand everything","Skills: skim → scan → analyse"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"Skim → Scan → Score: skim the map (2–3 min), scan for the gold, score from the few sentences that hold it.", mnemHelp:"Compresses Liz's strategy into three S's — deep reading belongs only around each answer."},
+      {head:"⚡ Liz's Golden Rules", pts:["Skim full passage in 2–3 mins, underlining keywords","One point per answer — don't over-spend on any single question","Match meaning, not words; paraphrasing is the #1 challenge","Order rules differ by type: TFNG in order, matching headings not","Grammar can flag the right word for completion gaps"]}
+    ],
+    vocab: [
+      {w:"skim", bn:"চোখ বুলিয়ে দ্রুত পড়া", s:"You should skim read the full passage in 2 to 3 minutes – not longer.", src:"IELTS Reading Tips"},
+      {w:"scan", bn:"খুঁজতে চোখ বুলানো", s:"Scanning is your ability to locate information quickly and has no relation to comprehension of the passage.", src:"IELTS Reading Tips"},
+      {w:"notorious", bn:"কুখ্যাত, দুর্নাম", s:"For example, Matching Headings questions are notorious for taking a long time to answer.", src:"Reading Strategies & Comprehension"},
+      {w:"collocation", bn:"শব্দসংগতি, সহবাক্য", s:"It is also about what collocations can be used with words, for example verbs and match nouns.", src:"IELTS Reading Tips"},
+      {w:"subtle", bn:"সূক্ষ্ম, সহজে চোখে না পড়া", s:"Some keywords are obvious, for instance names, dates, numbers, places etc. Other keywords are more subtle.", src:"IELTS Reading Tips"},
+      {w:"broaden", bn:"বিস্তৃত করা, প্রসারিত করা", s:"For IELTS Reading, it is about broadening your vocabulary by reading on many different topics.", src:"IELTS Reading Tips"},
+      {w:"chaotic", bn:"বিশৃঙ্খল, গোলমেলে", s:"Having a chaotic approach instead of having technique, strategy and being logical.", src:"IELTS Reading Tips"},
+      {w:"enhance", bn:"উন্নত করা, বাড়ানো", s:"To develop your skills, practice different types of questions and enhance your vocabulary.", src:"IELTS Reading Tips"}
+    ]
+  },
+  2: {
+    notes: [
+      {head:"💡 Listening 60-Second Snapshot", pts:["40 mins total: 30-min recording + 10-min transfer (paper) / 2-min check (computer)","4 sections × 10 questions; one listen only — no pausing","Sections 1–2 social, 3–4 academic; Section 4 hardest","Multi-tasking: listen, read and write at the same time"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"Sections 1–2 = You & a Friend; 3 = Team Meeting; 4 = One Lecturer. Speakers shrink as difficulty grows.", mnemHelp:"Locks the speaker pattern to each section so you anticipate the format and never get lost."},
+      {head:"⚡ Liz's Golden Rules", pts:["Top traps: losing place, wrong word count, missing paraphrases","MC: all options get mentioned — only one is correct","Hear 'but/however' → correction coming; answers get withdrawn","Obey per-set word limits — letters stay letters","Section 4: follow signposts (Moving on to Y…) and linking words"]}
+    ],
+    vocab: [
+      {w:"multi-tasking", bn:"একসাথে একাধিক কাজ করা", s:"The listening test is about multi-tasking – you have to listen, read the questions and write the answers all at the same time.", src:"IELTS Listening Tips"},
+      {w:"adhere", bn:"মেনে চলা, অটল থাকা", s:"If you are asked to write words or numbers, for example “no more than two words and/or numbers”, you must adhere to those instructions.", src:"IELTS Listening Tips"},
+      {w:"transfer", bn:"স্থানান্তর করা, লিখে নেওয়া", s:"At the end of the recording, you will have 10 mins to transfer your answers from the question paper to the answer sheet.", src:"IELTS Listening Tips"},
+      {w:"signposts", bn:"পথনির্দেশক চিহ্ন", s:"As the speaker moves from one point to another, they will say things like:", src:"Listening Section 4 Practice"},
+      {w:"navigate", bn:"পথ খুঁজে চলা, সামলে যাওয়া", s:"Such vocabulary often isn't paraphrased, which can be very useful in navigating the recording.", src:"Listening Section 4 Practice"},
+      {w:"mimic", bn:"নকল করা, অনুকরণ করা", s:"Furthermore, dolphins also mimic movements of both humans and other animals.", src:"Listening Section 4 Practice"},
+      {w:"sensory", bn:"ইন্দ্রিয়গত, ইন্দ্রিয়সংক্রান্ত", s:"Today I'm going to talk to you about dolphin intelligence and in particular their use of tools, methods of communication, sonar and also their sensory capacity.", src:"Listening Section 4 Practice"},
+      {w:"marine", bn:"সামুদ্রিক, সমুদ্রসংক্রান্ত", s:"The next largest brain among the marine mammals is the bottlenosed dolphin at 1,500 grams.", src:"Listening Section 4 Practice"}
+    ]
+  },
+  3: {
+    notes: [
+      {head:"💡 TFNG Decoded", pts:["TRUE = passage agrees with the statement (paraphrased)","FALSE = passage contradicts it — opposite or wrong info","NOT GIVEN = not enough info, even if some keywords appear","TFNG answers always follow passage order"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"T = Totally matches; F = Flips it; NG = Gone from the passage. Ask all three, in that order.", mnemHelp:"Turns each letter into one yes/no question, killing the #1 mistake of matching words instead of meaning."},
+      {head:"⚡ Liz's Golden Rules", pts:["Analyse the statement before searching the passage","Expect paraphrases: work = employment, changing = altering","Part of the statement given ≠ NG — check the FULL meaning","T is fine for True; never write T or True for Yes","Log paraphrases you miss — learn from every error"]}
+    ],
+    vocab: [
+      {w:"subaqueous", bn:"জলের নিচে, পানির তলদেশে", s:"It was the first subaqueous tunnel ever built and many people were so amazed that they exaggerated their description of it calling it the Eight Wonder of the World.", src:"TFNG Reading Practice"},
+      {w:"debunked", bn:"খণ্ডিত, ভুল প্রমাণিত", s:"While popular belief is that the Great Pyramid was built using slave labour, this theory has since been debunked.", src:"TFNG Reading Practice"},
+      {w:"forbearing", bn:"সহনশীল, ধৈর্যশীল", s:"Forbearing means tolerant and patient.", src:"TFNG Reading Practice"},
+      {w:"prodigiously", bn:"অসাধারণভাবে, অসামান্য মাত্রায়", s:"Beethoven was a prodigiously talented musician from his earliest days.", src:"TFNG Reading Practice"},
+      {w:"rigour", bn:"কঠোরতা, নির্মম শৃঙ্খলা", s:"Beethoven's father began teaching him music with an extraordinary rigour and brutality.", src:"TFNG Reading Practice"},
+      {w:"counterparts", bn:"সমকক্ষ, সমশ্রেণির ব্যক্তি", s:"Chinese mobile-users get more spam text messages than their counterparts anywhere else in the world.", src:"TFNG Reading Practice"},
+      {w:"wearisome", bn:"ক্লান্তিকর, বিরক্তিকর", s:"Mobile-phone users usually see only the wearisome results: another sprinkling of spam messages.", src:"TFNG Reading Practice"},
+      {w:"emit", bn:"নির্গত করা, বের করা", s:"More recently they discovered that it emits near-infrared radiation when exposed to a certain kind of light.", src:"Paraphrasing Skills 1"}
+    ]
+  },
+  4: {
+    notes: [
+      {head:"💡 Map & Diagram 60-Second Snapshot", pts:["Maps: mostly Section 2; a visual guided tour, logical order","Check title → labels → locations → predict direction language","Diagrams: spot keywords, don't try to read every detail","Answers in order — but scattered across map/diagram"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"T.A.L.L. before the audio: Title, Arrows/path, Labels, Location of questions.", mnemHelp:"You have seconds to prep — TALL is a fixed checklist that stops visual overload and losing your place."},
+      {head:"⚡ Liz's Golden Rules", pts:["Predict language: beyond, next to, opposite, to the east","Locate north + arrows; speaker follows a logical path","Spelling and plurals count — copy exactly what you hear","Uncountable: no 's', no 'a/an', no numbers; say 'a piece of advice'","'How much' → uncountable; 'How many' → countable"]}
+    ],
+    vocab: [
+      {w:"mausoleum", bn:"সমাধিসৌধ, মাজার", s:"It was built between 1631 and 1653 in the city of Agra by the Mughal Emperor Shah as a mausoleum for his wife.", src:"IELTS Map Listening Practice"},
+      {w:"subsidiary", bn:"সহায়ক, আনুষঙ্গিক", s:"On the left hand side of the forecourt, you will see some subsidiary tombs.", src:"IELTS Map Listening Practice"},
+      {w:"calligraphy", bn:"হস্তলিপিশিল্প", s:"Each side of the building has archways which are framed by carefully chosen verses from the Qur'an in beautifully stylised calligraphy.", src:"IELTS Map Listening Practice"},
+      {w:"intersect", bn:"ছেদ করা, পরস্পর মিলিত হওয়া", s:"Midway, where the paths intersect, is a marble pond, in which the mausoleum is beautifully reflected.", src:"IELTS Map Listening Practice"},
+      {w:"incorporate", bn:"অন্তর্ভুক্ত করা", s:"The construction involved some 20,000 workers and incorporated materials from China, Tibet, Sri Lanka and Arabia.", src:"IELTS Map Listening Practice"},
+      {w:"penetrate", bn:"ভেদ করা, ভেতরে ঢোকা", s:"There is a heat flow probe that will penetrate to a depth of 5m or 16ft.", src:"IELTS Diagrams Practice"},
+      {w:"deploy", bn:"মোতায়েন করা, স্থাপন করা", s:"Two large circular solar panels were deployed immediately on landing to operate its systems.", src:"IELTS Diagrams Practice"},
+      {w:"vast", bn:"বিশাল, সুবিশাল", s:"Insight is now sitting on a vast, flat plain, close to the Red Planet's equator.", src:"IELTS Diagrams Practice"},
+      {w:"seismometer", bn:"ভূমিকম্প মাপার যন্ত্র", s:"There is a robotic arm which places instruments such as the seismometer on the planet's surface.", src:"IELTS Diagrams Practice"},
+      {w:"phenomena", bn:"প্রাকৃতিক ঘটনাসমূহ", s:"Natural phenomena (sunshine, snow, rain, weather).", src:"Common Uncountable Nouns"}
+    ]
+  },
+  5: {
+    notes: [
+      {head:"💡 MCQ + YNNG Double Punch", pts:["MCQ: answers in order — but all options may be mentioned","Analyse question + options; spot keywords; prep paraphrases","YNNG = TFNG's twin, but matches the writer's OPINION, not facts","YES = meaning matches; NO = contradicted; NG = not found"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"YNNG = Yes-Same, No-Nope, NG-Nothing to go on — three Ns to find Nothing.", mnemHelp:"Each letter maps to one decision word, stopping the classic flip-flop between No and Not Given."},
+      {head:"⚡ Liz's Golden Rules", pts:["Never write True for Yes (or T for Y) — marked wrong","Watch quantifiers: 'all' = 100%; 'practically all' ≠ all","Don't overthink — match general meaning, not exact words","MCQ answers must be letters; guess — wrong answers don't penalise","Speaking Part 1: 12 questions, 3 topics, prep ideas not scripts"]}
+    ],
+    vocab: [
+      {w:"draconian", bn:"অত্যন্ত কঠোর, নির্মম", s:"A group of biotechnology experts say it is time to loosen Europe's draconian regulations on genetically modified crops.", src:"Reading MCQ Practice"},
+      {w:"meddling", bn:"হস্তক্ষেপ করা, গোঁজামিল দেওয়া", s:"Opponents argue we do not know the consequences of meddling with nature.", src:"Reading MCQ Practice"},
+      {w:"yield", bn:"ফলন, উৎপাদন", s:"This can be to increase yield or to allow the plant to exist in a more hostile environment than normal.", src:"Reading MCQ Practice"},
+      {w:"arid", bn:"শুষ্ক, অনুর্বর", s:"Rice is grown on flooded land and on dry land, in tropical rain forests of Africa and in arid deserts of the Middle East.", src:"Reading MCQ Practice"},
+      {w:"peerless", bn:"অতুলনীয়, অদ্বিতীয়", s:"While it can be said that he was a peerless warrior in battle, he was a poor King of England.", src:"YNNG Reading Practice"},
+      {w:"squandering", bn:"অপচয় করা, নষ্ট করা", s:"He has often been criticised not only for his neglect of England, but also for squandering the lives of so many of his followers.", src:"YNNG Reading Practice"},
+      {w:"epitome", bn:"আদর্শ উদাহরণ, নিখুঁত প্রতীক", s:"Many English people still remember him quite fondly as a chivalrous king who was the epitome of a knight.", src:"YNNG Reading Practice"},
+      {w:"discontent", bn:"অসন্তোষ, ক্ষোভ", s:"He taxed the English so heavily that it caused widespread discontent amongst the populace.", src:"YNNG Reading Practice"},
+      {w:"paraphrase", bn:"ভাবার্থে পুনর্ব্যক্ত করা", s:"Many students try so hard to paraphrase a word that they are actually making too many mistakes which will lower their band score.", src:"IELTS Vocabulary Paraphrasing Tips"}
+    ]
+  },
+  6: {
+    notes: [
+      {head:"💡 Form Completion = Easiest Listening Marks", pts:["Section 1 = two speakers, social chat (e.g. phone booking)","Beware traps: answer given, then changed by a speaker","Max 3 words and/or numbers — an email counts as one word","Fill the precise word; skip extras like articles in forms"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"SPOT the answer — Spelling, Precise word, Order, Three-word limit.", mnemHelp:"Every gap-fill format (forms, tables, summaries) runs on the same SPOT rules: Spelling counts, write the Precise word you hear, answers follow Order, and never exceed the Three-word limit."},
+      {head:"⚡ Alphabet & Gap-Fill Rules", pts:["Similar sounds to master: B/P, D/T, S/X, J/G, M/N, K/Q, U/Y, V/W","Z is 'zed' in the UK and 'zee' in the US","Gap fill: predict the answer type from the grammar","Adding a clause creates complex sentences"]}
+    ],
+    vocab: [
+      {w:"reserve", bn:"আগাম সংরক্ষণ করা", s:"Certainly, let me take some details and then I'll reserve a place for you.", src:"Form Completion Listening Practice"},
+      {w:"accommodation", bn:"বাসস্থান, থাকার ব্যবস্থা", s:"The accommodation we offer on the course is all shared so you can choose from a shared room, a shared flat or a shared house.", src:"Form Completion Listening Practice"},
+      {w:"latter", bn:"দুটোর মধ্যে শেষটি", s:"The latter, please.", src:"Form Completion Listening Practice"},
+      {w:"confirmation", bn:"নিশ্চিতকরণ, সমর্থন", s:"If you could just email me confirmation of my booking, that would be great.", src:"Form Completion Listening Practice"},
+      {w:"trap", bn:"ফাঁদ, প্রতারণার সূত্র", s:"Common traps are when the answer is given and then changed by one of the speakers.", src:"Form Completion Listening Practice"},
+      {w:"pronunciation", bn:"উচ্চারণ", s:"Alphabet practice for spelling is designed to review the pronunciation of letters for accurate spelling.", src:"Alphabet Practice for Spelling"},
+      {w:"clause", bn:"উপবাক্য (ব্যাকরণ)", s:"This video tutorial will teach you how to improve your grammar for IELTS writing task 2 by adding a clause to a sentence.", src:"Grammar: Adding a Clause"}
+    ]
+  },
+  7: {
+    notes: [
+      {head:"💡 Matching Headings (Reading)", pts:["A heading describes the aim of the whole paragraph","Use each heading only once — one per paragraph","There are more headings than paragraphs","Answers are written as Roman numerals"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"AIM — Aim of the whole paragraph, Ignore headings that fit only part, Match the meaning not the words.", mnemHelp:"Aim guards against picking a heading that only covers one sentence; most mistakes come from choosing 'close but partial'."},
+      {head:"⚡ Multiple Choice & Speaking Rules", pts:["MC: keywords are often paraphrased — match meaning","Watch traps like a false idea that sounds right 'until now'","Linking words and/but/because/also = 25% fluency & coherence","Keep it informal — avoid formal linkers in speaking","Part 1: answer + a little extra, keep talking until stopped"]}
+    ],
+    vocab: [
+      {w:"coherence", bn:"ধারাবাহিকতা, সংগতি", s:"Fluency and coherence are worth 25% of your marks.", src:"Linking Words for Speaking"},
+      {w:"cohesion", bn:"বাক্যের আন্তঃসংযোগ", s:"Cohesion is about bringing people closer together.", src:"Linking Words for Speaking"},
+      {w:"informal", bn:"অনানুষ্ঠানিক", s:"Use simple, informal linkers such as and, but and also.", src:"Linking Words for Speaking"},
+      {w:"diagnose", bn:"রোগ নির্ণয় করা", s:"The blood test could help doctors diagnose the disease.", src:"Alzheimer's MCQ Reading"},
+      {w:"dementia", bn:"স্মৃতিভ্রংশ, ডিমেনশিয়া", s:"Alzheimer's disease is a form of dementia.", src:"Alzheimer's MCQ Reading"},
+      {w:"protein", bn:"প্রোটিন", s:"The test looks for a protein found in the blood.", src:"Alzheimer's MCQ Reading"},
+      {w:"prevent", bn:"প্রতিরোধ করা", s:"Scientists hope the test can help prevent the disease.", src:"Alzheimer's MCQ Reading"},
+      {w:"solidarity", bn:"সংহতি, একতা", s:"Cohesion is shown by bringing people closer together.", src:"Linking Words for Speaking"}
+    ]
+  },
+  8: {
+    notes: [
+      {head:"💡 Sentence Completion (Reading)", pts:["Use grammar to predict the type of answer","An article like 'a' before the gap means a countable noun","Passage words are paraphrased in the question","Your answer must match the passage exactly — spelling counts","Keywords in the question ≠ same words in the passage"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"GAP — Grammar predicts the answer type, Article 'a/an' signals a countable noun, Paraphrase keywords to locate the answer.", mnemHelp:"Grammar is your free hint: the gap's position tells you if you need a noun, verb, adjective or a number."},
+      {head:"⚡ Matching Info, Paraphrasing & Education Vocab", pts:["Matching info: the answer is a letter, not a heading","Answers are NOT in order — scan the whole text","Letters can be used more than once","Paraphrase example: 'phased out' = gradually removed","Know: truancy, scholarship, undergraduate, tuition"]}
+    ],
+    vocab: [
+      {w:"tuition", bn:"শিক্ষাদান, টিউশন ফি", s:"University tuition fees have risen in recent years.", src:"Education Vocabulary"},
+      {w:"undergraduate", bn:"স্নাতক", s:"An undergraduate studies for a first degree.", src:"Education Vocabulary"},
+      {w:"scholarship", bn:"বৃত্তি", s:"She was awarded a scholarship to study abroad.", src:"Education Vocabulary"},
+      {w:"truancy", bn:"স্কুলে অনুপস্থিতি (ইচ্ছাকৃত)", s:"Truancy is a growing problem in some schools.", src:"Education Vocabulary"},
+      {w:"expel", bn:"বহিষ্কার করা", s:"Students who break the rules may be expelled.", src:"Education Vocabulary"},
+      {w:"curriculum", bn:"পাঠ্যক্রম", s:"The curriculum includes both science and the arts.", src:"Education Vocabulary"},
+      {w:"phase out", bn:"ধীরে ধীরে বন্ধ করা", s:"Canaries were being phased out of mining pits.", src:"Paraphrasing 2"},
+      {w:"imminent", bn:"আসন্ন", s:"The danger was imminent when the gas was released.", src:"Sentence Completion Reading"}
+    ]
+  },
+  9: {
+    notes: [
+      {head:"💡 Summary Completion (Listening)", pts:["A summary condenses the information, not word-for-word speech","The title shows you what the summary is about","Answers appear in the same order as the talk","Mind the word limit: one word, two words or a number","Predict the word type before you listen"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"FLOW — Focus on the title, Listen for the word type, Order follows the talk, Word limit kept exact.", mnemHelp:"The title sets the context and grammar tells you the answer type — combine them before the audio starts."},
+      {head:"⚡ Self-Correction & Part 1 Topics", pts:["Self-correct only when the meaning is wrong","Ignore minor grammar or vocabulary slips","Re-phrase a mistake: 'What I mean is…'","Part 1: about 12 questions, 3 topics, 4–5 minutes","All the questions are about you and your country"]}
+    ],
+    vocab: [
+      {w:"condense", bn:"সংক্ষিপ্ত করা", s:"A summary condenses the information you hear.", src:"Summary Completion Listening"},
+      {w:"admission", bn:"প্রবেশাধিকার", s:"Admission to the museum is free on Tuesdays.", src:"Listening Short Answer Practice"},
+      {w:"gallery", bn:"চিত্রশালা, গ্যালারি", s:"The gallery is closed to visitors on Mondays.", src:"Listening Short Answer Practice"},
+      {w:"temporary", bn:"অস্থায়ী", s:"The exhibition is temporary, so do not miss it.", src:"Listening Short Answer Practice"},
+      {w:"registration", bn:"নিবন্ধন", s:"Registration for the course takes place next week.", src:"Listening Short Answer Practice"},
+      {w:"self-correct", bn:"নিজের ভুল নিজে সংশোধন করা", s:"Self-correct your speaking when the meaning is wrong.", src:"IELTS Speaking Self-Correction"},
+      {w:"fluency", bn:"সাবলীলতা", s:"Fluency matters more than making no mistakes at all.", src:"IELTS Speaking Self-Correction"},
+      {w:"describe", bn:"বর্ণনা করা", s:"Part 1 questions ask you to describe yourself and your country.", src:"Speaking Part 1 Topics"}
+    ]
+  },
+  10: {
+    notes: [
+      {head:"💡 Categorisation (Classification)", pts:["Statements must be matched to categories A, B or C","The answer is a LETTER, not the words","Skim the whole text first to see what it is about","Scan for keywords, then think of their paraphrase","Letters can be used more than once"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"CAT-SCAN — Categorise A/B/C, Answer with a letter, Think of paraphrases; then Skim, Check each paragraph, Answers may repeat, Never copy sentences.", mnemHelp:"CAT tells you the format, SCAN tells you the method — one pass for the shape, one for the detail."},
+      {head:"⚡ Short Answers, Synonyms & Crime Vocab", pts:["Short answers: use the exact words from the passage","Answers come in the same order as the text","Spelling counts — copy carefully","Synonyms: predator/carnivorous, ancestors/forebears","Crime pairs: crime/criminal, punish/punishment"]}
+    ],
+    vocab: [
+      {w:"carnivorous", bn:"মাংসাশী", s:"The dinosaurs were carnivorous animals.", src:"Bird Dinosaur Synonym Practice"},
+      {w:"plumage", bn:"পাখির পালকসমূহ", s:"Modern birds have plumage that comes from their ancestors.", src:"Bird Dinosaur Synonym Practice"},
+      {w:"forebears", bn:"পূর্বপুরুষ", s:"Birds share forebears with the dinosaurs.", src:"Bird Dinosaur Synonym Practice"},
+      {w:"deterrent", bn:"প্রতিরোধক, নিবৃত্তিকারী", s:"A prison sentence acts as a deterrent to crime.", src:"Crime & Punishment Vocabulary"},
+      {w:"prosecute", bn:"মামলা করা, বিচার করা", s:"The police decided to prosecute the offender in court.", src:"Crime & Punishment Vocabulary"},
+      {w:"offence", bn:"অপরাধ", s:"Minor offences are usually punished with a fine.", src:"Crime & Punishment Vocabulary"},
+      {w:"sentence", bn:"দণ্ড, শাস্তি", s:"The judge passed a sentence of five years in prison.", src:"Crime & Punishment Vocabulary"},
+      {w:"juvenile", bn:"কিশোর-সংক্রান্ত", s:"Juvenile offenders are dealt with in a special court.", src:"Crime & Punishment Vocabulary"},
+      {w:"leisure", bn:"অবসর, অবকাশ", s:"Retired people have more leisure time to spend.", src:"Hobbies Matching Paragraph Reading"}
+    ]
+  },
+  11: {
+    notes: [
+      {head:"💡 Table Completion Essentials (Listening)", pts:["Table questions can appear in any section of the listening test","Most common in Section 2 (social talk) and Section 4 (lecture)","Sections 2 & 4 are structured, which is why tables suit them","Spend time on the headings and predict the missing content","Read the title first — it tells you the topic"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"T.A.B.L.E. — Title first, Anticipate the missing words, Be aware of the word limit, Listen for order, Exact spelling.", mnemHelp:"Each letter is a step you run before the audio: predict, limit-check, listen in order, spell exactly."},
+      {head:"⚡ Listening for Numbers", pts:["Practise numbers from 1–100 up to 1000–1,000,000","Write the numbers down as you hear them","Big numbers use a comma between every three digits, e.g. 1,400,002","Numbers can appear in any section of the test"]}
+    ],
+    vocab: [
+      {w:"suitable", bn:"উপযুক্ত, মানানসই", s:"Both of these sections are often very structured in content which is why table questions are so suitable.", src:"Listening Tables Practice"},
+      {w:"structured", bn:"সুসংগঠিত, কাঠামোবদ্ধ", s:"Both of these sections are often very structured in content.", src:"Listening Tables Practice"},
+      {w:"essential", bn:"অপরিহার্য, জরুরি", s:"Essential Tips for IELTS Listening Table Questions.", src:"Listening Tables Practice"},
+      {w:"tackle", bn:"মোকাবিলা করা", s:"Read the points below to learn how to tackle Table Questions in IELTS Listening.", src:"Listening Tables Practice"},
+      {w:"title", bn:"শিরোনাম", s:"The table will usually have a title.", src:"Listening Tables Practice"},
+      {w:"improve", bn:"উন্নত করা, বাড়ানো", s:"Improve your listening skills with this listening practice with big numbers.", src:"Big Numbers Practice"},
+      {w:"focus", bn:"কেন্দ্রীভূত করা, মনোযোগ দেওয়া", s:"This lesson focuses on listening for numbers.", src:"Numbers Practice"}
+    ]
+  },
+  12: {
+    notes: [
+      {head:"💡 Band Scores & Marking Criteria", pts:["Four criteria, each worth 25% of your marks","Criteria: Task Response, Coherence & Cohesion, Lexical Resource, Grammar","Read the band descriptions to see how marks are lost or gained","More errors mean a lower score — aim for accuracy","Going under the word count brings a penalty"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"O.D.A.S.D. — Opinion, Discussion, Advantages & Disadvantages, Solution, Double question.", mnemHelp:"The five Task 2 essay types in one password: classify the question before you plan, and the structure follows automatically."},
+      {head:"⚡ Structure & Planning", pts:["All essay types share the same 4–5 paragraph structure","Intro → body paragraphs with topic sentences → conclusion","Planning is essential — plan ideas before writing","~50% of your marks rely on answering the question directly","Prepare ideas for common topics from the 100 essay questions"]}
+    ],
+    vocab: [
+      {w:"criteria", bn:"মাপকাঠি, মানদণ্ড", s:"Each criterion is worth 25% of your total marks for task 2.", src:"Writing T2 Band Scores"},
+      {w:"assess", bn:"মূল্যায়ন করা", s:"The examiner will assess your IELTS essay using the 4 criteria below.", src:"Writing T2 Band Scores"},
+      {w:"flawed", bn:"ত্রুটিপূর্ণ, ভুল", s:"The opinion is often flawed or extreme in its views.", src:"Writing T2 Band Scores"},
+      {w:"cohesion", bn:"সংযোগসূত্র, সুসংহততা", s:"This is part of the marking criterion of Coherence and Cohesion, which is 25% of your writing task 2 marks.", src:"How Many Paragraphs for an Essay"},
+      {w:"paragraphing", bn:"অনুচ্ছেদ বিন্যাস", s:"IELTS Essay Structure and Paragraphing is essentially the same for all types of IELTS essays.", src:"How Many Paragraphs for an Essay"},
+      {w:"obese", bn:"স্থূলকায়, অতিরিক্ত মোটা", s:"Many children are obese.", src:"Improving Sentences for T2"},
+      {w:"tackle", bn:"মোকাবিলা করা, সমাধান করা", s:"One way to tackle this is to encourage them to do more exercises.", src:"Improving Sentences for T2"}
+    ]
+  },
+  13: {
+    notes: [
+      {head:"💡 Multiple Choice Listening", pts:["Spot the difference between the options given","You will probably hear words from all of the options","Don't just match words — aim for the meaning","Keep listening after you choose; the answer can change","For long lists, move quickly to the next question"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"1-1-2 — 1 cue card, 1 minute to prepare, 1–2 minutes to talk.", mnemHelp:"Speaking Part 2 in one number chain — the examiner's whole Part 2 takes about 3–4 minutes including the card."},
+      {head:"⚡ Speaking Part 2 & 3", pts:["Part 2: talk about a person, place, object, event or activity","Use the 1 minute to make notes — never memorise answers","Difficult topics: choose an example you can talk about easily","Part 3: a 4–5 minute discussion on broader world issues","Expand your answers with explanation and examples"]}
+    ],
+    vocab: [
+      {w:"conservation", bn:"সংরক্ষণ (প্রকৃতি/জীব)", s:"A multiple choice listening practice lesson for IELTS about a volunteer conservation program.", src:"Turtles MCQ Listening"},
+      {w:"volunteer", bn:"স্বেচ্ছাসেবক", s:"A volunteer conservation program is the topic of this listening practice.", src:"Turtles MCQ Listening"},
+      {w:"pollutants", bn:"দূষণকারী পদার্থ", s:"Hopefully this listening practice will remind us all about the importance of not using such pollutants.", src:"Plastic Straws Listening"},
+      {w:"biodegrade", bn:"প্রাকৃতিকভাবে পচনশীল হওয়া", s:"These straws do not biodegrade and can pollute the environment for hundreds of years.", src:"Plastic Straws Listening"},
+      {w:"showcase", bn:"প্রদর্শন করা, প্রকাশ করা", s:"This is the part of the test that you can control most, where you can showcase your fluency skills.", src:"Speaking Part 2 Topics"},
+      {w:"challenge", bn:"প্রশ্ন তোলা, চ্যালেঞ্জ করা", s:"It is possible the examiner might challenge your answers or ask you for more details.", src:"Speaking Part 3 Topics"},
+      {w:"expand", bn:"সম্প্রসারিত করা, বিস্তারিত বলা", s:"These questions require you to expand your answers further with explanation and examples.", src:"Speaking Part 3 Topics"},
+      {w:"relevant", bn:"প্রাসঙ্গিক", s:"The topics are usually based on world issues or common topics that are relevant in the world today.", src:"Speaking Part 3 Topics"}
+    ]
+  },
+  14: {
+    notes: [
+      {head:"💡 True / False / Not Given", pts:["TRUE: the statement matches the passage information","FALSE: the statement contradicts the passage","NOT GIVEN: there is not enough information to decide","Skim the passage to get the gist before answering","Beware of paraphrased information in more than one sentence"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"Say · Oppose · Silent — TRUE = the passage SAYS it; FALSE = the passage OPPOSES it; NOT GIVEN = the passage is SILENT on it.", mnemHelp:"Three words that sum up the whole TFNG logic — test each answer against Say / Oppose / Silent."},
+      {head:"⚡ Headings, Summary & Sentence Endings", pts:["Matching headings: skim or read the headings first","More headings than paragraphs; one per paragraph","Summary with word list: answer is a letter","Summary without word list: answer is a word from the passage","Sentence endings: find paraphrased keywords — need a strategy"]}
+    ],
+    vocab: [
+      {w:"contradict", bn:"বিরোধিতা করা, খণ্ডন করা", s:"FALSE – the statement contradicts the passage.", src:"TFNG Reading Practice"},
+      {w:"paraphrased", bn:"অর্থ বজায় রেখে ভিন্ন শব্দে বলা", s:"Paraphrased information might be found in more than one sentence.", src:"TFNG Reading Practice"},
+      {w:"skim", bn:"দ্রুত চোখ বুলিয়ে মূল কথা বোঝা", s:"You can choose whether to skim read (read for gist, not detail) or read the headings first.", src:"Matching Headings Reading"},
+      {w:"challenging", bn:"চ্যালেঞ্জিং, কঠিন", s:"These are one of the most challenging types of question in the reading test.", src:"Matching Sentence Endings"},
+      {w:"lengthy", bn:"দীর্ঘ, লম্বা", s:"They are certainly the most lengthy and time consuming.", src:"Matching Sentence Endings"},
+      {w:"strategy", bn:"কৌশল, পরিকল্পনা", s:"You definitely need a strategy and familiarity to answer these questions correctly.", src:"Matching Sentence Endings"},
+      {w:"concise", bn:"সংক্ষিপ্ত ও স্পষ্ট", s:"You can make them more brief and concise.", src:"How I Scored 9 in Reading"},
+      {w:"relentlessly", bn:"অবিরাম, নিরলসভাবে", s:"I relentlessly practiced tests from the General section.", src:"How I Scored 9 in Reading"}
+    ]
+  },
+  15: {
+    notes: [
+      {head:"💡 Agree / Disagree Model Essay", pts:["You may agree, disagree, or give a balanced opinion","You must give a clear opinion for Task Response marks","Task Response is worth 25% of your writing marks","Read the full model essay to copy its structure","Paraphrase the question in your introduction"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"S.W.A.P.S. — Swap in Synonyms, change Word forms (unhealthy → poor health), Avoid changing every word, Alter the Structure (swap clauses, start with a gerund), keep it Safe.", mnemHelp:"Paraphrase is a vocabulary skill — too many changes create errors, so swap safely and always keep the meaning."},
+      {head:"⚡ Linking Words, Punctuation & Paraphrasing", pts:["Examiners check your range, accuracy and flexibility of linkers","'Firstly' / 'Secondly' to start body paragraphs is 'mechanical' — not band 7+","Practise: whereas, because, As a result, particularly, namely","Full stops and commas are enough for band 9 — colons not needed","Put a comma after linkers like 'firstly' and after 'while/although' clauses"]}
+    ],
+    vocab: [
+      {w:"mechanical", bn:"যান্ত্রিক, কৃত্রিম", s:"However, using \"Firstly\" and \"Secondly\" to start each body paragraph is considered \"mechanical\" which means it is like a machine and this isn't good for people aiming for band 7 and above.", src:"Linking Words for Writing"},
+      {w:"flexibility", bn:"নমনীয়তা", s:"You will be checked on your range, accuracy and your flexibility of linking words in IELTS writing task 2.", src:"Linking Words for Writing"},
+      {w:"range", bn:"ব্যাপ্তি, পরিসর", s:"You will be checked on your range, accuracy and your flexibility of linking words in IELTS writing task 2.", src:"Linking Words for Writing"},
+      {w:"prominent", bn:"উল্লেখযোগ্য, প্রধান", s:"Global warming is a prominent issue these days.", src:"Linking Words Practice"},
+      {w:"emissions", bn:"নিঃসরণ, নির্গমন", s:"We should reduce the emissions of fossil fuels.", src:"Linking Words Practice"},
+      {w:"strain", bn:"চাপ, বোঝা", s:"The growing number of overweight people is putting a strain on the health care system.", src:"Linking Words Practice"},
+      {w:"curriculum", bn:"পাঠ্যসূচি", s:"Schools should introduce more physical education lessons in the school curriculum.", src:"Linking Words Practice"},
+      {w:"paraphrase", bn:"অর্থ বজায় রেখে নিজের ভাষায় লেখা", s:"Another way to paraphrase sentences is to change the form of the word.", src:"How to Paraphrase in IELTS"},
+      {w:"synonyms", bn:"সমার্থক শব্দ", s:"One way to paraphrase is to use synonyms.", src:"How to Paraphrase in IELTS"}
+    ]
+  },
+  16: {
+    notes: [
+      {head:"💡 Form Completion = Easiest Listening Marks", pts:["Section 1 form = two speakers, social chat (e.g. phone booking)","Beware traps: answer given, then changed by a speaker","Max 3 words and/or numbers — an email counts as one word","Fill the precise word; skip extras like articles in forms"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"SPOT the answer — Spelling, Precise word, Order, Three-word limit.", mnemHelp:"Every gap-fill format (forms, tables, summaries) runs on the same SPOT rules: Spelling counts, write the Precise word you hear, answers follow Order, never exceed the Three-word limit."},
+      {head:"⚡ Golden Rules: Gap-fill Formats", pts:["Tables: read headings, predict, follow row/column order","Summary: predict noun/verb; completed sentence must make sense","Spelling counts — a misspelt word is a wrong answer","Band 6+ grammar needs complex sentences; no contractions in Task 2"]}
+    ],
+    vocab: [
+      {w:"latter", bn:"দুটোর মধ্যে শেষটি", s:"The latter, please.", src:"Form Completion Listening Practice"},
+      {w:"adversely", bn:"প্রতিকূলভাবে", s:"Islands, such as the British Isles, can be adversely affected by the introduction of non-native species.", src:"Listening Table Completion"},
+      {w:"displaced", bn:"স্থানচ্যুত করেছে", s:"On mainland Britain, it has almost entirely displaced the populations of native red squirrels.", src:"Listening Table Completion"},
+      {w:"understory", bn:"বনের নিচু স্তরের গাছপালা", s:"These forests usually contain large amounts of dense understory vegetation that provides them sufficient amount of food sources and favorable shelters.", src:"Listening Table Completion"},
+      {w:"spawning", bn:"ডিম ছাড়ার/প্রজনন সংক্রান্ত", s:"Rainbow trout are gorgeous fish, with coloring and patterns that vary widely depending on habitat, age, and spawning condition.", src:"Listening Table Completion"},
+      {w:"funerary", bn:"অন্ত্যেষ্টিক্রিয়া-সম্পর্কিত", s:"It is a form of funerary art buried with the emperor in 210–209 BC.", src:"Listening Summary Completion"},
+      {w:"depict", bn:"চিত্রিত করা", s:"The Terracotta Army is a collection of terracotta sculptures depicting the armies the first Emperor of China.", src:"Listening Summary Completion"},
+      {w:"cavalry", bn:"অশ্বারোহী বাহিনী", s:"The three pits held more than 8,000 soldiers, 130 chariots with 520 horses and 150 cavalry horses.", src:"Listening Summary Completion"},
+      {w:"contraction", bn:"সংক্ষিপ্ত রূপ (যেমন don't)", s:"Yes, it's wrong to use contractions in formal writing.", src:"IELTS Grammar: Connecting Sentences"}
+    ]
+  },
+  17: {
+    notes: [
+      {head:"💡 Two Flavours of Adv/Disadv Essay", pts:["Type 1 'What are the advantages and disadvantages?' = no opinion","Type 2 'Do the advantages outweigh…?' = your opinion required","Intro = background + thesis only, about 45–55 words","One theme per body paragraph (all advantages together)"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"OR = Opinion, AND = answer both sides only.", mnemHelp:"Instructions that make you Choose ('or', 'outweigh', 'agree or disagree') demand your opinion; instructions that cover both ('and', 'discuss both sides') do not. Ask 'Or or And?' before you plan."},
+      {head:"⚡ Opinion Rules to Bank", pts:["No opinion when asked = big Task Response loss (25% of marks)","Show it: 'In my opinion' / 'I think', never 'this essay will'","Never sit on the fence — keep one position throughout","Max 2 points per paragraph; develop ideas, don't list them"]}
+    ],
+    vocab: [
+      {w:"predominate", bn:"প্রাধান্য পাওয়া, প্রধান হওয়া", s:"English, which is now the most widely spoken language in the world, may one day predominate over all other languages.", src:"Adv/Disadv Model Essay"},
+      {w:"flourish", bn:"সমৃদ্ধি লাভ করা", s:"With all people speaking the same language, there would be fewer barriers and therefore trade would flourish between countries.", src:"Adv/Disadv Model Essay"},
+      {w:"diversity", bn:"বৈচিত্র্য", s:"The diversity of cultures is one of the joys this world has to offer.", src:"Adv/Disadv Model Essay"},
+      {w:"devastate", bn:"ধ্বংস করা, বিধ্বস্ত করা", s:"This would devastate many countries economically that rely on tourism as a source of income.", src:"Adv/Disadv Model Essay"},
+      {w:"heritage", bn:"ঐতিহ্য", s:"Maintaining local languages and cultures should be prioritised to ensure a rich world heritage for future generations.", src:"Adv/Disadv Model Essay"},
+      {w:"impartially", bn:"নিরপেক্ষভাবে", s:"You are only required to discuss the two sides impartially.", src:"Should I give my opinion?"},
+      {w:"evaluate", bn:"মূল্যায়ন করা", s:"'Do you think this is a good thing?' – this is asking you to evaluate if something is good or bad.", src:"Should I give my opinion?"},
+      {w:"concise", bn:"সংক্ষিপ্ত, সংহত", s:"Including irrelevant or unfocused detail, going off topic. Don't be wordy. Be concise and be precise.", src:"100 IELTS Essay Questions"}
+    ]
+  },
+  18: {
+    notes: [
+      {head:"💡 Summary Completion: Letter or Word?", pts:["Word-list summary → answer is a LETTER, not the word","From-passage summary → copy word exactly; spelling counts","Answers usually come in order; work gap by gap","Names stay the same; other keywords get paraphrased"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"CLEAR the match — Completed sentence reads right, Letter answer, Extra endings, Answers in order, Reworded keywords.", mnemHelp:"Works for both summaries and matching-endings: the finished sentence must be grammatically correct, you write a letter, there are more endings than you need, answers come in order, keywords are paraphrased."},
+      {head:"⚡ Thesis & Ad-Vocab Bombs", pts:["Thesis = your answer in one short, crystal-clear statement","Ad vocab: catchy, persuasive, subtle, glossy, intrusive","'Flick through' = quick look; 'peak viewing time' = most viewers","Match meaning, not synonyms — words change, ideas stay"]}
+    ],
+    vocab: [
+      {w:"fermentation", bn:"গাঁজন, কুচুকরণ", s:"Fermentation in food processing is the conversion of carbohydrates (plant foods) to alcohols and carbon dioxide, or organic acids, using yeasts, bacteria, or a combination thereof.", src:"Food Summary Reading"},
+      {w:"anaerobic", bn:"অক্সিজেনবিহীন", s:"Fermentation usually implies that the action of microorganisms is desirable, and the process is used to produce alcoholic beverages such as wine, beer, and cider.", src:"Food Summary Reading"},
+      {w:"longevity", bn:"দীর্ঘায়ু", s:"He believed the daily ingestion of yogurt was a major contribution to their superior health and longevity.", src:"Food Summary Reading"},
+      {w:"spoilage", bn:"নষ্ট হয়ে যাওয়া", s:"A range of vegetables were also fermented to preserve them from spoilage in many countries.", src:"Food Summary Reading"},
+      {w:"reminiscent", bn:"স্মরণ করিয়ে দেয় এমন", s:"The conical vessel is reminiscent of the Apollo command ships that took men to the Moon.", src:"Matching Sentence Endings Reading"},
+      {w:"conical", bn:"শঙ্কু আকৃতির", s:"The conical vessel is reminiscent of the Apollo command ships.", src:"Matching Sentence Endings Reading"},
+      {w:"strayed", bn:"পথভ্রষ্ট, বিচ্যুত হওয়া", s:"The launch preparations had to be stopped shortly before the opening of the window because a boat strayed into the eastern part of the launch range.", src:"Matching Sentence Endings Reading"},
+      {w:"debut", bn:"আত্মপ্রকাশ", s:"Orion is being developed alongside a powerful new rocket that will have its own debut in the near future.", src:"Matching Sentence Endings Reading"},
+      {w:"persuasive", bn:"প্ররোচনামূলক", s:"Persuasive = it convinces us to do something or think something.", src:"Advertising Vocabulary"},
+      {w:"prioritised", bn:"অগ্রাধিকার দেওয়া হয়েছে", s:"In my opinion, job satisfaction rather than a competitive salary should be the deciding factor and should be prioritised when accepting a new job.", src:"Improving a Thesis Statement"}
+    ]
+  },
+  19: {
+    notes: [
+      {head:"💡 Part 1 = You & Your Country", pts:["4–5 mins, 12 questions across 3 topics, no prep time","Prepare ideas, never memorise whole answers — stay natural","Hometown = where you spent childhood, not birth place","Work, Study, Home, Hometown = the likely opening four"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"1-2-4 CUE CARD: 1 minute plan, 2 minutes talk, 4 prompts — what, when/where, who, why.", mnemHelp:"Part 2 is the section you control most. Prep stories for object, person, place, event and activity — never memorise."},
+      {head:"⚡ Part 3 & Style Hacks", pts:["Part 3 = world-issue discussion; examiner can challenge you","One idea explained deeply beats a list of ideas","Speaking is informal: 'I mean', 'let me see', contractions fine","Prefer phrasal verbs over stale idioms like 'once in a blue moon'"]}
+    ],
+    vocab: [
+      {w:"blossoming", bn:"প্রস্ফুটিত, ফুলে ফুলে ভরা", s:"That's when the weather starts warming up and all the flowers start blossoming.", src:"Travel & Transport Part 1 Answers"},
+      {w:"congested", bn:"যানজটপূর্ণ", s:"I came by bike because the roads are pretty congested at this time and a bike is quicker.", src:"Travel & Transport Part 1 Answers"},
+      {w:"overcrowded", bn:"অত্যধিক ভিড়পূর্ণ", s:"It's the cheapest way to get around even though it's really overcrowded and not particularly punctual.", src:"Travel & Transport Part 1 Answers"},
+      {w:"punctual", bn:"সময়নিষ্ঠ", s:"It's the cheapest way to get around even though it's really overcrowded and not particularly punctual.", src:"Travel & Transport Part 1 Answers"},
+      {w:"showcase", bn:"প্রদর্শন করা, ঝালাই দেখানো", s:"This is the part of the test that you can control most, where you can showcase your fluency skills.", src:"Speaking Part 2 Topics"},
+      {w:"sedentary", bn:"আসীন, বসে থাকা", s:"As technology develops, people are living more and more sedentary lifestyles so we must focus on exercise.", src:"Speaking Part 3 Sport Answers"},
+      {w:"strenuous", bn:"কঠোর, পরিশ্রমসাধ্য", s:"Boys tended to prefer doing more strenuous, active and competitive sports which required more strength and stamina.", src:"Speaking Part 3 Sport Answers"},
+      {w:"stamina", bn:"সহনশক্তি", s:"Competitive sports required more strength and stamina, such as football, boxing or basketball.", src:"Speaking Part 3 Sport Answers"},
+      {w:"spectacular", bn:"দর্শনীয়, চমকপ্রদ", s:"Seeing the colourful lifestyle of the locals and having a chance to see spectacular scenery was something we will never forget.", src:"Part 2 Model Answer"}
+    ]
+  },
+  20: {
+    notes: [
+      {head:"💡 Gap-fill = Exact Words Only", pts:["Read questions BEFORE audio; answers come in order","Write the precise word heard — '9', not '9 direct'","Respect the word limit — 1, 2 or 3 words, no more","Idioms like 'struck a chord' or 'stir' can be the answer"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"GRAM the gap — Grammar must fit, Read questions first, Answers in order, Max word limit.", mnemHelp:"Run G.R.A.M. every time: check the Grammar fit, Read ahead before audio, Answers follow Order, and never break the Max word limit."},
+      {head:"⚡ Clauses & Optional Answers", pts:["Add a clause to build complex sentences and lift grammar","Gerund noun phrase ('building wider roads') = singular, 'it'","Brackets in answer keys = optional words, not both required","No punctuation or capitals needed in listening answers"]}
+    ],
+    vocab: [
+      {w:"staggering", bn:"বিস্ময়কর, হতবাক করার মতো", s:"By the end of this sponsored walk, he had raised not £1,000 but a staggering £21 million.", src:"Gap-fill Listening Practice"},
+      {w:"knighted", bn:"নাইট উপাধিতে ভূষিত", s:"Many around the country are now calling for Tom Moore to be knighted for his remarkable fund-raising efforts.", src:"Gap-fill Listening Practice"},
+      {w:"humble", bn:"বিনয়ী", s:"This story truly is an example of how a humble, unambitious person can stir the nation and effect incredible change.", src:"Gap-fill Listening Practice"},
+      {w:"stir", bn:"আলোড়িত করা, উত্তেজিত করা", s:"To stir a nation means to raise emotions within a country.", src:"Gap-fill Listening Practice"},
+      {w:"nucleus", bn:"কেন্দ্র, নিউক্লিয়াস", s:"The Philae lander achieved the first-ever controlled touchdown on a comet nucleus.", src:"Gap-fill Listening Practice"},
+      {w:"taboo", bn:"নিষিদ্ধ, বর্জনীয়", s:"Sweeping during Tết is taboo and considered to be unlucky, since it symbolizes sweeping away the luck.", src:"New Year in Vietnam Listening"},
+      {w:"kumquat", bn:"কামকোয়াট (কমলা জাতীয় ছোট ফল)", s:"People buy kumquat trees and peach blossom to decorate their houses.", src:"New Year in Vietnam Listening"},
+      {w:"adorn", bn:"সাজানো, শোভিত করা", s:"At Tết, houses are adorned with flowers and kumquat trees.", src:"New Year in Vietnam Listening"},
+      {w:"clause", bn:"উপবাক্য (ব্যাকরণ)", s:"This video tutorial will teach you how to improve your grammar for IELTS writing task 2 by adding a clause to a sentence.", src:"Grammar: Adding a Clause"}
+    ]
+  },
+  21: {
+    notes: [
+      {head:"💡 Task 1 = Report, Not an Essay", pts:["Task 1 is a report; Task 2 is the essay","Write at least 150 words — aim for 170–190","Over 210 words can lower your score","Task 1 counts for 33% of your writing marks","Spend about 20 minutes, no more"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"I.O.B.B. — Intro → Overview → Body 1 → Body 2.", mnemHelp:"Task 1 has no conclusion. After your Overview, go straight into two body paragraphs, then stop."},
+      {head:"⚡ Golden Rules", pts:["Past tense for past dates; present tense if no date","Never give your opinion in a report","4 marking criteria, each worth 25%: TA, Coherence & Cohesion, Lexis, Grammar"]}
+    ],
+    vocab: [
+      {w:"rise / rose", bn:"উঠা, বৃদ্ধি পাওয়া", s:"Rise means to go up: the line rises sharply in the first period.", src:"Line Graph Vocabulary"},
+      {w:"decline", bn:"হ্রাস পাওয়া, কমে যাওয়া", s:"Decline means to go down.", src:"Line Graph Vocabulary"},
+      {w:"fluctuate", bn:"ওঠানামা করা", s:"Fluctuate means to go up and down.", src:"Line Graph Vocabulary"},
+      {w:"peak", bn:"শিখর, সর্বোচ্চ বিন্দু", s:"Peak means the highest point reached.", src:"Line Graph Vocabulary"},
+      {w:"plateau", bn:"অপরিবর্তিত থাকা, সমতল অবস্থা", s:"Plateau means to stay the same over time.", src:"Line Graph Vocabulary"},
+      {w:"sharp", bn:"তীক্ষ্ণ, হঠাৎ ও দ্রুত", s:"A sharp rise is a sudden, quick increase.", src:"Line Graph Vocabulary"},
+      {w:"gradual", bn:"ধীরে ধীরে, ক্রমান্বয়ে", s:"A gradual rise is a slow, steady increase.", src:"Line Graph Vocabulary"},
+      {w:"trend", bn:"প্রবণতা, ধারা", s:"Describe the overall trend of the line graph.", src:"Line Graph Vocabulary"},
+      {w:"overview", bn:"সারসংক্ষেপ, সামগ্রিক চিত্র", s:"The overview summarises the main features of the chart.", src:"Writing Task 1 Paragraphs"},
+      {w:"criteria", bn:"মানদণ্ড, মূল্যায়নের বিষয়", s:"There are four marking criteria for writing task 1.", src:"Writing T1 Band Scores"}
+    ]
+  },
+  22: {
+    notes: [
+      {head:"💡 Choosing a Title — Do It Last", pts:["Choose the title only after reading the whole passage","The title must cover the entire passage, not one idea","It needs insight into the passage's overall meaning","Match the meaning, not just single keywords"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"T.I.P.S. — Title = Insight on the Passage as a Sum: read fully, then summarise.", mnemHelp:"A good title summarises the whole text, so do it last when you know the full picture."},
+      {head:"⚡ Reading + Speaking Power Moves", pts:["Desertification = dry land becoming increasingly arid","Earth: 3.8 billion years old; 1.9 million species named","Part 3: expand answers with explanation and examples"]}
+    ],
+    vocab: [
+      {w:"desertification", bn:"মরুকরণ, ভূমির মরুভূমিতে রূপান্তর", s:"Desertification is a form of land degradation.", src:"Desertification Reading Exercise"},
+      {w:"arid", bn:"শুষ্ক, অনুর্বর", s:"Desertification occurs when dry land becomes increasingly arid.", src:"Desertification Reading Exercise"},
+      {w:"degradation", bn:"অবনমন, ক্ষয়", s:"Desertification is a form of land degradation.", src:"Desertification Reading Exercise"},
+      {w:"overgrazing", bn:"অতিরিক্ত চারণ (গবাদি পশুর)", s:"Overgrazing by livestock is a human cause of desertification.", src:"Desertification Reading Exercise"},
+      {w:"species", bn:"প্রজাতি", s:"About 1.9 million species have been named on Earth.", src:"IELTS Reading Life on Earth"},
+      {w:"natural selection", bn:"প্রাকৃতিক নির্বাচন", s:"Evolution works through natural selection.", src:"IELTS Reading Life on Earth"},
+      {w:"insight", bn:"অন্তর্দৃষ্টি, গভীর বোঝাপড়া", s:"Choosing a title requires insight into the whole passage.", src:"Choosing a Title Reading"},
+      {w:"summary", bn:"সংক্ষিপ্ত সার", s:"A good title is a summary of the whole passage.", src:"IELTS Reading Choosing a Title"}
+    ]
+  },
+  23: {
+    notes: [
+      {head:"💡 Know Your Task Type First", pts:["Three types: solution, cause-solution, problem-solution","Misreading the task destroys Task Response (25%)","Discussion = discuss both sides AND give your opinion","More ideas doesn't mean a higher score — quality counts"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"S.C.P. — See the Cause, Propose a Solution: identify causes before offering solutions.", mnemHelp:"Underline keywords to know whether you need causes, solutions, or both before you plan."},
+      {head:"⚡ Passive Voice Power", pts:["Use the passive when the performer is unknown or irrelevant","Example: 'More wind power is used than solar power.'","Passive fits opinions about general issues in Task 2"]}
+    ],
+    vocab: [
+      {w:"solution", bn:"সমাধান", s:"A solution essay offers solutions to a problem.", src:"Solution Essay Band 9 Model"},
+      {w:"cause", bn:"কারণ", s:"A cause-solution essay presents the causes of the problem.", src:"Solution Essay Band 9 Model"},
+      {w:"discussion", bn:"আলোচনা", s:"A discussion essay requires you to discuss both sides.", src:"Discussion Essay Model"},
+      {w:"opinion", bn:"মতামত", s:"In a discussion essay you must give your own opinion.", src:"Discussion Essay Model"},
+      {w:"passive voice", bn:"কর্মবাচ্য", s:"Use the passive voice when the performer is unknown or irrelevant.", src:"Passive Voice for Opinion"},
+      {w:"renewable", bn:"নবায়নযোগ্য", s:"More wind power is used than solar power.", src:"Passive Voice for Opinion"},
+      {w:"solar power", bn:"সৌরশক্তি", s:"More wind power is used than solar power.", src:"Passive Voice for Opinion"},
+      {w:"deter", bn:"প্রতিরোধ করা, নিবৃত্ত করা", s:"Something that acts as a deterrent stops people from committing crime.", src:"Improving Sentences for Academic Writing"}
+    ]
+  },
+  24: {
+    notes: [
+      {head:"💡 Multiple Choice Mastery", pts:["Spot the differences between the options","You hear words from all options — match the meaning","Keep listening even after you choose an answer","Most difficult question type, so practise hard"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"D.M.M.S. — Differentiate Meaning, Match Sense: compare option meanings, not words.", mnemHelp:"The speaker often uses words from every option; only meaning identifies the correct one."},
+      {head:"⚡ Section 4 & Prediction", pts:["Section 4 = academic lecture with one speaker","Follow signposts: 'Looking at X', 'Moving on to Y'","Predict the answer type; answers must fit grammatically"]}
+    ],
+    vocab: [
+      {w:"multiple choice", bn:"বহুনির্বাচনী প্রশ্ন", s:"Multiple choice is the most difficult question type.", src:"MCQ Essential Tips"},
+      {w:"option", bn:"বিকল্প", s:"Spot the differences between the options.", src:"MCQ Essential Tips"},
+      {w:"diagram", bn:"চিত্র, নকশা", s:"Notice the title of the diagram first.", src:"Diagrams Practice Tips"},
+      {w:"signpost", bn:"দিকনির্দেশক শব্দ", s:"Listen for signposts such as 'Moving on to...'.", src:"Section 4 Practice"},
+      {w:"lecture", bn:"বক্তৃতা, লেকচার", s:"Section 4 is an academic lecture with one speaker.", src:"Section 4 Practice"},
+      {w:"predict", bn:"পূর্বাভাস দেওয়া", s:"Predict the type of answer you need before you listen.", src:"Predicting Answers"},
+      {w:"preposition", bn:"পদান্বয়ী অব্যয়", s:"Prepositions help you predict the missing answer.", src:"Predicting Answers"},
+      {w:"grammatically", bn:"ব্যাকরণগতভাবে", s:"Your answer must be grammatically correct.", src:"Missing Words Practice"}
+    ]
+  },
+  25: {
+    notes: [
+      {head:"💡 Know the Speaking Format", pts:["Full test lasts 11–14 minutes","Part 1: 12 questions, 3 topics, 4–5 minutes","Part 2: cue card, 1 min prep, 1–2 min talk","Part 3: 4–5 minute discussion with the examiner"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"P.P.P. — Part 1 Personal, Part 2 Prepare, Part 3 Discuss.", mnemHelp:"Part 3 asks about the world in general, not just your family or friends — expand with examples."},
+      {head:"⚡ Technology & Health Model Answers", pts:["Men often obsessed with gadgets and gizmos","'Gadgets are a kind of ego for men.'","Health: you can't buy it; it protects your future"]}
+    ],
+    vocab: [
+      {w:"gadget", bn:"গ্যাজেট, ইলেকট্রনিক যন্ত্র", s:"Men are obsessed with gadgets and gizmos.", src:"Technology Vocabulary for Speaking"},
+      {w:"gizmo", bn:"ছোট যন্ত্র, যন্ত্রপাতি", s:"Men are obsessed with gadgets and gizmos.", src:"Technology Vocabulary for Speaking"},
+      {w:"fiddle around with", bn:"নাড়াচাড়া করা, নিয়ে খেলা করা", s:"They love fiddling around with new devices.", src:"Technology Part 3 Answers"},
+      {w:"down to earth", bn:"বাস্তবমুখী, সহজ-সরল", s:"Women are more down to earth about technology.", src:"Technology Part 3 Answers"},
+      {w:"ego", bn:"অহংকার, আত্মমর্যাদা", s:"Gadgets are a kind of ego for men.", src:"Technology Part 3 Answers"},
+      {w:"obsession", bn:"আসক্তি, একচিন্তা", s:"It can become an obsession with the latest technology.", src:"Technology Part 3 Answers"},
+      {w:"attitude", bn:"মনোভাব", s:"Your attitude to technology affects how you use it.", src:"Technology Part 3 Answers"},
+      {w:"priority", bn:"অগ্রাধিকার", s:"Health should be your top priority.", src:"Health Part 3 Answers"},
+      {w:"pandemic", bn:"মহামারি", s:"The coronavirus pandemic changed how we think about health.", src:"Health Part 3 Answers"}
+    ]
+  },
+  26: {
+    notes: [
+      {head:"📈 Line Graph Model Essay", pts:["Graph: 3 spreads — margarine, butter, low-fat — 1981–2007, in grams","Intro: paraphrase the question; name every item, year and unit","Overview: margarine & butter fell; low-fat/reduced went up","⭐ Task 1 marked on 4 criteria, 25% each: TA, CC, LR, GRA"]},
+      {head:"🗺️ Task 1 Maps — Types + Location Language", pts:["3 types: town changes, resort changes, places with buildings","Use: 'The railway runs through / crosses / passes through Y.'","'A is located in the town center'; 'B is situated in the north east.'","Paraphrase: town center = city center; housing area = residential area"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"MAPS — Main road verbs, Address words, Paraphrases, Sections.", mnemHelp:"Before any map: (M) say how roads 'run through' the town; (A) place spots with 'located / situated / lies'; (P) swap synonyms like city center, residential area; (S) give a compass position, e.g. north-east."}
+    ],
+    vocab: [
+      {w:"illustrate", bn:"চিত্রিত করা, ব্যাখ্যা করা", s:"The line graph illustrates the amount of three kinds of spreads.", src:"Line Graph Model Score 9"},
+      {w:"consumption", bn:"ভোগ, ব্যবহারের পরিমাণ", s:"Overall, the consumption of margarine and butter decreased over the period given.", src:"Line Graph Model Score 9"},
+      {w:"decreased", bn:"হ্রাস পাওয়া, কমে যাওয়া", s:"The consumption of margarine and butter decreased over the period given.", src:"Line Graph Model Score 9"},
+      {w:"measured", bn:"পরিমাপ করা", s:"Units are measured in grams.", src:"Line Graph Model Score 9"},
+      {w:"located", bn:"অবস্থিত", s:"A is located in the town center which has a railway running through it from north to south.", src:"IELTS Maps Vocabulary"},
+      {w:"situated", bn:"অবস্থিত", s:"B is situated in the north east of the town just outside the housing area.", src:"IELTS Maps Vocabulary"},
+      {w:"overall", bn:"সামগ্রিকভাবে", s:"Overall, the consumption of margarine and butter decreased over the period given.", src:"Line Graph Model Score 9"},
+      {w:"replace", bn:"প্রতিস্থাপন করা", s:"The factory was replaced by a new housing area.", src:"IELTS Maps Vocabulary"}
+    ]
+  },
+  27: {
+    notes: [
+      {head:"💡 Multiple Choice + Yes/No/Not Given", pts:["MC: nearly always 3 options; answer must be a LETTER, e.g. A","Two formats: answer a question OR complete a sentence","TFNG = factual passage; YNNG = opinion passage — same method","YES = writer agrees; NG = idea not in the passage"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"Y.N. = Opinion (Yes/No); T.F. = Facts (True/False).", mnemHelp:"Ask first: does the passage give facts or a writer's opinion? Opinion → check Yes/No/Not Given; facts → check True/False/Not Given. And answer multiple choice with a letter, never words."},
+      {head:"⚡ Matching Paragraphs + Short Answers + Linkers", pts:["Paragraphs labelled A–C; 'Letters may be used more than once'","Headings = choose a title; paragraph info = locate specific information","Short answers: in order, one word/words from the passage — 'Do not change the word.'","Band 6+ needs a range of linkers; choose by grammar, e.g. 'such as' for examples"]}
+    ],
+    vocab: [
+      {w:"compensation", bn:"ক্ষতিপূরণ, সম্মানী", s:"Shift workers should be given compensation for unsociable hours in the form of better benefits and higher pay.", src:"Practice with Linking Words"},
+      {w:"detrimental", bn:"ক্ষতিকর, অপকারী", s:"Working overtime has its compensations but can have a detrimental effect on the family.", src:"Practice with Linking Words"},
+      {w:"glass ceiling", bn:"ক্যারিয়ারে অদৃশ্য বাধা", s:"There still exists a glass ceiling, in many countries, which can prevent them from reaching the upper levels of a company.", src:"Practice with Linking Words"},
+      {w:"prevent", bn:"বাধা দেওয়া, প্রতিরোধ করা", s:"A glass ceiling, in many countries, which can prevent them from reaching the upper levels of a company.", src:"Practice with Linking Words"},
+      {w:"juvenile delinquency", bn:"কিশোর অপরাধ", s:"Juvenile delinquency, which is a growing issue in many countries, should be addressed by both schools and parents.", src:"Practice with Linking Words"},
+      {w:"addressed", bn:"মোকাবিলা করা, সমাধানের চেষ্টা করা", s:"Juvenile delinquency should be addressed by both schools and parents.", src:"Practice with Linking Words"}
+    ]
+  },
+  28: {
+    notes: [
+      {head:"📝 Task 2 Model Essay — Social Media (Opinion)", pts:["Band 9 techniques are the same techniques for all bands","Intro pattern: 'Some think X; however, while I believe A, I agree that B.'","Stand firm: sites help individuals but damage local communities","'This essay will discuss both sides…' = memorised junk sentence — avoid"]},
+      {head:"📈 Positive/Negative + Thesis + Band Scores", pts:["State your view clearly: 'this is a negative development…'","Intro = background statement + thesis, about 40–50 words","Band scores: each skill 0–9 in .5 steps; overall = the average","Rounding: 6.1 → 6; 6.85 → 7 — so know your target band"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"6.1 dips to 6, 6.85 climbs to 7.", mnemHelp:"Recite it to lock in rounding: below .25 pulls down, .75 and above pulls up. Each skill is 25% of the marks."}
+    ],
+    vocab: [
+      {w:"detrimental", bn:"ক্ষতিকর", s:"Social networking sites are thought by some to have had a detrimental effect on individual people.", src:"Task 2 Model Essay 2"},
+      {w:"beneficial", bn:"উপকারী", s:"While I believe that such sites are mainly beneficial to the individual, I agree that they have had a damaging effect on local communities.", src:"Task 2 Model Essay 2"},
+      {w:"damaging", bn:"ক্ষতিকর, ধ্বংসাত্মক", s:"I agree that they have had a damaging effect on local communities.", src:"Task 2 Model Essay 2"},
+      {w:"isolation", bn:"একাকীত্ব, বিচ্ছিন্নতা", s:"In my opinion, this is a negative development which can lead to isolation.", src:"Positive/Negative Model Essay"},
+      {w:"evoke", bn:"জাগিয়ে তোলা, উদ্রেক করা", s:"A good painting can evoke a memory or idea.", src:"What Makes a Good Painting"},
+      {w:"perspective", bn:"দৃষ্টিভঙ্গি, দৃষ্টিকোণ", s:"Some people judge a painting on its perspective and symmetry.", src:"What Makes a Good Painting"},
+      {w:"symmetry", bn:"প্রতিসাম্য", s:"Some people judge a painting on its perspective and symmetry.", src:"What Makes a Good Painting"},
+      {w:"reaction", bn:"প্রতিক্রিয়া", s:"For me, it's either due to the colours and images or because of the emotional reaction I might have to the painting.", src:"What Makes a Good Painting"}
+    ]
+  },
+  29: {
+    notes: [
+      {head:"🗓️ IELTS Essay Topics 2026", pts:["Five types: Opinion, Discussion, Advantage/Disadvantage, Cause-Solution, Direct Question","Applies to IELTS Academic AND General Training","Old questions get recycled — reworded or switched to another type","Win any topic with structure: know every type's format"]},
+      {head:"⭐ Task 2 Band Scores (5 to 8)", pts:["4 criteria × 25%: Task Response, Coherence & Cohesion, Lexical Resource, Grammar","Band 9 = density of errors — a rare absence of mistakes","Under the word count → your band score is penalised","Read every band description, not just your target"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"ODAC-D — Opinion, Discussion, Adv/Dis, Cause-Solution, Direct.", mnemHelp:"Say it like a password: O-D-A-C-D. Classify any essay question into one of the five types before planning — the type decides your intro, body and conclusion."}
+    ],
+    vocab: [
+      {w:"opinion", bn:"মতামত", s:"There are five main essay types: opinion, discussion, advantage/disadvantage, cause/problem-solution and direct questions.", src:"IELTS Essay Topics 2026"},
+      {w:"discussion", bn:"আলোচনা", s:"A discussion essay needs both sides of the topic to be discussed.", src:"IELTS Essay Topics 2026"},
+      {w:"advantage", bn:"সুবিধা", s:"Advantage/disadvantage essays ask about the benefits and drawbacks of an idea.", src:"IELTS Essay Topics 2026"},
+      {w:"disadvantage", bn:"অসুবিধা, মন্দ দিক", s:"Advantage/disadvantage essays ask about the benefits and drawbacks of an idea.", src:"IELTS Essay Topics 2026"},
+      {w:"solution", bn:"সমাধান", s:"Cause/problem-solution essays discuss problems and their solutions.", src:"IELTS Essay Topics 2026"},
+      {w:"reworded", bn:"ভিন্ন শব্দে পুনর্লিখিত", s:"Old questions may be reworded or change the type for the next year.", src:"IELTS Essay Topics 2026"}
+    ]
+  },
+  30: {
+    notes: [
+      {head:"🗺️ Map Listening + Naadam Festival", pts:["Map listening is usually Section 2: one speaker, e.g. museum or farm","First read the title; note buildings, facilities, rooms + locations","Naadam, Mongolia: three sports — wrestling, horse racing, archery","Summary = 1 word/number; sentence completion = max 2 → grammar predicts"]},
+      {head:"🔩 Eiffel Tower + Categorisation + Crime Reading", pts:["Eiffel: 'In 1884, two engineers came up with the concept of building a tall tower.'","Answer '22 months' plural — write 'months', not 'month'","Categorise: 2–3 categories A/B/C; answer must be a letter","Crime debate: punish vs rehabilitate; 'imprisonment rate of 150 per 100,000'"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"Read the title, count the labels, predict the word type.", mnemHelp:"For map listening: (R)ead the title and named buildings first. For categorisation: (C)ount how many categories. For completions: (P)redict noun/verb/plural via grammar — e.g. Eiffel '22 months' stays plural."}
+    ],
+    vocab: [
+      {w:"fester", bn:"উপেক্ষিত থেকে আরও খারাপ হওয়া", s:"Should the prison system leave inmates to fester in cold cells?", src:"Crime & Punishment Reading"},
+      {w:"incarceration", bn:"কারাবাস, কারাদণ্ড", s:"Punishment and deterrence as the goal of incarceration?", src:"Crime & Punishment Reading"},
+      {w:"deterrence", bn:"প্রতিরোধ, নিবারণ", s:"Punishment and deterrence as the goal of incarceration?", src:"Crime & Punishment Reading"},
+      {w:"rehabilitation", bn:"পুনর্বাসন", s:"Or should it let them wander, preaching rehabilitation into society as its main aim?", src:"Crime & Punishment Reading"},
+      {w:"staggering", bn:"বিস্ময়কর, চমকে দেওয়া", s:"England and Wales have a staggering imprisonment rate of 150 per 100,000 of the population.", src:"Crime & Punishment Reading"},
+      {w:"inmates", bn:"কারাবন্দিরা", s:"Nearly 14,000 current inmates are serving indeterminate sentences.", src:"Crime & Punishment Reading"},
+      {w:"indeterminate", bn:"নির্দিষ্টকালহীন, অনির্দিষ্ট", s:"Nearly 14,000 current inmates are serving indeterminate sentences.", src:"Crime & Punishment Reading"},
+      {w:"archery", bn:"তীরন্দাজি", s:"It is famous for its three sports: wrestling, horse racing and archery.", src:"Sports Festival Listening"}
+    ]
+  },
+  31: {
+    notes: [
+      {head:"🎯 How to Prepare (Essential Steps)", pts:["Learn the test; decide Academic or General Training from the start","Set a realistic goal: pick your band, then get your level assessed","Practice with Cambridge books 1–9; use the most recent — books 7–9","Do practice tests under exam conditions; get writing/speaking assessed"]},
+      {head:"🗣️ Speaking Part 1 + Part 3", pts:["Part 1: 4–5 mins, about 12 questions on 3 topics — you, your life, your country","Prepare ideas only; never memorise whole answers","Part 3: 4–5 min discussion with broader questions from the Part 2 topic","Topics repeat: '…will most likely be used again in 2026'"]},
+      {head:"🧠 Mnemonic to Bank", mnem:"Grammar = 25% of Task 2 — connect clauses for complex sentences.", mnemHelp:"To hit band 6+, join two sentences into ONE complex sentence (e.g. 'building wider roads' is a noun phrase). Speaking: 1 examiner, part 1 topics that repeat each year, then branch Part 2 ideas into Part 3 themes like punctuality or socialising."}
+    ],
+    vocab: [
+      {w:"grammar", bn:"ব্যাকরণ", s:"Grammar is 25% of your marks in IELTS writing task 2.", src:"Connecting Sentences Writing"},
+      {w:"complex", bn:"জটিল", s:"To get band score 6 and above, you must have complex sentences.", src:"Connecting Sentences Writing"},
+      {w:"noun phrase", bn:"বিশেষ্য পদগুচ্ছ (নাউন ফ্রেজ)", s:"The noun is 'building wider roads'. This is called a noun phrase.", src:"Grammar: Adding a Clause"},
+      {w:"memorise", bn:"মুখস্থ করা", s:"Prepare ideas for Part 1 but don't memorise whole answers.", src:"Speaking Part 1 Topics"},
+      {w:"realistic", bn:"বাস্তবসম্মত", s:"Set yourself a realistic goal for the band score you decide to get.", src:"How to Prepare for IELTS"},
+      {w:"assessed", bn:"মূল্যায়ন করা", s:"Your speaking and writing should be assessed by an experienced IELTS professional.", src:"How to Prepare for IELTS"},
+      {w:"punctuality", bn:"সময়ানুবর্তিতা", s:"Part 3 can move from a Part 2 topic to themes like punctuality, friends or socialising.", src:"Speaking Part 3 Topics"},
+      {w:"socialising", bn:"মেলামেশা, সামাজিকীকরণ", s:"Part 3 can ask broader questions on themes like punctuality, friends or socialising.", src:"Speaking Part 3 Topics"}
+    ]
+  }
+};
+
 const READ_CHIPS = {
   1:  [ {n:1,t:"Communication & Personality",q:"Q1-2",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Business & Money",q:"Q1-2",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:3,t:"Crime & Punishment",q:"Q1-2",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"} ],
   2:  [ {n:1,t:"Communication & Personality",q:"Q4-5",u:"https://ieltsliz.com/100-ielts-essay-questions/communication-and-personality/"}, {n:2,t:"Business & Money",q:"Q4-5",u:"https://ieltsliz.com/100-ielts-essay-questions/business-and-money/"}, {n:3,t:"Crime & Punishment",q:"Q4-5",u:"https://ieltsliz.com/100-ielts-essay-questions/crime-and-punishment/"} ],
@@ -1479,6 +2277,21 @@ const READ_CHIPS = {
 
 // ── APP GLOBAL STATE ─────────────────────────────────────────────────────────
 let activeDayId = 1;
+let currentTab = 'tasks';
+
+// ── DAY TABS (Tasks | Note of the Day | Vocab Builder) ───────────────────────
+function setDayTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.day-tab').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-tab') === tab);
+  });
+  ['tasks', 'notes', 'vocab'].forEach(p => {
+    const panel = document.getElementById('panel-' + p);
+    if (panel) panel.classList.toggle('active', p === tab);
+  });
+  const main = document.querySelector('.main-content');
+  if (main) main.scrollTop = 0;
+}
 
 // ── GET & SET DATES ──────────────────────────────────────────────────────────
 function getStartDate() {
@@ -1859,6 +2672,46 @@ function renderActiveDay(dayId) {
     linksSection.style.display = 'none';
   }
   
+  // Render Note of the Day
+  const extra = DAY_EXTRA[day.id];
+  const noteContainer = document.getElementById('note-container');
+  noteContainer.innerHTML = '';
+  ((extra && extra.notes) || []).forEach(n => {
+    const block = document.createElement('div');
+    if (n.mnem) {
+      block.className = 'mnemonic-callout';
+      block.innerHTML = `
+        <span class="mnem-badge">${n.head || '🧠 Mnemonic to Bank'}</span>
+        <div class="mnem-text">${n.mnem}</div>
+        <div class="mnem-help">${n.mnemHelp || ''}</div>
+      `;
+    } else {
+      block.className = 'note-block';
+      block.innerHTML = `
+        <div class="note-block-title">${n.head}</div>
+        <ul>${(n.pts || []).map(p => `<li>${p}</li>`).join('')}</ul>
+      `;
+    }
+    noteContainer.appendChild(block);
+  });
+
+  // Render Vocab Capture
+  const vocabContainer = document.getElementById('vocab-container');
+  vocabContainer.innerHTML = '';
+  ((extra && extra.vocab) || []).forEach(v => {
+    const item = document.createElement('div');
+    item.className = 'vocab-item';
+    item.innerHTML = `
+      <div class="vocab-item-top">
+        <span class="vocab-word">${v.w}</span>
+        <span class="vocab-bn">${v.bn}</span>
+      </div>
+      <div class="vocab-sentence">${v.s}</div>
+      <div class="vocab-src">Source: ${v.src}</div>
+    `;
+    vocabContainer.appendChild(item);
+  });
+  
   // Update footer navigation arrows
   const prevBtn = document.getElementById('prev-day-btn');
   if (day.id > 1) {
@@ -1897,6 +2750,7 @@ function renderActiveDay(dayId) {
 function selectDay(dayId) {
   activeDayId = dayId;
   renderActiveDay(activeDayId);
+  setDayTab('tasks');
   closeMobileSidebar();
 }
 
@@ -1927,6 +2781,7 @@ function closeMobileSidebar() {
 renderSidebar();
 activeDayId = todayDayNum();
 renderActiveDay(activeDayId);
+setDayTab('tasks');
 </script>
 </body>
 </html>
