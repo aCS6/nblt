@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Track your IELTS Band 7+ preparation with this interactive 31-day study tracker. Monitor your progress, log hours, read essay samples, and master IELTS Liz resources.">
 <title>IELTS Band 7+ Tracker — August 2026</title>
 <!-- NBLT hub: floating "back to home" pill. Optional — the app runs without it. -->
 <script defer src="assets/nblt-home.js"></script>
@@ -75,7 +76,6 @@ header{
 .card:hover{box-shadow:0 4px 24px #00000055;border-color:#3e4570}
 .card.done{border-color:var(--green);background:linear-gradient(135deg,#1a1d27,#0f1f0f)}
 .card.today{border-color:var(--accent);box-shadow:0 0 0 2px #5b7fff2a}
-.card.locked{opacity:.4;pointer-events:none}
 
 /* CARD TOP */
 .ctop{display:flex;align-items:center;gap:10px;padding:12px 14px 8px}
@@ -796,7 +796,7 @@ const READ_CHIPS = {
 // ── DYNAMIC START DATE ────────────────────────────────────────────────────────
 // Start date is recorded the first time the user completes Day 1.
 // Every subsequent "today" is calculated as: startDate + (dayNum - 1) calendar days.
-// Before Day 1 is completed, Day 1 is always "today" and all others are locked.
+// Before Day 1 is completed, Day 1 is always "today".
 
 function getStartDate() {
   const state = getState();
@@ -1001,7 +1001,7 @@ function completeDay(dayId, withCelebrate=true) {
 
   saveState(state);
   updateStats();
-  // Re-render so card dates and lock states update immediately
+  // Re-render so card dates update immediately
   render();
   if(withCelebrate) {
     launchConfetti();
@@ -1020,8 +1020,7 @@ function buildCard(day, todayNum) {
   const ds = state[day.id] || {done:false, hours:{}};
   const isDone = ds.done;
   const isToday = day.id === todayNum;
-  // Day 1 is never locked. Others are locked if beyond todayNum+1 (allow peeking 1 ahead)
-  const isLocked = day.id > 1 && day.id > todayNum + 1;
+
 
   // Dynamic date label: show real date if start is set, else "Day N"
   const calDate = dateForDay(day.id);
@@ -1047,7 +1046,6 @@ function buildCard(day, todayNum) {
   const classes = ['card',
     isDone  ? 'done'   : '',
     isToday ? 'today'  : '',
-    isLocked? 'locked' : '',
   ].filter(Boolean).join(' ');
 
   const todayBadge = isToday && !isDone
@@ -1056,14 +1054,13 @@ function buildCard(day, todayNum) {
         border-radius:5px;padding:1px 7px;letter-spacing:.07em;text-transform:uppercase">TODAY</span>`
     : '';
   const doneBadge = isDone ? '<span class="done-stamp">DONE ✓</span>' : '';
-  const lockedIcon = isLocked ? ' 🔒' : '';
 
   return `<div class="${classes}" id="card-${day.id}">
     ${isDone ? doneBadge : todayBadge}
     <div class="ctop" onclick="toggleExpand(${day.id})" style="cursor:pointer">
       <div class="dnum">${day.id}</div>
       <div class="cmeta">
-        <div class="cdate">${dateLabel}${lockedIcon}</div>
+        <div class="cdate">${dateLabel}</div>
         <div class="ctitle">${day.title}</div>
         <div class="sbadges">${skillHTML}</div>
       </div>
@@ -1080,8 +1077,6 @@ function buildCard(day, todayNum) {
 }
 
 function toggleExpand(dayId) {
-  const state = getState();
-  if(dayId > todayDayNum()+1) return; // locked
   const card = document.getElementById('card-'+dayId);
   if(!card) return;
   // close others
