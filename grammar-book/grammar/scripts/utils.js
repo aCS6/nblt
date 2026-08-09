@@ -325,6 +325,317 @@ function initNav() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   Explanation layer
+   ---------------------------------------------------------------
+   Each chapter loads explanations/unitN.js, which sets
+
+     window.__EXPL = {
+       "<data-id>": {
+         q:     "the question / prompt, plain text",
+         a:     "the correct answer",
+         why:   "why that answer is correct (HTML allowed)",
+         wrong: [ { opt: "a wrong answer", why: "why it fails" }, … ],
+         rule:  "one-line rule reminder"          // optional
+       }, …
+     }
+
+   initExplanations() then:
+     1. injects its own CSS (the chapter <style> blocks are untouched),
+     2. drops a small "?" chip next to every explained item,
+     3. adds a "Explanations" button to each .exercise-actions row,
+     4. renders the detail into one shared modal.
+
+   Called from the Alpine init() after __grammarInit(), so no chapter
+   needs to opt in beyond loading its data file.
+   ═══════════════════════════════════════════════════════════════ */
+
+const EXPL_CSS = `
+.expl-chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; margin-left: 6px; padding: 0;
+  border: none; border-radius: 9999px; flex-shrink: 0;
+  background: #ede9fe; color: #6d28d9;
+  font-size: .7rem; font-weight: 900; line-height: 1; cursor: pointer;
+  vertical-align: middle; transition: .15s;
+}
+.expl-chip:hover { background: #7c3aed; color: #fff; transform: scale(1.12); }
+.expl-chip:focus-visible { outline: 2px solid #7c3aed; outline-offset: 2px; }
+
+.btn-explain {
+  background: #fffbeb; color: #92400e; border: 2px solid #fbbf24;
+  padding: 7px 18px; border-radius: 9999px;
+  font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.btn-explain:hover { background: #fef3c7; border-color: #f59e0b; }
+
+.expl-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgb(15 23 42 / .55); backdrop-filter: blur(3px);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 32px 16px; overflow-y: auto;
+  opacity: 0; transition: opacity .18s ease;
+}
+.expl-overlay.open { opacity: 1; }
+.expl-overlay[hidden] { display: none; }
+
+.expl-modal {
+  background: #fff; border-radius: 18px; width: 100%; max-width: 760px;
+  box-shadow: 0 25px 60px -12px rgb(0 0 0 / .45);
+  overflow: hidden; margin: auto;
+  transform: translateY(-10px) scale(.985); transition: transform .18s ease;
+}
+.expl-overlay.open .expl-modal { transform: none; }
+
+.expl-head {
+  background: linear-gradient(135deg, #6d28d9, #8b5cf6); color: #fff;
+  padding: 16px 22px; display: flex; align-items: center; gap: 12px;
+  position: sticky; top: 0;
+}
+.expl-head h3 { font-size: 1.02rem; font-weight: 700; margin: 0; }
+.expl-head .expl-sub { font-size: .8rem; opacity: .85; display: block; margin-top: 2px; font-weight: 400; }
+.expl-close {
+  margin-left: auto; background: rgb(255 255 255 / .18); color: #fff;
+  border: none; border-radius: 9999px; width: 32px; height: 32px;
+  font-size: 1.05rem; line-height: 1; cursor: pointer; transition: .2s; flex-shrink: 0;
+}
+.expl-close:hover { background: rgb(255 255 255 / .32); }
+
+.expl-body { padding: 20px 22px 26px; max-height: 72vh; overflow-y: auto; }
+
+.expl-card { border: 1px solid #e5e7eb; border-radius: 14px; padding: 16px 18px; margin-bottom: 16px; }
+.expl-card:last-child { margin-bottom: 0; }
+.expl-q {
+  font-weight: 700; color: #1f2937; font-size: .95rem;
+  padding-bottom: 10px; margin-bottom: 12px; border-bottom: 2px solid #f3f4f6;
+  display: flex; gap: 9px; align-items: baseline;
+}
+.expl-q .expl-n {
+  background: #ede9fe; color: #6d28d9; border-radius: 9999px;
+  padding: 1px 9px; font-size: .74rem; font-weight: 800; flex-shrink: 0;
+}
+
+.expl-row { display: flex; gap: 10px; padding: 10px 12px; border-radius: 10px; margin-bottom: 8px; font-size: .89rem; line-height: 1.6; }
+.expl-row:last-child { margin-bottom: 0; }
+.expl-row .expl-mark { font-weight: 900; flex-shrink: 0; font-size: .95rem; line-height: 1.5; }
+.expl-row .expl-opt { font-weight: 700; }
+
+.expl-ok  { background: #f0fdf4; border-left: 3px solid #16a34a; }
+.expl-ok  .expl-mark, .expl-ok .expl-opt  { color: #15803d; }
+.expl-bad { background: #fef2f2; border-left: 3px solid #dc2626; }
+.expl-bad .expl-mark, .expl-bad .expl-opt { color: #b91c1c; }
+.expl-row p { margin: 3px 0 0; color: #374151; }
+.expl-row code { background: rgb(0 0 0 / .06); border-radius: 4px; padding: 1px 5px; font-size: .86em; }
+.expl-row em { color: #4c1d95; font-style: italic; }
+
+.expl-rule {
+  margin-top: 12px; background: #eff6ff; border-left: 3px solid #3b82f6;
+  border-radius: 8px; padding: 9px 13px; font-size: .85rem; color: #1e3a8a;
+}
+.expl-rule strong { color: #1e40af; }
+
+.expl-empty { text-align: center; color: #6b7280; font-size: .9rem; padding: 22px 0; }
+
+@media (max-width: 640px) {
+  .expl-overlay { padding: 0; }
+  .expl-modal { border-radius: 0; min-height: 100%; }
+  .expl-body { max-height: none; }
+}
+`;
+
+/* Build (once) and return the shared modal, wired for close-on-backdrop/✕/Esc. */
+function explModal() {
+  let overlay = document.getElementById('expl-overlay');
+  if (overlay) return overlay;
+
+  const style = document.createElement('style');
+  style.id = 'expl-styles';
+  style.textContent = EXPL_CSS;
+  document.head.appendChild(style);
+
+  overlay = document.createElement('div');
+  overlay.id = 'expl-overlay';
+  overlay.className = 'expl-overlay';
+  overlay.hidden = true;
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-labelledby', 'expl-title');
+  overlay.innerHTML =
+    '<div class="expl-modal">' +
+      '<div class="expl-head">' +
+        '<div><h3 id="expl-title">Explanation</h3><span class="expl-sub"></span></div>' +
+        '<button class="expl-close" type="button" aria-label="Close explanation">&#10005;</button>' +
+      '</div>' +
+      '<div class="expl-body"></div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay || e.target.closest('.expl-close')) closeExpl();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !overlay.hidden) closeExpl();
+  });
+  return overlay;
+}
+
+function closeExpl() {
+  const overlay = document.getElementById('expl-overlay');
+  if (!overlay || overlay.hidden) return;
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { overlay.hidden = true; }, 180);
+  if (overlay.__opener && document.contains(overlay.__opener)) overlay.__opener.focus();
+}
+
+/* Escape user-supplied text; why/rule may contain HTML by design. */
+function explEscape(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/* Question text is escaped, then a small inline whitelist is restored, so a
+   correction exercise can strike through the faulty form -- "we <s>are
+   seeing</s> that ..." -- without opening the field up to arbitrary markup. */
+const EXPL_INLINE_OK = /&lt;(\/?)(em|strong|code|s|u|sub|sup|br\s*\/?)&gt;/gi;
+function explInline(s) {
+  return explEscape(s).replace(EXPL_INLINE_OK, (_, slash, tag) => `<${slash}${tag}>`);
+}
+
+function explCard(entry, label) {
+  const wrong = Array.isArray(entry.wrong) ? entry.wrong : [];
+  let html = '<div class="expl-card">';
+
+  html += '<div class="expl-q">'
+       +  (label ? `<span class="expl-n">${explEscape(label)}</span>` : '')
+       +  `<span>${explInline(entry.q || '')}</span></div>`;
+
+  html += '<div class="expl-row expl-ok"><span class="expl-mark">&#10004;</span><div>'
+       +  `<span class="expl-opt">${explEscape(entry.a || '')}</span>`
+       +  `<p>${entry.why || ''}</p></div></div>`;
+
+  wrong.forEach(w => {
+    html += '<div class="expl-row expl-bad"><span class="expl-mark">&#10008;</span><div>'
+         +  `<span class="expl-opt">${explEscape(w.opt || '')}</span>`
+         +  `<p>${w.why || ''}</p></div></div>`;
+  });
+
+  if (entry.rule) html += `<div class="expl-rule"><strong>Rule:</strong> ${entry.rule}</div>`;
+
+  return html + '</div>';
+}
+
+/* ids: array of data-id strings. title/subtitle head the modal. */
+function openExpl(ids, title, subtitle, opener) {
+  const data = window.__EXPL || {};
+  const entries = ids.map(id => [id, data[id]]).filter(p => p[1]);
+
+  const overlay = explModal();
+  overlay.__opener = opener || null;
+  overlay.querySelector('#expl-title').textContent = title || 'Explanation';
+  overlay.querySelector('.expl-sub').textContent = subtitle || '';
+
+  const body = overlay.querySelector('.expl-body');
+  body.innerHTML = entries.length
+    ? entries.map(([id, e]) => explCard(e, e.n || explItemLabel(id))).join('')
+    : '<div class="expl-empty">No explanation is available for this item yet.</div>';
+  body.scrollTop = 0;
+
+  overlay.hidden = false;
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => overlay.classList.add('open'));
+  overlay.querySelector('.expl-close').focus();
+}
+
+/* "c2_3a" → "3a", "gft1" → "1", "u4a1_10" → "10" — the number a learner sees. */
+function explItemLabel(id) {
+  const m = String(id).match(/([0-9]+[a-z]?)$/i);
+  return m ? m[1] : '';
+}
+
+/* Find the element a chip should sit after, for any of the exercise shapes. */
+function explAnchor(el) {
+  if (el.matches('input, textarea')) return el;
+  if (el.classList.contains('tf-item'))      return el.querySelector('.tf-buttons') || el;
+  if (el.classList.contains('endings-item')) return el.querySelector('.endings-opts') || el;
+  if (el.classList.contains('gft-item'))     return el.querySelector('.gft-options') || el;
+  if (el.classList.contains('mc-options'))   return el;
+  return el;
+}
+
+function initExplanations() {
+  const data = window.__EXPL;
+  if (!data || !Object.keys(data).length) return;
+
+  explModal();
+
+  /* 1. Inline "?" chip on every explained item — exactly one per data-id.
+     Some chapters put the same data-id on every option button of a multiple
+     choice item, so dedupe by id rather than by element and chip the last
+     element bearing it, which lands the chip after the final option. */
+  const byId = new Map();
+  document.querySelectorAll('[data-id]').forEach(el => {
+    const id = el.dataset.id;
+    if (!data[id] || el.dataset.explChip === '1') return;
+    byId.set(id, el);                    /* later elements overwrite earlier */
+  });
+
+  byId.forEach((el, id) => {
+    el.dataset.explChip = '1';
+
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'expl-chip';
+    chip.textContent = '?';
+    chip.title = 'Why is this the answer?';
+    chip.setAttribute('aria-label', 'Show explanation for this item');
+    chip.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const ex = el.closest('.exercise');
+      const heading = ex && ex.querySelector('.exercise-header h3');
+      openExpl([id], 'Why is this the answer?',
+               heading ? heading.textContent.trim() : '', chip);
+    });
+
+    const anchor = explAnchor(el);
+    anchor.insertAdjacentElement('afterend', chip);
+  });
+
+  /* 2. "Explanations" button per exercise, for every explained item in it. */
+  document.querySelectorAll('.exercise').forEach(ex => {
+    const ids = [...ex.querySelectorAll('[data-id]')]
+      .map(el => el.dataset.id)
+      .filter((id, i, arr) => data[id] && arr.indexOf(id) === i);
+    if (!ids.length) return;
+
+    let actions = ex.querySelector('.exercise-actions');
+    if (!actions) {
+      actions = document.createElement('div');
+      actions.className = 'exercise-actions';
+      (ex.querySelector('.exercise-body') || ex).appendChild(actions);
+    }
+    if (actions.querySelector('.btn-explain')) return;
+
+    const heading = ex.querySelector('.exercise-header h3');
+    const num     = ex.querySelector('.exercise-header .ex-num');
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn-explain';
+    btn.innerHTML = '<span aria-hidden="true">&#128161;</span> Show Explanation';
+    btn.addEventListener('click', () => openExpl(
+      ids,
+      'Explanations' + (num ? ' — Exercise ' + num.textContent.trim() : ''),
+      heading ? heading.textContent.trim() : '',
+      btn
+    ));
+    actions.appendChild(btn);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
    Alpine.js chapter component
    Every chapter lays itself out as <body x-data="grammar()">.
    - Alpine drives the section tabs reactively (:class bindings plus
@@ -351,6 +662,7 @@ document.addEventListener('alpine:init', () => {
       this.$nextTick(() => {
         this.show(this.active);
         if (window.__grammarInit) window.__grammarInit();
+        initExplanations();
       });
     }
   }));

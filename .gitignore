@@ -32,6 +32,7 @@ grammar-book/grammar/scripts/crop_u20.py
 # ── Planning / internal docs ─────────────────────────────────
 grammar-book/grammar/plan.md
 grammar-book/grammar/AUDIT.md
+grammar-book/grammar/explanation-task.md
 essays/context.md
 
 # ── OS / editor noise ────────────────────────────────────────
