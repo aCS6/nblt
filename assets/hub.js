@@ -2,7 +2,7 @@
    NBLT — hub.js
    Alpine component for the home page.
 
-   Scope, deliberately: this page is a router. It knows the five apps, their
+   Scope, deliberately: this page is a router. It knows the six apps, their
    names, entry points and deep links — nothing else. It does not read, write
    or aggregate any app's progress; each app owns its own storage entirely.
 
@@ -25,10 +25,12 @@
     play:    '<path d="M6.5 4.8 18.6 12 6.5 19.2z"/>',
     sun:     '<circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>',
     moon:    '<path d="M20.5 14.3A8.5 8.5 0 1 1 9.7 3.5a6.8 6.8 0 0 0 10.8 10.8z"/>',
-    arrow:   '<path d="M4.5 12h15"/><path d="m13.2 5.8 6.3 6.2-6.3 6.2"/>'
+    arrow:   '<path d="M4.5 12h15"/><path d="m13.2 5.8 6.3 6.2-6.3 6.2"/>',
+    speak:   '<rect x="9" y="2.8" width="6" height="10.5" rx="3"/><path d="M5.2 11.3a6.8 6.8 0 0 0 13.6 0"/><path d="M12 18.2V21.4"/>',
+    dice:    '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="8.4" cy="8.4" r="1.15" fill="currentColor" stroke="none"/><circle cx="15.6" cy="15.6" r="1.15" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.15" fill="currentColor" stroke="none"/>'
   };
 
-  /* ── The five apps ────────────────────────────────────────────────────
+  /* ── The six apps ────────────────────────────────────────────────────
      `scale` is a fact about each app's content (how many days, words,
      chapters it contains) — not a measure of what anyone has done. */
   var APPS = [
@@ -101,6 +103,22 @@
       links: [
         { label: 'Unit 1 · Present tenses', href: 'grammar-book/grammar/chapters/unit1.html', icon: I.play }
       ]
+    },
+    {
+      id: 'speaking', hotkey: '6',
+      name: 'Speaking Studio',
+      kind: 'Speaking practice',
+      tagline: 'Part 1, 2 & 3 with band-7 answers',
+      desc: 'Every Part 1 topic grouped by subject, all 79 Part 2 cue cards with model answers, and each card’s Part 3 follow-up discussion — with search, a game-style study roadmap and progress tracking.',
+      href: 'speaking/index.html',
+      accent: ['#db2777', '#f472b6'],
+      icon: I.speak,
+      scale: { n: '79', unit: 'cue cards' },
+      tags: ['Band-7 answers', 'Part 3 follow-ups', 'Subject groups'],
+      links: [
+        { label: 'Part 1 topics', href: 'speaking/index.html#/part1', icon: I.sheet },
+        { label: 'Random cue card', href: 'speaking/index.html#/part2/rand', icon: I.dice }
+      ]
     }
   ];
 
@@ -109,7 +127,8 @@
     { app: 'tracker', mins: 5,  title: 'Open today on the Tracker', note: 'See the hour blocks for the day and commit to them.' },
     { app: 'vocab',   mins: 20, title: "Learn today's word set",    note: 'One day of the 60-day challenge — read, listen, repeat.' },
     { app: 'grammar', mins: 25, title: 'One grammar unit',          note: 'Work the exercises rather than only reading the rules.' },
-    { app: 'essays',  mins: 40, title: 'Study or write one essay',  note: 'Read a model answer, then rewrite it in your own words.' }
+    { app: 'essays',  mins: 40, title: 'Study or write one essay',  note: 'Read a model answer, then rewrite it in your own words.' },
+    { app: 'speaking', mins: 20, title: 'Speak on one cue card', note: 'Pick a card, prepare for a minute, answer aloud, then compare with the model answer.' }
   ];
 
   window.nbltHub = function () {

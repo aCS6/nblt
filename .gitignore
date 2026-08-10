@@ -59,3 +59,9 @@ __pycache__/
 *.local
 .env
 .env.*
+
+
+
+# Speakin (MD) file
+ielts-speaking-part1-topics-and-answers.md
+ielts-speaking-part2-3-topics-and-answers.md
