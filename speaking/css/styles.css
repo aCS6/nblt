@@ -1,5 +1,9 @@
 /* ============================================================
    IELTS Speaking Studio — styles
+   Original design system (as shipped in the first release),
+   rebuilt on the shared NBLT stack (Tailwind + Alpine).
+   Theme: <html class="dark"> driven by the shared 'nblt.theme'
+   key, so one toggle syncs the whole suite.
    ============================================================ */
 
 /* ---------- tokens ---------- */
@@ -45,7 +49,7 @@
   --ease: cubic-bezier(.22, .8, .3, 1);
 }
 
-html[data-theme='dark'] {
+html.dark {
   --bg: #0c0f1e;
   --surface: #141a2f;
   --surface-2: #1a2140;
@@ -117,6 +121,9 @@ kbd {
 }
 .skip-link:focus { left: 8px; }
 
+/* elements hidden until Alpine mounts */
+[x-cloak] { display: none !important; }
+
 /* ---------- reading progress ---------- */
 .reading-bar {
   position: fixed; top: 0; left: 0; height: 3px; width: 0;
@@ -169,8 +176,8 @@ kbd {
 
 /* theme icons */
 .icon-sun { display: none; }
-html[data-theme='dark'] .icon-moon { display: none; }
-html[data-theme='dark'] .icon-sun { display: block; }
+html.dark .icon-moon { display: none; }
+html.dark .icon-sun { display: block; }
 
 /* ---------- layout ---------- */
 .sidebar {
@@ -331,7 +338,12 @@ html[data-theme='dark'] .icon-sun { display: block; }
 }
 .qa.open .qa-chev { transform: rotate(180deg); color: var(--brand); }
 
-.qa-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s var(--ease); }
+/* Accordion body: the 0fr/1fr grid trick is reliable, but *transitioning* or
+   *animating* the answer content is buggy in Chrome — when Alpine applies the
+   open class in the same frame the HTML is injected, transitions/animations
+   pin at their start value (opacity 0) and the answer stays invisible.
+   So the grid rows snap open/closed instantly, which always works. */
+.qa-body { display: grid; grid-template-rows: 0fr; }
 .qa.open .qa-body, .qa-body.open { grid-template-rows: 1fr; }
 .qa-inner { overflow: hidden; }
 .qa-a {
@@ -589,8 +601,6 @@ html[data-theme='dark'] .icon-sun { display: block; }
   padding: 9vh 18px 24px;
   animation: fadeIn .2s var(--ease);
 }
-/* the `display: flex` above must not override the hidden attribute */
-.search-overlay[hidden] { display: none; }
 .search-panel {
   width: min(680px, 100%); max-height: 78vh;
   display: flex; flex-direction: column;
@@ -734,7 +744,7 @@ html[data-theme='dark'] .icon-sun { display: block; }
 @media (max-width: 1023px) {
   .menu-btn { display: inline-flex; }
   .sidebar { transform: translateX(-105%); box-shadow: var(--shadow-lg); }
-  body.nav-open .sidebar { transform: translateX(0); }
+  .sidebar.open { transform: translateX(0); }
   #view { margin-left: 0; padding: 24px 18px 80px; }
   .search-trigger { min-width: 44px; width: 44px; padding: 0; justify-content: center; }
   .search-trigger span, .search-trigger kbd { display: none; }

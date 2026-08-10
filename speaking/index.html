@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#4f46e5" />
   <title>IELTS Speaking Studio — Part 1, 2 &amp; 3 Topics with Model Answers</title>
   <meta name="description" content="A free study companion for the IELTS Speaking test: Part 1 topics with band-7 model answers, 79 Part 2 cue cards with model answers and their Part 3 follow-up questions, plus search, progress tracking and practice mode." />
-  <meta name="theme-color" content="#4f46e5" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <!-- Theme is applied before first paint, using the same key (nblt.theme) and
+       .dark class as the rest of the NBLT apps, so one toggle syncs the suite. -->
   <script>
-    // set theme before first paint to avoid a flash
     (function () {
       try {
-        var raw = localStorage.getItem('ss-theme');
-        var t = raw ? JSON.parse(raw) : 'auto';
-        var dark = t === 'dark' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        var dark = localStorage.getItem('nblt.theme') !== 'light';
+        document.documentElement.classList.toggle('dark', dark);
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="css/fonts.css" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <!-- NBLT hub: floating "back to home" pill. Optional — the app runs without it. -->
+
+  <!-- Shared NBLT assets + app fonts (Inter, Source Serif 4) and design. -->
+  <link rel="stylesheet" href="css/fonts.css?v=20260810" />
+  <link rel="stylesheet" href="../assets/tailwind.css?v=20260810" />
+  <link rel="stylesheet" href="css/styles.css?v=20260810" />
+  <script src="js/data.js?v=20260810"></script>
+  <!-- defer preserves order: app.js defines speakingApp() before Alpine boots. -->
+  <script defer src="js/app.js?v=20260810"></script>
+  <script defer src="../assets/alpine.min.js"></script>
   <script defer src="../assets/nblt-home.js"></script>
 </head>
-<body>
+
+<body x-data="speakingApp()" class="antialiased" :class="practice ? '' : 'reading-mode'">
   <a class="skip-link" href="#view">Skip to content</a>
 
   <!-- Reading progress bar -->
   <div class="reading-bar" id="readingBar" aria-hidden="true"></div>
 
+  <!-- ════════════ TOPBAR ════════════ -->
   <header class="topbar">
-    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false">
+    <button type="button" class="icon-btn menu-btn" id="menuBtn" @click="menuOpen = !menuOpen" :aria-expanded="menuOpen" aria-label="Open navigation menu">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
 
@@ -49,44 +59,85 @@
     </a>
 
     <div class="topbar-right">
-      <button class="search-trigger" id="searchTrigger" aria-label="Search all content">
+      <button type="button" class="search-trigger" id="searchTrigger" @click="openSearch()" aria-label="Search all content">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <span>Search</span>
         <kbd>/</kbd>
       </button>
-      <button class="icon-btn" id="themeBtn" aria-label="Toggle light / dark theme">
+      <button type="button" class="icon-btn" id="themeBtn" @click="toggleTheme()" :aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'">
         <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
       </button>
     </div>
   </header>
 
-  <aside class="sidebar" id="sidebar" aria-label="Site navigation">
-    <nav id="nav" class="nav"></nav>
-    <div class="sidebar-foot" id="progressCard"></div>
+  <!-- ════════════ SIDEBAR ════════════ -->
+  <aside class="sidebar" id="sidebar" aria-label="Site navigation" :class="menuOpen ? 'open' : ''">
+    <nav class="nav" aria-label="Main navigation">
+      <template x-for="g in navGroups" :key="g.label">
+        <div>
+          <div class="nav-label" x-text="g.label">Section</div>
+          <template x-for="l in g.links" :key="l.href + l.label">
+            <a class="nav-link" :class="isActive(l) ? 'active' : ''" :href="l.href">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" x-html="l.icon"></svg>
+              <span x-text="l.label"></span>
+              <span class="nav-count" x-show="l.count" x-text="l.count"></span>
+            </a>
+          </template>
+        </div>
+      </template>
+    </nav>
+
+    <div class="sidebar-foot" id="progressCard">
+      <div class="progress-card">
+        <h4>Your progress</h4>
+        <div class="pc-sub" x-text="'Studied ' + pct.overall + '% overall'">Studied 0% overall</div>
+        <template x-for="row in progressRows" :key="row.label">
+          <div>
+            <div class="pc-row"><span x-text="row.label"></span><b x-text="row.done + '/' + row.total"></b></div>
+            <div class="bar"><i :style="'width:' + row.pct + '%'"></i></div>
+          </div>
+        </template>
+        <div style="margin-top:10px">
+          <a class="btn btn-ghost btn-sm btn-block" href="#/part1">Keep studying</a>
+        </div>
+      </div>
+    </div>
   </aside>
 
-  <div class="scrim" id="scrim" hidden></div>
+  <div class="scrim" id="scrim" x-show="menuOpen" @click="menuOpen = false" x-cloak></div>
 
   <main id="view" tabindex="-1"></main>
 
-  <!-- Search overlay -->
-  <div class="search-overlay" id="searchOverlay" hidden>
-    <div class="search-panel" role="dialog" aria-modal="true" aria-label="Search">
+  <!-- ════════════ SEARCH OVERLAY ════════════ -->
+  <div class="search-overlay" id="searchOverlay" x-show="searchOpen" x-cloak
+       @keydown.escape.window="searchOpen = false" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-panel">
       <div class="search-input-row">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input id="searchInput" type="search" placeholder="Search topics, questions, cue cards, answers…" autocomplete="off" spellcheck="false" />
-        <button class="icon-btn" id="searchClose" aria-label="Close search">
+        <input id="searchInput" type="search" x-model="q" @input="doSearch()" placeholder="Search topics, questions, cue cards, answers…" autocomplete="off" spellcheck="false" />
+        <button type="button" class="icon-btn" id="searchClose" @click="searchOpen = false" aria-label="Close search">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
       </div>
-      <div class="search-results" id="searchResults"></div>
+      <div class="search-results" id="searchResults">
+        <p class="sr-hint" x-show="q.length === 0">Type to search across topics, questions, cue cards and answers…</p>
+        <p class="sr-empty" x-show="q.length > 0 && results.length === 0">No matches for “<span x-text="q"></span>”.</p>
+        <template x-for="g in searchGroups" :key="g.group">
+          <div class="sr-group">
+            <div class="sr-label" x-text="g.group"></div>
+            <template x-for="r in g.items" :key="r.url + r.title">
+              <a class="sr-item" :href="r.url" @click="searchOpen = false">
+                <div class="sr-title" x-html="r.titleHtml"></div>
+                <div class="sr-snip" x-html="r.snippetHtml"></div>
+              </a>
+            </template>
+          </div>
+        </template>
+      </div>
     </div>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
 </body>
 </html>
