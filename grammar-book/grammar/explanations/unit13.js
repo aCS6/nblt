@@ -368,7 +368,7 @@ window.__EXPL = {
 
   /* ── C3 Replace the bracketed phrases with past modal phrases ── */
   u13c3_1: {
-    q: 'As a double-income couple without children ______ (they were likely) rather unusual.',
+    q: 'As a double-income couple without children they ______ (they were likely) rather unusual.',
     a: 'must have been',
     why: '<em>They were likely</em> signals strong probability, which is <em>must</em>; and the couple lived 2,800 years ago, so the past form <em>must</em> + <em>have</em> + past participle is needed.',
     wrong: [
@@ -423,7 +423,7 @@ window.__EXPL = {
     rule: 'Let the adverb decide: <em>certainly/probably</em> → <em>must</em>; <em>possibly/perhaps</em> → <em>may/might/could</em>.'
   },
   u13c3_6: {
-    q: 'In a way that ______ (was impossible for her to imagine), Djedmaatesankh has achieved a degree of fame in our 21st century.',
+    q: 'In a way that she ______ (was impossible for her to imagine), Djedmaatesankh has achieved a degree of fame in our 21st century.',
     a: 'could not have imagined',
     why: 'The full sentence reads <em>In a way that she could not have imagined…</em>: impossibility looking back at the past is expressed by <em>could not/couldn\'t have</em> + past participle. <em>Cannot have imagined</em> is also accepted.',
     wrong: [

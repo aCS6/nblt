@@ -296,14 +296,14 @@ window.__EXPL = {
   },
   c2_11: {
     q: 'Some industries has affected [11] by the presence of so many tourists. → correct form?',
-    a: 'has been affected',
-    why: 'The agent is spelled out in <em>by the presence of so many tourists</em>, so the verb must be passive: the missing <em>been</em> has to be put back. Note that with the plural subject <em>some industries</em> the agreement really calls for <em>have been affected</em>; the key prints the singular, so match it here.',
+    a: 'have been affected',
+    why: 'The agent is spelled out in <em>by the presence of so many tourists</em>, so the verb must be passive: the missing <em>been</em> has to be put back. The subject <em>some industries</em> is plural, so the auxiliary agrees as <em>have</em>.',
     wrong: [
       { opt: 'has affected', why: 'The printed form. Active, so it says the industries affect something else — but the <em>by</em> phrase marks them as the thing affected.' },
-      { opt: 'have affected', why: 'This corrects the agreement yet keeps the active voice, so the <em>by</em> phrase still has nothing to attach to.' },
+      { opt: 'has been affected', why: 'Passive but singular, and the plural subject <em>some industries</em> calls for <em>have been affected</em>.' },
       { opt: 'has being affected', why: 'After <em>has</em> the perfect needs <em>been</em>, not <em>being</em>.' }
     ],
-    rule: 'A <em>by</em> + agent phrase is a strong signal that the verb must be passive.'
+    rule: 'A <em>by</em> + agent phrase is a strong signal that the verb must be passive, and it must agree in number with the subject.'
   },
   c2_12: {
     q: 'In future, e-tourism will use [12] more widely. → correct form?',
@@ -419,12 +419,12 @@ window.__EXPL = {
   },
   c3_11: {
     q: 'The lab equipment ______ (encourage / need) — use need + -ing.',
-    a: 'need encouraging',
-    why: 'The task tells you to use the <strong>need + -ing</strong> pattern, which carries a passive meaning: <em>need encouraging</em> = <em>need to be encouraged</em>. The equipment is what receives the action, which is exactly when this pattern is used. Note that <em>equipment</em> is uncountable and so normally takes a singular verb (<em>needs</em>); the key prints <em>need encouraging</em>, so give that form here.',
+    a: 'needs encouraging',
+    why: 'The task tells you to use the <strong>need + -ing</strong> pattern, which carries a passive meaning: <em>needs encouraging</em> = <em>needs to be encouraged</em>. The equipment is what receives the action, which is exactly when this pattern is used. <em>Equipment</em> is uncountable and so takes a singular verb: <em>needs</em>.',
     wrong: [
+      { opt: 'need encouraging', why: 'The pattern is right but the verb does not agree: <em>equipment</em> is uncountable and takes the singular <em>needs</em>.' },
       { opt: 'need to encourage', why: 'The to-infinitive is active, so this would mean the equipment does the encouraging. With a thing as subject you want the <em>-ing</em> form.' },
-      { opt: 'is needed to encourage', why: 'Two problems: it makes <em>need</em> itself passive, and it still leaves the equipment as the one doing the encouraging.' },
-      { opt: 'encourages', why: 'This drops the <em>need</em> construction the instruction asks for, and puts the equipment in the active role.' }
+      { opt: 'is needed to encourage', why: 'Two problems: it makes <em>need</em> itself passive, and it still leaves the equipment as the one doing the encouraging.' }
     ],
     rule: '<em>need + -ing</em> = <em>need to be + past participle</em>: <em>the room needs cleaning</em>.'
   },

@@ -1048,12 +1048,12 @@ footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; 
             </div>
 
             <!-- Sentence B -->
-            <div class="gft-item">
+            <div class="gft-item" data-id="gft_b">
               <div class="gft-options">
-                <button class="gft-btn" data-id="gft_b" data-value="2">2</button>
-                <button class="gft-btn" data-id="gft_b" data-value="3">3</button>
-                <button class="gft-btn" data-id="gft_b" data-value="4">4</button>
-                <button class="gft-btn" data-id="gft_b" data-value="5">5</button>
+                <button class="gft-btn" data-value="2">2</button>
+                <button class="gft-btn" data-value="3">3</button>
+                <button class="gft-btn" data-value="4">4</button>
+                <button class="gft-btn" data-value="5">5</button>
               </div>
               <div style="margin-left:10px;">
                 <p style="font-size:.92rem;">These games have become more violent over the past few years.</p>
@@ -1061,12 +1061,12 @@ footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; 
             </div>
 
             <!-- Sentence C -->
-            <div class="gft-item">
+            <div class="gft-item" data-id="gft_c">
               <div class="gft-options">
-                <button class="gft-btn" data-id="gft_c" data-value="2">2</button>
-                <button class="gft-btn" data-id="gft_c" data-value="3">3</button>
-                <button class="gft-btn" data-id="gft_c" data-value="4">4</button>
-                <button class="gft-btn" data-id="gft_c" data-value="5">5</button>
+                <button class="gft-btn" data-value="2">2</button>
+                <button class="gft-btn" data-value="3">3</button>
+                <button class="gft-btn" data-value="4">4</button>
+                <button class="gft-btn" data-value="5">5</button>
               </div>
               <div style="margin-left:10px;">
                 <p style="font-size:.92rem;">Some are concerned that playing violent games might encourage them to become aggressive in real life.</p>
@@ -1074,12 +1074,12 @@ footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; 
             </div>
 
             <!-- Sentence D -->
-            <div class="gft-item">
+            <div class="gft-item" data-id="gft_d">
               <div class="gft-options">
-                <button class="gft-btn" data-id="gft_d" data-value="2">2</button>
-                <button class="gft-btn" data-id="gft_d" data-value="3">3</button>
-                <button class="gft-btn" data-id="gft_d" data-value="4">4</button>
-                <button class="gft-btn" data-id="gft_d" data-value="5">5</button>
+                <button class="gft-btn" data-value="2">2</button>
+                <button class="gft-btn" data-value="3">3</button>
+                <button class="gft-btn" data-value="4">4</button>
+                <button class="gft-btn" data-value="5">5</button>
               </div>
               <div style="margin-left:10px;">
                 <p style="font-size:.92rem;">In fact, many parents worry about this and the effect these games are having on their children.</p>
@@ -1087,12 +1087,12 @@ footer { background: #581c87; color: rgb(255 255 255 / .7); text-align: center; 
             </div>
 
             <!-- Sentence E -->
-            <div class="gft-item">
+            <div class="gft-item" data-id="gft_e">
               <div class="gft-options">
-                <button class="gft-btn" data-id="gft_e" data-value="2">2</button>
-                <button class="gft-btn" data-id="gft_e" data-value="3">3</button>
-                <button class="gft-btn" data-id="gft_e" data-value="4">4</button>
-                <button class="gft-btn" data-id="gft_e" data-value="5">5</button>
+                <button class="gft-btn" data-value="2">2</button>
+                <button class="gft-btn" data-value="3">3</button>
+                <button class="gft-btn" data-value="4">4</button>
+                <button class="gft-btn" data-value="5">5</button>
               </div>
               <div style="margin-left:10px;">
                 <p style="font-size:.92rem;">What we need to establish is whether or not this is actually true.</p>
@@ -1337,8 +1337,7 @@ window.__grammarInit = function () {
     c4_6: ['it is important to provide support and help to parents'],
     c4_7: ['this system would ensure that no child felt ashamed or embarrassed by the contents of their lunch boxes',
             'this system would ensure that no child felt ashamed or embarrassed by the contents of their lunch box'],
-    c4_8: ['eating healthily as a child undoubtedly has a huge influence on how healthy we are as adults',
-            'eating a healthy diet as a child undoubtedly has a huge influence on how healthy we are as adults']
+    c4_8: ['eating healthily as a child undoubtedly has a huge influence on how healthy we are as adults']
   };
 
   window.checkC4 = function () {
@@ -1382,9 +1381,9 @@ window.__grammarInit = function () {
 
   document.querySelectorAll('.gft-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var id = btn.dataset.id;
-      // deselect sibling buttons for same id
-      document.querySelectorAll('.gft-btn[data-id="' + id + '"]').forEach(function (b) {
+      // deselect sibling buttons in the same item
+      var item = btn.closest('.gft-item');
+      item.querySelectorAll('.gft-btn').forEach(function (b) {
         b.classList.remove('correct','incorrect');
         b.style.fontWeight = '';
       });
@@ -1396,7 +1395,9 @@ window.__grammarInit = function () {
     var correct = 0, total = Object.keys(GFT_ANSWERS).length;
     Object.keys(GFT_ANSWERS).forEach(function (id) {
       var selected = null;
-      document.querySelectorAll('.gft-btn[data-id="' + id + '"]').forEach(function (b) {
+      var item = document.querySelector('.gft-item[data-id="' + id + '"]');
+      if (!item) return;
+      item.querySelectorAll('.gft-btn').forEach(function (b) {
         if (b.style.fontWeight === '900' || b.style.fontWeight === 'bold') selected = b;
       });
       if (selected) {
@@ -1412,7 +1413,9 @@ window.__grammarInit = function () {
   };
   window.showGFT = function () {
     Object.keys(GFT_ANSWERS).forEach(function (id) {
-      document.querySelectorAll('.gft-btn[data-id="' + id + '"]').forEach(function (b) {
+      var item = document.querySelector('.gft-item[data-id="' + id + '"]');
+      if (!item) return;
+      item.querySelectorAll('.gft-btn').forEach(function (b) {
         b.classList.remove('correct','incorrect'); b.style.fontWeight = '';
         if (b.dataset.value === GFT_ANSWERS[id]) {
           b.classList.add('correct'); b.style.fontWeight = '900';

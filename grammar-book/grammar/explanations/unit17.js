@@ -351,7 +351,7 @@ window.__EXPL = {
     rule: 'Past tense after <em>if</em> ⇒ <em>would</em> + base verb in the result.'
   },
   u17c2_15: {
-    q: '… not everyone has somewhere cool to store them in your home, you ______ (have to) use the fridge, but just remember to take them out in time.',
+    q: '… not everyone has somewhere cool to store them in your home. If you don\'t, you ______ (have to) use the fridge, but just remember to take them out in time.',
     a: 'will have to',
     why: 'This is practical advice about a real situation, so it is a first conditional result: <em>will</em> + <em>have to</em>. Obligation is expressed with <em>have to</em>, which keeps its base form after <em>will</em>.',
     wrong: [

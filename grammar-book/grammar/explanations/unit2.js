@@ -1094,19 +1094,4 @@ window.__EXPL = {
   }
 };
 
-/* ─────────────────────────────────────────────────────────────────────────
-   CHAPTER BUG WORKAROUND — u2c3_13
 
-   The C3 answer key has 13 entries but the printed dialogue has only 12
-   gaps: the book's gap 7, "I ______ (really/like) the cherry blossom
-   season", was dropped from chapters/unit2.html. That shifts every later
-   gap by one against the key, and leaves u2c3_13 with no <input> at all.
-
-   The explanation for u2c3_13 above is written against the answer key (as
-   required), but with no element to hang a chip on it can never be opened
-   by a learner, so it is marked non-enumerable: Object.keys(__EXPL) then
-   matches the 97 items the page can actually render, while __EXPL.u2c3_13
-   still resolves for the coverage checker and for the day the chapter is
-   fixed. Delete this line once the missing gap is restored.
-   ───────────────────────────────────────────────────────────────────── */
-Object.defineProperty(window.__EXPL, 'u2c3_13', { enumerable: false });

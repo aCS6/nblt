@@ -400,8 +400,10 @@ footer{background:#581c87;color:rgb(255 255 255/.7);text-align:center;padding:16
           </div>
         </div>
         <div class="exercise-actions">
-          <button class="btn-show" onclick="document.getElementById('c4-25-ans').style.display='block'">Show Answers</button>
+          <button class="btn-check" onclick="checkC4_25()">Check</button>
+          <button class="btn-show" onclick="showC4_25()">Show Answers</button>
           <button class="btn-reset" onclick="resetC4_25()">Reset</button>
+          <span id="c4-25-score" class="score-badge" style="display:none"></span>
         </div>
         <div id="c4-25-ans" style="display:none;margin-top:12px;" class="note-box">
           <strong>Model answers:</strong><br>
@@ -546,10 +548,17 @@ window.__grammarInit = function () {
   window.checkC2_25=c2h.check; window.showC2_25=c2h.show; window.resetC2_25=c2h.reset;
 
   /* C4 */
-  window.resetC4_25=function(){
-    document.querySelectorAll('.u25c4').forEach(function(i){i.value='';i.classList.remove('correct','incorrect');});
-    document.getElementById('c4-25-ans').style.display='none';
+  var C4={
+    c4_2a:['spending','expenditure'],c4_2b:['increase'],c4_2c:['influence'],
+    c4_3a:['failure'],c4_3b:['illness'],
+    c4_4a:['diet'],c4_4b:['reduction'],
+    c4_5a:['use'],c4_5b:['risk'],c4_5c:['loss'],
+    c4_6a:['contentment'],c4_6b:['success'],c4_6c:['communication'],
+    c4_7a:['developments'],c4_7b:['construction'],
+    c4_8:['difficulty']
   };
+  var c4h=makeGap('u25c4',C4,'c4-25-score','c4-25-ans');
+  window.checkC4_25=c4h.check; window.showC4_25=c4h.show; window.resetC4_25=c4h.reset;
 
   /* GFT */
   var GFT={

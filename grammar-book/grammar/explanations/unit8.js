@@ -352,13 +352,13 @@ window.__EXPL = {
   /* ── C2 Borneo born and bred: a/an, the or x ── */
   u8c2_1: {
     q: '______ local legends say that Borneo\'s wild elephants are descendants of …',
-    a: 'the',
-    why: 'These are the legends of one identified place — Borneo, named in the title — so the reader knows which legends are meant. That understood reference takes <em>the</em>.',
+    a: 'x – no article',
+    why: 'This is the story\'s opening sentence, offering a piece of local folklore as general background. No particular legends have been identified yet, so the bare plural <em>local legends</em> — with no article — is the natural way to introduce the idea.',
     wrong: [
-      { opt: 'a', why: '<em>Legends</em> is plural, and <em>a/an</em> only goes with singular countable nouns.' },
-      { opt: 'x – no article', why: 'A bare plural would mean legends in general, anywhere in the world. The passage is about the stories told in one particular place.' }
+      { opt: 'the', why: '<em>The local legends</em> would single out legends the reader already knows about, but the sentence is simply reporting what the folklore says in general as it sets the scene.' },
+      { opt: 'a', why: '<em>Legends</em> is plural, and <em>a/an</em> only goes with singular countable nouns.' }
     ],
-    rule: 'Use <em>the</em> when the context makes it clear which ones you mean.'
+    rule: 'General plural nouns in an opening sentence take no article.'
   },
   u8c2_2: {
     q: 'Local legends say that ______ Borneo\'s few thousand wild elephants are descendants …',
