@@ -1,7 +1,9 @@
 /* ==========================================================================
-   Vocab Builder · 60-Day Challenge
+   Vocab Builder · IELTS Vocabulary Challenge
    Vanilla JS — data loading, lazy batch rendering, localStorage persistence,
    view routing and state restoration. No dependencies.
+   Includes a global word search, type filter chips (word / phrasal / idiom /
+   linking) and a self-test quiz overlay (flip + multiple choice).
 
    Data loading is server-free — no http.server, no fetch:
    • data.js holds the full dataset as a plain JS object (window.VOCAB_DATA),
@@ -17,9 +19,10 @@
   /* ---------- Config ---------- */
   const BATCH_SIZE  = 8;             // words rendered per lazy batch
   const STORAGE_KEY = "vocabBuilder30.v1";
-  const SCHEMA      = 2;             // 2 = 60-day layout (was 30 days × 82 words)
-  const BASE_TITLE  = "Vocab Builder · 60-Day IELTS Challenge";
+  const SCHEMA      = 3;             // 3 = mixed 70-day layout (was 2 = 60-day themed + appended enrichment)
+  const BASE_TITLE  = "Vocab Builder · IELTS Vocabulary Challenge";
   const RING_C      = 2 * Math.PI * 26; // progress-ring circumference
+  const TYPE_LABEL  = { phrasal: "Phrasal verb", idiom: "Idiom", linking: "Linking" };
 
   /* ---------- DOM refs ---------- */
   const $ = (s, r = document) => r.querySelector(s);
@@ -27,11 +30,16 @@
   const gridView  = $("#gridView"),  dayView   = $("#dayView");
   const dayGrid   = $("#dayGrid"),   fatalEl   = $("#fatal");
 
-  const tabCalendar  = $("#tabCalendar"),  tabBookmarks = $("#tabBookmarks");
+  const tabCalendar  = $("#tabCalendar"),  tabBookmarks = $("#tabBookmarks"),
+        tabSearch     = $("#tabSearch");
   const tabBmCount   = $("#tabBmCount");
-  const calendarPanel = $("#calendarPanel"), bookmarkPanel = $("#bookmarkPanel");
+  const calendarPanel = $("#calendarPanel"), bookmarkPanel = $("#bookmarkPanel"),
+        searchPanel  = $("#searchPanel");
   const bmList     = $("#bmList"), bmEmpty = $("#bmEmpty"),
         bmCount    = $("#bmCount"), bmEmptyBtn = $("#bmEmptyBtn");
+  const searchBox  = $("#searchBox"), searchClear = $("#searchClear"),
+        searchMeta = $("#searchMeta"), searchList = $("#searchList"),
+        searchEmpty = $("#searchEmpty");
   const statDays  = $("#statDays"),  statWords = $("#statWords"), statToday = $("#statToday");
   const overallBar = $("#overallBar"), overallPct = $("#overallPct"),
         overallBarWrap = $("#overallBarWrap"), resumeBtn = $("#resumeBtn");
@@ -41,16 +49,31 @@
   const ringWrap = $("#ringWrap"), ringVal  = $("#ringVal"), ringNum = $("#ringNum");
   const dvBar    = $("#dvBar"),    dvBarWrap = $("#dvBarWrap"), dvCount = $("#dvCount");
   const chipAll  = $("#chipAll"),  chipTodo = $("#chipTodo"), chipDone = $("#chipDone");
+  const typeAll  = $("#typeAll"),  typeWord = $("#typeWord"), typePhr = $("#typePhr"),
+        typeIdiom = $("#typeIdiom"), typeLink = $("#typeLink");
 
   const doneBanner = $("#doneBanner"), doneTitle = $("#doneTitle"), doneNext = $("#doneNext");
   const wordList   = $("#wordList"),   loaderEl = $("#loader");
   const endNote    = $("#endNote"),    sentinel = $("#sentinel");
   const toastEl    = $("#toast");
 
+  // Self-test / quiz overlay
+  const quizBtn  = $("#quizBtn"),  quizOverlay = $("#quizOverlay");
+  const quizSetup = $("#quizSetup"), quizRun = $("#quizRun"), quizDone = $("#quizDone");
+  const quizClose = $("#quizClose"), quizDay = $("#quizDay");
+  const quizMode = $("#quizMode"), quizLen = $("#quizLen"), quizStart = $("#quizStart");
+  const quizProgLabel = $("#quizProgLabel"), quizProgBar = $("#quizProgBar");
+  const quizQ = $("#quizQ"), quizReveal = $("#quizReveal"),
+        quizActions = $("#quizActions"), quizGotIt = $("#quizGotIt"),
+        quizMissed = $("#quizMissed");
+  const quizScore = $("#quizScore"), quizScoreBar = $("#quizScoreBar"),
+        quizMissList = $("#quizMissList");
+  const quizRetry = $("#quizRetry"), quizAgain = $("#quizAgain"), quizExit = $("#quizExit");
+
   /* ---------- State ---------- */
   let DATA       = null;
   const dayMap   = new Map();       // day number → { day, theme, words[] }
-  let TOTAL_DAYS = 60;
+  let TOTAL_DAYS = 70;
   let uid        = 0;               // unique ids for collapse panels
 
   let state       = loadState();    // persisted: words, bookmarks, days, last view, start date
@@ -60,6 +83,7 @@
   let batchBusy   = false;
   let io          = null;           // IntersectionObserver
   let toastTimer  = null;
+  let quiz        = null;           // active self-test session { qs, pos, correct, wrong }
 
   /* ---------- Helpers ---------- */
   const show = el => el && (el.hidden = false);
@@ -114,6 +138,7 @@
   }
   function matchesFilter(i){
     if(!ctx) return true;
+    if(ctx.type !== "all" && (ctx.info.words[i] || {}).type !== ctx.type) return false;
     if(ctx.filter === "todo") return !learnedSet(ctx.day).has(i);
     if(ctx.filter === "done") return  learnedSet(ctx.day).has(i);
     return true;
@@ -193,49 +218,67 @@
     show(fatalEl);
   }
 
-  /* ---------- Migration: 30-day layout → 60-day layout ----------
-     Each old themed day was split in two. Every generated day carries
-     `from: { day, offset }` pointing back at its slice of the old day, so a
-     saved (day, wordIndex) pair can be rewritten exactly — nobody loses
-     progress or bookmarks because the challenge got longer. */
+  /* ---------- Migration ----------
+     Schema history:
+       • 1 = 30 days × ~82 words (one themed day per theme)
+       • 2 = 60 themed days + enrichment days appended after
+       • 3 = fully MIXED ~70-day layout — every day blends words, phrasal
+            verbs, idioms and linking words.
+
+     To move 2 → 3 every word in the new layout carries
+     `from: [{ day, idx }, …]` — the (day, index) positions the same word
+     occupied in the old 2-layout. The app rebuilds an old-key → new-key map
+     from those pointers, so saved progress and bookmarks remap exactly, even
+     though the whole course was re-shuffled. (A word that lived in several
+     old slots — e.g. a phrasal verb that also appeared in a themed day —
+     maps every old slot onto its one new position.) */
   function migrateLayout(){
     if(state.schema === SCHEMA) return;
 
-    const parts = new Map();                    // old day → [{ day, offset, size }]
-    (DATA.days || []).forEach(d => {
-      if(!d.from) return;
-      const list = parts.get(d.from.day) || [];
-      list.push({ day: d.day, offset: d.from.offset, size: d.words.length });
-      parts.set(d.from.day, list);
-    });
+    // 2 → 3: word-level remap using each word's `from` pointers.
+    if(state.schema < 3){
+      const keyMap = new Map();               // "oldDay:oldIdx" → "newDay:newIdx"
+      (DATA.days || []).forEach(d =>
+        (d.words || []).forEach((w, i) =>
+          (w.from || []).forEach(f => keyMap.set(f.day + ":" + f.idx, d.day + ":" + i))));
 
-    if(parts.size){
-      const remap = src => {
-        const out = {};
-        Object.keys(src || {}).forEach(k => {
-          const list = parts.get(+k);
-          if(!list) return;
-          (src[k] || []).forEach(i => {
-            const p = list.find(p => i >= p.offset && i < p.offset + p.size);
-            if(!p) return;
-            (out[String(p.day)] = out[String(p.day)] || []).push(i - p.offset);
+      if(keyMap.size){
+        const remap = src => {
+          const out = {};
+          Object.keys(src || {}).forEach(k => {
+            (src[k] || []).forEach(i => {
+              const m = keyMap.get(k + ":" + i);
+              if(!m) return;
+              const [nd, ni] = m.split(":").map(Number);
+              (out[String(nd)] = out[String(nd)] || []).push(ni);
+            });
           });
+          Object.keys(out).forEach(k => out[k].sort((a, b) => a - b));
+          return out;
+        };
+
+        state.words     = remap(state.words);
+        state.bookmarks = remap(state.bookmarks);
+
+        // completed-day list is derived, so just rebuild it
+        state.days = [];
+        dayMap.forEach(d => {
+          if(d.words.length && learnedSet(d.day).size === d.words.length) state.days.push(d.day);
         });
-        Object.keys(out).forEach(k => out[k].sort((a, b) => a - b));
-        return out;
-      };
 
-      state.words     = remap(state.words);
-      state.bookmarks = remap(state.bookmarks);
-
-      // completed-day list is derived, so just rebuild it
-      state.days = [];
-      dayMap.forEach(d => {
-        if(d.words.length && learnedSet(d.day).size === d.words.length) state.days.push(d.day);
-      });
-
-      const last = parts.get(state.last.day);
-      if(last) state.last.day = last[0].day;
+        // last.day → a new day that contains any word previously in that day
+        if(state.last && state.last.day){
+          let found = null;
+          DATA.days.forEach(d => {
+            if(found) return;
+            d.words.forEach(w => {
+              if(found) return;
+              if((w.from || []).some(f => f.day === state.last.day)) found = d.day;
+            });
+          });
+          if(found) state.last.day = found;
+        }
+      }
     }
 
     state.schema = SCHEMA;
@@ -330,7 +373,7 @@
       return;
     }
 
-    ctx = { day: n, info, rendered: 0, filter: "all", finished: false, wasComplete: false };
+    ctx = { day: n, info, rendered: 0, filter: "all", type: "all", finished: false, wasComplete: false };
 
     // Header
     dvEyebrow.textContent = `DAY ${n} / ${TOTAL_DAYS}`;
@@ -342,6 +385,8 @@
     hide(endNote); hide(doneBanner); hide(loaderEl);
     updateFilterChips(0, info.words.length);
     chipAll.classList.add("on"); chipTodo.classList.remove("on"); chipDone.classList.remove("on");
+    [typeAll, typeWord, typePhr, typeIdiom, typeLink].forEach(c =>
+      c.classList.toggle("on", c === typeAll));
 
     gridView.hidden = true;
     dayView.hidden  = false;
@@ -426,15 +471,94 @@
     if(updateHash && location.hash !== "#bookmarks") location.hash = "bookmarks";
   }
 
-  // Calendar / bookmarks live side by side inside the grid view
+  function showSearch(updateHash = true){
+    ctx = null;
+    dayView.hidden  = true;
+    gridView.hidden = false;
+    setTab("search");
+    animateIn(gridView);
+    currentView = "search";
+    homeTab     = "search";
+
+    renderSearch(searchBox.value);
+
+    state.last = { view: "search", day: state.last.day };
+    persist();
+    document.title = `Search · ${BASE_TITLE}`;
+    window.scrollTo({ top: 0, behavior: "auto" }); syncSticky();
+
+    if(updateHash && location.hash !== "#search") location.hash = "search";
+  }
+
+  /* ---------- Global search ---------- */
+  // Flatten every day into a searchable index: { day, idx, word, theme }
+  let searchIndex = null;
+  function buildSearchIndex(){
+    if(searchIndex) return searchIndex;
+    searchIndex = [];
+    dayMap.forEach(info => {
+      if(!info || !info.words) return;
+      info.words.forEach((w, i) => searchIndex.push({ day: info.day, idx: i, word: w, theme: info.theme }));
+    });
+    return searchIndex;
+  }
+  function searchHits(q){
+    const qq = q.trim().toLowerCase();
+    if(qq.length < 2) return [];
+    return buildSearchIndex().filter(it => {
+      const w = it.word;
+      const hay = [w.actualWord, w.meaningInBangla, w.englishMeaning,
+                   Array.isArray(w.synonyms) ? w.synonyms.join(" ") : w.synonyms,
+                   Array.isArray(w.exampleSentence) ? w.exampleSentence.join(" ") : w.exampleSentence]
+        .filter(Boolean).join(" ").toLowerCase();
+      return hay.includes(qq);
+    });
+  }
+  function renderSearch(q){
+    const qq = (q || "").trim();
+    searchClear.hidden = qq.length === 0;
+
+    searchList.innerHTML = "";
+    if(qq.length < 2){
+      hide(searchMeta);
+      searchEmpty.querySelector("h3").textContent = "Type to search";
+      searchEmpty.querySelector("p").textContent =
+        "Search any word, Bangla meaning, synonym or example across every day. Try “education”, “তবে” or “bustling”.";
+      show(searchEmpty);
+      return;
+    }
+
+    const hits = searchHits(qq);
+    if(!hits.length){
+      searchEmpty.querySelector("h3").textContent = "No matches";
+      searchEmpty.querySelector("p").textContent =
+        "Try a different word, or a Bangla meaning. Type at least 2 letters to search.";
+      hide(searchMeta); show(searchEmpty);
+      return;
+    }
+    hide(searchEmpty); show(searchMeta);
+    searchMeta.innerHTML = `<b>${hits.length}</b> match${hits.length > 1 ? "es" : ""} for “${esc(qq)}” across all days`;
+
+    const frag = document.createDocumentFragment();
+    hits.slice(0, 40).forEach((it, k) =>
+      frag.appendChild(makeCard(it.word, it.idx, Math.min(k, 7), it.day,
+        { showDay: true, theme: it.theme })));
+    searchList.appendChild(frag);
+  }
+
+  // Calendar / bookmarks / search live side by side inside the grid view
   function setTab(name){
-    const bm = name === "bookmarks";
-    tabCalendar .classList.toggle("on", !bm);
-    tabBookmarks.classList.toggle("on",  bm);
-    tabCalendar .setAttribute("aria-selected", String(!bm));
+    const cal = name === "calendar", bm = name === "bookmarks", sr = name === "search";
+    tabCalendar .classList.toggle("on", cal);
+    tabBookmarks.classList.toggle("on", bm);
+    tabSearch    .classList.toggle("on", sr);
+    tabCalendar .setAttribute("aria-selected", String(cal));
     tabBookmarks.setAttribute("aria-selected", String(bm));
-    calendarPanel.hidden =  bm;
+    tabSearch    .setAttribute("aria-selected", String(sr));
+    calendarPanel.hidden = !cal;
     bookmarkPanel.hidden = !bm;
+    searchPanel.hidden   = !sr;
+    if(sr && searchBox) searchBox.focus();
   }
 
   /* ---------- Lazy batch rendering ---------- */
@@ -509,9 +633,11 @@
   function makeCard(w, i, batchPos, day, opts = {}){
     const learned    = learnedSet(day).has(i);
     const bookmarked = bookmarkSet(day).has(i);
+    const type       = TYPE_LABEL[w.type] ? w.type : "";
 
     const li = document.createElement("li");
-    li.className = "wcard" + (learned ? " learned" : "") + (bookmarked ? " marked" : "");
+    li.className = "wcard" + (learned ? " learned" : "") + (bookmarked ? " marked" : "")
+                + (type ? " wcard-" + type : "");
     li.dataset.idx = i;
     li.dataset.day = day;
     li.style.animationDelay = (batchPos * 45) + "ms";
@@ -568,6 +694,8 @@
         </button>
       </div>
       <p class="wcard-bn" lang="bn">${esc(w.meaningInBangla)}</p>
+      ${type ? `<span class="wcard-type">${esc(TYPE_LABEL[type])}</span>` : ""}
+      ${w.englishMeaning ? `<p class="wcard-en">${esc(w.englishMeaning)}</p>` : ""}
       ${syns ? `<p class="wcard-syn"><span class="lbl">SYN</span>${syns}</p>` : ""}
       ${examples}`;
 
@@ -743,6 +871,171 @@
     observeSentinel();
   }
 
+  function setTypeFilter(t, chip){
+    if(!ctx || ctx.type === t) return;
+    ctx.type     = t;
+    ctx.rendered = 0;
+    ctx.finished = false;
+    wordList.innerHTML = "";
+    hide(endNote);
+
+    [typeAll, typeWord, typePhr, typeIdiom, typeLink].forEach(c =>
+      c.classList.toggle("on", c === chip));
+    loadBatch(false);
+    observeSentinel();
+  }
+
+  /* ---------- Self-test (quiz) ---------- */
+  function openQuiz(){
+    if(!ctx || !ctx.info.words.length) return;
+    quizDay.textContent = ctx.day;
+
+    const pool = ctx.info.words.map((w, i) => ({ w, i }))
+      .filter(x => ctx.type === "all" || (x.w.type || "") === ctx.type);
+    if(!pool.length){ toast("Nothing to quiz here yet"); return; }
+
+    quiz = { pool, pos: 0, mode: "mcq", limit: 10, correct: 0, wrong: [], results: [] };
+
+    quizSetup.hidden = false;
+    quizRun.hidden   = true;
+    quizDone.hidden  = true;
+    quizOverlay.hidden = false;
+    document.body.classList.add("quiz-open");
+  }
+  function closeQuiz(){
+    quizOverlay.hidden = true;
+    document.body.classList.remove("quiz-open");
+    quiz = null;
+  }
+  function shuffle(arr){
+    const a = arr.slice();
+    for(let i = a.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  function startQuiz(){
+    if(!quiz) return;
+    quiz.mode  = quizMode.value;
+    quiz.limit = quizLen.value === "all" ? quiz.pool.length : parseInt(quizLen.value, 10);
+    quiz.limit = Math.max(1, Math.min(quiz.limit, quiz.pool.length));
+    quiz.questions = shuffle(quiz.pool).slice(0, quiz.limit);
+    if(!quiz.questions.length){ toast("No words to quiz yet"); closeQuiz(); return; }
+    quiz.pos = 0; quiz.correct = 0; quiz.wrong = []; quiz.results = [];
+
+    quizSetup.hidden = true;
+    quizDone.hidden  = true;
+    quizRun.hidden   = false;
+    renderQuestion();
+  }
+  function renderQuestion(){
+    if(!quiz || quiz.pos >= quiz.questions.length) return finishQuiz();
+    const q = quiz.questions[quiz.pos];
+    quizProgLabel.textContent = (quiz.pos + 1) + " / " + quiz.questions.length;
+    quizProgBar.style.width = (quiz.pos / quiz.questions.length * 100) + "%";
+
+    if(quiz.mode === "flip"){
+      renderFlipQuestion(q);
+    } else {
+      renderMcqQuestion(q);
+    }
+  }
+  function renderFlipQuestion(q){
+    quizQ.innerHTML = `
+        <p class="quiz-prompt">What does this word mean?</p>
+        <h3 class="quiz-word">${esc(q.w.actualWord)}</h3>
+        ${TYPE_LABEL[q.w.type] ? `<p class="quiz-type-lbl">${esc(TYPE_LABEL[q.w.type])}</p>` : ""}
+        <div class="quiz-answer" hidden>
+          <p class="quiz-bn" lang="bn">${esc(q.w.meaningInBangla)}</p>
+          ${q.w.englishMeaning ? `<p class="quiz-en">${esc(q.w.englishMeaning)}</p>` : ""}
+        </div>`;
+    quizReveal.hidden = false;
+    quizActions.hidden = true;
+    quizReveal.onclick = () => {
+      const a = quizQ.querySelector(".quiz-answer");
+      if(a) a.hidden = false;
+      quizReveal.hidden = true;
+      quizActions.hidden = false;
+    };
+  }
+  function renderMcqQuestion(q){
+    const correct = q.w.meaningInBangla;
+    const others = shuffle(quiz.pool.filter(x => x.w.meaningInBangla !== correct)
+      .map(x => x.w.meaningInBangla)).slice(0, 3);
+    const options = shuffle([correct, ...others]);
+
+    quizQ.innerHTML = `
+        <p class="quiz-prompt">Pick the correct meaning</p>
+        <h3 class="quiz-word">${esc(q.w.actualWord)}</h3>
+        ${TYPE_LABEL[q.w.type] ? `<p class="quiz-type-lbl">${esc(TYPE_LABEL[q.w.type])}</p>` : ""}`;
+
+    const box = document.createElement("div");
+    box.className = "quiz-choices";
+    options.forEach(opt => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "quiz-choice";
+      b.innerHTML = `<span lang="bn">${esc(opt)}</span>`;
+      b.addEventListener("click", () => answerMCQ(q, opt === correct, b, box));
+      box.appendChild(b);
+    });
+    quizQ.appendChild(box);
+    quizReveal.hidden = true;
+    quizActions.hidden = true;
+  }
+  function answerMCQ(q, ok, btn, box){
+    box.querySelectorAll("button").forEach(b => b.disabled = true);
+    quiz.results.push({ q, ok });
+    if(ok){
+      btn.classList.add("right");
+      setTimeout(() => nextQuestion(), 450);
+    } else {
+      btn.classList.add("wrong");
+      box.querySelectorAll("button").forEach(b => {
+        if(b !== btn && b.textContent.indexOf(q.w.meaningInBangla) !== -1) b.classList.add("right");
+      });
+      setTimeout(() => nextQuestion(), 1200);
+    }
+  }
+  function recordFlip(ok){
+    if(!quiz) return;
+    const q = quiz.questions[quiz.pos];
+    quiz.results.push({ q, ok });
+    nextQuestion();
+  }
+  function nextQuestion(){
+    quiz.pos++;
+    renderQuestion();
+  }
+  function finishQuiz(){
+    if(!quiz) return;
+    quiz.correct = quiz.results.filter(r => r.ok).length;
+    quiz.wrong   = quiz.results.filter(r => !r.ok).map(r => r.q);
+
+    quizRun.hidden  = true;
+    quizDone.hidden = false;
+
+    const total = quiz.results.length || 1;
+    const pct = Math.round(quiz.correct / total * 100);
+    quizScore.innerHTML = `<b>${quiz.correct}</b> / ${quiz.results.length} <span>· ${pct}%</span>`;
+    quizScoreBar.style.width = pct + "%";
+
+    quizMissList.innerHTML = "";
+    if(quiz.wrong.length){
+      quiz.wrong.slice(0, 12).forEach(q => {
+        const li = document.createElement("li");
+        li.innerHTML = `<b>${esc(q.w.actualWord)}</b> — <span lang="bn">${esc(q.w.meaningInBangla)}</span>`;
+        quizMissList.appendChild(li);
+      });
+    } else {
+      const li = document.createElement("li");
+      li.className = "quiz-perfect";
+      li.textContent = "Perfect score - nothing missed!";
+      quizMissList.appendChild(li);
+    }
+  }
+
   /* ---------- Sentinel / IntersectionObserver ---------- */
   function setupObserver(){
     if("IntersectionObserver" in window){
@@ -774,7 +1067,9 @@
 
   /* ---------- Routing (hash + history) ---------- */
   function goHome(updateHash = true){
-    homeTab === "bookmarks" ? showBookmarks(updateHash) : showGrid(updateHash);
+    if(homeTab === "bookmarks") showBookmarks(updateHash);
+    else if(homeTab === "search") showSearch(updateHash);
+    else showGrid(updateHash);
   }
 
   function route(){
@@ -784,6 +1079,8 @@
       if(isPlayable(n) && !(currentView === "day" && ctx && ctx.day === n)) openDay(n, false);
     } else if(location.hash === "#bookmarks"){
       if(currentView !== "bookmarks") showBookmarks(false);
+    } else if(location.hash === "#search"){
+      if(currentView !== "search") showSearch(false);
     } else if(currentView !== "grid"){
       showGrid(false);
     }
@@ -792,12 +1089,16 @@
     const m = location.hash.match(/^#day-(\d+)$/);
     if(m && isPlayable(+m[1])){ openDay(+m[1], false); return; }
     if(location.hash === "#bookmarks"){ showBookmarks(false); return; }
+    if(location.hash === "#search"){ showSearch(false); return; }
     if(state.last.view === "day" && isPlayable(state.last.day)){
       history.replaceState(null, "", "#day-" + state.last.day);
       openDay(state.last.day, false);
     } else if(state.last.view === "bookmarks"){
       history.replaceState(null, "", "#bookmarks");
       showBookmarks(false);
+    } else if(state.last.view === "search"){
+      history.replaceState(null, "", "#search");
+      showSearch(false);
     } else {
       showGrid(false);
     }
@@ -809,11 +1110,32 @@
 
     tabCalendar .addEventListener("click", () => { if(currentView !== "grid")      showGrid(true); });
     tabBookmarks.addEventListener("click", () => { if(currentView !== "bookmarks") showBookmarks(true); });
+    tabSearch   .addEventListener("click", () => { if(currentView !== "search")     showSearch(true); });
     bmEmptyBtn  .addEventListener("click", () => showGrid(true));
 
     chipAll .addEventListener("click", () => setFilter("all",  chipAll));
     chipTodo.addEventListener("click", () => setFilter("todo", chipTodo));
     chipDone.addEventListener("click", () => setFilter("done", chipDone));
+
+    typeAll  .addEventListener("click", () => setTypeFilter("all",     typeAll));
+    typeWord .addEventListener("click", () => setTypeFilter("word",    typeWord));
+    typePhr  .addEventListener("click", () => setTypeFilter("phrasal", typePhr));
+    typeIdiom.addEventListener("click", () => setTypeFilter("idiom",   typeIdiom));
+    typeLink .addEventListener("click", () => setTypeFilter("linking", typeLink));
+
+    // Search
+    searchBox.addEventListener("input", () => renderSearch(searchBox.value));
+    searchClear.addEventListener("click", () => { searchBox.value = ""; renderSearch(""); searchBox.focus(); });
+
+    // Self-test / quiz
+    quizBtn.addEventListener("click", openQuiz);
+    quizClose.addEventListener("click", closeQuiz);
+    quizStart.addEventListener("click", startQuiz);
+    quizGotIt.addEventListener("click", () => recordFlip(true));
+    quizMissed.addEventListener("click", () => recordFlip(false));
+    quizRetry.addEventListener("click", () => { if(quiz){ quiz.pos = 0; quiz.results = []; quizDone.hidden = true; quizRun.hidden = false; renderQuestion(); } });
+    quizAgain.addEventListener("click", () => { if(quiz){ quiz.results = []; quizDone.hidden = true; quizSetup.hidden = false; } });
+    quizExit.addEventListener("click", closeQuiz);
 
     doneNext.addEventListener("click", () => {
       if(!ctx) return;
@@ -826,7 +1148,10 @@
     });
 
     document.addEventListener("keydown", e => {
-      if(e.key === "Escape" && currentView === "day") goHome(true);
+      if(e.key === "Escape"){
+        if(!quizOverlay.hidden){ closeQuiz(); return; }
+        if(currentView === "day") goHome(true);
+      }
     });
 
     window.addEventListener("hashchange", route);
@@ -842,7 +1167,7 @@
 
     try{
       DATA       = loadData();
-      TOTAL_DAYS = (DATA.course && DATA.course.totalDays) || 60;
+      TOTAL_DAYS = (DATA.course && DATA.course.totalDays) || 70;
       (DATA.days || []).forEach(d => dayMap.set(d.day, d));
 
       migrateLayout();

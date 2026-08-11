@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0B1727">
-  <meta name="description" content="Vocab Builder — a 60-day IELTS vocabulary challenge with Bangla meanings, lazy-loaded word cards and saved progress.">
-  <title>Vocab Builder · 60-Day IELTS Challenge</title>
+  <meta name="description" content="Vocab Builder — an IELTS vocabulary challenge with Bangla meanings, phrasal verbs, idioms and linking words, plus saved progress.">
+  <title>Vocab Builder · IELTS Vocabulary Challenge</title>
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📚</text></svg>">
 
@@ -31,12 +31,12 @@
           <span class="brand-badge" aria-hidden="true">শ</span>
           <div class="brand-text">
             <p class="brand-name">Vocab Builder</p>
-            <p class="brand-sub" lang="bn">২ মাসের IELTS শব্দভাণ্ডার চ্যালেঞ্জ</p>
+            <p class="brand-sub" lang="bn">IELTS শব্দভাণ্ডার চ্যালেঞ্জ</p>
           </div>
         </div>
 
-        <h1 class="headline">Build an <mark>IELTS-ready</mark> vocabulary in 2 months.</h1>
-        <p class="lede">Around 41 curated words a day — বাংলা meanings, synonyms and example sentences with Bangla translations. Tap a day to start; your progress is saved on this device.</p>
+        <h1 class="headline">Build an <mark>IELTS-ready</mark> vocabulary, one day at a time.</h1>
+        <p class="lede">Around 55 words a day — a blended mix of <b>words</b>, <b>phrasal verbs</b>, <b>idioms</b> and <b>linking words</b>, with বাংলা meanings, synonyms and example sentences with Bangla translations. Tap a day to start; your progress is saved on this device.</p>
 
         <div class="stats">
           <div class="stat">
@@ -75,6 +75,15 @@
             </svg>
             Calendar
           </button>
+          <button id="tabSearch" class="tab" type="button" role="tab"
+                  aria-selected="false" aria-controls="searchPanel">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"/>
+              <path d="M21 21l-4.3-4.3"/>
+            </svg>
+            Search
+          </button>
           <button id="tabBookmarks" class="tab" type="button" role="tab"
                   aria-selected="false" aria-controls="bookmarkPanel">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
@@ -99,6 +108,34 @@
 
           <div id="dayGrid" class="day-grid"></div>
           <div id="fatal" class="fatal" hidden></div>
+        </div>
+
+        <!-- ================= SEARCH PANEL ================= -->
+        <div id="searchPanel" role="tabpanel" aria-labelledby="tabSearch" hidden>
+          <div class="grid-head">
+            <h2 class="section-title">Search all words</h2>
+            <p class="bm-count">Look up any word, meaning, synonym or example across every day.</p>
+          </div>
+
+          <div class="searchbar">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"/>
+              <path d="M21 21l-4.3-4.3"/>
+            </svg>
+            <input id="searchBox" type="search" autocomplete="off" spellcheck="false"
+                   placeholder="Search words, meanings, sentences…  (যেকোনো শব্দ লিখুন)">
+            <button id="searchClear" class="search-clear" type="button" aria-label="Clear search" hidden>✕</button>
+          </div>
+
+          <p id="searchMeta" class="search-meta" hidden></p>
+          <ol id="searchList" class="wlist"></ol>
+          <div id="searchEmpty" class="bm-empty" hidden>
+            <span class="bm-empty-ico" aria-hidden="true">🔍</span>
+            <h3>No matches</h3>
+            <p>Try a different word, or a Bangla meaning. Type at least 2 letters to search.</p>
+            <p lang="bn">বাংলা অর্থ দিয়েও খুঁজতে পারেন।</p>
+          </div>
         </div>
 
         <!-- ================= BOOKMARKS PANEL ================= -->
@@ -134,7 +171,7 @@
             </svg>
           </button>
           <div class="daybar-title">
-            <span class="daybar-eyebrow" id="dvEyebrow">DAY 1 / 60</span>
+            <span class="daybar-eyebrow" id="dvEyebrow">DAY 1 / 70</span>
             <h2 id="dvTheme">—</h2>
           </div>
           <div class="ring-wrap" id="ringWrap" role="img" aria-label="Day progress">
@@ -157,6 +194,22 @@
               <button class="chip on" id="chipAll"  data-filter="all"  type="button">All</button>
               <button class="chip"    id="chipTodo" data-filter="todo" type="button">To learn</button>
               <button class="chip"    id="chipDone" data-filter="done" type="button">Learned</button>
+            </div>
+          </div>
+          <div class="day-meta-row">
+            <button id="quizBtn" class="chip chip-quiz" type="button">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.8.8 1 1.4 1 2.5h6c0-1.1.2-1.7 1-2.5A6 6 0 0012 3z"/>
+              </svg>
+              Self-test
+            </button>
+            <div class="filters" role="group" aria-label="Filter by word type">
+              <button class="chip on" id="typeAll"  data-type="all"     type="button">All types</button>
+              <button class="chip"    id="typeWord" data-type="word"    type="button">Words</button>
+              <button class="chip"    id="typePhr"  data-type="phrasal" type="button">Phrasal</button>
+              <button class="chip"    id="typeIdiom" data-type="idiom"  type="button">Idioms</button>
+              <button class="chip"    id="typeLink" data-type="linking" type="button">Linking</button>
             </div>
           </div>
         </div>
@@ -190,6 +243,62 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- ================= SELF-TEST (QUIZ) OVERLAY ================= -->
+  <div id="quizOverlay" class="quiz-overlay" hidden>
+    <div class="quiz-box" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
+      <button id="quizClose" class="quiz-close" type="button" aria-label="Close self-test">✕</button>
+
+      <!-- Stage 1: setup -->
+      <div id="quizSetup">
+        <h3 id="quizTitle" class="quiz-title">Self-test · Day <span id="quizDay">–</span></h3>
+        <p class="quiz-sub" lang="bn">নিজেকে যাচাই করুন — শব্দের বাংলা অর্থ মনে আছে কি না!</p>
+
+        <label class="quiz-field" for="quizMode">Mode</label>
+        <select id="quizMode" class="quiz-select">
+          <option value="flip">Flip — think, then reveal</option>
+          <option value="mcq">Multiple choice</option>
+        </select>
+
+        <label class="quiz-field" for="quizLen">Questions</label>
+        <select id="quizLen" class="quiz-select">
+          <option value="5">5 quick ones</option>
+          <option value="10">10 questions</option>
+          <option value="all" selected>All words (day only)</option>
+        </select>
+
+        <button id="quizStart" class="btn-next" type="button">Start self-test →</button>
+      </div>
+
+      <!-- Stage 2: running -->
+      <div id="quizRun" hidden>
+        <div class="quiz-progress">
+          <span id="quizProgLabel">1 / 10</span>
+          <div class="bar slim"><i id="quizProgBar"></i></div>
+        </div>
+        <div id="quizQ" class="quiz-q"></div>
+        <div id="quizChoices" class="quiz-choices"></div>
+        <button id="quizReveal" class="btn-next" type="button">Reveal answer</button>
+        <div id="quizActions" class="quiz-actions" hidden>
+          <button id="quizGotIt" class="btn-quiz got" type="button">✓ Knew it</button>
+          <button id="quizMissed" class="btn-quiz miss" type="button">✗ Didn't know</button>
+        </div>
+      </div>
+
+      <!-- Stage 3: results -->
+      <div id="quizDone" hidden>
+        <h3 class="quiz-title">Score</h3>
+        <p class="quiz-score" id="quizScore">– / –</p>
+        <div class="bar"><i id="quizScoreBar"></i></div>
+        <ul id="quizMissList" class="quiz-misslist"></ul>
+        <div class="quiz-actions">
+          <button id="quizRetry" class="btn-quiz got" type="button">↻ Try again</button>
+          <button id="quizAgain" class="btn-quiz miss" type="button">New questions</button>
+          <button id="quizExit" class="btn-quiz" type="button">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <noscript><p style="padding:20px;color:#fff">Vocab Builder needs JavaScript enabled to track your progress.</p></noscript>
 

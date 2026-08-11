@@ -9,14 +9,14 @@ All progress is saved locally in the browser (`localStorage`); nothing is sent t
 | App | What it does |
 |-----|-------------|
 | **Band 7+ Tracker** | 31-day, hour-by-hour study plan with streaks and essay links |
-| **Vocab Builder** | 60-day IELTS word challenge with বাংলা meanings and audio |
+| **Vocab Builder** | IELTS word challenge — বাংলা meanings, phrasal verbs, idioms & linking words, search, and self-test quizzes |
 | **Task 1 Study Hub** | Visual chapters on Academic Task 1 — charts, maps, processes |
 | **Task 2 Lab** | Essay structures, model essays across 20 exam topics |
 | **Grammar Book** | 25 interactive units covering Cambridge Grammar for IELTS |
 
 ## Deployment
 
-The site is deployed on [Vercel](https://vercel.com) as a static site. There is no build command — Vercel serves the files as-is.
+The site is deployed on [Vercel](https://nblt.vercel.app/) as a static site. There is no build command — Vercel serves the files as-is.
 
 | Setting | Value |
 |---------|-------|
