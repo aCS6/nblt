@@ -220,6 +220,184 @@ window.__EXPL = {
     rule: 'Nominalisation lets you apologise impersonally — <em>any confusion caused</em> avoids saying who confused whom.'
   },
 
+  /* ── C4 Fill in the gaps with nouns (rewritten from the a-sentences) ── */
+  c4_2a: {
+    q: 'Young girls are spending increasing amounts on make-up because they have been influenced by advertising. → ______ on make-up amongst young girls is on the increase due to the influence of advertising.',
+    a: 'spending',
+    why: 'The verb <em>are spending</em> becomes the noun <em>spending</em>. The book also allows <em>expenditure</em>, which shifts the focus from the activity to the amount of money spent. Both let the information sit in a noun phrase that can be the subject of the sentence.',
+    wrong: [
+      { opt: 'spend', why: 'The bare verb form. After <em>the … on make-up is on the increase</em> the subject must be a noun, not a verb.' },
+      { opt: 'spent', why: 'The past participle is used for completed amounts, not the general trend the sentence describes.' },
+      { opt: 'influence', why: '<em>Influence</em> is the right idea but belongs in the gap at the end of the sentence (…due to the influence of advertising), describing why the spending happens, not the spending itself.' }
+    ],
+    rule: 'A verb (<em>girls are spending</em>) becomes a noun (<em>spending</em>) when you want it to act as the subject.'
+  },
+  c4_2b: {
+    q: 'Young girls are spending increasing amounts on make-up because they have been influenced by advertising. → Spending on make-up amongst young girls is on the ______ due to the influence of advertising.',
+    a: 'increase',
+    why: 'The idea <em>increasing amounts</em> is recast as the noun <em>increase</em> inside the fixed phrase <em>is on the increase</em>, meaning rising. The verb form <em>are increasing</em> would not fit after <em>is on the</em>.',
+    wrong: [
+      { opt: 'increasing', why: 'The participle needs a noun after it, but <em>is on the increasing</em> is not an English phrase.' },
+      { opt: 'amounts', why: '<em>Amounts</em> would repeat the idea of size, but the phrase requires the noun of the verb <em>increase</em> to express the rise.' },
+      { opt: 'growth', why: 'Closely related in meaning, but the exercise keeps the same word family as the source sentence, and the surrounding phrase is fixed as <em>on the increase</em>.' }
+    ],
+    rule: '<em>To be on the increase</em> is the fixed nominalised form of the verb <em>to increase</em>.'
+  },
+  c4_2c: {
+    q: 'Young girls are spending increasing amounts on make-up because they have been influenced by advertising. → Spending on make-up amongst young girls is on the increase due to the ______ of advertising.',
+    a: 'influence',
+    why: 'The passive verb <em>have been influenced</em> becomes the noun <em>influence</em> completing <em>the influence of advertising</em>. Turning the verb into a noun removes the need for a whole passive clause.',
+    wrong: [
+      { opt: 'influencing', why: 'The <em>-ing</em> form would need to introduce a gerund clause; here the sentence only wants a plain noun after <em>the … of</em>.' },
+      { opt: 'advertising', why: '<em>Advertising</em> already appears after <em>of</em>; the gap needs the noun that explains what advertising does to young girls.' },
+      { opt: 'influenced', why: 'A past participle cannot follow <em>the</em> here; the structure requires the noun <em>influence</em>.' }
+    ],
+    rule: 'Causality can be compressed: <em>because they have been influenced by advertising</em> → <em>due to the influence of advertising</em>.'
+  },
+  c4_3a: {
+    q: 'I failed to get good enough grades to get into university because I was ill on the day of the exam. → The reason for my ______ to get good enough grades was my illness on the day of the exam.',
+    a: 'failure',
+    why: 'The verb <em>failed</em> becomes the noun <em>failure</em>, and the whole first clause is reduced to <em>the reason for my failure to get good enough grades</em>. The original idea of not succeeding is now carried by the noun.',
+    wrong: [
+      { opt: 'fail', why: 'The verb form. The sentence needs <em>the reason for my + noun</em>, so <em>failure</em> is required.' },
+      { opt: 'failing', why: 'A gerund clause is possible in speech (<em>my failing to get…</em>), but the book answer uses the noun <em>failure</em>, which is what the gap is looking for.' },
+      { opt: 'failure to achieve', why: '<em>Achieve</em> repeats what the rest of the phrase already says; the printed stem already includes <em>to get good enough grades</em>.' }
+    ],
+    rule: '<em>The reason for my + noun</em> announces the cause before you name it — the signposting pattern of formal writing.'
+  },
+  c4_3b: {
+    q: 'I failed to get good enough grades to get into university because I was ill on the day of the exam. → The reason for my failure to get good enough grades was my ______ on the day of the exam.',
+    a: 'illness',
+    why: 'The adjective/adverb pair <em>I was ill</em> becomes the noun <em>illness</em>, turning the whole second clause into <em>my illness on the day of the exam</em>. The verb <em>was</em> disappears with the rewrite.',
+    wrong: [
+      { opt: 'ill', why: 'The adjective cannot follow <em>my</em>; a noun is needed to name the condition.' },
+      { opt: 'being ill', why: 'This keeps the clause structure alive, but the point of the exercise is to replace it with one noun: <em>illness</em>.' },
+      { opt: 'illness caused', why: 'Adding <em>caused</em> makes the sentence need a new object; the printed stem already supplies <em>was my … on the day of the exam</em>.' }
+    ],
+    rule: 'A subject + adjective clause (<em>I was ill</em>) compresses into a single noun (<em>my illness</em>).'
+  },
+  c4_4a: {
+    q: 'If you eat healthily you can reduce the chances of getting ill. → A healthy ______ can lead to a reduction in the chances of getting ill.',
+    a: 'diet',
+    why: 'The whole idea <em>eat healthily</em> is replaced by the noun phrase <em>a healthy diet</em>. Noun + adjective naming the habit replaces the verb <em>eat</em> and the adverb <em>healthily</em>.',
+    wrong: [
+      { opt: 'eating', why: '<em>A healthy eating</em> is not idiomatic; when the activity is named, the noun is <em>a diet</em>.' },
+      { opt: 'life', why: '<em>A healthy life</em> is broader than the narrow dietary idea in the source sentence and does not stay close to <em>eat healthily</em>.' },
+      { opt: 'lifestyle', why: 'Too wide; the source sentence is specifically about eating, so <em>diet</em> is the precise matched noun.' }
+    ],
+    rule: 'A verb-adverb pair (<em>eat healthily</em>) becomes a noun-adjective pair (<em>a healthy diet</em>).'
+  },
+  c4_4b: {
+    q: 'If you eat healthily you can reduce the chances of getting ill. → A healthy diet can lead to a ______ in the chances of getting ill.',
+    a: 'reduction',
+    why: 'The verb <em>reduce</em> becomes the noun <em>reduction</em>, carried by the empty verb <em>can lead to</em>. The measurable improvement is now a noun that can take an adjective or be qualified.',
+    wrong: [
+      { opt: 'reducing', why: 'After <em>a</em>, and before <em>in the chances</em>, the structure wants the noun <em>reduction</em>, not the gerund.' },
+      { opt: 'reduce', why: 'The bare verb would break <em>a … in the chances</em>, which needs a noun.' },
+      { opt: 'fall', why: 'Close in meaning, but the exercise forms the noun from the verb in the source sentence, which is <em>reduce → reduction</em>.' }
+    ],
+    rule: '<em>Can reduce</em> → <em>can lead to a reduction</em>: the action becomes a noun and <em>lead to</em> is the empty carrier verb.'
+  },
+  c4_5a: {
+    q: 'If you use the Internet you risk getting viruses and losing important information. → ______ of the Internet increases the risk of getting viruses which may cause the loss of important information.',
+    a: 'use',
+    why: 'The verb <em>use</em> becomes the noun <em>use</em> in <em>use of the Internet</em>. The conditional <em>If you use… you risk…</em> is rewritten as one noun phrase subject carrying the whole idea.',
+    wrong: [
+      { opt: 'using', why: 'The gerund would keep a clause feel and would not fit the fixed pattern <em>the … of the Internet</em> as cleanly as the noun <em>use</em>.' },
+      { opt: 'user', why: '<em>User</em> is a person, but the subject must name the activity of using the Internet, not the person doing it.' },
+      { opt: 'usage', why: '<em>Usage</em> refers to how much something is used; the sentence is about the act of using the Internet, so <em>use</em> is the precise noun.' }
+    ],
+    rule: 'The condition <em>If you use the Internet</em> becomes the subject noun phrase <em>use of the Internet</em>.'
+  },
+  c4_5b: {
+    q: 'If you use the Internet you risk getting viruses and losing important information. → Use of the Internet increases the ______ of getting viruses which may cause the loss of important information.',
+    a: 'risk',
+    why: 'The verb <em>you risk</em> becomes the noun <em>risk</em>, and the sentence now says the use <em>increases the risk of getting viruses</em>. The danger is named as a noun rather than expressed as a verb.',
+    wrong: [
+      { opt: 'risking', why: 'A <em>chance/reduction/… in</em> pattern is expected here; <em>risk</em> is the noun that keeps the same word family as the source verb.' },
+      { opt: 'danger', why: 'Related in meaning, but the exercise converts the verb <em>risk</em> into its own noun <em>risk</em>.' },
+      { opt: 'riskiness', why: 'Not a natural choice for this idea; <em>risk</em> itself already means the chance of something bad.' }
+    ],
+    rule: 'The verb <em>risk + -ing</em> (<em>you risk getting</em>) becomes noun <em>+ of</em> (<em>the risk of getting</em>).'
+  },
+  c4_5c: {
+    q: 'If you use the Internet you risk getting viruses and losing important information. → Use of the Internet increases the risk of getting viruses which may cause the ______ of important information.',
+    a: 'loss',
+    why: 'The verb <em>losing</em> becomes the noun <em>loss</em> in <em>the loss of important information</em>. Recasting it as a noun lets it sit after <em>cause the</em>.',
+    wrong: [
+      { opt: 'losing', why: 'After <em>cause the</em> a noun is needed; <em>lose→ loss</em> supplies it.' },
+      { opt: 'lose', why: 'The verb would leave the sentence with no object for <em>may cause</em>; a noun names what is caused.' },
+      { opt: 'lost', why: 'A past participle cannot follow <em>cause the</em> here; the noun form <em>loss</em> is required.' }
+    ],
+    rule: 'Verb <em>lose</em> → noun <em>loss</em>; nominalised endings like <em>-ss</em> answers are often shorter than the verb.'
+  },
+  c4_6a: {
+    q: 'When people are content because their lives are successful they tend to be easier to communicate with. → ______ due to personal success tends to lead to improved communication with other people.',
+    a: 'contentment',
+    why: 'The clause <em>people are content</em> becomes the noun <em>contentment</em>, subject of the rewritten sentence. The positive feeling that used to be an adjective is now the topic of the sentence.',
+    wrong: [
+      { opt: 'content', why: 'The adjective cannot be the subject of <em>tends to lead to</em>; the exercise wants the noun <em>contentment</em>.' },
+      { opt: 'contention', why: 'Similar spelling, different meaning — <em>contention</em> is argument or disagreement, not satisfaction.' },
+      { opt: 'contentment with', why: 'The printed stem already supplies <em>due to personal success</em>; adding <em>with</em> creates a wordy or ungrammatical bridge.' }
+    ],
+    rule: 'The adjective <em>content</em> forms the noun <em>contentment</em> — often with the suffix <em>-ment</em>.'
+  },
+  c4_6b: {
+    q: 'When people are content because their lives are successful they tend to be easier to communicate with. → Contentment due to personal ______ tends to lead to improved communication with other people.',
+    a: 'success',
+    why: 'The idea <em>their lives are successful</em> becomes the noun <em>success</em> in <em>personal success</em>. The whole cause clause is reduced to a two-word noun phrase.',
+    wrong: [
+      { opt: 'successfulness', why: 'Clumsy and non-standard; the noun <em>success</em> already expresses the idea.' },
+      { opt: 'successes', why: 'The plural is used for separate achievements; here the abstract idea of success in life generally is uncountable.' },
+      { opt: 'successful', why: 'The adjective cannot follow <em>personal</em>; a noun is required.' }
+    ],
+    rule: 'Adjective <em>successful</em> → noun <em>success</em>; removals are as important as suffixes in nominalisation.'
+  },
+  c4_6c: {
+    q: 'When people are content because their lives are successful they tend to be easier to communicate with. → Contentment due to personal success tends to lead to improved ______ with other people.',
+    a: 'communication',
+    why: 'The phrase <em>easier to communicate with</em> becomes <em>improved communication</em>. The action of communicating is upgraded to a noun that the adjective <em>improved</em> can modify.',
+    wrong: [
+      { opt: 'communicating', why: 'After <em>improved</em> the sentence wants a noun; <em>communication</em> is the noun of the verb <em>communicate</em>.' },
+      { opt: 'relationships', why: 'Related idea, but the exercise converts <em>communicate</em> itself into its noun rather than introducing a new word.' },
+      { opt: 'communicate', why: 'The bare verb would break <em>improved … with</em>, which needs a noun.' }
+    ],
+    rule: 'Verb <em>communicate</em> → noun <em>communication</em>; nominalising doubles the word count for a reason — it allows adjectives and prepositions to attach.'
+  },
+  c4_7a: {
+    q: 'In the thirteenth century engineers developed new ways to construct buildings which made it possible to build the soaring arches of Salisbury Cathedral. → ______ in construction in the thirteenth century made it possible to build the soaring arches of Salisbury Cathedral.',
+    a: 'developments',
+    why: 'The verb <em>developed</em> becomes the noun <em>developments</em>, subject of the rewritten sentence. The progress historians once described with a verb is now named as a countable achievement — hence the plural <em>-s</em>.',
+    wrong: [
+      { opt: 'development', why: 'Singular would name the general process; the source describes several new ways, so the plural <em>developments</em> is the book answer.' },
+      { opt: 'developing', why: 'The gerund keeps a process feel; here the sentence needs the concrete noun <em>developments</em>.' },
+      { opt: 'invented', why: 'A verb would break the structure; <em>developments in construction</em> needs the noun subject.' }
+    ],
+    rule: 'Verb <em>develop</em> → noun <em>developments</em>; countable noun for separate innovations, plural with <em>-s</em>.'
+  },
+  c4_7b: {
+    q: 'In the thirteenth century engineers developed new ways to construct buildings which made it possible to build the soaring arches of Salisbury Cathedral. → Developments in ______ in the thirteenth century made it possible to build the soaring arches of Salisbury Cathedral.',
+    a: 'construction',
+    why: 'The verb phrase <em>to construct buildings</em> becomes the noun <em>construction</em> in <em>developments in construction</em>. The activity is named rather than described as an action, which tightens the sentence.',
+    wrong: [
+      { opt: 'constructing', why: '<em>In constructing</em> would start a gerund clause; the sentence only needs the plain noun <em>construction</em>.' },
+      { opt: 'construct', why: 'The verb form has no place after <em>developments in</em>.' },
+      { opt: 'buildings', why: '<em>Buildings</em> names the object of the work; the gap needs the noun that names the activity itself.' }
+    ],
+    rule: 'Verb <em>construct</em> → noun <em>construction</em>; <em>developments in + noun</em> reports progress as a name.'
+  },
+  c4_8: {
+    q: 'The IELTS reading module is difficult because it has long articles with lots of new vocabulary. → The ______ of the IELTS reading module is due to its long articles containing a lot of new vocabulary.',
+    a: 'difficulty',
+    why: 'The statement <em>is difficult</em> becomes the noun <em>difficulty</em>, and the reason clause <em>because it has long articles</em> becomes <em>is due to its long articles</em>. The judgement that was once expressed by an adjective is now the subject of the sentence.',
+    wrong: [
+      { opt: 'difficult', why: 'The adjective cannot follow <em>the</em>; the sentence needs the noun <em>difficulty</em> as its subject.' },
+      { opt: 'difficulties', why: 'The plural points at several separate problems; the source sentence names one overall quality, so the singular is the book answer.' },
+      { opt: 'hardness', why: 'Too physical a word for a cognitive challenge; <em>difficulty</em> is the noun of the adjective <em>difficult</em> in the source.' }
+    ],
+    rule: 'Adjective <em>difficult</em> → noun <em>difficulty</em>; <em>the + noun + is due to</em> reports causes impersonally in Task 2 writing.'
+  },
+
   /* ── Grammar Focus Task: find the nominalisations ── */
   gft_1: {
     q: 'Since 1994 there has been an improvement in numbers of all species, although the graph shows a slight decrease in 2000. — which words are nominalisations?',
