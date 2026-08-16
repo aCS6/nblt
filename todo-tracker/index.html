@@ -1,0 +1,601 @@
+<!-- ==========================================================================
+     NBLT — Daily Mock Tracker (todo-tracker/index.html)
+
+     A daily checklist of the full IELTS Worldly test library, spread across
+     25 days. Scope, deliberately: this page is a todo list. It only renders
+     the embedded PLAN25 data (56 Cambridge Listening, 39 Academic Reading
+     and 30 Writing tests), persists its own checkmarks under nblt.todo25,
+     and links out to the tests. It does not host, aggregate or track
+     anything else, and it shares only nblt.theme with the rest of NBLT.
+     ========================================================================== -->
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#4f46e5">
+<meta name="description" content="A 25-day IELTS practice tracker: every Cambridge Listening, Academic Reading and Writing test from IELTS Worldly, laid out as a daily checklist. Tick a test off when you finish it; progress is saved in your browser.">
+<title>Daily Mock Tracker — NBLT</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='26' fill='%234f46e5'/><text x='50' y='74' font-size='58' font-weight='800' text-anchor='middle' fill='white' font-family='system-ui,sans-serif'>✓</text></svg>">
+
+<!-- Theme is applied before first paint, sharing nblt.theme with the hub. -->
+<script>
+  (function () {
+    try {
+      var dark = localStorage.getItem('nblt.theme') !== 'light';
+      document.documentElement.classList.toggle('dark', dark);
+      document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+    } catch (e) {}
+  })();
+</script>
+
+<style>
+  :root {
+    --bg: #f4f6fb;
+    --surface: #ffffff;
+    --surface-2: #eef1f7;
+    --border: #e2e6f0;
+    --border-soft: rgba(0,0,0,.06);
+    --text: #1e2433;
+    --muted: #5b6478;
+    --faint: #8a93a8;
+    --accent: #4f46e5;
+    --accent-2: #7c3aed;
+    --ok: #059669;
+    --listening: #0ea5e9;
+    --reading: #059669;
+    --writing: #f59e0b;
+    --ring: rgba(79,70,229,.35);
+  }
+  .dark {
+    --bg: #0a0d16;
+    --surface: #12162a;
+    --surface-2: #1a1f38;
+    --border: #242b49;
+    --border-soft: rgba(255,255,255,.06);
+    --text: #e7eaf4;
+    --muted: #a7aec6;
+    --faint: #6b7490;
+    --accent: #818cf8;
+    --accent-2: #a78bfa;
+    --ok: #34d399;
+    --listening: #38bdf8;
+    --reading: #34d399;
+    --writing: #fbbf24;
+    --ring: rgba(129,140,248,.4);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    padding-bottom: 6rem;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--border);
+    box-shadow: 0 8px 24px -12px rgba(0,0,0,.25);
+  }
+  .head-inner { display: flex; align-items: center; gap: .875rem; height: 72px; }
+  .tile {
+    flex: none; width: 44px; height: 44px; border-radius: 14px;
+    display: grid; place-items: center;
+    background: linear-gradient(140deg, #6366f1, #a855f7);
+    color: #fff; font-weight: 800; font-size: 1.25rem;
+    box-shadow: 0 8px 20px -6px rgba(79,70,229,.8);
+  }
+  .head-title { min-width: 0; }
+  .head-title h1 { margin: 0; font-size: 1.2rem; font-weight: 900; letter-spacing: -.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .head-title p { margin: 1px 0 0; font-size: .72rem; font-weight: 800; color: var(--faint); text-transform: uppercase; letter-spacing: .08em; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: .45rem;
+    border: 1.5px solid var(--border); background: var(--surface);
+    color: var(--muted); font: inherit; font-size: .82rem; font-weight: 800;
+    padding: .55rem .95rem; border-radius: 12px; cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+    text-decoration: none;
+  }
+  .btn:hover { color: var(--text); border-color: var(--faint); transform: translateY(-1px); }
+  .btn svg { width: .95rem; height: .95rem; }
+  .head-actions { margin-left: auto; display: flex; gap: .5rem; align-items: center; }
+  .btn-danger:hover { border-color: #ef4444; color: #ef4444; }
+
+  /* ── Mission ────────────────────────────────────────────── */
+  .mission {
+    display: flex; align-items: center; gap: 1.5rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, var(--surface)), var(--surface) 60%);
+    border: 1.5px solid var(--border); border-radius: 20px;
+    padding: 1.5rem 1.75rem; margin-top: 1.5rem;
+    box-shadow: 0 10px 30px -14px rgba(0,0,0,.3);
+    position: relative; overflow: hidden;
+  }
+  .mission::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(600px 160px at 88% -40%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 62%);
+  }
+  .mission-ring-wrap { flex: none; position: relative; width: 98px; height: 98px; z-index: 1; }
+  .mission-ring-wrap .ring { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring-bg { fill: none; stroke: var(--surface-2); stroke-width: 11; }
+  .ring-fg {
+    fill: none; stroke: url(#ringGrad); stroke-width: 11; stroke-linecap: round;
+    transition: stroke-dashoffset .5s ease; filter: drop-shadow(0 0 7px var(--ring));
+  }
+  .ring-label {
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;
+  }
+  .ring-label span { font-size: 1.45rem; font-weight: 900; letter-spacing: -.02em; }
+  .ring-label small { font-size: .6rem; font-weight: 800; color: var(--faint); margin-top: 3px; letter-spacing: .05em; text-transform: uppercase; }
+  .mission-info { position: relative; z-index: 1; min-width: 0; flex: 1; }
+  .mission-chip {
+    display: inline-flex; align-items: center; gap: .3rem;
+    font-size: .66rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    padding: .3rem .65rem; border-radius: 99px;
+  }
+  .mission-chip b { color: var(--text); font-weight: 900; }
+  .mission-info h2 { margin: .55rem 0 .25rem; font-size: 1.65rem; font-weight: 900; letter-spacing: -.03em; }
+  .mission-info p.sub { margin: 0 0 .85rem; color: var(--muted); font-size: .92rem; font-weight: 600; }
+  .mission-bar { height: 9px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+  .mission-bar i {
+    display: block; height: 100%; border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transition: width .3s;
+  }
+  .mission-foot { display: block; margin-top: .55rem; font-size: .72rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--faint); }
+  .mission-foot b { color: var(--muted); font-weight: 900; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin: 1.5rem 0 1.75rem; }
+  .stat {
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 16px; padding: 1rem 1.1rem;
+    display: flex; flex-direction: column; gap: .35rem;
+    box-shadow: 0 4px 14px -8px rgba(0,0,0,.2);
+    border-top: 4px solid var(--accent);
+  }
+  .stat.s-listen { border-top-color: var(--listening); }
+  .stat.s-read { border-top-color: var(--reading); }
+  .stat.s-write { border-top-color: var(--writing); }
+  .stat .label { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); }
+  .stat .num { font-size: 1.75rem; font-weight: 900; letter-spacing: -.03em; }
+  .stat .num small { font-size: .85rem; color: var(--faint); font-weight: 700; }
+  .stat .bar { height: 7px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+  .stat .bar i { display: block; height: 100%; border-radius: 99px; background: var(--accent); transition: width .3s; }
+  .stat.s-listen .bar i { background: var(--listening); }
+  .stat.s-read .bar i { background: var(--reading); }
+  .stat.s-write .bar i { background: var(--writing); }
+
+  /* ── Table ──────────────────────────────────────────────── */
+  .table-card {
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px -14px rgba(0,0,0,.25);
+  }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 780px; }
+  thead th {
+    position: sticky; top: 72px; z-index: 5;
+    background: var(--surface-2);
+    font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: .09em;
+    color: var(--muted); text-align: left;
+    padding: .85rem .9rem; border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  thead th:first-child { border-top-left-radius: 18px; }
+  thead th:last-child { border-top-right-radius: 18px; }
+  thead th .th-dot { display: inline-block; width: 8px; height: 8px; border-radius: 99px; margin-right: .45rem; vertical-align: 1px; }
+  .th-l .th-dot { background: var(--listening); }
+  .th-r .th-dot { background: var(--reading); }
+  .th-w .th-dot { background: var(--writing); }
+
+  tbody td { padding: .7rem .9rem; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:last-child td:first-child { border-bottom-left-radius: 18px; }
+  tbody tr:last-child td:last-child { border-bottom-right-radius: 18px; }
+  tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 45%, transparent); }
+  td.day { width: 96px; white-space: nowrap; }
+  .day-label { font-size: .95rem; font-weight: 900; }
+  .day-sub { font-size: .68rem; font-weight: 800; color: var(--faint); text-transform: uppercase; letter-spacing: .06em; }
+  .day-badge { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; background: var(--surface-2); border: 1.5px solid var(--border); font-weight: 900; font-size: .9rem; margin-top: .3rem; }
+  .day-status { display: none; font-size: .6rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .5rem; border-radius: 99px; margin-top: .35rem; }
+  .day-status:not(:empty) { display: inline-block; }
+  tr.done td.day .day-badge { background: color-mix(in srgb, var(--ok) 22%, transparent); border-color: var(--ok); color: var(--ok); }
+  tr.done td.day .day-label { color: var(--ok); }
+  tr.done td.day .day-status { background: color-mix(in srgb, var(--ok) 15%, transparent); color: var(--ok); }
+  tr.today td.day .day-status { background: var(--accent); color: #fff; box-shadow: 0 0 12px var(--ring); }
+  tr.today td { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+  tr.today td.day { box-shadow: inset 3px 0 0 var(--accent); }
+  tr.today .day-label { color: var(--accent); }
+
+  .cell { display: flex; flex-direction: column; gap: .4rem; }
+  .task {
+    display: flex; align-items: flex-start; gap: .6rem;
+    padding: .35rem .45rem; border-radius: 10px;
+    transition: background .12s;
+  }
+  .task:hover { background: var(--surface-2); }
+  .task input { display: none; }
+  .box {
+    flex: none; width: 22px; height: 22px; margin-top: 1px;
+    border: 2.5px solid var(--faint); border-radius: 7px;
+    display: inline-grid; place-items: center; cursor: pointer;
+    transition: background .15s, border-color .15s;
+    color: transparent;
+  }
+  .task input:checked + .box { background: var(--ok); border-color: var(--ok); color: #fff; }
+  .task .box svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 3.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .task-info { min-width: 0; }
+  .task-info .t-name {
+    display: block; font-size: .82rem; font-weight: 800; line-height: 1.3;
+    color: var(--text); text-decoration: none; cursor: pointer;
+  }
+  .task-info .t-name:hover { text-decoration: underline; text-underline-offset: 2px; }
+  .task-info .t-sub { display: block; font-size: .68rem; font-weight: 700; color: var(--faint); text-transform: uppercase; letter-spacing: .05em; }
+  .task.done .t-name { color: var(--faint); text-decoration: line-through; }
+
+  .cell-w .task-info .t-name { display: flex; gap: .3rem; align-items: baseline; }
+  .cell-w .t-no { color: var(--faint); font-size: .72rem; font-weight: 800; flex: none; }
+
+  .col-fill { color: var(--faint); font-size: .74rem; font-style: italic; }
+
+  /* ── Footer ─────────────────────────────────────────────── */
+  footer.credits { margin-top: 2.25rem; padding-top: 1.25rem; border-top: 2px solid var(--border); }
+  footer.credits p { margin: 0; font-size: .78rem; color: var(--faint); font-weight: 600; }
+
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .head-title p { display: none; }
+    .mission { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.25rem; }
+    .mission-ring-wrap { width: 82px; height: 82px; }
+    .mission-info h2 { font-size: 1.35rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- Floating "back to NBLT" pill. -->
+<script defer src="../assets/nblt-home.js"></script>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <span class="tile" aria-hidden="true">✓</span>
+    <div class="head-title">
+      <h1>Daily Mock Tracker</h1>
+      <p>Listening · Reading · Writing — one checklist</p>
+    </div>
+    <div class="head-actions">
+      <button type="button" class="btn" id="resetBtn" title="Clear all checkmarks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v5h5"/></svg>
+        Reset
+      </button>
+      <button type="button" class="btn" id="themeBtn" aria-label="Toggle theme">
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="mission" aria-label="Current challenge">
+    <div class="mission-ring-wrap" aria-hidden="true">
+      <svg class="ring" viewBox="0 0 120 120">
+        <defs>
+          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#6366f1"/>
+            <stop offset="100%" stop-color="#a855f7"/>
+          </linearGradient>
+        </defs>
+        <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+        <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div class="ring-label"><span id="ringPct">0</span><small>done</small></div>
+    </div>
+    <div class="mission-info">
+      <span class="mission-chip" id="missionChip">DAY <b>01</b> / 25</span>
+      <h2 id="missionTitle">Today is Day 1</h2>
+      <p class="sub" id="missionSub">Tick off 7 tests today — Listening, Reading and Writing.</p>
+      <div class="mission-bar" aria-hidden="true"><i id="daysBar" style="width:0%"></i></div>
+      <span class="mission-foot"><b id="daysDone">0</b>/25 days done · <b id="testsLeft">125</b> tests left</span>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Progress">
+    <div class="stat">
+      <span class="label">Overall</span>
+      <span class="num"><span id="statAll">0</span><small id="statAllTot"> / 125</small></span>
+      <div class="bar"><i id="barAll" style="width:0%"></i></div>
+    </div>
+    <div class="stat s-listen">
+      <span class="label">Listening</span>
+      <span class="num"><span id="statL">0</span><small id="statLTot"> / 56</small></span>
+      <div class="bar"><i id="barL" style="width:0%"></i></div>
+    </div>
+    <div class="stat s-read">
+      <span class="label">Reading</span>
+      <span class="num"><span id="statR">0</span><small id="statRTot"> / 39</small></span>
+      <div class="bar"><i id="barR" style="width:0%"></i></div>
+    </div>
+    <div class="stat s-write">
+      <span class="label">Writing</span>
+      <span class="num"><span id="statW">0</span><small id="statWTot"> / 30</small></span>
+      <div class="bar"><i id="barW" style="width:0%"></i></div>
+    </div>
+  </section>
+
+  <section class="table-card" aria-label="Daily mock practice plan">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th class="th-l"><span class="th-dot"></span>Listening</th>
+            <th class="th-r"><span class="th-dot"></span>Reading</th>
+            <th class="th-w"><span class="th-dot"></span>Writing</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+  </section>
+
+  <footer class="credits">
+    <p>Test links © IELTS Worldly and vocabularyforielts.com. This page is a tracker only — it hosts no tests and tracks no one.</p>
+  </footer>
+</main>
+
+<script>
+var PLAN25 = [{"d": 1, "L": [["Cambridge 19", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-19-listening-test-1/"], ["Cambridge 19", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-19-listening-test-2/"], ["Cambridge 19", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-19-listening-test-3/"]], "R": [["Cambridge 19", "Reading Test 1", "https://www.ieltsworldly.com/ielts-cambridge-19-academic-reading-test-1-with-answers-pdf/"], ["Cambridge 19", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-19-academic-reading-test-2-with-answers-pdf/"]], "W": [["1", "Bar Chart", "Technology in Education", "https://vocabularyforielts.com/ielts-academic-writing-1-19-band-9-answers-for-task-1-task-2/"], ["2", "Line Graph", "Environment & Society", "https://vocabularyforielts.com/ielts-academic-writing-2-19-band-9-answers-for-task-1-task-2/"]]}, {"d": 2, "L": [["Cambridge 19", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-19-listening-test-4/"], ["Cambridge 18", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-18-listening-test-1/"]], "R": [["Cambridge 19", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-19-academic-reading-test-3-with-answers-pdf/"], ["Cambridge 19", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-19-academic-reading-test-4-with-answers-pdf/"]], "W": [["3", "Pie Chart", "Healthcare Funding", "https://vocabularyforielts.com/ielts-academic-writing-3-19-band-9-answers-for-task-1-task-2/"]]}, {"d": 3, "L": [["Cambridge 18", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-18-listening-test-2/"], ["Cambridge 18", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-18-listening-test-3/"]], "R": [["Cambridge 18", "Reading Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-18-reading-practice-test-1-with-answers/"]], "W": [["4", "Data Table", "Youth & Crime", "https://vocabularyforielts.com/ielts-academic-writing-4-19-band-9-answers-for-task-1-task-2/"]]}, {"d": 4, "L": [["Cambridge 18", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-18-listening-test-4/"], ["Cambridge 17", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-17-listening-test-1/"]], "R": [["Cambridge 18", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-18-reading-practice-test-2-with-answers/"], ["Cambridge 18", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-18-reading-practice-test-3-with-answers/"]], "W": [["5", "Island Map", "Remote Work Trends", "https://vocabularyforielts.com/ielts-academic-writing-1-18-band-9-answers-for-task-1-task-2/"]]}, {"d": 5, "L": [["Cambridge 17", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-17-listening-test-2/"], ["Cambridge 17", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-17-listening-test-3/"], ["Cambridge 17", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-17-listening-test-4/"]], "R": [["Cambridge 18", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-18-reading-practice-test-4-with-answers/"]], "W": [["6", "Process Diagram", "Public Transport", "https://vocabularyforielts.com/ielts-academic-writing-2-18-band-9-answers-for-task-1-task-2/"]]}, {"d": 6, "L": [["Cambridge 16", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-16-listening-practice-test-1-with-answers/"], ["Cambridge 16", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-16-listening-practice-test-2-with-answers/"]], "R": [["Cambridge 17", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-17-reading-test-2/"], ["Cambridge 17", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-17-reading-test-3/"]], "W": [["7", "Two Charts (Pie & Bar)", "Social Media Impact", "https://vocabularyforielts.com/ielts-academic-writing-3-18-band-9-answers-for-task-1-task-2/"], ["8", "Bar Chart", "Space Exploration", "https://vocabularyforielts.com/ielts-academic-writing-4-18-band-9-answers-for-task-1-task-2/"]]}, {"d": 7, "L": [["Cambridge 16", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-16-listening-practice-test-3-with-answers/"], ["Cambridge 16", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-16-listening-practice-test-4-with-answers/"]], "R": [["Cambridge 17", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-17-reading-test-4/"]], "W": [["9", "Comparative Line Graphs", "Globalisation", "https://vocabularyforielts.com/ielts-academic-writing-1-17-band-9-answers-for-task-1-task-2/"]]}, {"d": 8, "L": [["Cambridge 15", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-15-listening-practice-test-01-with-answers/"], ["Cambridge 15", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-15-listening-practice-test-02-with-answers/"]], "R": [["Cambridge 16", "Reading Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-16-reading-practice-test-1-with-answers/"], ["Cambridge 16", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-16-reading-practice-test-2-with-answers/"]], "W": [["10", "Pie Chart", "Family Dynamics", "https://vocabularyforielts.com/ielts-academic-writing-2-17-band-9-answers-for-task-1-task-2/"]]}, {"d": 9, "L": [["Cambridge 15", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-15-listening-practice-test-03-with-answers/"], ["Cambridge 15", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-15-listening-practice-test-04-with-answers/"], ["Cambridge 14", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-14-listening-practice-test-01-with-answers/"]], "R": [["Cambridge 16", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-16-reading-practice-test-3-with-answers/"], ["Cambridge 16", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-16-reading-practice-test-4-with-answers/"]], "W": [["11", "Data Table", "Cultural Heritage", "https://vocabularyforielts.com/ielts-academic-writing-3-17-band-9-answers-for-task-1-task-2/"]]}, {"d": 10, "L": [["Cambridge 14", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-14-listening-practice-test-02-with-answers/"], ["Cambridge 14", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-14-listening-practice-test-03-with-answers/"]], "R": [["Cambridge 15", "Reading Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-15-reading-practice-test-1-with-answers/"]], "W": [["12", "Floor Plan / Map", "Modern Tourism", "https://vocabularyforielts.com/ielts-academic-writing-4-17-band-9-answers-for-task-1-task-2/"]]}, {"d": 11, "L": [["Cambridge 14", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-14-listening-practice-test-04-with-answers/"], ["Cambridge 13", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-13-listening-practice-test-01-with-answers/"]], "R": [["Cambridge 15", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-15-reading-practice-test-2-with-answers/"], ["Cambridge 15", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-15-reading-practice-test-3-with-answers/"]], "W": [["13", "Life Cycle Diagram", "Professional Sports", "https://vocabularyforielts.com/ielts-academic-writing-1-16-band-9-answers-for-task-1-task-2/"], ["14", "Two Charts (Line & Pie)", "Animal Rights", "https://vocabularyforielts.com/ielts-academic-writing-2-16-band-9-answers-for-task-1-task-2/"]]}, {"d": 12, "L": [["Cambridge 13", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-13-listening-practice-test-02-with-answers/"], ["Cambridge 13", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-13-listening-practice-test-03-with-answers/"]], "R": [["Cambridge 15", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-15-reading-practice-test-4-with-answers/"]], "W": [["15", "Bar Chart", "Urbanisation & Cities", "https://vocabularyforielts.com/ielts-academic-writing-3-16-band-9-answers-for-task-1-task-2/"]]}, {"d": 13, "L": [["Cambridge 13", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-13-listening-practice-test-04-with-answers/"], ["Cambridge 12", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-12-listening-practice-test-01-with-answers/"], ["Cambridge 12", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-12-listening-practice-test-02-with-answers/"]], "R": [["Cambridge 14", "Reading Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-14-reading-practice-test-1-with-answers/"], ["Cambridge 14", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-14-reading-practice-test-2-with-answers/"]], "W": [["16", "Line Graph", "Value of History", "https://vocabularyforielts.com/ielts-academic-writing-4-16-band-9-answers-for-task-1-task-2/"]]}, {"d": 14, "L": [["Cambridge 12", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-12-listening-practice-test-03-with-answers/"], ["Cambridge 12", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-12-listening-practice-test-04-with-answers/"]], "R": [["Cambridge 14", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-14-reading-practice-test-3-with-answers/"]], "W": [["17", "Pie Chart", "Language Learning", "https://vocabularyforielts.com/ielts-academic-writing-1-15-band-9-answers-for-task-1-task-2/"]]}, {"d": 15, "L": [["Cambridge 11", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-11-listening-practice-test-01-with-answers/"], ["Cambridge 11", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-11-listening-practice-test-02-with-answers/"]], "R": [["Cambridge 14", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-14-reading-practice-test-4-with-answers/"], ["Cambridge 13", "Reading Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-13-reading-practice-test-1-with-answers/"]], "W": [["18", "Data Table", "Primary Education", "https://vocabularyforielts.com/ielts-academic-writing-2-15-band-9-answers-for-task-1-task-2/"]]}, {"d": 16, "L": [["Cambridge 11", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-11-listening-practice-test-03-with-answers/"], ["Cambridge 11", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-11-listening-practice-test-04-with-answers/"]], "R": [["Cambridge 13", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-13-reading-practice-test-2-with-answers/"]], "W": [["19", "Map Comparison", "Fast Food & Health", "https://vocabularyforielts.com/ielts-academic-writing-3-15-band-9-answers-for-task-1-task-2/"], ["20", "Manufacturing Process", "Artificial Intelligence", "https://vocabularyforielts.com/ielts-academic-writing-4-15-band-9-answers-for-task-1-task-2/"]]}, {"d": 17, "L": [["Cambridge 10", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-10-listening-test-1/"], ["Cambridge 10", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-10-listening-test-2/"], ["Cambridge 10", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-10-listening-test-3/"]], "R": [["Cambridge 13", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-13-reading-practice-test-3-with-answers/"], ["Cambridge 13", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-13-reading-practice-test-4-with-answers/"]], "W": [["21", "Two Charts (Table & Bar)", "Changing Lifestyles", "https://vocabularyforielts.com/ielts-academic-writing-1-14-band-9-answers-for-task-1-task-2/"]]}, {"d": 18, "L": [["Cambridge 10", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-10-listening-test-4/"], ["Cambridge 9", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-9-listening-test-1/"]], "R": [["Cambridge 12", "Reading Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-12-reading-practice-test-1-with-answers/"], ["Cambridge 12", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-12-reading-practice-test-2-with-answers/"]], "W": [["22", "Bar Chart", "Workplace Automation", "https://vocabularyforielts.com/ielts-academic-writing-2-14-band-9-answers-for-task-1-task-2/"]]}, {"d": 19, "L": [["Cambridge 9", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-9-listening-test-2/"], ["Cambridge 9", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-9-listening-test-3/"]], "R": [["Cambridge 12", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-12-reading-practice-test-3-with-answers/"]], "W": [["23", "Line Graph", "Air Travel & Environment", "https://vocabularyforielts.com/ielts-academic-writing-3-14-band-9-answers-for-task-1-task-2/"]]}, {"d": 20, "L": [["Cambridge 9", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-9-listening-test-4/"], ["Cambridge 8", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-8-listening-test-1/"]], "R": [["Cambridge 12", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-12-reading-practice-test-4-with-answers/"], ["Cambridge 11", "Reading Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-11-reading-practice-test-1-with-answers/"]], "W": [["24", "Pie Chart", "Media Influence", "https://vocabularyforielts.com/ielts-academic-writing-4-14-band-9-answers-for-task-1-task-2/"]]}, {"d": 21, "L": [["Cambridge 8", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-8-listening-test-2/"], ["Cambridge 8", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-8-listening-test-3/"], ["Cambridge 8", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-8-listening-test-4/"]], "R": [["Cambridge 11", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-11-reading-practice-test-2-with-answers/"]], "W": [["25", "Data Table", "Extinction of Species", "https://vocabularyforielts.com/ielts-academic-writing-1-13-band-9-answers-for-task-1-task-2/"], ["26", "City Map", "Work-Life Balance", "https://vocabularyforielts.com/ielts-academic-writing-2-13-band-9-answers-for-task-1-task-2/"]]}, {"d": 22, "L": [["Cambridge 7", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-7-listening-test-1/"], ["Cambridge 7", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-7-listening-test-2/"]], "R": [["Cambridge 11", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-11-reading-practice-test-3-with-answers/"], ["Cambridge 11", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-11-reading-practice-test-4-with-answers/"]], "W": [["27", "Process Diagram", "Public Healthcare", "https://vocabularyforielts.com/ielts-academic-writing-3-13-band-9-answers-for-task-1-task-2/"]]}, {"d": 23, "L": [["Cambridge 7", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-7-listening-test-3/"], ["Cambridge 7", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-7-listening-test-4/"]], "R": [["Cambridge 10", "Reading Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-10-reading-practice-test-1-with-answers/"]], "W": [["28", "Two Charts (Line & Bar)", "Higher Education", "https://vocabularyforielts.com/ielts-academic-writing-4-13-band-9-answers-for-task-1-task-2/"]]}, {"d": 24, "L": [["Cambridge 6", "Listening Test 1", "https://www.ieltsworldly.com/ielts-cambridge-book-6-listening-test-1/"], ["Cambridge 6", "Listening Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-6-listening-test-2/"]], "R": [["Cambridge 10", "Reading Test 2", "https://www.ieltsworldly.com/ielts-cambridge-book-10-reading-practice-test-2-with-answers/"], ["Cambridge 10", "Reading Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-10-reading-practice-test-3-with-answers/"]], "W": [["29", "Bar Chart", "Space Tourism", "https://vocabularyforielts.com/ielts-academic-writing-1-12-band-9-answers-for-task-1-task-2/"]]}, {"d": 25, "L": [["Cambridge 6", "Listening Test 3", "https://www.ieltsworldly.com/ielts-cambridge-book-6-listening-test-3/"], ["Cambridge 6", "Listening Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-6-listening-test-4/"]], "R": [["Cambridge 10", "Reading Test 4", "https://www.ieltsworldly.com/ielts-cambridge-book-10-reading-practice-test-4-with-answers/"]], "W": [["30", "Comparative Line Graphs", "Global Trade", "https://vocabularyforielts.com/ielts-academic-writing-2-12-band-9-answers-for-task-1-task-2/"]]}];
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  var KEY = 'nblt.todo25';
+  var LS = null;
+  var done = {};   // id -> true
+
+  function load() {
+    try { LS = window.localStorage; } catch (e) { LS = null; }
+    try { done = JSON.parse(LS.getItem(KEY) || '{}'); } catch (e) { done = {}; }
+    if (typeof done !== 'object' || done === null) done = {};
+  }
+  function save() {
+    try { LS.setItem(KEY, JSON.stringify(done)); } catch (e) {}
+  }
+
+  var esc = function (s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  };
+
+  function idOf(skill, d, idx) { return skill + ':' + d + ':' + idx; }
+
+  var todayDay = 1;
+
+  function dayProgress(d) {
+    var day = PLAN25[d - 1];
+    var total = day.L.length + day.R.length + day.W.length;
+    var got = 0;
+    ['L', 'R', 'W'].forEach(function (s) {
+      day[s].forEach(function (_, i) { if (done[idOf(s, d, i)]) got++; });
+    });
+    return { total: total, got: got };
+  }
+
+  function dayStatus(d, total) {
+    var p = dayProgress(d);
+    if (total > 0 && p.got === total) return 'Done';
+    if (d === todayDay) return 'Today';
+    return '';
+  }
+
+  function findToday() {
+    var t = 1;
+    PLAN25.forEach(function (day) {
+      var d = day.d;
+      var p = dayProgress(d);
+      if (p.total > 0 && p.got === p.total) t = d + 1;
+    });
+    return Math.min(t, PLAN25.length);
+  }
+
+  var CHECK_SVG = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7.5"/></svg>';
+
+  function build() {
+    var tbody = document.getElementById('tbody');
+    var html = '';
+    var totals = { all: 0, L: 0, R: 0, W: 0 };
+    var dcount = PLAN25.length;
+    todayDay = findToday();
+
+    PLAN25.forEach(function (day) {
+      var d = day.d;
+      var cells = ['L', 'R', 'W'];
+      var doneCount = 0;
+      var dayTotal = cells.reduce(function (n, s) { return n + day[s].length; }, 0);
+      var rowHtml = '<tr data-day="' + d + '">';
+      var st = dayStatus(d, dayTotal);
+      rowHtml += '<td class="day"><div class="day-label">Day ' + d + '</div>';
+      rowHtml += '<span class="day-status">' + (st || '') + '</span>';
+      rowHtml += '<span class="day-badge" aria-hidden="true">✓</span></td>';
+
+      cells.forEach(function (skill) {
+        var items = day[skill];
+        totals[skill] += items.length;
+        totals.all += items.length;
+        rowHtml += '<td><div class="cell cell-' + skill.toLowerCase() + '">';
+        items.forEach(function (it, idx) {
+          var id = idOf(skill, d, idx);
+          var checked = !!done[id];
+          if (checked) doneCount++;
+          var name = '', sub = '';
+          if (skill === 'L') { name = it[1]; sub = it[0]; }
+          if (skill === 'R') { name = it[1]; sub = it[0]; }
+          if (skill === 'W') { name = esc(it[2]); sub = esc(it[1]); }
+          rowHtml +=
+            '<label class="task' + (checked ? ' done' : '') + '" data-id="' + id + '">' +
+              '<input type="checkbox"' + (checked ? ' checked' : '') + '>' +
+              '<span class="box" aria-hidden="true">' + CHECK_SVG + '</span>' +
+              '<span class="task-info">' +
+                (skill === 'W' ? '<a class="t-name" href="' + esc(it[3]) + '" target="_blank" rel="noopener"><span class="t-no">W' + it[0] + '</span><span>' + name + '</span></a>' :
+                 '<a class="t-name" href="' + esc(it[2]) + '" target="_blank" rel="noopener">' + name + '</a>') +
+                '<span class="t-sub">' + sub + '</span>' +
+              '</span>' +
+            '</label>';
+        });
+        if (!items.length) rowHtml += '<span class="col-fill">—</span>';
+        rowHtml += '</div></td>';
+      });
+
+      rowHtml += '</tr>';
+      var dayFull = doneCount === dayTotal && dayTotal > 0;
+      var cls = dayFull ? ' done' : (d === todayDay ? ' today' : '');
+      if (cls) rowHtml = rowHtml.replace('<tr data-day="' + d + '">', '<tr data-day="' + d + '" class="' + cls.trim() + '">');
+      html += rowHtml;
+    });
+
+    tbody.innerHTML = html;
+
+    document.getElementById('statLTot').textContent = ' / ' + totals.L;
+    document.getElementById('statRTot').textContent = ' / ' + totals.R;
+    document.getElementById('statWTot').textContent = ' / ' + totals.W;
+    document.getElementById('statAllTot').textContent = ' / ' + totals.all;
+
+    refreshStats(totals);
+    refreshMission();
+  }
+
+  var RING_CIRC = 2 * Math.PI * 52;
+
+  function refreshMission() {
+    var all = countSkill('L') + countSkill('R') + countSkill('W');
+    var pct = Math.round(all / 125 * 100);
+    document.getElementById('ringPct').textContent = pct;
+    document.getElementById('ringFg').style.strokeDasharray = RING_CIRC;
+    document.getElementById('ringFg').style.strokeDashoffset = RING_CIRC * (1 - all / 125);
+
+    var daysDone = 0;
+    PLAN25.forEach(function (day) { if (dayProgress(day.d).got === dayProgress(day.d).total) daysDone++; });
+    document.getElementById('daysDone').textContent = daysDone;
+    document.getElementById('testsLeft').textContent = 125 - all;
+    document.getElementById('daysBar').style.width = Math.round(daysDone / 25 * 100) + '%';
+
+    todayDay = findToday();
+    document.getElementById('missionChip').innerHTML = 'DAY <b>' + String(todayDay).padStart(2, '0') + '</b> / 25';
+    document.getElementById('missionTitle').textContent = todayDay === 25 && daysDone === 25
+      ? 'All 25 days complete'
+      : 'Today is Day ' + todayDay;
+    var day = PLAN25[todayDay - 1];
+    document.getElementById('missionSub').textContent = 'Tick off ' + day.L.length + ' Listening, ' + day.R.length +
+      ' Reading and ' + day.W.length + ' Writing tests.';
+  }
+
+  function countSkill(skill) {
+    var n = 0;
+    Object.keys(done).forEach(function (k) { if (k.indexOf(skill + ':') === 0 && done[k]) n++; });
+    return n;
+  }
+
+  function refreshStats(totals) {
+    var l = countSkill('L'), r = countSkill('R'), w = countSkill('W');
+    var all = l + r + w;
+    var a = totals.all || 1;
+    document.getElementById('statAll').textContent = all;
+    document.getElementById('statL').textContent = l;
+    document.getElementById('statR').textContent = r;
+    document.getElementById('statW').textContent = w;
+    document.getElementById('barAll').style.width = Math.round(all / a * 100) + '%';
+    document.getElementById('barL').style.width = Math.round(l / (totals.L || 1) * 100) + '%';
+    document.getElementById('barR').style.width = Math.round(r / (totals.R || 1) * 100) + '%';
+    document.getElementById('barW').style.width = Math.round(w / (totals.W || 1) * 100) + '%';
+  }
+
+  function onToggle(id, checked) {
+    if (checked) done[id] = true; else delete done[id];
+    save();
+    var label = document.querySelector('.task[data-id="' + id + '"]');
+    if (label) label.classList.toggle('done', checked);
+    refreshStats({ all: 125, L: 56, R: 39, W: 30 });
+    refreshMission();
+    refreshDayRows();
+  }
+
+  function refreshDayRows() {
+    todayDay = findToday();
+    PLAN25.forEach(function (day) {
+      var d = day.d;
+      var tr = document.querySelector('tr[data-day="' + d + '"]');
+      if (!tr) return;
+      var p = dayProgress(d);
+      var full = p.total > 0 && p.got === p.total;
+      tr.classList.toggle('done', full);
+      tr.classList.toggle('today', !full && d === todayDay);
+      var badge = tr.querySelector('.day-badge');
+      if (badge) badge.textContent = full ? '✓' : '·';
+      var pill = tr.querySelector('.day-status');
+      if (pill) {
+        if (full) pill.textContent = 'Done';
+        else if (d === todayDay) pill.textContent = 'Today';
+        else pill.textContent = '';
+        pill.style.display = full || d === todayDay ? 'inline-block' : 'none';
+      }
+    });
+  }
+
+  document.getElementById('tbody').addEventListener('change', function (e) {
+    var input = e.target;
+    if (input.type !== 'checkbox') return;
+    var label = input.closest('.task');
+    if (!label) return;
+    onToggle(label.getAttribute('data-id'), input.checked);
+  });
+
+  var themeBtn = document.getElementById('themeBtn');
+  var icons = themeBtn.querySelectorAll('svg');
+  function paintThemeBtn() {
+    var dark = document.documentElement.classList.contains('dark');
+    icons[0].style.display = dark ? 'inline' : 'none';
+    icons[1].style.display = dark ? 'none' : 'inline';
+  }
+  paintThemeBtn();
+  themeBtn.addEventListener('click', function () {
+    var dark = !document.documentElement.classList.contains('dark');
+    document.documentElement.classList.toggle('dark', dark);
+    document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+    try { localStorage.setItem('nblt.theme', dark ? 'dark' : 'light'); } catch (e) {}
+    paintThemeBtn();
+  });
+
+  var resetBtn = document.getElementById('resetBtn');
+  resetBtn.addEventListener('click', function () {
+    if (!confirm('Clear every checkmark? This cannot be undone.')) return;
+    done = {};
+    save();
+    Array.prototype.forEach.call(document.querySelectorAll('#tbody .task'), function (t) { t.classList.remove('done'); });
+    Array.prototype.forEach.call(document.querySelectorAll('#tbody input[type=checkbox]'), function (c) { c.checked = false; });
+    refreshStats({ all: 125, L: 56, R: 39, W: 30 });
+    refreshMission();
+    refreshDayRows();
+  });
+
+  load();
+  build();
+  refreshDayRows();
+})();
+</script>
+
+</body>
+</html>

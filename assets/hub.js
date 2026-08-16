@@ -2,7 +2,7 @@
    NBLT — hub.js
    Alpine component for the home page.
 
-   Scope, deliberately: this page is a router. It knows the six apps, their
+   Scope, deliberately: this page is a router. It knows the seven apps, their
    names, entry points and deep links — nothing else. It does not read, write
    or aggregate any app's progress; each app owns its own storage entirely.
 
@@ -27,10 +27,11 @@
     moon:    '<path d="M20.5 14.3A8.5 8.5 0 1 1 9.7 3.5a6.8 6.8 0 0 0 10.8 10.8z"/>',
     arrow:   '<path d="M4.5 12h15"/><path d="m13.2 5.8 6.3 6.2-6.3 6.2"/>',
     speak:   '<rect x="9" y="2.8" width="6" height="10.5" rx="3"/><path d="M5.2 11.3a6.8 6.8 0 0 0 13.6 0"/><path d="M12 18.2V21.4"/>',
-    dice:    '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="8.4" cy="8.4" r="1.15" fill="currentColor" stroke="none"/><circle cx="15.6" cy="15.6" r="1.15" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.15" fill="currentColor" stroke="none"/>'
+    dice:    '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="8.4" cy="8.4" r="1.15" fill="currentColor" stroke="none"/><circle cx="15.6" cy="15.6" r="1.15" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.15" fill="currentColor" stroke="none"/>',
+    todo:    '<rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="m8.6 12.2 2.2 2.2 4.8-4.9"/><path d="M8.6 7.8h6.8"/>'
   };
 
-  /* ── The six apps ────────────────────────────────────────────────────
+  /* ── The seven apps ──────────────────────────────────────────────────
      `scale` is a fact about each app's content (how many days, words,
      chapters it contains) — not a measure of what anyone has done. */
   var APPS = [
@@ -119,6 +120,19 @@
         { label: 'Part 1 topics', href: 'speaking/index.html#/part1', icon: I.sheet },
         { label: 'Random cue card', href: 'speaking/index.html#/part2/rand', icon: I.dice }
       ]
+    },
+    {
+      id: 'todo', hotkey: '7',
+      name: 'Daily Mock Tracker',
+      kind: 'Test checklist',
+      tagline: 'Listening · Reading · Writing, ticked off',
+      desc: 'The whole IELTS Worldly test library — 56 Cambridge Listening, 39 Academic Reading and 30 Writing tests — spread across 25 days as a daily checklist. Tick a test off when you finish it; each row opens the test and its answers.',
+      href: 'todo-tracker/index.html',
+      accent: ['#0ea5e9', '#34d399'],
+      icon: I.todo,
+      scale: { n: '125', unit: 'tests planned' },
+      tags: ['25 days', 'Checklist', 'Local progress'],
+      links: []
     }
   ];
 
@@ -127,6 +141,7 @@
     { app: 'tracker', mins: 5,  title: 'Open today on the Tracker', note: 'See the hour blocks for the day and commit to them.' },
     { app: 'vocab',   mins: 20, title: "Learn today's word set",    note: 'One day of the 60-day challenge — read, listen, repeat.' },
     { app: 'grammar', mins: 25, title: 'One grammar unit',          note: 'Work the exercises rather than only reading the rules.' },
+    { app: 'todo',    mins: 40, title: 'Tick off a practice test',  note: 'One Listening, Reading or Writing test from the 25-day checklist.' },
     { app: 'essays',  mins: 40, title: 'Study or write one essay',  note: 'Read a model answer, then rewrite it in your own words.' },
     { app: 'speaking', mins: 20, title: 'Speak on one cue card', note: 'Pick a card, prepare for a minute, answer aloud, then compare with the model answer.' }
   ];
@@ -184,7 +199,7 @@
       },
 
       /* Number keys launch an app. No search shortcuts — this page has
-         five destinations, which a keypress reaches faster than a query. */
+         seven destinations, which a keypress reaches faster than a query. */
       hotkey: function (e) {
         if (!e.key || e.metaKey || e.ctrlKey || e.altKey) return;
         if (/^(INPUT|TEXTAREA|SELECT)$/.test((e.target && e.target.tagName) || '')) return;
